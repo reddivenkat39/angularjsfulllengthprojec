@@ -12,7 +12,7 @@ import {error} from "util";
 export class LoginComponent {
   private staffLogin = {
     'emailAddress': 'chandu',
-    'password': 'chandu '
+    'password': 'bapiraju '
   };
 
   private currentStaffEmailAddress;
@@ -26,8 +26,8 @@ export class LoginComponent {
   login() {
     this.staffLoginService.sendLoginCredentials(this.staffLogin).subscribe(
       data=> {
-
-       console.log(data);
+        debugger;
+        console.log(data);
 
         localStorage.setItem("token", data);
         this.staffLoginService.sendToken("token").subscribe(

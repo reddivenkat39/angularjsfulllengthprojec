@@ -9,15 +9,15 @@ export class StaffService {
   constructor(private http: Http) {
   }
 
-  sendLoginCredentials(staffLogin:any) {
+  sendLoginCredentials(staffLogin) {
     console.log("sendLoginCredentials: staffLogin ",  staffLogin);
     const bodySend = JSON.stringify(staffLogin);
     const headersSend = new Headers({'Content-Type': 'application/json'});
     return this.http.post("http://localhost:8080/login", bodySend, {headers: headersSend})
       .map((data: Response)=> {
         console.log("sendLoginCredentials: Response ",  data);
-      return data['_body']
-    });
+        return data['_body']
+      });
   }
 
   sendToken(token) {
@@ -27,7 +27,7 @@ export class StaffService {
     return this.http.get(tokenUrl2, {headers: headersSend})
   }
 
-  isStaffLoggedIn() {
+  checkLogin() {
     if (localStorage.getItem("currentStaffEmailAddress") != null && localStorage.getItem("currentStaffEmailAddress") != '' && localStorage.getItem("token")) {
       console.log(localStorage.getItem("currentStaffEmailAddress"));
       console.log(localStorage.getItem("token"));
@@ -40,3 +40,12 @@ export class StaffService {
 
   }
 }
+
+
+
+
+
+
+
+
+
