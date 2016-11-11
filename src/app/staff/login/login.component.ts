@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {StaffService} from "../staffservices/staff.service";
 import {Response} from "@angular/http";
 import {error} from "util";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -11,14 +12,16 @@ import {error} from "util";
 })
 export class LoginComponent {
   private staffLogin = {
-    'emailAddress': 'chandu',
-    'password': 'bapiraju '
+    'emailAddress': '',
+    'password': ''
   };
 
   private currentStaffEmailAddress;
   staffLogged: boolean = false;
+  error: String = '';
 
-  constructor(private staffLoginService: StaffService) {
+
+  constructor(private staffLoginService: StaffService, private router: Router) {
     this.currentStaffEmailAddress = localStorage.getItem("currentStaffEmailAddress");
   }
 
@@ -26,25 +29,31 @@ export class LoginComponent {
   login() {
     this.staffLoginService.sendLoginCredentials(this.staffLogin).subscribe(
       data=> {
-        debugger;
-        console.log(data);
+        if (data!=null) {
 
-        localStorage.setItem("token", data);
-        this.staffLoginService.sendToken("token").subscribe(
-          res=> {
+            console.log(data);
 
-            this.currentStaffEmailAddress = this.staffLogin.emailAddress;
-            localStorage.setItem("currentStaffEmailAddress", this.currentStaffEmailAddress);
-            this.staffLogin.emailAddress = '';
-            this.staffLogin.password = '';
-          },
-          error=>console.log(error)
-        );
-      },
+            localStorage.setItem("token", data);
 
-    );
+            this.staffLoginService.sendToken("token").subscribe(
+              res=> {
+                this.currentStaffEmailAddress = this.staffLogin.emailAddress;
+                localStorage.setItem("currentStaffEmailAddress", this.currentStaffEmailAddress);
+                this.staffLogin.emailAddress = '';
+                this.staffLogin.password = '';
+              }
+            );
+
+            this.router.navigate(['/home']);
+          }
+
+        else {
+          console.log("error....");
+          return this.error = "Oops!  login credentials are wrong";
+        }
   }
-
+    );
+}
 
 
   clear() {

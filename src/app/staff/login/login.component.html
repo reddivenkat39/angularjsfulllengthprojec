@@ -1,5 +1,9 @@
-<div class="container">
 
+<div *ngIf="error"  class="alert alert-danger" >
+  {{error}}
+</div>
+<div class="container">
+  <div class="col-sm-6 col-sm-offset-3">
   <div class="center-div">
 
     <!--<div class="card small">-->
@@ -14,7 +18,7 @@
     <!--</div>-->
     <br><br><br>
     <div class="card-reveal">
-      <span class="card-title grey-text text-darken-1">Login<i class="material-icons right">close</i></span>
+      <span class="card-title grey-text text-darken-2">Login</span>
       <div class="input-field">
         <input id="emailAddress" type="text" class="validate" [(ngModel)]="staffLogin.emailAddress" ngDefaultControl="staffLogin.emailAddress" >
         <label for="emailAddress">Email Address</label>
@@ -29,12 +33,16 @@
       <button class="waves-effect waves-light btn" (click)="signup()">Forgot password</button>
       <button class="waves-effect waves-light btn" (click)="clear()">Clear</button>
     </div>
+</div>
   </div>
 </div>
 
+<br/>
+<div>
+  username: {{staffLogin.emailAddress}}<br>
+  password: {{staffLogin.password}}
+</div>
 
-username: {{staffLogin.emailAddress}}<br>
-password: {{staffLogin.password}}
 
 
 

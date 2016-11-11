@@ -1,12 +1,16 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers, Response} from "@angular/http";
 import 'rxjs/Rx';
+import {Router} from "@angular/router";
 
 
 @Injectable()
 export class StaffService {
 
-  constructor(private http: Http) {
+
+
+
+  constructor(private http: Http, private  router: Router) {
   }
 
   sendLoginCredentials(staffLogin) {
@@ -16,7 +20,8 @@ export class StaffService {
     return this.http.post("http://localhost:8080/login", bodySend, {headers: headersSend})
       .map((data: Response)=> {
         console.log("sendLoginCredentials: Response ",  data);
-        return data['_body']
+        return data.json().data
+        // return data['_body']
       });
   }
 
@@ -36,8 +41,12 @@ export class StaffService {
     else {
       return false;
     }
+}
 
-
+  logout(){
+    this.router.navigate(['/login']);
+    localStorage.removeItem("token");
+    localStorage.removeItem("currentStaffEmailAddress");
   }
 }
 

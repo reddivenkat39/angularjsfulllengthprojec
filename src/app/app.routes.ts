@@ -4,11 +4,17 @@
 import { RouterModule,Routes} from "@angular/router";
 
 import {LoginComponent} from "./staff/login/login.component";
-import {HeaderComponent} from "./header/header.component";
+import {HeaderComponent} from "./staffHome/header/header.component";
+import {HomeComponent} from "./staffHome/home/home.component";
+import {CandidatesComponent} from "./staffHome/candidates/candidates.component";
 
 const APP_ROUTES: Routes = [
   { path: '', component: LoginComponent },
-  {path:'', component: HeaderComponent}
+  {path:'login', component:LoginComponent},
+  {path:'header', component: HeaderComponent},
+  {path:'home', component: HomeComponent},
+  {path:'home/candidates', component: CandidatesComponent},
+
 ];
 
 
