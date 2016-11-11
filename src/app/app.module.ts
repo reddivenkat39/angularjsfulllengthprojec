@@ -15,6 +15,8 @@ import {routing} from "./app.routes";
 
 import { HomeComponent } from './staffHome/home/home.component';
 import { CandidatesComponent } from './staffHome/candidates/candidates.component';
+import { ScreeningComponent } from './staffHome/candidates/screening.component';
+
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { CandidatesComponent } from './staffHome/candidates/candidates.component
     LoginComponent,
     ForgetpasswordComponent,
     HomeComponent,
-    CandidatesComponent
+    CandidatesComponent,
+    ScreeningComponent
   ],
   imports: [
     BrowserModule,

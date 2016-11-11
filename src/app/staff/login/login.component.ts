@@ -12,8 +12,8 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent {
   private staffLogin = {
-    'emailAddress': '',
-    'password': ''
+    'emailAddress': 'chandu',
+    'password': 'chandu'
   };
 
   private currentStaffEmailAddress;

@@ -17,7 +17,7 @@ export class StaffService {
     console.log("sendLoginCredentials: staffLogin ",  staffLogin);
     const bodySend = JSON.stringify(staffLogin);
     const headersSend = new Headers({'Content-Type': 'application/json'});
-    return this.http.post("http://localhost:8080/login", bodySend, {headers: headersSend})
+    return this.http.post("http://10.10.5.55:8080/staff/login", bodySend, {headers: headersSend})
       .map((data: Response)=> {
         console.log("sendLoginCredentials: Response ",  data);
         return data.json().data
@@ -26,7 +26,7 @@ export class StaffService {
   }
 
   sendToken(token) {
-    let tokenUrl2 = "http://localhost:8080/staffids";
+    let tokenUrl2 = "http://10.10.5.55:8080/staff/staffids";
     console.log('Bearer ' + token);
     const headersSend = new Headers({'Content-Type': 'application/json'});
     return this.http.get(tokenUrl2, {headers: headersSend})
