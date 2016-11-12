@@ -1,35 +1,37 @@
-<app-header></app-header>
-<br/>
-<br/>
-<div class="container-fluid">
-  <div class="navbar navbar-default navbar-static-top" role="navigation" style="background-color: lightcoral">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
+ <app-header></app-header>
+ <div>
+  <br/>
+  <br/>
+  <div class="container-fluid">
+    <div class="navbar navbar-default navbar-static-top" role="navigation" style="background-color: lightcoral">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
 
-    <div class="collapse navbar-collapse">
+      <div class="collapse navbar-collapse">
 
-      <ul class="nav navbar-nav pull-right">
-        <li><a href="#"><strong>Add new candidate</strong></a></li>
-        <li><a class="active" [routerLink]="['/candidates/screening']" [routerLinkActive]="['active']"><strong>Screening</strong></a></li>
-        <li><a href="#"><Strong>Export Details</Strong></a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>Dropdown</strong></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-      </ul>
+        <ul class="nav navbar-nav pull-right">
+          <li><a href="#"><strong>Add new candidate</strong></a></li>
+          <li><a [routerLink]="['/candidates/screening']" routerLinkActive="active"><strong>Screening</strong></a></li>
+          <li><a href="#"><Strong>Export Details</Strong></a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>Dropdown</strong></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+              <li class="divider"></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
