@@ -35,14 +35,14 @@ export class LoginComponent {
 
             localStorage.setItem("token", data);
 
-            this.staffLoginService.sendToken("token").subscribe(
-              res=> {
-                this.currentStaffEmailAddress = this.staffLogin.emailAddress;
-                localStorage.setItem("currentStaffEmailAddress", this.currentStaffEmailAddress);
-                this.staffLogin.emailAddress = '';
-                this.staffLogin.password = '';
-              }
-            );
+            // this.staffLoginService.sendToken("token").subscribe(
+            //   res=> {
+            //     this.currentStaffEmailAddress = this.staffLogin.emailAddress;
+            //     localStorage.setItem("currentStaffEmailAddress", this.currentStaffEmailAddress);
+            //     this.staffLogin.emailAddress = '';
+            //     this.staffLogin.password = '';
+            //   }
+            // );
 
             this.router.navigate(['/home']);
           }
