@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -11,8 +11,8 @@ import { LoginComponent } from './staff/login/login.component';
 import { ForgetpasswordComponent } from './staff/forgetpassword/forgetpassword.component';
 
 import {StaffService} from "./staff/staffservices/staff.service";
-import {routing} from "./app.routes";
-
+import {routing} from "./app.routing";
+import { LoginGuard } from "./services/login.guard";
 import { HomeComponent } from './staffHome/home/home.component';
 import { CandidatesComponent } from './staffHome/candidates/candidates.component';
 import { ScreeningComponent } from './staffHome/candidates/screening.component';
@@ -33,9 +33,10 @@ import { ScreeningComponent } from './staffHome/candidates/screening.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    ReactiveFormsModule
   ],
-  providers: [StaffService],
+  providers: [StaffService, LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

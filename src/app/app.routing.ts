@@ -8,15 +8,14 @@ import {HeaderComponent} from "./staffHome/header/header.component";
 import {HomeComponent} from "./staffHome/home/home.component";
 import {CandidatesComponent} from "./staffHome/candidates/candidates.component";
 import {ScreeningComponent} from "./staffHome/candidates/screening.component";
+import {LoginGuard} from "./services/login.guard";
 
 const APP_ROUTES: Routes = [
   { path: '', component: LoginComponent },
-  {path:'login', component:LoginComponent},
-  {path:'header', component: HeaderComponent},
-  {path:'home', component: HomeComponent}, //given in
-  {path:'home/candidates', component: CandidatesComponent}, //called in header component
-  {path:'candidates/screening', component: ScreeningComponent}//called in candidates tab
-
+  {path:'home', component: HomeComponent, canActivate: [LoginGuard]}, //given in
+  {path:'home/candidates', component: CandidatesComponent, canActivate: [LoginGuard]}, //called in header component
+  {path:'candidates/screening', component: ScreeningComponent, canActivate: [LoginGuard]},//called in candidates tab
+  { path: '**', redirectTo: '' }
 
 
 ];

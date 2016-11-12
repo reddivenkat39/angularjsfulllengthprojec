@@ -44,7 +44,7 @@ export class StaffService {
 }
 
   logout(){
-    this.router.navigate(['/login']);
+    this.router.navigate(['']);
     localStorage.removeItem("token");
     localStorage.removeItem("currentStaffEmailAddress");
   }
