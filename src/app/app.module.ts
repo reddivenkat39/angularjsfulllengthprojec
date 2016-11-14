@@ -16,6 +16,7 @@ import { LoginGuard } from "./services/login.guard";
 import { HomeComponent } from './staffHome/home/home.component';
 import { CandidatesComponent } from './staffHome/candidates/candidates.component';
 import { ScreeningComponent } from './staffHome/candidates/screening.component';
+import {CandidatesService} from "./staffHome/candidates/candidates.service";
 
 
 
@@ -36,7 +37,7 @@ import { ScreeningComponent } from './staffHome/candidates/screening.component';
     routing,
     ReactiveFormsModule
   ],
-  providers: [StaffService, LoginGuard],
+  providers: [StaffService, LoginGuard,CandidatesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

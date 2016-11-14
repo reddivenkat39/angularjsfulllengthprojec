@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {
   FormGroup,
-  FormControl,
   FormBuilder,
 } from "@angular/forms";
-import { Observable } from "rxjs/Rx";
+
+
+import {CandidatesService} from "./candidates.service";
+
+
 @Component({
   selector: 'app-screening',
   templateUrl: './screening.component.html',
@@ -12,38 +15,53 @@ import { Observable } from "rxjs/Rx";
 })
 export class ScreeningComponent {
   myForm: FormGroup;
-  constructor(private formBuilder: FormBuilder) {
+
+
+  constructor(private formBuilder: FormBuilder, private candidateService: CandidatesService) {
     this.myForm = formBuilder.group({
       'candidateData': formBuilder.group({
-        'canName': [''],
-        'canRef':[''],
-        'visaSta':[''],
-        'visaVal':[''],
-        'h1Win':[''],
-        'curEmplyr':[''],
-        'primSkill':[''],
-        'skillSet':[''],
-        'totalExp':[''],
-        'curComp':[''],
-        'expComp':[''],
-        'agrdComp':[''],
-        'cstToCmpny':[''],
-        'curLoc':[''],
-        'relocation':[''],
-        'notPrd':[''],
-        'h1RcptNum':[''],
-        'comSkills':[''],
-        'comments':[''],
-        'fileUpld':['']
+        'candidateName': [''],
+        'candidateReference': [''],
+        'visaStatus': [''],
+        'visaValidity': [''],
+        'h1Window': [''],
+        'currentEmployer': [''],
+        'primarySill': [''],
+        'skillSet': [''],
+        'totalExperience': [''],
+        'currentCompensation': [''],
+        'expectedCompensation': [''],
+        'agreedCompensation': [''],
+        'costToCompany': [''],
+        'currentLocation': [''],
+        'relocation': [''],
+        'noticePeriod': [''],
+        'h1ReceiptNumber': [''],
+        'communicationSkills': [''],
+        'comments': ['']
 
-      }),
+
+      })
     });
   }
 
   onSubmit() {
+    // event.preventDefault();
     console.log("form on submit");
-    console.log(this.myForm);
+    console.log(this.myForm.value.candidateData);
+    this.candidateService.sendScreeningDetails(this.myForm.value).subscribe(
+      data=> {
+        console.log("success");
+      }
+      // success=>{
+      //
+      // },
+      // error=>{
+      //
+      // }
+    );
   }
+
 
 }
 

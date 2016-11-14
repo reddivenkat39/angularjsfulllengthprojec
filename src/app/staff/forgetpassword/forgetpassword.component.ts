@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-forgetpassword',
   templateUrl: './forgetpassword.component.html',
   styleUrls: ['./forgetpassword.component.css']
 })
-export class ForgetpasswordComponent implements OnInit {
+export class ForgetpasswordComponent  {
 
   constructor() { }
 
-  ngOnInit() {
+  onSubmit(){
+
   }
+
 
 }

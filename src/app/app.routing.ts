@@ -9,12 +9,15 @@ import {HomeComponent} from "./staffHome/home/home.component";
 import {CandidatesComponent} from "./staffHome/candidates/candidates.component";
 import {ScreeningComponent} from "./staffHome/candidates/screening.component";
 import {LoginGuard} from "./services/login.guard";
+import {ForgetpasswordComponent} from "./staff/forgetpassword/forgetpassword.component";
 
 const APP_ROUTES: Routes = [
   { path: '', component: LoginComponent },
+  {path:'forgotpassword', component:ForgetpasswordComponent},// used in login component
   {path:'home', component: HomeComponent, canActivate: [LoginGuard]}, //given in
   {path:'home/candidates', component: CandidatesComponent, canActivate: [LoginGuard]}, //called in header component
   {path:'candidates/screening', component: ScreeningComponent, canActivate: [LoginGuard]},//called in candidates tab
+
   { path: '**', redirectTo: '' }
 
 

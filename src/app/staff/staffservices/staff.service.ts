@@ -8,18 +8,16 @@ import {Router} from "@angular/router";
 export class StaffService {
 
 
-
-
   constructor(private http: Http, private  router: Router) {
   }
 
   sendLoginCredentials(staffLogin) {
-    console.log("sendLoginCredentials: staffLogin ",  staffLogin);
+    console.log("sendLoginCredentials: staffLogin ", staffLogin);
     const bodySend = JSON.stringify(staffLogin);
     const headersSend = new Headers({'Content-Type': 'application/json'});
     return this.http.post("http://localhost:8080/staff/login", bodySend, {headers: headersSend})
       .map((data: Response)=> {
-        console.log("sendLoginCredentials: Response ",  data);
+        console.log("sendLoginCredentials: Response ", data);
         return data.json().data
         // return data['_body']
       });
@@ -41,18 +39,20 @@ export class StaffService {
     else {
       return false;
     }
-}
+  }
 
-  logout(){
+  logout() {
     this.router.navigate(['']);
     localStorage.removeItem("token");
     localStorage.removeItem("currentStaffEmailAddress");
   }
+
+
+  onForgotPasswordSubmit() {
+
+  }
+
 }
-
-
-
-
 
 
 
