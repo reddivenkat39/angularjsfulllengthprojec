@@ -6,6 +6,7 @@ import {
 
 
 import {CandidatesService} from "./candidates.service";
+import {error} from "util";
 
 
 @Component({
@@ -39,8 +40,6 @@ export class ScreeningComponent {
         'h1ReceiptNumber': [''],
         'communicationSkills': [''],
         'comments': ['']
-
-
       })
     });
   }
@@ -49,10 +48,19 @@ export class ScreeningComponent {
     // event.preventDefault();
     console.log("form on submit");
     console.log(this.myForm.value.candidateData);
-    this.candidateService.sendScreeningDetails(this.myForm.value).subscribe(
-      data=> {
-        console.log("success");
+    this.candidateService.sendScreeningDetails(this.myForm.value.candidateData).subscribe(
+      res=> {
+        if(res.success!=null){
+          console.log(res.success);
+        }
+        else if (res.data){
+          console.log(res.data);
+        }
+        else {
+          console.log(res.error);
+        }
       }
+
       // success=>{
       //
       // },

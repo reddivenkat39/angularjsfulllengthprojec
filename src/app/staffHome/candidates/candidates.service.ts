@@ -13,10 +13,9 @@ export class CandidatesService {
     console.log("myForm body ...........", bodySend)
     const headersSend = new Headers({'Content-Type': 'application/json'});
     return this.http.post("http://localhost:8080/savescreening", bodySend, {headers: headersSend}).map((res: Response)=> {
-        console.log("send screening deails", +res);
-        console.log("only key value pairs", res.json().value.candidateData);
+        console.log("send screening deails", res);
+        console.log("only key value pairs", res);
         return res.json()
-
       }
     );
   }
