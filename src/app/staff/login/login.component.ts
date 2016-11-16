@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent {
   private staffLogin = {
-    'emailAddress': 'chandu',
+    'emailAddress': 'chandu.adabala@tabnergc.com',
     'password': 'chandu'
   };
 
@@ -32,10 +32,11 @@ export class LoginComponent {
         if (data!=null) {
 
             console.log(data);
+          console.log(window.location.origin);
 
             localStorage.setItem("token", data);
 
-            this.staffLoginService.sendToken("token").subscribe(
+            this.staffLoginService.sendToken(data).subscribe(
               res=> {
                 this.currentStaffEmailAddress = this.staffLogin.emailAddress;
                 localStorage.setItem("currentStaffEmailAddress", this.currentStaffEmailAddress);

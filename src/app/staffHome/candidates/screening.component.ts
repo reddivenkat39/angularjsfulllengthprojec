@@ -38,8 +38,9 @@ export class ScreeningComponent {
         'noticePeriod': [''],
         'h1ReceiptNumber': [''],
         'communicationSkills': [''],
-        'comments': ['']
-      }),
+        'comments': [''],
+        'visaValidityNotApplicable':['']
+      })
     });
 
   }
@@ -49,9 +50,11 @@ export class ScreeningComponent {
     console.log("form on submit");
     console.log(this.myForm.value.candidateData);
     this.candidateService.sendScreeningDetails(this.myForm.value.candidateData).subscribe(
+
       res=> {
         if(res.success!=null){
           console.log(res.success);
+          this.myForm.reset();
         }
         else if (res.data){
           console.log(res.data);
@@ -70,6 +73,9 @@ export class ScreeningComponent {
     );
   }
 
+  refreshForm(){
+    this.myForm.reset();
+  }
 
 }
 
