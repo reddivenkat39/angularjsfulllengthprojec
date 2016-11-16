@@ -17,7 +17,6 @@ import {error} from "util";
 export class ScreeningComponent {
   myForm: FormGroup;
 
-
   constructor(private formBuilder: FormBuilder, private candidateService: CandidatesService) {
     this.myForm = formBuilder.group({
       'candidateData': formBuilder.group({
@@ -43,6 +42,7 @@ export class ScreeningComponent {
         'visaValidityNotApplicable':['']
       })
     });
+
   }
 
   onSubmit() {
@@ -56,7 +56,7 @@ export class ScreeningComponent {
           console.log(res.success);
           this.myForm.reset();
         }
-        else if (res.data!=null){
+        else if (res.data){
           console.log(res.data);
         }
         else {
@@ -64,7 +64,12 @@ export class ScreeningComponent {
         }
       }
 
-
+      // success=>{
+      //
+      // },
+      // error=>{
+      //
+      // }
     );
   }
 

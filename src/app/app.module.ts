@@ -19,6 +19,8 @@ import { ScreeningComponent } from './staffHome/candidates/screening.component';
 import {CandidatesService} from "./staffHome/candidates/candidates.service";
 import { ResetpasswordComponent } from './staff/forgetpassword/resetpassword.component';
 
+import { AddstaffComponent } from './staff/addstaff/addstaff.component';
+import {AddstaffService} from "./staff/staffservices/addstaff.service";
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { ResetpasswordComponent } from './staff/forgetpassword/resetpassword.com
     HomeComponent,
     CandidatesComponent,
     ScreeningComponent,
+    AddstaffComponent
+    ScreeningComponent,
     ResetpasswordComponent
   ],
   imports: [
@@ -39,7 +43,7 @@ import { ResetpasswordComponent } from './staff/forgetpassword/resetpassword.com
     routing,
     ReactiveFormsModule
   ],
-  providers: [StaffService, LoginGuard,CandidatesService],
+  providers: [StaffService, LoginGuard,CandidatesService, AddstaffService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
