@@ -18,7 +18,7 @@ export class StaffService {
     return this.http.post("http://localhost:8080/staff/login", bodySend, {headers: headersSend})
       .map((data: Response)=> {
         console.log("sendLoginCredentials: Response ", data);
-        return data.json().data
+        return data.json().datares
         // return data['_body']
       });
   }
@@ -26,8 +26,8 @@ export class StaffService {
   sendToken(token) {
     let tokenUrl2 = "http://localhost:8080/staff/staffids";
     console.log('Bearer ' + token);
-    const headersSend = new Headers({'Content-Type': 'application/json'});
-    return this.http.get(tokenUrl2, {headers: headersSend})
+    const getHeaders = new Headers({'authorization': 'Bearer '+token});
+    return this.http.get(tokenUrl2, {headers: getHeaders})
   }
 
   checkLogin() {
@@ -48,8 +48,15 @@ export class StaffService {
   }
 
 
-  onForgotPasswordSubmit() {
-
+  onForgotPasswordSubmit(forgotPasswordData) {
+    const bodySend = JSON.stringify(forgotPasswordData);
+    const headersSend = new Headers({'Content-Type': 'application/json'});
+    return this.http.post("http://localhost:8080/staff/forgotpassword", bodySend, {headers: headersSend})
+      .map((data: Response)=> {
+        console.log("sendLoginCredentials: Response ", data.json());
+        return data.json()
+        // return data['_body']
+      });
   }
 
 }

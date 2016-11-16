@@ -17,6 +17,7 @@ import { HomeComponent } from './staffHome/home/home.component';
 import { CandidatesComponent } from './staffHome/candidates/candidates.component';
 import { ScreeningComponent } from './staffHome/candidates/screening.component';
 import {CandidatesService} from "./staffHome/candidates/candidates.service";
+import { ResetpasswordComponent } from './staff/forgetpassword/resetpassword.component';
 
 
 
@@ -28,7 +29,8 @@ import {CandidatesService} from "./staffHome/candidates/candidates.service";
     ForgetpasswordComponent,
     HomeComponent,
     CandidatesComponent,
-    ScreeningComponent
+    ScreeningComponent,
+    ResetpasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -81,6 +81,7 @@
 </div>
 </div>
 -->
+
 <div class="col-xs-4 col-xs-offset-4">
   <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <div formGroupName="candidateData">
@@ -119,16 +120,25 @@
                class="form-control"
                id="visaValidity"
                formControlName="visaValidity">
+        <label for="visaValidityNotApplicable">Not Applicable</label>
+        <input type="checkbox" class="form-control" id="visaValidityNotApplicable"
+               formGroupName="visaValidityNotApplicable">
+
+      </div>
+      <div class="form-group">
+
       </div>
 
-      we need to change it to date format
-      <div class="form-group">
+
+<div class="form-group">
         <label for="h1Window">Time left on H1 window</label>
         <input type="text"
                class="form-control"
                id="h1Window"
                formControlName="h1Window">
       </div>
+
+      we need to change it to date format
       <div class="form-group">
         <label for="currentEmployer">Current Employer</label>
         <input type="text"

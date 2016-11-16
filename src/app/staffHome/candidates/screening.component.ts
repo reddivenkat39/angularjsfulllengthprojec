@@ -39,7 +39,8 @@ export class ScreeningComponent {
         'noticePeriod': [''],
         'h1ReceiptNumber': [''],
         'communicationSkills': [''],
-        'comments': ['']
+        'comments': [''],
+        'visaValidityNotApplicable':['']
       })
     });
   }
@@ -49,11 +50,13 @@ export class ScreeningComponent {
     console.log("form on submit");
     console.log(this.myForm.value.candidateData);
     this.candidateService.sendScreeningDetails(this.myForm.value.candidateData).subscribe(
+
       res=> {
         if(res.success!=null){
           console.log(res.success);
+          this.myForm.reset();
         }
-        else if (res.data){
+        else if (res.data!=null){
           console.log(res.data);
         }
         else {
@@ -61,15 +64,13 @@ export class ScreeningComponent {
         }
       }
 
-      // success=>{
-      //
-      // },
-      // error=>{
-      //
-      // }
+
     );
   }
 
+  refreshForm(){
+    this.myForm.reset();
+  }
 
 }
 
