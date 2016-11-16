@@ -13,5 +13,4 @@ export class HeaderComponent{
   onLogout(){
     this.staffService.logout();
   }
-
 }

@@ -17,7 +17,6 @@ import {error} from "util";
 export class ScreeningComponent {
   myForm: FormGroup;
 
-
   constructor(private formBuilder: FormBuilder, private candidateService: CandidatesService) {
     this.myForm = formBuilder.group({
       'candidateData': formBuilder.group({
@@ -40,8 +39,9 @@ export class ScreeningComponent {
         'h1ReceiptNumber': [''],
         'communicationSkills': [''],
         'comments': ['']
-      })
+      }),
     });
+
   }
 
   onSubmit() {
