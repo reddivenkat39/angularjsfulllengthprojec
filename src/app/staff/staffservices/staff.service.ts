@@ -51,10 +51,10 @@ export class StaffService {
   onForgotPasswordSubmit(forgotPasswordData) {
     const bodySend = JSON.stringify(forgotPasswordData);
     const headersSend = new Headers({'Content-Type': 'application/json'});
-    return this.http.post("http://localhost:8080/staff/forgotpassword", bodySend, {headers: headersSend})
+    return this.http.post("http://10.10.5.55:8080/staff/forgotpassword", bodySend, {headers: headersSend})
       .map((data: Response)=> {
         console.log("sendLoginCredentials: Response ", data.json());
-        return data.json()
+        return data.json();
         // return data['_body']
       });
   }
