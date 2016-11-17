@@ -9,6 +9,8 @@ import {StaffService} from "../staffservices/staff.service";
 })
 export class ForgetpasswordComponent  {
   myForm: FormGroup;
+  private mailsent = true;
+
 
 
   constructor(private formBuilder: FormBuilder, private staffService: StaffService) {
@@ -26,8 +28,11 @@ this.staffService.onForgotPasswordSubmit(this.myForm.value.forgotPasswordData).s
   res=> {
     if(res.datares!=null){
       console.log(res.datares);
+
+
     }else if (res.successres!=null){
       console.log(res.successres);
+      this.mailsent=!this.mailsent;
     }else{
       console.log(res.errorres);
     }
