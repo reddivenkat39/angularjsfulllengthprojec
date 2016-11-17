@@ -32,7 +32,7 @@ import {AddstaffService} from "./staff/staffservices/addstaff.service";
     HomeComponent,
     CandidatesComponent,
     ScreeningComponent,
-    AddstaffComponent
+    AddstaffComponent,
     ScreeningComponent,
     ResetpasswordComponent
   ],
