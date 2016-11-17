@@ -8,13 +8,14 @@ import {StaffService} from "../staffservices/staff.service";
   styleUrls: ['./forgetpassword.component.css']
 })
 export class ForgetpasswordComponent  {
-  myForm: FormGroup;
+  forgotPasswordForm: FormGroup;
   private mailsent = true;
+  private clicked = true;
 
 
 
   constructor(private formBuilder: FormBuilder, private staffService: StaffService) {
-    this.myForm= formBuilder.group({
+    this.forgotPasswordForm= formBuilder.group({
       'forgotPasswordData':formBuilder.group({
         'emailAddress':['']
       })
@@ -23,8 +24,9 @@ export class ForgetpasswordComponent  {
   }
 
   onSubmit(){
-console.log(this.myForm.value.forgotPasswordData);
-this.staffService.onForgotPasswordSubmit(this.myForm.value.forgotPasswordData).subscribe(
+    this.clicked=!this.clicked;
+console.log(this.forgotPasswordForm.value.forgotPasswordData);
+this.staffService.onForgotPasswordSubmit(this.forgotPasswordForm.value.forgotPasswordData).subscribe(
   res=> {
     if(res.datares!=null){
       console.log(res.datares);
