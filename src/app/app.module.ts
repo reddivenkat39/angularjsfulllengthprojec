@@ -2,11 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './staffHome/header/header.component';
-
-
 import { LoginComponent } from './staff/login/login.component';
 import { ForgetpasswordComponent } from './staff/forgetpassword/forgetpassword.component';
 
@@ -21,6 +18,8 @@ import { ResetpasswordComponent } from './staff/forgetpassword/resetpassword.com
 
 import { AddstaffComponent } from './staff/addstaff/addstaff.component';
 import {AddstaffService} from "./staff/staffservices/addstaff.service";
+import { FileUploadComponent } from "./staff/file-upload/file-upload.component";
+import { AddnewcandidateComponent } from './staffHome/candidates/addnewcandidate/addnewcandidate.component';
 
 
 @NgModule({
@@ -34,7 +33,9 @@ import {AddstaffService} from "./staff/staffservices/addstaff.service";
     ScreeningComponent,
     AddstaffComponent,
     ScreeningComponent,
-    ResetpasswordComponent
+    ResetpasswordComponent,
+    FileUploadComponent,
+    AddnewcandidateComponent
   ],
   imports: [
     BrowserModule,

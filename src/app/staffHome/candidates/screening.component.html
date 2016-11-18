@@ -101,8 +101,7 @@
       </div>
       <div class="form-group">
         <label for="visaStatus">Visa Status</label>
-        <select type="text"
-                class="form-control"
+        <select class="form-control"
                 id="visaStatus"
                 formControlName="visaStatus">
           <option value="">--Select One--</option>
@@ -113,20 +112,14 @@
           <option value="CITIZENS">CITIZENS</option>
         </select>
       </div>
-      we need to change it to date format
       <div class="form-group">
-        <label for="visaValidity">Visa Validity</label>
-        <input type="text"
-               class="form-control"
-               id="visaValidity"
-               formControlName="visaValidity">
-        <label for="visaValidityNotApplicable">Not Applicable</label>
-        <input type="checkbox" class="form-control" id="visaValidityNotApplicable"
-               formGroupName="visaValidityNotApplicable">
-
-      </div>
-      <div class="form-group">
-
+              <label for="visaValidity">Visa Validity</label>
+              <input type="date"
+                     class="form-control"
+                     id="visaValidity"
+                     formControlName="visaValidity">
+              <input type="checkbox" class="form-control" id="visaValidityNotApplicable" formControlName="visaValidityNotApplicable" name="visaValidityNotApplicable"/>
+              <label for="visaValidityNotApplicable">Not Applicable</label>
       </div>
 
 
@@ -249,10 +242,16 @@
         </textarea>
       </div>
       <div class="form-group">
-        <label>Gender</label>
-        <input type="radio" value="selected"><br>
-        <input type="radio" value="rejected">female<br>
+        <label>Selection Status</label>
+        <br/>
+        <input name="selectionStatus" class="radio-inline" id="selectionStatusSelected" type="radio" value="selected" formControlName="selectionStatus"/>
+        <label for="selectionStatusSelected">Selected</label>
+        <input name="selectionStatus" class="radio-inline" id="selectionStatusRejected" type="radio" formControlName="selectionStatus" value="rejected" />
+        <label for="selectionStatusRejected">Rejected</label>
+        <input name="selectionStatus" class="radio-inline" type="radio" id="selectionStatusHold" formControlName="selectionStatus" value="onhold"/>
+        <label for="selectionStatusHold">On Hold</label>
       </div>
+
 
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>

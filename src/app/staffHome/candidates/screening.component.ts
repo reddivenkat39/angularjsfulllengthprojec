@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 import {
   FormGroup,
-  FormBuilder,
+  FormBuilder, Validators,
 } from "@angular/forms";
-
 
 import {CandidatesService} from "./candidates.service";
 import {error} from "util";
@@ -39,7 +38,8 @@ export class ScreeningComponent {
         'h1ReceiptNumber': [''],
         'communicationSkills': [''],
         'comments': [''],
-        'visaValidityNotApplicable':['']
+        'visaValidityNotApplicable':[''],
+        'selectionStatus':['selected']
       })
     });
 
