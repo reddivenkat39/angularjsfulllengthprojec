@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs";
 import {Http} from "@angular/http";
 import {StaffService} from "../staffservices/staff.service";
-import {FormGroup, FormBuilder} from "@angular/forms";
+import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector   : 'app-resetpassword',

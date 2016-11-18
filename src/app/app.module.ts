@@ -22,6 +22,8 @@ import { ResetpasswordComponent } from './staff/forgetpassword/resetpassword.com
 import { AddstaffComponent } from './staff/addstaff/addstaff.component';
 import {AddstaffService} from "./staff/staffservices/addstaff.service";
 import {MaterialModule} from "@angular/material";
+import { FileUploadComponent } from "./staff/file-upload/file-upload.component";
+import { AddnewcandidateComponent } from './staffHome/candidates/addnewcandidate/addnewcandidate.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import {MaterialModule} from "@angular/material";
     ScreeningComponent,
     AddstaffComponent,
     ScreeningComponent,
-    ResetpasswordComponent
+    ResetpasswordComponent,
+    FileUploadComponent,
+    AddnewcandidateComponent
   ],
   imports: [
     BrowserModule,
