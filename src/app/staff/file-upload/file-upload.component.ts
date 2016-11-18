@@ -16,7 +16,7 @@ export class FileUploadComponent {
       let files:FileList = inputEl.files[0];
       console.log(files);
       this.http
-        .post('http://10.10.5.55:8080/uploadfile', files, {headers: headersSend}).subscribe(
+        .post('http://localhost:8080:8080/uploadfile', files, {headers: headersSend}).subscribe(
         res=>{
           console.log("success");
         }
