@@ -1,0 +1,117 @@
+<app-candidates></app-candidates>
+<div class="container">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="center-div">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input id="firstName" type="text" class="form-control" [(ngModel)]="addnewcandidate.firstName"
+                   ngDefaultControl="addnewcandidate.firstName">
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input id="lastName" type="text" class="form-control" [(ngModel)]="addnewcandidate.lastName"
+                   ngDefaultControl="addnewcandidate.lastName">
+          </div>
+          <div class="form-group">
+            <label for="emailID">Email-ID</label>
+            <input id="emailID" type="email" class="form-control"
+                   [(ngModel)]="addnewcandidate.emailID"
+                   ngDefaultControl="addnewcandidate.emailID">
+          </div>
+          <div class="form-group">
+            <label for="phNo">Phone</label>
+            <input id="phNo" type="tel" class="form-control"
+                   [(ngModel)]="addnewcandidate.phNo"
+                   ngDefaultControl="addnewcandidate.phNo">
+          </div>
+          <div class="form-group">
+            <label for="source">Source</label>
+            <input id="source" type="text" class="form-control"
+                   [(ngModel)]="addnewcandidate.source"
+                   ngDefaultControl="addnewcandidate.source">
+          </div>
+          <div class="form-group">
+            <label for="visaStatus">Visa Status</label>
+            <select id="visaStatus" class="form-control"
+                   [(ngModel)]="addnewcandidate.visaStatus"
+                   ngDefaultControl="addnewcandidate.visaStatus">
+            <option value="">--Select One--</option>
+            <option value="h1b">H1B</option>
+            <option value="l1">L1</option>
+            <option value="L2">L2 EAD</option>
+            <option value="EAD">EAD GC</option>
+            <option value="CITIZENS">CITIZENS</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="expInYrs">Experience in years</label>
+            <input type="number" id="expInYrs" class="form-control"
+                   [(ngModel)]="addnewcandidate.expInYrs" ngDefaultControl="addnewcandidate.expInYrs">
+          </div>
+          <div class="form-group">
+          <label for="TotalExpInMnths">Total Work Experience in months</label>
+          <input type="number" id="TotalExpInMnths" class="form-control"
+                 [(ngModel)]="addnewcandidate.TotalExpInMnths" ngDefaultControl="addnewcandidate.TotalExpInMnths">
+          </div>
+          <div class="form-group">
+          <label for="primarySkill">Primary Skill</label>
+          <input type="text" id="primarySkill" class="form-control"
+                 [(ngModel)]="addnewcandidate.primarySkill" ngDefaultControl="addnewcandidate.primarySkill">
+          </div>
+          <div class="form-group">
+          <label for="currentJobTitle">Current Job Title</label>
+          <input type="text" id="currentJobTitle" class="form-control"
+                 [(ngModel)]="addnewcandidate.currentJobTitle" ngDefaultControl="addnewcandidate.currentJobTitle">
+          </div>
+          <div class="form-group">
+          <label for="currentEmplyr">Current Employer</label>
+          <input type="text" id="currentEmplyr" class="form-control"
+                 [(ngModel)]="addnewcandidate.currentEmplyr" ngDefaultControl="addnewcandidate.currentEmplyr">
+          </div>
+          <div class="form-group">
+          <label for="skillSet">Tech Skills</label>
+          <input type="text" id="skillSet" class="form-control"
+                 [(ngModel)]="addnewcandidate.skillSet" ngDefaultControl="addnewcandidate.skillSet">
+          </div>
+          <div class="form-group">
+          <label for="expectedSalry">Expected Salary</label>
+          <input type="number" id="expectedSalry" class="form-control"
+                 [(ngModel)]="addnewcandidate.expectedSalry" ngDefaultControl="addnewcandidate.expectedSalry">
+          </div>
+          <div class="form-group">
+          <label for="highestQualiHeld">Highest Qualification Held</label>
+          <input type="text" id="highestQualiHeld" class="form-control"
+                 [(ngModel)]="addnewcandidate.highestQualiHeld" ngDefaultControl="addnewcandidate.highestQualiHeld">
+          </div>
+          <div class="form-group">
+          <label for="additionalInfo">Additional Info</label>
+          <textarea id="additionalInfo" class="form-control"
+                 [(ngModel)]="addnewcandidate.additionalInfo" ngDefaultControl="addnewcandidate.additionalInfo">
+          </textarea>
+          </div>
+          <div class="form-group">
+          <label for="currentSalary">Current Salary</label>
+          <input type="number" id="currentSalary" class="form-control"
+                    [(ngModel)]="addnewcandidate.currentSalary" ngDefaultControl="addnewcandidate.currentSalary">
+          </div>
+          <div class="form-group">
+          <label for="candidateStatus">Candidate Status</label>
+          <input type="text" id="candidateStatus" class="form-control"
+                    [(ngModel)]="addnewcandidate.candidateStatus" ngDefaultControl="addnewcandidate.candidateStatus">
+          </div>
+          <div class="form-group">
+          <label for="note">Note</label>
+          <textarea id="note" class="form-control"
+                    [(ngModel)]="addnewcandidate.note" ngDefaultControl="addnewcandidate.note">
+          </textarea>
+          </div>
+          <div class="form-group">
+            <input name="selectionStatus" class="radio-inline" id="selectionStatushired" type="radio" value="hired"/>
+            <label for="selectionStatushired">Selected</label>
+            <input name="selectionStatus" class="radio-inline" id="selectionStatushold" type="radio" value="hold" />
+            <label for="selectionStatushold">Rejected</label>
+          </div>
+          <button class="waves-effect waves-light btn" (click)="onSubmit()">Submit</button>
+        </div>
+      </div>
+</div>
