@@ -56,12 +56,12 @@ export class ResetpasswordComponent implements OnDestroy, OnInit {
   }
 
   onSubmit(){
-
+    this.resetpasswordClicked=!this.resetpasswordClicked;
     this.staffService.sendResetPasswordCredentials(this.resetPassword).subscribe(
       res => {
 
         if (res.successres != null) {
-          this.resetpasswordClicked=!this.resetpasswordClicked;
+
           console.log(res.successres);
           this.router.navigate(['/home']);
         }

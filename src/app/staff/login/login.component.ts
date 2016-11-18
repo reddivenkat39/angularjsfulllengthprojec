@@ -16,6 +16,8 @@ export class LoginComponent {
     'password': 'chandu'
   };
 
+
+
   private currentStaffEmailAddress;
   staffLogged: boolean = false;
   error: String = '';
@@ -42,6 +44,7 @@ export class LoginComponent {
                 localStorage.setItem("currentStaffEmailAddress", this.currentStaffEmailAddress);
                 this.staffLogin.emailAddress = '';
                 this.staffLogin.password = '';
+                // location.reload();
               }
             );
 

@@ -21,6 +21,7 @@ import { ResetpasswordComponent } from './staff/forgetpassword/resetpassword.com
 
 import { AddstaffComponent } from './staff/addstaff/addstaff.component';
 import {AddstaffService} from "./staff/staffservices/addstaff.service";
+import {MaterialModule} from "@angular/material";
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {AddstaffService} from "./staff/staffservices/addstaff.service";
     FormsModule,
     HttpModule,
     routing,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule.forRoot()
   ],
   providers: [StaffService, LoginGuard,CandidatesService, AddstaffService],
   bootstrap: [AppComponent]
