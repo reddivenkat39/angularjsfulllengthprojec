@@ -2,6 +2,8 @@
 <div class="container">
     <div class="col-sm-6 col-sm-offset-3">
       <div class="center-div">
+        <h6>Basic Info</h6>
+        <br>
           <div class="form-group">
             <label for="firstName">First Name</label>
             <input id="firstName" type="text" class="form-control" [(ngModel)]="addnewcandidate.firstName"
@@ -30,6 +32,8 @@
                    [(ngModel)]="addnewcandidate.source"
                    ngDefaultControl="addnewcandidate.source">
           </div>
+          <h6>Professional Details</h6>
+          <br>
           <div class="form-group">
             <label for="visaStatus">Visa Status</label>
             <select id="visaStatus" class="form-control"
@@ -47,11 +51,6 @@
             <label for="expInYrs">Experience in years</label>
             <input type="number" id="expInYrs" class="form-control"
                    [(ngModel)]="addnewcandidate.expInYrs" ngDefaultControl="addnewcandidate.expInYrs">
-          </div>
-          <div class="form-group">
-          <label for="TotalExpInMnths">Total Work Experience in months</label>
-          <input type="number" id="TotalExpInMnths" class="form-control"
-                 [(ngModel)]="addnewcandidate.TotalExpInMnths" ngDefaultControl="addnewcandidate.TotalExpInMnths">
           </div>
           <div class="form-group">
           <label for="primarySkill">Primary Skill</label>
@@ -105,12 +104,12 @@
                     [(ngModel)]="addnewcandidate.note" ngDefaultControl="addnewcandidate.note">
           </textarea>
           </div>
-          <div class="form-group">
+          <!--<div class="form-group">
             <input name="selectionStatus" class="radio-inline" id="selectionStatushired" type="radio" value="hired"/>
-            <label for="selectionStatushired">Selected</label>
+            <label for="selectionStatushired">Hired</label>
             <input name="selectionStatus" class="radio-inline" id="selectionStatushold" type="radio" value="hold" />
-            <label for="selectionStatushold">Rejected</label>
-          </div>
+            <label for="selectionStatushold">Hold</label>
+          </div>-->
           <button class="waves-effect waves-light btn" (click)="onSubmit()">Submit</button>
         </div>
       </div>

@@ -14,7 +14,6 @@ export class AddnewcandidateComponent implements OnInit {
     'source':'',
     'visaStatus':'',
     'expInYrs':'',
-    'TotalExpInMnths':'',
     'primarySkill':'',
     'currentJobTitle':'',
     'currentEmplyr':'',

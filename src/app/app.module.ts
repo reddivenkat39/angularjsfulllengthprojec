@@ -26,6 +26,7 @@ import { FileUploadComponent } from "./staff/file-upload/file-upload.component";
 import { AddnewcandidateComponent } from './staffHome/candidates/addnewcandidate/addnewcandidate.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
