@@ -24,6 +24,12 @@ import {AddstaffService} from "./staff/staffservices/addstaff.service";
 import {MaterialModule} from "@angular/material";
 import { FileUploadComponent } from "./staff/file-upload/file-upload.component";
 import { AddnewcandidateComponent } from './staffHome/candidates/addnewcandidate/addnewcandidate.component';
+import { DatatableComponent } from './staffHome/candidates/datatable/datatable.component';
+import {DatatableService} from "./staffHome/candidates/datatable/datatable.service";
+import {DataTableModule} from "primeng/components/datatable/datatable";
+import {SharedModule} from "primeng/components/common/shared";
+import {ButtonModule} from "primeng/components/button/button";
+import {PaginatorModule} from "primeng/components/paginator/paginator";
 
 
 
@@ -40,7 +46,8 @@ import { AddnewcandidateComponent } from './staffHome/candidates/addnewcandidate
     ScreeningComponent,
     ResetpasswordComponent,
     FileUploadComponent,
-    AddnewcandidateComponent
+    AddnewcandidateComponent,
+    DatatableComponent
   ],
   imports: [
     BrowserModule,
@@ -48,9 +55,13 @@ import { AddnewcandidateComponent } from './staffHome/candidates/addnewcandidate
     HttpModule,
     routing,
     ReactiveFormsModule,
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    DataTableModule,
+    SharedModule,
+    ButtonModule,
+    PaginatorModule
   ],
-  providers: [StaffService, LoginGuard,CandidatesService, AddstaffService],
+  providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

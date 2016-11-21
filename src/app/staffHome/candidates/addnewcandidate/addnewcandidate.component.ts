@@ -6,24 +6,27 @@ import { Component, OnInit} from '@angular/core';
   styleUrls: ['./addnewcandidate.component.css']
 })
 export class AddnewcandidateComponent implements OnInit {
-  private addnewcandidate = {
-    'firstName'      : '',
-    'lastName'       : '',
-    'emailID': '',
+  private addNewCandidate = {
+    'candId':'',
+    'emailId': '',
     'phNo':'',
     'source':'',
-    'visaStatus':'',
-    'expInYrs':'',
-    'primarySkill':'',
+    'expInYears':'',
     'currentJobTitle':'',
-    'currentEmplyr':'',
-    'skillSet':'',
-    'expectedSalry':'',
+    'techSkillSets':'',
+    'expectedSal':'',
     'highestQualiHeld':'',
     'additionalInfo':'',
-    'currentSalary':'',
+    'currentSal':'',
     'candidateStatus':'',
     'note':''
+  };
+  private addNewCandidateScreening ={
+    'firstName'      : '',
+    'lastName'       : '',
+    'visaStatus':'',
+    'primSkill':'',
+    'curEmplyr':'',
   };
   constructor() { }
 

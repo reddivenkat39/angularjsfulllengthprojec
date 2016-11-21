@@ -86,24 +86,31 @@
   <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <div formGroupName="candidateData">
       <div class="form-group">
-        <label for="candidateName">Candidate Name</label>
+        <label for="firstName">First Name</label>
         <input type="text"
                class="form-control"
-               id="candidateName"
-               formControlName="candidateName">
+               id="firstName"
+               formControlName="firstName">
       </div>
       <div class="form-group">
-        <label for="candidateReference">Candidate Reference</label>
+        <label for="lastName">Last Name</label>
         <input type="text"
                class="form-control"
-               id="candidateReference"
-               formControlName="candidateReference">
+               id="lastName"
+               formControlName="lastName">
       </div>
       <div class="form-group">
-        <label for="visaStatus">Visa Status</label>
+        <label for="canRef">Candidate Reference</label>
+        <input type="text"
+               class="form-control"
+               id="canRef"
+               formControlName="canRef">
+      </div>
+      <div class="form-group">
+        <label for="visaSta">Visa Status</label>
         <select class="form-control"
-                id="visaStatus"
-                formControlName="visaStatus">
+                id="visaSta"
+                formControlName="visaSta">
           <option value="">--Select One--</option>
           <option value="h1b">H1B</option>
           <option value="l1">L1</option>
@@ -115,38 +122,38 @@
         </select>
       </div>
       <div class="form-group">
-              <label for="visaValidity">Visa Validity</label>
+              <label for="visaVal">Visa Validity</label>
               <input type="date"
                      class="form-control"
-                     id="visaValidity"
-                     formControlName="visaValidity">
-              <input type="checkbox" class="form-control" id="visaValidityNotApplicable" formControlName="visaValidityNotApplicable" name="visaValidityNotApplicable"/>
-              <label for="visaValidityNotApplicable">Not Applicable</label>
+                     id="visaVal"
+                     formControlName="visaVal">
+              <input type="checkbox" class="form-control" id="valNtAplcbl" formControlName="valNtAplcbl" name="valNtAplcbl"/>
+              <label for="valNtAplcbl">Not Applicable</label>
       </div>
 
 
-<div class="form-group">
-        <label for="h1Window">Time left on H1 window</label>
+      <div class="form-group">
+        <label for="h1Win">Time left on H1 window</label>
         <input type="text"
                class="form-control"
-               id="h1Window"
-               formControlName="h1Window">
+               id="h1Win"
+               formControlName="h1Win">
       </div>
 
       we need to change it to date format
       <div class="form-group">
-        <label for="currentEmployer">Current Employer</label>
+        <label for="curEmplyr">Current Employer</label>
         <input type="text"
                class="form-control"
-               id="currentEmployer"
-               formControlName="currentEmployer">
+               id="curEmplyr"
+               formControlName="curEmplyr">
       </div>
       <div class="form-group">
-        <label for="primarySill">Primary Skill</label>
+        <label for="primSkill">Primary Skill</label>
         <input type="text"
                class="form-control"
-               id="primarySill"
-               formControlName="primarySill">
+               id="primSkill"
+               formControlName="primSkill">
       </div>
       <div class="form-group">
         <label for="skillSet">Skill Set</label>
@@ -156,46 +163,46 @@
                formControlName="skillSet">
       </div>
       <div class="form-group">
-        <label for="totalExperience">Total Experience</label>
+        <label for="totalExp">Total Experience</label>
         <input type="number"
                class="form-control"
-               id="totalExperience"
-               formControlName="totalExperience">
+               id="totalExp"
+               formControlName="totalExp">
       </div>
       <div class="form-group">
-        <label for="currentCompensation">Current Compensation</label>
+        <label for="curComp">Current Compensation</label>
         <input type="number"
                class="form-control"
-               id="currentCompensation"
-               formControlName="currentCompensation">
+               id="curComp"
+               formControlName="curComp">
       </div>
       <div class="form-group">
-        <label for="expectedCompensation">Expected Compensation</label>
+        <label for="expComp">Expected Compensation</label>
         <input type="number"
                class="form-control"
-               id="expectedCompensation"
-               formControlName="expectedCompensation">
+               id="expComp"
+               formControlName="expComp">
       </div>
       <div class="form-group">
-        <label for="agreedCompensation">Agreed Compensation</label>
+        <label for="agrdComp">Agreed Compensation</label>
         <input type="number"
                class="form-control"
-               id="agreedCompensation"
-               formControlName="agreedCompensation">
+               id="agrdComp"
+               formControlName="agrdComp">
       </div>
       <div class="form-group">
-        <label for="costToCompany">Cost to Company</label>
+        <label for="cstToCmpny">Cost to Company</label>
         <input type="number"
                class="form-control"
-               id="costToCompany"
-               formControlName="costToCompany">
+               id="cstToCmpny"
+               formControlName="cstToCmpny">
       </div>
       <div class="form-group">
-        <label for="currentLocation">Current Location</label>
+        <label for="curLoc">Current Location</label>
         <input type="text"
                class="form-control"
-               id="currentLocation"
-               formControlName="currentLocation">
+               id="curLoc"
+               formControlName="curLoc">
       </div>
       <div class="form-group">
         <label for="relocation">ReLocation</label>
@@ -205,25 +212,25 @@
                formControlName="relocation">
       </div>
       <div class="form-group">
-        <label for="noticePeriod">Notice Period</label>
+        <label for="notPrd">Notice Period</label>
         <input type="number"
                class="form-control"
-               id="noticePeriod"
-               formControlName="noticePeriod">
+               id="notPrd"
+               formControlName="notPrd">
       </div>
       <div class="form-group">
-        <label for="h1ReceiptNumber">H1 Receipt Number</label>
+        <label for="h1RcptNum">H1 Receipt Number</label>
         <input type="text"
                class="form-control"
-               id="h1ReceiptNumber"
-               formControlName="h1ReceiptNumber">
+               id="h1RcptNum"
+               formControlName="h1RcptNum">
       </div>
       <div class="form-group">
-        <label for="communicationSkills">Communication Skills</label>
+        <label for="comSkills">Communication Skills</label>
         <input type="text"
                class="form-control"
-               id="communicationSkills"
-               formControlName="communicationSkills">
+               id="comSkills"
+               formControlName="comSkills">
       </div>
 
       <!--<div class="form-group">-->
@@ -246,15 +253,13 @@
       <div class="form-group">
         <label>Selection Status</label>
         <br/>
-        <input name="selectionStatus" class="radio-inline" id="selectionStatusSelected" type="radio" value="selected" formControlName="selectionStatus"/>
+        <input name="slctnSta" class="radio-inline" id="selectionStatusSelected" type="radio" value="selected" formControlName="slctnSta"/>
         <label for="selectionStatusSelected">Selected</label>
-        <input name="selectionStatus" class="radio-inline" id="selectionStatusRejected" type="radio" formControlName="selectionStatus" value="rejected" />
+        <input name="slctnSta" class="radio-inline" id="selectionStatusRejected" type="radio" formControlName="slctnSta" value="rejected" />
         <label for="selectionStatusRejected">Rejected</label>
-        <input name="selectionStatus" class="radio-inline" type="radio" id="selectionStatusHold" formControlName="selectionStatus" value="onhold"/>
+        <input name="slctnSta" class="radio-inline" type="radio" id="selectionStatusHold" formControlName="slctnSta" value="onhold"/>
         <label for="selectionStatusHold">On Hold</label>
       </div>
-
-
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
   </form>

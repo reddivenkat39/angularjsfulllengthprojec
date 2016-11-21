@@ -19,27 +19,28 @@ export class ScreeningComponent {
   constructor(private formBuilder: FormBuilder, private candidateService: CandidatesService) {
     this.myForm = formBuilder.group({
       'candidateData': formBuilder.group({
-        'candidateName': [''],
-        'candidateReference': [''],
-        'visaStatus': [''],
-        'visaValidity': [''],
-        'h1Window': [''],
-        'currentEmployer': [''],
-        'primarySill': [''],
+        'firstName': [''],
+        'lastName': [''],
+        'canRef': [''],
+        'visaSta': [''],
+        'visaVal': [''],
+        'h1Win': [''],
+        'curEmplyr': [''],
+        'primSkill': [''],
         'skillSet': [''],
-        'totalExperience': [''],
-        'currentCompensation': [''],
-        'expectedCompensation': [''],
-        'agreedCompensation': [''],
-        'costToCompany': [''],
-        'currentLocation': [''],
+        'totalExp': [''],
+        'curComp': [''],
+        'expComp': [''],
+        'agrdComp': [''],
+        'cstToCmpny': [''],
+        'curLoc': [''],
         'relocation': [''],
-        'noticePeriod': [''],
-        'h1ReceiptNumber': [''],
-        'communicationSkills': [''],
+        'notPrd': [''],
+        'h1RcptNum': [''],
+        'comSkills': [''],
         'comments': [''],
-        'visaValidityNotApplicable':[''],
-        'selectionStatus':['selected']
+        'valNtAplcbl':[''],
+        'slctnSta':['selected']
       })
     });
 
