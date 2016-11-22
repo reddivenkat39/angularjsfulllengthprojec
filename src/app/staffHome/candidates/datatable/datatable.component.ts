@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DatatableService} from "./datatable.service";
 import {Employee} from "./employee.interface";
+import {CandidatesService} from "../candidates.service";
 @Component({
   selector: 'app-datatable',
   templateUrl: './datatable.component.html',
@@ -8,9 +9,14 @@ import {Employee} from "./employee.interface";
 })
 export class DatatableComponent implements OnInit {
   employees:Employee[];
-  constructor(private datatableService:DatatableService) { }
+  constructor( private candidateService: CandidatesService) { }
 
   ngOnInit() {
-    this.datatableService.getEmployeeDetails().then(employees=>this.employees=employees);
+    this.candidateService.getScreenedCandids().subscribe(
+      employees=>{
+        this.employees=employees;
+      }
+    );
+
   }
 }

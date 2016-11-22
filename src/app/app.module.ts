@@ -30,6 +30,7 @@ import {DataTableModule} from "primeng/components/datatable/datatable";
 import {SharedModule} from "primeng/components/common/shared";
 import {ButtonModule} from "primeng/components/button/button";
 import {PaginatorModule} from "primeng/components/paginator/paginator";
+import { AllCandidatesComponent } from './staffHome/candidates/all-candidates/all-candidates.component';
 
 
 
@@ -47,7 +48,8 @@ import {PaginatorModule} from "primeng/components/paginator/paginator";
     ResetpasswordComponent,
     FileUploadComponent,
     AddnewcandidateComponent,
-    DatatableComponent
+    DatatableComponent,
+    AllCandidatesComponent
   ],
   imports: [
     BrowserModule,

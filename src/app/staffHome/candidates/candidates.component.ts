@@ -13,4 +13,6 @@ export class CandidatesComponent implements  OnInit {
 
   }
 
+
+
 }
