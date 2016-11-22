@@ -1,39 +1,29 @@
-
 <div *ngIf="error"  class="alert alert-danger" >
   {{error}}
 </div>
 <div class="container">
-  <div class="col-sm-7 col-sm-offset-3">
+  <div class="col-sm-4 col-sm-offset-4">
   <div class="center-div">
-
-    <!--<div class="card small">-->
-    <!--<div class="card-image waves-effect waves-block waves-light">-->
-    <!--<img class="activator" src="http://lorempixel.com/400/200">-->
-
-    <!--</div>-->
-
-    <!--<div class="card-content">-->
-    <!--<span class="card-title">Login</span>-->
-    <!--<p>Click to reveal</p>-->
-    <!--</div>-->
     <br><br><br>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-2">Login</span>
-      <div class="input-field">
-        <input id="emailAddress" type="text" class="validate" [(ngModel)]="staffLogin.emailAddress" ngDefaultControl="staffLogin.emailAddress" >
+    <div>
+      <h4><span>LOGIN</span></h4>
+      <div class="form-group">
+        <span class="form-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
         <label for="emailAddress" class="active">Email Address</label>
+        <input id="emailAddress" type="text" class="form-control" [(ngModel)]="staffLogin.emailAddress" ngDefaultControl="staffLogin.emailAddress" >
       </div>
-      <div class="input-field">
-        <input id="password" type="password" class="validate" [(ngModel)]="staffLogin.password" ngDefaultControl="staffLogin.password" >
+      <div class="form-group">
+        <span class="form-group-addon"><i class="fa fa-key fa-fw"></i></span>
         <label for="password" class="active">Password</label>
+        <input id="password" type="password" class="form-control" [(ngModel)]="staffLogin.password" ngDefaultControl="staffLogin.password" >
       </div>
       <p>
         <input type="checkbox" id="test5" />
         <label for="test5">Remember Me</label>
       </p>
-      <button  class="waves-effect waves-light btn" (click)="login()">Login</button>
-      <button class="waves-effect waves-light btn" [routerLink]="['/forgotpassword']" >Forgot password</button>
-      <button class="waves-effect waves-light btn" (click)="clear()">Clear</button>
+      <button  class="btn btn-primary" (click)="login()">Login</button>
+      <button class="btn btn-primary" [routerLink]="['/forgotpassword']" >Forgot password</button>
+      <button class="btn btn-primary" (click)="clear()">Clear</button>
     </div>
 </div>
   </div>

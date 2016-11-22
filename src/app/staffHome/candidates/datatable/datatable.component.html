@@ -1,11 +1,31 @@
-<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">
+<!--<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">
   <header>
     <div class="ui-helper-clearfix">
       <button  type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="dt.exportCSV()" style="float:left"></button>
     </div>
   </header>
-  <p-column field="canName" header="Candidate Name"></p-column>
-  <p-column field="canRef" header="Candidate Reference"></p-column>
-  <p-column field="visaSta" header="Visa Status"></p-column>
-  <p-column field="primSkill" header="Primary Skill"></p-column>
+    <p-column field="canName" header="Candidate Name"></p-column>
+    <p-column field="canRef" header="Candidate Reference"></p-column>
+    <p-column field="visaSta" header="Visa Status"></p-column>
+    <p-column field="primSkill" header="Primary Skill"></p-column>
+</p-dataTable>-->
+
+<div class="ui-widget-header ui-helper-clearfix" style="padding:4px 10px;border-bottom: 0 none">
+  <i class="fa fa-search" style="float:left;margin:4px 4px 0 0"></i>
+  <input #gb type="text" pInputText size="50" style="float:left" placeholder="Search here.....">
+</div>
+<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [(selection)]="selectedEmployee"  [globalFilter]="gb" exportFilename="employees">
+  <!--<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">-->
+  <header>
+    <div class="ui-helper-clearfix">
+      <button  type="button" pButton icon="fa-file-o" iconPos="right" label="Export Excel" (click)="dt.exportCSV()" style="float:right"></button>
+    </div>
+  </header>
+
+
+  <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+  <p-column field="firstName" header="Candidate Name" [sortable]="true"></p-column>
+  <p-column field="canRef" header="Candidate Reference" [sortable]="true"></p-column>
+  <p-column field="visaSta" header="Visa Status" [sortable]="true"></p-column>
+  <p-column field="primSkill" header="Primary Skill" [sortable]="true"></p-column>
 </p-dataTable>
