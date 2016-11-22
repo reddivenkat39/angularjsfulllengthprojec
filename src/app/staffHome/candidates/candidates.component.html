@@ -1,8 +1,8 @@
- <app-header></app-header>
- <div>
-  <br/>
-  <br/>
-  <div class="container-fluid">
+<app-header></app-header>
+   <br/>
+   <br/>
+   <br/>
+  <!--<div class="container-fluid">
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="background-color: lightcoral">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -42,6 +42,24 @@
         </ul>
       </div>
     </nav>
-  </div>
+</div>
+-->
+
+<div class="container-fluid">
+  <ul class="nav nav-pills pull-right">
+    <li><a [routerLinkActive]="['active']" [routerLink]="['/candidates/addnewcandidate']"><strong><span class="glyphicon glyphicon-plus"></span>Add new candidate</strong></a></li>
+    <li><a [routerLinkActive]="['active']" [routerLink]="['/candidates/screening']"><strong>Screening</strong></a></li>
+    <li><a href="#"><Strong>Export Details</Strong></a></li>
+  </ul>
+  <ul class="nav nav-pills pull-left">
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>Dropdown</strong></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">All Open Candidates</a></li>
+        <li><a href="#">Screened Candidates</a></li>
+        <li><a href="#">Another action</a></li>
+      </ul>
+    </li>
+  </ul>
 </div>
  <app-all-candidates></app-all-candidates>

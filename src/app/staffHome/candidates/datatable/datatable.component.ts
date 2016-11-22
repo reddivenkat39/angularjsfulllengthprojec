@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {DatatableService} from "./datatable.service";
 import {Employee} from "./employee.interface";
 import {CandidatesService} from "../candidates.service";
 @Component({
   selector: 'app-datatable',
   templateUrl: './datatable.component.html',
-  styleUrls: ['./datatable.component.css']
+  styleUrls: ['./datatable.component.css'],
+  encapsulation:ViewEncapsulation.None,
 })
 export class DatatableComponent implements OnInit {
   employees:Employee[];
