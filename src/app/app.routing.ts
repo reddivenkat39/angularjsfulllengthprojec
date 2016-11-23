@@ -13,17 +13,22 @@ import {ForgetpasswordComponent} from "./staff/forgetpassword/forgetpassword.com
 import {AddstaffComponent} from "./staff/addstaff/addstaff.component";
 import {ResetpasswordComponent} from "./staff/forgetpassword/resetpassword.component";
 import {AddnewcandidateComponent} from "./staffHome/candidates/addnewcandidate/addnewcandidate.component";
-const APP_ROUTES: Routes = [
-  { path: '', component: LoginComponent },
-  {path:'forgotpassword', component:ForgetpasswordComponent},// used in login component
-  {path:'resetpassword/:token', component:ResetpasswordComponent},
-  {path:'home', component: HomeComponent, canActivate: [LoginGuard]}, //given in
-  {path:'home/candidates', component: CandidatesComponent, canActivate: [LoginGuard]}, //called in header component
-  {path:'home/addstaff', component: AddstaffComponent, canActivate: [LoginGuard]},
-  {path:'candidates/screening', component: ScreeningComponent, canActivate: [LoginGuard]}, //called in candidates tab
-  {path:'candidates/addnewcandidate', component: AddnewcandidateComponent, canActivate: [LoginGuard]},
+import {DetailsByIdComponent} from "./staffHome/candidates/all-candidates/details-by-id/details-by-id.component";
 
-  { path: '**', redirectTo: '' }
+
+const APP_ROUTES = [
+  {path: '', component: LoginComponent},
+  {path: 'forgotpassword', component: ForgetpasswordComponent},// used in login component
+  {path: 'resetpassword/:token', component: ResetpasswordComponent},
+  {path: 'home', component: HomeComponent, canActivate: [LoginGuard]}, //given in
+  {path: 'home/candidates', component: CandidatesComponent, canActivate: [LoginGuard]}, //called in header component
+  {path: 'home/addstaff', component: AddstaffComponent, canActivate: [LoginGuard]},
+  {path: 'candidates/screening', component: ScreeningComponent, canActivate: [LoginGuard]}, //called in candidates tab
+  {path: 'candidates/addnewcandidate', component: AddnewcandidateComponent, canActivate: [LoginGuard]},
+  {path: 'details/:id', component: DetailsByIdComponent},  // called in all candidates component
+
+
+  {path: '**', redirectTo: ''}
 
 
 ];

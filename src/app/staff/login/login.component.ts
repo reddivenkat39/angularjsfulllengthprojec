@@ -13,7 +13,7 @@ import {Router} from "@angular/router";
 export class LoginComponent {
   private staffLogin = {
     'emailAddress': 'chandu.adabala@tabnergc.com',
-    'password': 'chandu'
+    'password': 'asdf'
   };
 
 

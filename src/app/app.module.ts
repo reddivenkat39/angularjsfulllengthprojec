@@ -31,6 +31,8 @@ import {SharedModule} from "primeng/components/common/shared";
 import {ButtonModule} from "primeng/components/button/button";
 import {PaginatorModule} from "primeng/components/paginator/paginator";
 import { AllCandidatesComponent } from './staffHome/candidates/all-candidates/all-candidates.component';
+import { EditDeleteDirective } from './services/edit-delete.directive';
+import { DetailsByIdComponent } from './staffHome/candidates/all-candidates/details-by-id/details-by-id.component';
 
 
 
@@ -49,7 +51,9 @@ import { AllCandidatesComponent } from './staffHome/candidates/all-candidates/al
     FileUploadComponent,
     AddnewcandidateComponent,
     DatatableComponent,
-    AllCandidatesComponent
+    AllCandidatesComponent,
+    EditDeleteDirective,
+    DetailsByIdComponent
   ],
   imports: [
     BrowserModule,

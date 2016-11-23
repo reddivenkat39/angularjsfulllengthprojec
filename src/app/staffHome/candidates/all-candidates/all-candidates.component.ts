@@ -1,26 +1,51 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {CandidatesService} from "../candidates.service";
-import {Employee} from "./employee";
+import {ScreenedCandidate} from "./ScreenedCandidate";
 
 
 @Component({
-  selector: 'app-all-candidates',
-  templateUrl: './all-candidates.component.html',
-  styleUrls: ['./all-candidates.component.css']
+  selector     : 'app-all-candidates',
+  templateUrl  : './all-candidates.component.html',
+  styleUrls    : ['./all-candidates.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
+
+
 export class AllCandidatesComponent implements OnInit {
 
-  employees:Employee[];
-  selectedEmployee: Employee;
+  screenCandids: ScreenedCandidate[];
+  screencandId = '';
+  selectedCandidate: ScreenedCandidate;
+  // screenedCandidate: ScreenedCandidate = new ScreenedCandImpl();
+
 
   constructor(private candidateService: CandidatesService) {
   }
 
   ngOnInit() {
     this.candidateService.getScreenedCandids().subscribe(
-      employees => {
-        this.employees = employees;
+      screenCandids => {
+        this.screenCandids = screenCandids;
+        this.screencandId = screenCandids.candId;
+        console.log("employeeId", this.screencandId);
       }
     );
   }
+
+  onSelectRow(event) {
+    // this.candidateService.getScreenedCandidateDetailsById(employees.candId).subscribe(
+    //
+    // );
+
+    console.log("selected the row......", this.screencandId);
+  }
+
+
 }
+
+
+// class ScreenedCandImpl implements ScreenedCandidate {
+//   constructor(public candId?, public firstName?, public canRef?, public visaSta?, public primSkill? ) {}
+// }
+
+

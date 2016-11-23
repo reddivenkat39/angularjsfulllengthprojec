@@ -53,4 +53,13 @@ return res.json();
     );
   }
 
+  getScreenedCandidateDetailsById(candId){
+    const headersSend = new Headers({'Content-Type':'application/json'});
+    return this.http.get("http://localhost:8080/screenedcandsbyid",{headers: headersSend}).map(
+      (res:Response)=> {
+        return res.json();
+      }
+    );
+  }
+
 }

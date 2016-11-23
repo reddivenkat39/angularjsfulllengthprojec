@@ -1,4 +1,5 @@
-export interface Employee {
+export interface ScreenedCandidate {
+  candId;
   firstName;
   canRef;
   visaSta;
