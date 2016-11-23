@@ -31,7 +31,7 @@ import {SharedModule} from "primeng/components/common/shared";
 import {ButtonModule} from "primeng/components/button/button";
 import {PaginatorModule} from "primeng/components/paginator/paginator";
 import { AllCandidatesComponent } from './staffHome/candidates/all-candidates/all-candidates.component';
-
+import {DropdownModule} from 'primeng/components/dropdown/dropdown';
 
 
 @NgModule({
@@ -61,8 +61,10 @@ import { AllCandidatesComponent } from './staffHome/candidates/all-candidates/al
     DataTableModule,
     SharedModule,
     ButtonModule,
-    PaginatorModule
+    PaginatorModule,
+    DropdownModule
   ],
+
   providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService],
   bootstrap: [AppComponent]
 })

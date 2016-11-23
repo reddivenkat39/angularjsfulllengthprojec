@@ -1,7 +1,12 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
   <div class="navbar-header">
-    <div class="navbar-header"><a class="navbar-brand" href="#">Tabner</a></div>
+    <div class="navbar-header">
+        <a class="navbar-brand" [routerLink]="['/home']">
+        <img class="img-circle" alt="Tabner" src="https://media.glassdoor.com/sqll/712673/tabner-squarelogo-1441891241504.png"
+        style="width:35px;height:35px;padding-bottom: 4%">
+        </a>
+    </div>
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
@@ -12,11 +17,11 @@
 
   <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav pull-right">
-      <li><a [routerLinkActive]="['active']" [routerLink]="['/home/candidates']">Candidates </a></li>
+      <li><a [routerLinkActive]="['active']" [routerLink]="['/candidates']">Candidates </a></li>
       <li><a href="#">Interviews</a></li>
       <li><a href="#">Terminated/Passive</a></li>
       <li><a href="#">Templates</a></li>
-      <li><a [routerLinkActive]="['active']" [routerLink]="['/home/addstaff']" style="cursor:pointer;">Add Staff</a></li>
+      <li><a [routerLinkActive]="['active']" [routerLink]="['/addstaff']" style="cursor:pointer;">Add Staff</a></li>
       <li id="logout"><a (click)="onLogout()" style="cursor:pointer;">LogOut</a></li>
     </ul>
 

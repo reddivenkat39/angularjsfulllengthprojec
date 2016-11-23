@@ -6,7 +6,11 @@
   <div class="center-div">
     <br><br><br>
     <div>
-      <h4><span>LOGIN</span></h4>
+      <div class="text-center">
+        <img class="img-circle" alt="Tabner" src="https://media.glassdoor.com/sqll/712673/tabner-squarelogo-1441891241504.png"
+             style="width:100px;height:100px;">
+      </div>
+      <br/>
       <div class="form-group">
         <span class="form-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
         <label for="emailAddress" class="active">Email Address</label>
@@ -21,15 +25,15 @@
         <input type="checkbox" id="test5" />
         <label for="test5">Remember Me</label>
       </p>
-      <button  class="btn btn-primary" (click)="login()">Login</button>
-      <button class="btn btn-primary" [routerLink]="['/forgotpassword']" >Forgot password</button>
-      <button class="btn btn-primary" (click)="clear()">Clear</button>
+      <div class="text-center">
+        <button  class="btn btn-primary" (click)="login()">Login</button>
+        <button class="btn btn-primary" [routerLink]="['/forgotpassword']" >Forgot password</button>
+        <button class="btn btn-primary" (click)="clear()">Clear</button>
+      </div>
     </div>
 </div>
   </div>
 </div>
-
-<br/>
 
 
 

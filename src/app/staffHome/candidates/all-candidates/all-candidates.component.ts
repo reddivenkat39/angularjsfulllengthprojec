@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {CandidatesService} from "../candidates.service";
 import {Employee} from "./employee";
 
@@ -6,7 +6,8 @@ import {Employee} from "./employee";
 @Component({
   selector: 'app-all-candidates',
   templateUrl: './all-candidates.component.html',
-  styleUrls: ['./all-candidates.component.css']
+  styleUrls: ['./all-candidates.component.css'],
+  encapsulation:ViewEncapsulation.None,
 })
 export class AllCandidatesComponent implements OnInit {
 
