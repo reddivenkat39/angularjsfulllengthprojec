@@ -40,7 +40,8 @@ export class ScreeningComponent {
         'comSkills': [''],
         'comments': [''],
         'valNtAplcbl':[''],
-        'slctnSta':['selected']
+        'slctnSta':['selected'],
+        'midlName':[''],
       })
     });
 

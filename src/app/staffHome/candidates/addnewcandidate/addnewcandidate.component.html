@@ -19,7 +19,7 @@
                    ngDefaultControl="addNewCandidateScreening.lastName">
           </div>
           <div class="form-group">
-            <label for="emailId">Email-ID</label>
+            <label for="emailId">Email Address</label>
             <input id="emailId" type="email" class="form-control"
                    [(ngModel)]="addNewCandidate.emailId"
                    ngDefaultControl="addNewCandidate.emailId">
@@ -31,7 +31,7 @@
                    ngDefaultControl="addNewCandidate.phoneNo">
           </div>
           <div class="form-group">
-            <label for="source">Source</label>
+            <label for="source">Referral Source</label>
             <input id="source" type="text" class="form-control"
                    [(ngModel)]="addNewCandidate.source"
                    ngDefaultControl="addNewCandidate.source">
@@ -51,6 +51,20 @@
             <option value="CITIZENS">CITIZENS</option>
             </select>
           </div>
+
+        <br>
+        <div class="form-group">
+          <label for="visaSta">Candidate Status</label>
+          <select id="candidateStatus" class="form-control"
+                  [(ngModel)]="addNewCandidateScreening.visaStatus"
+                  ngDefaultControl="addNewCandidateScreening.candidateStatus">
+            <option value="">--Select One--</option>
+            <option value="NEW">NEW</option>
+            <option value="HIRED">HIRED</option>
+            <option value="ON-BENCH">ON-BENCH</option>
+
+          </select>
+        </div>
           <div class="form-group">
             <label for="expInYears">Experience in years</label>
             <input type="number" id="expInYears" class="form-control"
@@ -97,20 +111,14 @@
           <input type="number" id="currentSal" class="form-control"
                     [(ngModel)]="addNewCandidate.currentSal" ngDefaultControl="addNewCandidate.currentSal">
           </div>
+
           <div class="form-group">
           <label for="note">Note</label>
           <textarea id="note" class="form-control"
                     [(ngModel)]="addNewCandidate.note" ngDefaultControl="addNewCandidate.note">
           </textarea>
           </div>
-          <div class="form-group">
-            <input name="candidateStatus" class="radio-inline" id="candidateStatushired" type="radio" value="hired"
-                   [(ngModel)]="addNewCandidate.candidateStatus" ngDefaultControl="addNewCandidate.candidateStatus"/>
-            <label for="candidateStatushired">Hired</label>
-            <input name="candidateStatus" class="radio-inline" id="candidateStatushold" type="radio" value="hold"
-                   [(ngModel)]="addNewCandidate.candidateStatus" ngDefaultControl="addNewCandidate.candidateStatus"/>
-            <label for="candidateStatushold">Hold</label>
-          </div>
+
           <button class="waves-effect waves-light btn" (click)="onSubmit()">Save</button>
         </div>
       </div>
