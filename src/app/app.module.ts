@@ -9,7 +9,6 @@ import { HeaderComponent } from './staffHome/header/header.component';
 
 import { LoginComponent } from './staff/login/login.component';
 import { ForgetpasswordComponent } from './staff/forgetpassword/forgetpassword.component';
-
 import {StaffService} from "./staff/staffservices/staff.service";
 import {routing} from "./app.routing";
 import { LoginGuard } from "./services/login.guard";
@@ -31,9 +30,10 @@ import {SharedModule} from "primeng/components/common/shared";
 import {ButtonModule} from "primeng/components/button/button";
 import {PaginatorModule} from "primeng/components/paginator/paginator";
 import { AllCandidatesComponent } from './staffHome/candidates/all-candidates/all-candidates.component';
-import {DropdownModule} from 'primeng/components/dropdown/dropdown';
 import { EditDeleteDirective } from './services/edit-delete.directive';
 import { DetailsByIdComponent } from './staffHome/candidates/all-candidates/details-by-id/details-by-id.component';
+import {SelectModule} from "angular2-select";
+import { SelectRowCandidatesComponent } from './staffHome/candidates/select-row-candidates/select-row-candidates.component';
 
 
 
@@ -54,7 +54,8 @@ import { DetailsByIdComponent } from './staffHome/candidates/all-candidates/deta
     DatatableComponent,
     AllCandidatesComponent,
     EditDeleteDirective,
-    DetailsByIdComponent
+    DetailsByIdComponent,
+    SelectRowCandidatesComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +68,7 @@ import { DetailsByIdComponent } from './staffHome/candidates/all-candidates/deta
     SharedModule,
     ButtonModule,
     PaginatorModule,
-    DropdownModule
+    SelectModule
   ],
 
   providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService],

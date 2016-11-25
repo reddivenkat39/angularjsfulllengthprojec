@@ -9,10 +9,17 @@
     <!--<li><a href="#"><Strong>Export Details</Strong></a></li>-->
   </ul>
   <ul class="nav nav-pills pull-left">
-    <li>
-      <p-dropdown [options]="candidateTableTypes" [(ngModel)]="selectedTableType" [style]="{'width':'150px'}" filter="filter">
-      </p-dropdown>
-    </li>
+    <!--<li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">All Open Candidates</a></li>
+        <li><a href="#">Screened Candidates</a></li>
+        <li><a href="#">Hot Candidates</a></li>
+      </ul>
+    </li>-->
+    <ng-select
+      [options]="options"  placeholder="Screened Candidates">
+    </ng-select>
   </ul>
 </div>
 <router-outlet></router-outlet>
