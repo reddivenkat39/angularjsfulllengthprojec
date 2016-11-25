@@ -7,7 +7,9 @@ import { EmployeeService} from "../employee.service";
   styleUrls: ['employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
-
+  private allEmployee = false;
+  private allActive =false;
+  private allInActive = false;
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
@@ -25,6 +27,17 @@ export class EmployeesComponent implements OnInit {
       }
     }
     );
+  }
+
+
+  onAllEmployeeClicked(){
+    this.allEmployee=!this.allEmployee;
+  }
+  onAllActiveClicked(){
+    this.allActive=!this.allActive;
+  }
+  onAlLInActiveClicked(){
+    this.allInActive=!this.allInActive;
   }
 
 }
