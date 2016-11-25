@@ -41,7 +41,7 @@ export class AllCandidatesComponent implements OnInit {
     // );
     console.log("selected the row......", this.screencandId);
     this.router.navigateByUrl('/selectedcandidate');
-    event.preventDefault();
+    // event.preventDefault();
   }
 
 
