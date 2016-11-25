@@ -34,7 +34,8 @@ import { EditDeleteDirective } from './services/edit-delete.directive';
 import { DetailsByIdComponent } from './staffHome/candidates/all-candidates/details-by-id/details-by-id.component';
 import {SelectModule} from "angular2-select";
 import { SelectRowCandidatesComponent } from './staffHome/candidates/select-row-candidates/select-row-candidates.component';
-import { EmployeesComponent } from './staffHome/employees/employees.component';
+import { EmployeesComponent } from './staffHome/employees/Allemployeesdetails/employees.component';
+import {EmployeeService} from "./staffHome/employees/employee.service";
 
 
 
@@ -73,7 +74,7 @@ import { EmployeesComponent } from './staffHome/employees/employees.component';
     SelectModule
   ],
 
-  providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService],
+  providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService,EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

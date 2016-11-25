@@ -16,7 +16,7 @@ import {AddnewcandidateComponent} from "./staffHome/candidates/addnewcandidate/a
 import {AllCandidatesComponent} from "./staffHome/candidates/all-candidates/all-candidates.component";
 import {DetailsByIdComponent} from "./staffHome/candidates/all-candidates/details-by-id/details-by-id.component";
 import {SelectRowCandidatesComponent} from "./staffHome/candidates/select-row-candidates/select-row-candidates.component";
-import {EmployeesComponent} from "./staffHome/employees/employees.component";
+import {EmployeesComponent} from "./staffHome/employees/Allemployeesdetails/employees.component";
 const APP_ROUTES: Routes = [
   { path: '', component: LoginComponent },
   {path:'forgotpassword', component:ForgetpasswordComponent},// used in login component
