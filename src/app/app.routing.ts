@@ -25,9 +25,10 @@ const APP_ROUTES: Routes = [
      {path:'',component:AllCandidatesComponent,canActivate:[LoginGuard]},
      {path:'screening', component: ScreeningComponent, canActivate: [LoginGuard]}, //called in candidates tab
      {path:'addnewcandidate', component: AddnewcandidateComponent, canActivate: [LoginGuard]},
+       // called in all candidates component
             ]
   }, //called in header component
-  {path: 'details/:id', component: DetailsByIdComponent},  // called in all candidates component
+  {path: 'detailsbyid', component: DetailsByIdComponent, canActivate: [LoginGuard]},
   {path:'addstaff', component: AddstaffComponent, canActivate: [LoginGuard]},
   { path: '**', redirectTo: '' }
 
