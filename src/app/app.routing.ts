@@ -15,6 +15,7 @@ import {ResetpasswordComponent} from "./staff/forgetpassword/resetpassword.compo
 import {AddnewcandidateComponent} from "./staffHome/candidates/addnewcandidate/addnewcandidate.component";
 import {AllCandidatesComponent} from "./staffHome/candidates/all-candidates/all-candidates.component";
 import {DetailsByIdComponent} from "./staffHome/candidates/all-candidates/details-by-id/details-by-id.component";
+import {SelectRowCandidatesComponent} from "./staffHome/candidates/select-row-candidates/select-row-candidates.component";
 const APP_ROUTES: Routes = [
   { path: '', component: LoginComponent },
   {path:'forgotpassword', component:ForgetpasswordComponent},// used in login component
@@ -29,6 +30,7 @@ const APP_ROUTES: Routes = [
             ]
   }, //called in header component
   {path: 'detailsbyid', component: DetailsByIdComponent, canActivate: [LoginGuard]},
+  {path: 'selectedcandidate', component: SelectRowCandidatesComponent, canActivate: [LoginGuard]},
   {path:'addstaff', component: AddstaffComponent, canActivate: [LoginGuard]},
   { path: '**', redirectTo: '' }
 

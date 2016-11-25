@@ -39,8 +39,9 @@ export class AllCandidatesComponent implements OnInit {
     // this.candidateService.getScreenedCandidateDetailsById(employees.candId).subscribe(
     //
     // );
-
     console.log("selected the row......", this.screencandId);
+    this.router.navigateByUrl('/selectedcandidate');
+    event.preventDefault();
   }
 
 
