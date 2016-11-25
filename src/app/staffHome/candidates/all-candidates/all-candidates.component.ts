@@ -51,7 +51,7 @@ export class AllCandidatesComponent implements OnInit {
       res => {
         if (res.datares != null) {
           console.log("datares", res.datares);
-          this.router.navigateByUrl('/detailsbyid');
+          this.router.navigateByUrl('/detailsbyid/'+this.candId);
           // [routerLink]="['detailsbyid']"
         } else if (res.errorres != null) {
           console.log("errorres", res.errorres);

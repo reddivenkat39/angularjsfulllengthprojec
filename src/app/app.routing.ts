@@ -24,11 +24,12 @@ const APP_ROUTES: Routes = [
    children:[
      {path:'',component:AllCandidatesComponent,canActivate:[LoginGuard]},
      {path:'screening', component: ScreeningComponent, canActivate: [LoginGuard]}, //called in candidates tab
-     {path:'addnewcandidate', component: AddnewcandidateComponent, canActivate: [LoginGuard]},
+
        // called in all candidates component
             ]
   }, //called in header component
-  {path: 'detailsbyid', component: DetailsByIdComponent, canActivate: [LoginGuard]},
+  {path: 'detailsbyid/:id', component: DetailsByIdComponent, canActivate: [LoginGuard]},
+  {path:'addnewcandidate/:id', component: AddnewcandidateComponent, canActivate: [LoginGuard]},
   {path:'addstaff', component: AddstaffComponent, canActivate: [LoginGuard]},
   { path: '**', redirectTo: '' }
 

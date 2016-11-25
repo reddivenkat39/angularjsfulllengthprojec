@@ -1,188 +1,202 @@
 <app-header></app-header>
 <br><br><br><br>
-<div class="col-xs-4 col-xs-offset-4">
+<div   class="col-xs-4 col-xs-offset-4">
+
+  <div class="form-group" [hidden]="true">
+    <label for="candId">Candidate ID</label>
+    <input id="candId" type="text"
+           class="form-control" [(ngModel)]="screeningDetails.candId"
+           ngDefaultControl="screeningDetails.candId">
+
+  </div>
+
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input id="firstName" type="text"
+           class="form-control" [(ngModel)]="screeningDetails.firstName"
+           ngDefaultControl="screeningDetails.firstName">
+
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input type="text"
+           class="form-control"
+           id="lastName" [(ngModel)]="screeningDetails.lastName"
+           ngDefaultControl="screeningDetails.lastName" >
+  </div>
+  <div class="form-group">
+    <label for="canRef">Candidate Reference</label>
+    <input type="text"
+           class="form-control"
+           id="canRef" [(ngModel)]="screeningDetails.canRef"
+           ngDefaultControl="screeningDetails.canRef"   >
+  </div>
+  <div class="form-group">
+    <label for="visaSta">Visa Status</label>
+    <select class="form-control"
+            id="visaSta" [(ngModel)]="screeningDetails.visaSta"
+            ngDefaultControl="screeningDetails.visaSta"   >
+      <option value="">--Select One--</option>
+      <option value="h1b">H1B</option>
+      <option value="l1">L1</option>
+      <option value="OPT">OPT</option>
+      <option value="L2">L2 EAD</option>
+      <option value="EAD">EAD</option>
+      <option value="GC">GC</option>
+      <option value="CITIZENS">CITIZENS</option>
+    </select>
+  </div>
+  <div class="form-group inline">
+    <label for="visaVal">Visa Validity</label>
+    <input type="date"
+           class="form-control"
+           id="visaVal" [(ngModel)]="screeningDetails.visaVal"
+           ngDefaultControl="screeningDetails.visaVal" >
+    <label for="valNtAplcbl">Not Applicable</label>
+    <input type="checkbox" id="valNtAplcbl" name="valNtAplcbl" [(ngModel)]="screeningDetails.valNtAplcbl"
+           ngDefaultControl="screeningDetails.valNtAplcbl"/>
+  </div>
 
 
-      <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input type="text"
-               class="form-control"
-               id="firstName">
-      </div>
-      <div class="form-group">
-        <label for="lastName">Last Name</label>
-        <input type="text"
-               class="form-control"
-               id="lastName"
-               >
-      </div>
-      <div class="form-group">
-        <label for="canRef">Candidate Reference</label>
-        <input type="text"
-               class="form-control"
-               id="canRef"
-               >
-      </div>
-      <div class="form-group">
-        <label for="visaSta">Visa Status</label>
-        <select class="form-control"
-                id="visaSta"
-                >
-          <option value="">--Select One--</option>
-          <option value="h1b">H1B</option>
-          <option value="l1">L1</option>
-          <option value="OPT">OPT</option>
-          <option value="L2">L2 EAD</option>
-          <option value="EAD">EAD </option>
-          <option value="GC">GC </option>
-          <option value="CITIZENS">CITIZENS</option>
-        </select>
-      </div>
-      <div class="form-group inline">
-        <label for="visaVal">Visa Validity</label>
-        <input type="date"
-               class="form-control"
-               id="visaVal"
-               >
-        <label for="valNtAplcbl">Not Applicable</label>
-        <input type="checkbox" id="valNtAplcbl"  name="valNtAplcbl"/>
-      </div>
+  <div class="form-group">
+    <label for="h1Win">Time left on H1 window</label>
+    <input type="text"
+           class="form-control"
+           id="h1Win" [(ngModel)]="screeningDetails.h1Win"
+           ngDefaultControl="screeningDetails.h1Win"   >
+  </div>
 
 
-      <div class="form-group">
-        <label for="h1Win">Time left on H1 window</label>
-        <input type="text"
-               class="form-control"
-               id="h1Win"
-               >
-      </div>
+  <div class="form-group">
+    <label for="curEmplyr">Current Employer</label>
+    <input type="text"
+           class="form-control"
+           id="curEmplyr" [(ngModel)]="screeningDetails.curEmplyr"
+           ngDefaultControl="screeningDetails.curEmplyr"  >
+  </div>
+  <div class="form-group">
+    <label for="primSkill">Primary Skill</label>
+    <input type="text"
+           class="form-control"
+           id="primSkill" [(ngModel)]="screeningDetails.primSkill"
+           ngDefaultControl="screeningDetails.primSkill"  >
+  </div>
+  <div class="form-group">
+    <label for="skillSet">Skill Set</label>
+    <input type="text"
+           class="form-control"
+           id="skillSet" [(ngModel)]="screeningDetails.skillSet"
+           ngDefaultControl="screeningDetails.skillSet" >
+  </div>
+  <div class="form-group">
+    <label for="totalExp">Total Experience</label>
+    <input type="number"
+           class="form-control"
+           id="totalExp" [(ngModel)]="screeningDetails.totalExp"
+           ngDefaultControl="screeningDetails.totalExp" >
+  </div>
+  <div class="form-group">
+    <label for="curComp">Current Compensation</label>
+    <input type="number"
+           class="form-control"
+           id="curComp" [(ngModel)]="screeningDetails.curComp"
+           ngDefaultControl="screeningDetails.curComp"  >
+  </div>
+  <div class="form-group">
+    <label for="expComp">Expected Compensation</label>
+    <input type="number"
+           class="form-control"
+           id="expComp" [(ngModel)]="screeningDetails.expComp"
+           ngDefaultControl="screeningDetails.expComp"   >
+  </div>
+  <div class="form-group">
+    <label for="agrdComp">Agreed Compensation</label>
+    <input type="number"
+           class="form-control"
+           id="agrdComp" [(ngModel)]="screeningDetails.agrdComp"
+           ngDefaultControl="screeningDetails.agrdComp"    >
+  </div>
+  <div class="form-group">
+    <label for="cstToCmpny">Cost to Company</label>
+    <input type="number"
+           class="form-control"
+           id="cstToCmpny" [(ngModel)]="screeningDetails.cstToCmpny"
+           ngDefaultControl="screeningDetails.cstToCmpny"    >
+  </div>
+  <div class="form-group">
+    <label for="curLoc">Current Location</label>
+    <input type="text"
+           class="form-control"
+           id="curLoc" [(ngModel)]="screeningDetails.curLoc"
+           ngDefaultControl="screeningDetails.curLoc"    >
+  </div>
+  <div class="form-group">
+    <label for="relocation">ReLocation</label>
+    <input type="text"
+           class="form-control"
+           id="relocation" [(ngModel)]="screeningDetails.relocation"
+           ngDefaultControl="screeningDetails.relocation"    >
+  </div>
+  <div class="form-group">
+    <label for="notPrd">Notice Period</label>
+    <input type="number"
+           class="form-control"
+           id="notPrd" [(ngModel)]="screeningDetails.notPrd"
+           ngDefaultControl="screeningDetails.notPrd"    >
+  </div>
+  <div class="form-group">
+    <label for="h1RcptNum">H1 Receipt Number</label>
+    <input type="text"
+           class="form-control"
+           id="h1RcptNum" [(ngModel)]="screeningDetails.h1RcptNum"
+           ngDefaultControl="screeningDetails.h1RcptNum"    >
+  </div>
+  <div class="form-group">
+    <label for="comSkills">Communication Skills</label>
+    <input type="text"
+           class="form-control"
+           id="comSkills" [(ngModel)]="screeningDetails.comSkills"
+           ngDefaultControl="screeningDetails.comSkills"    >
+  </div>
 
-      we need to change it to date format
-      <div class="form-group">
-        <label for="curEmplyr">Current Employer</label>
-        <input type="text"
-               class="form-control"
-               id="curEmplyr"
-               >
-      </div>
-      <div class="form-group">
-        <label for="primSkill">Primary Skill</label>
-        <input type="text"
-               class="form-control"
-               id="primSkill"
-               >
-      </div>
-      <div class="form-group">
-        <label for="skillSet">Skill Set</label>
-        <input type="text"
-               class="form-control"
-               id="skillSet"
-               >
-      </div>
-      <div class="form-group">
-        <label for="totalExp">Total Experience</label>
-        <input type="number"
-               class="form-control"
-               id="totalExp"
-               >
-      </div>
-      <div class="form-group">
-        <label for="curComp">Current Compensation</label>
-        <input type="number"
-               class="form-control"
-               id="curComp"
-               >
-      </div>
-      <div class="form-group">
-        <label for="expComp">Expected Compensation</label>
-        <input type="number"
-               class="form-control"
-               id="expComp"
-               >
-      </div>
-      <div class="form-group">
-        <label for="agrdComp">Agreed Compensation</label>
-        <input type="number"
-               class="form-control"
-               id="agrdComp"
-               >
-      </div>
-      <div class="form-group">
-        <label for="cstToCmpny">Cost to Company</label>
-        <input type="number"
-               class="form-control"
-               id="cstToCmpny"
-               >
-      </div>
-      <div class="form-group">
-        <label for="curLoc">Current Location</label>
-        <input type="text"
-               class="form-control"
-               id="curLoc"
-               >
-      </div>
-      <div class="form-group">
-        <label for="relocation">ReLocation</label>
-        <input type="text"
-               class="form-control"
-               id="relocation"
-               >
-      </div>
-      <div class="form-group">
-        <label for="notPrd">Notice Period</label>
-        <input type="number"
-               class="form-control"
-               id="notPrd"
-               >
-      </div>
-      <div class="form-group">
-        <label for="h1RcptNum">H1 Receipt Number</label>
-        <input type="text"
-               class="form-control"
-               id="h1RcptNum"
-               >
-      </div>
-      <div class="form-group">
-        <label for="comSkills">Communication Skills</label>
-        <input type="text"
-               class="form-control"
-               id="comSkills"
-               >
-      </div>
+  <!--<div class="form-group">-->
+  <!--<label for="files">Upload Supporting Files</label>-->
+  <!--<input type="file"-->
+  <!--id="files"-->
+  <!--formControlName="files"-->
+  <!--multiple/>-->
+  <!--</div>-->
 
-      <!--<div class="form-group">-->
-      <!--<label for="files">Upload Supporting Files</label>-->
-      <!--<input type="file"-->
-      <!--id="files"-->
-      <!--formControlName="files"-->
-      <!--multiple/>-->
-      <!--</div>-->
+  <div class="form-group">
+    <label for="comments">Comments</label>
+    <textarea
+      class="form-control"
+      id="comments"
 
-      <div class="form-group">
-        <label for="comments">Comments</label>
-        <textarea
-          class="form-control"
-          id="comments"
-
-          placeholder="Enter your comments here">
+      placeholder="Enter your comments here" [(ngModel)]="screeningDetails.comments"
+      ngDefaultControl="screeningDetails.comments">
         </textarea>
-      </div>
-      <div class="form-group">
-        <label>Selection Status</label>
-        <br/>
-        <input name="slctnSta" class="radio-inline" id="selectionStatusSelected" type="radio" value="selected" />
-        <label for="selectionStatusSelected">Selected</label>
-        <input name="slctnSta" class="radio-inline" id="selectionStatusRejected" type="radio"  value="rejected" />
-        <label for="selectionStatusRejected">Rejected</label>
-        <input name="slctnSta" class="radio-inline" type="radio" id="selectionStatusHold"  value="onhold"/>
-        <label for="selectionStatusHold">On Hold</label>
-        <input name="slctnSta" class="radio-inline" type="radio" id="noScreeningRequrired"  value="noScreenRequired"/>
-        <label for="noScreeningRequrired">No Screening Required</label>
-      </div>
+  </div>
+  <div class="form-group">
+    <label for="slctnSta">Selection Status</label>
+    <select class="form-control"
+            id="slctnSta" [(ngModel)]="screeningDetails.slctnSta"
+            ngDefaultControl="screeningDetails.slctnSta"   >
 
-    <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+      <option value="selected">Selected</option>
+      <option value="rejected">Rejected</option>
+      <option value="hold">HOLD</option>
+      <option value="noScreenRequired">No Screening Required</option>
 
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
 </div>
+
+<button type="submit" editClicked="true" class="btn btn-warning">Edit</button>
+<button type="submit" (click)="onClickCreateCandidate()"  class="btn btn-primary">Create a new candidate</button>
+
 
 
 

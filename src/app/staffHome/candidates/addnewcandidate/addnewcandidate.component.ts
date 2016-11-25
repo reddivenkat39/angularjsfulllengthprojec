@@ -1,12 +1,14 @@
-import { Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CandidatesService} from "../candidates.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-addnewcandidate',
   templateUrl: './addnewcandidate.component.html',
   styleUrls: ['./addnewcandidate.component.css']
 })
-export class AddnewcandidateComponent  {
+export class AddnewcandidateComponent implements OnInit{
+  candId='';
   private addNewCandidate = {
     'candId':'',
     'emailId': '',
@@ -29,8 +31,28 @@ export class AddnewcandidateComponent  {
     'primSkill':'',
     'curEmplyr':'',
   };
-  constructor(private candidateService: CandidatesService) {
+  constructor(private candidateService: CandidatesService, private activatedRoute: ActivatedRoute) {
+ this.candId=activatedRoute.snapshot.params['id'];
+  }
 
+  ngOnInit(){
+    console.log("candid id", this.candId);
+    this.candidateService.getScreenedCandidateDetailsById(this.candId).subscribe(
+      res => {
+        if (res.datares != null) {
+          console.log("datares", res.datares);
+          this.addNewCandidateScreening = res.datares;
+          this.addNewCandidate = res.datares;
+        } else if (res.errorres != null) {
+          console.log("errorres", res.errorres);
+        } else if (res.successres != null) {
+          console.log("successres", res.successres);
+        } else {
+          console.log("server problem");
+        }
+
+      }
+    );
   }
 
   onSubmit(){
