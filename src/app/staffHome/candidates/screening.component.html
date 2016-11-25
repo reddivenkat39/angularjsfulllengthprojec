@@ -9,7 +9,14 @@
                formControlName="firstName">
       </div>
       <div class="form-group">
-        <label for="lastName">Last Name</label>
+        <label for="midlName">Middle Name</label>
+        <input type="text"
+               class="form-control"
+               id="midlName"
+               formControlName="midlName">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name *</label>
         <input type="text"
                class="form-control"
                id="lastName"
@@ -121,7 +128,7 @@
                formControlName="curLoc">
       </div>
       <div class="form-group">
-        <label for="relocation">ReLocation</label>
+        <label for="relocation">Relocation</label>
         <input type="text"
                class="form-control"
                id="relocation"
@@ -175,6 +182,8 @@
         <label for="selectionStatusRejected">Rejected</label>
         <input name="slctnSta" class="radio-inline" type="radio" id="selectionStatusHold" formControlName="slctnSta" value="onhold"/>
         <label for="selectionStatusHold">On Hold</label>
+        <input name="slctnSta" class="radio-inline" type="radio" id="noScreeningRequrired" formControlName="slctnSta" value="noScreenRequired"/>
+        <label for="noScreeningRequrired">No Screening Required</label>
       </div>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>

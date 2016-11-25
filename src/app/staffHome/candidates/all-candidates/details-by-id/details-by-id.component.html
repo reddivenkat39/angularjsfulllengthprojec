@@ -1,16 +1,188 @@
-<p>
-  details-by-id works!
-</p>
+<app-header></app-header>
+<br><br><br><br>
+<div class="col-xs-4 col-xs-offset-4">
 
-<!--<h3 class="first">Default</h3>-->
-<!--<p-tabView>-->
-  <!--<p-tabPanel header="Godfather I" leftIcon="fa-calendar">-->
-    <!--The story begins as Don Vito Corleone, the head of a New York Mafia family, overseeshis daughter's wedding. His beloved son ichael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.-->
-  <!--</p-tabPanel>-->
-  <!--<p-tabPanel header="Godfather II" leftIcon="fa-print">-->
-    <!--Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.-->
-  <!--</p-tabPanel>-->
-  <!--<p-tabPanel header="Godfather III" leftIcon="fa-bell-o" rightIcon="fa-bookmark-o">-->
-    <!--After a break of more than  15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.-->
-  <!--</p-tabPanel>-->
-<!--</p-tabView>-->
+
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text"
+               class="form-control"
+               id="firstName">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text"
+               class="form-control"
+               id="lastName"
+               >
+      </div>
+      <div class="form-group">
+        <label for="canRef">Candidate Reference</label>
+        <input type="text"
+               class="form-control"
+               id="canRef"
+               >
+      </div>
+      <div class="form-group">
+        <label for="visaSta">Visa Status</label>
+        <select class="form-control"
+                id="visaSta"
+                >
+          <option value="">--Select One--</option>
+          <option value="h1b">H1B</option>
+          <option value="l1">L1</option>
+          <option value="OPT">OPT</option>
+          <option value="L2">L2 EAD</option>
+          <option value="EAD">EAD </option>
+          <option value="GC">GC </option>
+          <option value="CITIZENS">CITIZENS</option>
+        </select>
+      </div>
+      <div class="form-group inline">
+        <label for="visaVal">Visa Validity</label>
+        <input type="date"
+               class="form-control"
+               id="visaVal"
+               >
+        <label for="valNtAplcbl">Not Applicable</label>
+        <input type="checkbox" id="valNtAplcbl"  name="valNtAplcbl"/>
+      </div>
+
+
+      <div class="form-group">
+        <label for="h1Win">Time left on H1 window</label>
+        <input type="text"
+               class="form-control"
+               id="h1Win"
+               >
+      </div>
+
+      we need to change it to date format
+      <div class="form-group">
+        <label for="curEmplyr">Current Employer</label>
+        <input type="text"
+               class="form-control"
+               id="curEmplyr"
+               >
+      </div>
+      <div class="form-group">
+        <label for="primSkill">Primary Skill</label>
+        <input type="text"
+               class="form-control"
+               id="primSkill"
+               >
+      </div>
+      <div class="form-group">
+        <label for="skillSet">Skill Set</label>
+        <input type="text"
+               class="form-control"
+               id="skillSet"
+               >
+      </div>
+      <div class="form-group">
+        <label for="totalExp">Total Experience</label>
+        <input type="number"
+               class="form-control"
+               id="totalExp"
+               >
+      </div>
+      <div class="form-group">
+        <label for="curComp">Current Compensation</label>
+        <input type="number"
+               class="form-control"
+               id="curComp"
+               >
+      </div>
+      <div class="form-group">
+        <label for="expComp">Expected Compensation</label>
+        <input type="number"
+               class="form-control"
+               id="expComp"
+               >
+      </div>
+      <div class="form-group">
+        <label for="agrdComp">Agreed Compensation</label>
+        <input type="number"
+               class="form-control"
+               id="agrdComp"
+               >
+      </div>
+      <div class="form-group">
+        <label for="cstToCmpny">Cost to Company</label>
+        <input type="number"
+               class="form-control"
+               id="cstToCmpny"
+               >
+      </div>
+      <div class="form-group">
+        <label for="curLoc">Current Location</label>
+        <input type="text"
+               class="form-control"
+               id="curLoc"
+               >
+      </div>
+      <div class="form-group">
+        <label for="relocation">ReLocation</label>
+        <input type="text"
+               class="form-control"
+               id="relocation"
+               >
+      </div>
+      <div class="form-group">
+        <label for="notPrd">Notice Period</label>
+        <input type="number"
+               class="form-control"
+               id="notPrd"
+               >
+      </div>
+      <div class="form-group">
+        <label for="h1RcptNum">H1 Receipt Number</label>
+        <input type="text"
+               class="form-control"
+               id="h1RcptNum"
+               >
+      </div>
+      <div class="form-group">
+        <label for="comSkills">Communication Skills</label>
+        <input type="text"
+               class="form-control"
+               id="comSkills"
+               >
+      </div>
+
+      <!--<div class="form-group">-->
+      <!--<label for="files">Upload Supporting Files</label>-->
+      <!--<input type="file"-->
+      <!--id="files"-->
+      <!--formControlName="files"-->
+      <!--multiple/>-->
+      <!--</div>-->
+
+      <div class="form-group">
+        <label for="comments">Comments</label>
+        <textarea
+          class="form-control"
+          id="comments"
+
+          placeholder="Enter your comments here">
+        </textarea>
+      </div>
+      <div class="form-group">
+        <label>Selection Status</label>
+        <br/>
+        <input name="slctnSta" class="radio-inline" id="selectionStatusSelected" type="radio" value="selected" />
+        <label for="selectionStatusSelected">Selected</label>
+        <input name="slctnSta" class="radio-inline" id="selectionStatusRejected" type="radio"  value="rejected" />
+        <label for="selectionStatusRejected">Rejected</label>
+        <input name="slctnSta" class="radio-inline" type="radio" id="selectionStatusHold"  value="onhold"/>
+        <label for="selectionStatusHold">On Hold</label>
+        <input name="slctnSta" class="radio-inline" type="radio" id="noScreeningRequrired"  value="noScreenRequired"/>
+        <label for="noScreeningRequrired">No Screening Required</label>
+      </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+
+</div>
+
+
+
