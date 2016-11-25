@@ -48,7 +48,8 @@ export class LoginComponent {
               }
             );
 
-            this.router.navigate(['/home']);
+            /*this.router.navigate(['/home']);*/
+          this.router.navigate(['/employees']);
           }
         else {
           console.log("error....");

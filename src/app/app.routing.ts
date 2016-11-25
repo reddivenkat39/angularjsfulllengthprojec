@@ -16,11 +16,13 @@ import {AddnewcandidateComponent} from "./staffHome/candidates/addnewcandidate/a
 import {AllCandidatesComponent} from "./staffHome/candidates/all-candidates/all-candidates.component";
 import {DetailsByIdComponent} from "./staffHome/candidates/all-candidates/details-by-id/details-by-id.component";
 import {SelectRowCandidatesComponent} from "./staffHome/candidates/select-row-candidates/select-row-candidates.component";
+import {EmployeesComponent} from "./staffHome/employees/employees.component";
 const APP_ROUTES: Routes = [
   { path: '', component: LoginComponent },
   {path:'forgotpassword', component:ForgetpasswordComponent},// used in login component
   {path:'resetpassword/:token', component:ResetpasswordComponent},
   {path:'home', component: HomeComponent, canActivate: [LoginGuard]}, //given in
+  {path:'employees', component:EmployeesComponent, canActivate:[LoginGuard]},
   {path:'candidates', component: CandidatesComponent, canActivate: [LoginGuard],
    children:[
      {path:'',component:AllCandidatesComponent,canActivate:[LoginGuard]},
