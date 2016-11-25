@@ -4,13 +4,11 @@ import {ScreenedCandidate} from "./ScreenedCandidate";
 
 
 @Component({
-  selector     : 'app-all-candidates',
-  templateUrl  : './all-candidates.component.html',
-  styleUrls    : ['./all-candidates.component.css'],
-  encapsulation: ViewEncapsulation.None,
+  selector: 'app-all-candidates',
+  templateUrl: './all-candidates.component.html',
+  styleUrls: ['./all-candidates.component.css'],
+  encapsulation:ViewEncapsulation.None,
 })
-
-
 export class AllCandidatesComponent implements OnInit {
 
   screenCandids: ScreenedCandidate[];
@@ -40,12 +38,4 @@ export class AllCandidatesComponent implements OnInit {
     console.log("selected the row......", this.screencandId);
   }
 
-
 }
-
-
-// class ScreenedCandImpl implements ScreenedCandidate {
-//   constructor(public candId?, public firstName?, public canRef?, public visaSta?, public primSkill? ) {}
-// }
-
-

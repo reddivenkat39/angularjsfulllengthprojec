@@ -13,22 +13,23 @@ import {ForgetpasswordComponent} from "./staff/forgetpassword/forgetpassword.com
 import {AddstaffComponent} from "./staff/addstaff/addstaff.component";
 import {ResetpasswordComponent} from "./staff/forgetpassword/resetpassword.component";
 import {AddnewcandidateComponent} from "./staffHome/candidates/addnewcandidate/addnewcandidate.component";
+import {AllCandidatesComponent} from "./staffHome/candidates/all-candidates/all-candidates.component";
 import {DetailsByIdComponent} from "./staffHome/candidates/all-candidates/details-by-id/details-by-id.component";
-
-
-const APP_ROUTES = [
-  {path: '', component: LoginComponent},
-  {path: 'forgotpassword', component: ForgetpasswordComponent},// used in login component
-  {path: 'resetpassword/:token', component: ResetpasswordComponent},
-  {path: 'home', component: HomeComponent, canActivate: [LoginGuard]}, //given in
-  {path: 'home/candidates', component: CandidatesComponent, canActivate: [LoginGuard]}, //called in header component
-  {path: 'home/addstaff', component: AddstaffComponent, canActivate: [LoginGuard]},
-  {path: 'candidates/screening', component: ScreeningComponent, canActivate: [LoginGuard]}, //called in candidates tab
-  {path: 'candidates/addnewcandidate', component: AddnewcandidateComponent, canActivate: [LoginGuard]},
+const APP_ROUTES: Routes = [
+  { path: '', component: LoginComponent },
+  {path:'forgotpassword', component:ForgetpasswordComponent},// used in login component
+  {path:'resetpassword/:token', component:ResetpasswordComponent},
+  {path:'home', component: HomeComponent, canActivate: [LoginGuard]}, //given in
+  {path:'candidates', component: CandidatesComponent, canActivate: [LoginGuard],
+   children:[
+     {path:'',component:AllCandidatesComponent,canActivate:[LoginGuard]},
+     {path:'screening', component: ScreeningComponent, canActivate: [LoginGuard]}, //called in candidates tab
+     {path:'addnewcandidate', component: AddnewcandidateComponent, canActivate: [LoginGuard]},
+            ]
+  }, //called in header component
   {path: 'details/:id', component: DetailsByIdComponent},  // called in all candidates component
-
-
-  {path: '**', redirectTo: ''}
+  {path:'addstaff', component: AddstaffComponent, canActivate: [LoginGuard]},
+  { path: '**', redirectTo: '' }
 
 
 ];

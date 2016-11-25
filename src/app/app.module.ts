@@ -31,6 +31,7 @@ import {SharedModule} from "primeng/components/common/shared";
 import {ButtonModule} from "primeng/components/button/button";
 import {PaginatorModule} from "primeng/components/paginator/paginator";
 import { AllCandidatesComponent } from './staffHome/candidates/all-candidates/all-candidates.component';
+import {DropdownModule} from 'primeng/components/dropdown/dropdown';
 import { EditDeleteDirective } from './services/edit-delete.directive';
 import { DetailsByIdComponent } from './staffHome/candidates/all-candidates/details-by-id/details-by-id.component';
 
@@ -65,8 +66,10 @@ import { DetailsByIdComponent } from './staffHome/candidates/all-candidates/deta
     DataTableModule,
     SharedModule,
     ButtonModule,
-    PaginatorModule
+    PaginatorModule,
+    DropdownModule
   ],
+
   providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService],
   bootstrap: [AppComponent]
 })
