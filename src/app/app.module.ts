@@ -28,6 +28,7 @@ import {DatatableService} from "./staffHome/candidates/datatable/datatable.servi
 import {DataTableModule} from "primeng/components/datatable/datatable";
 import {SharedModule} from "primeng/components/common/shared";
 import {ButtonModule} from "primeng/components/button/button";
+import {TabViewModule} from "primeng/primeng";
 import {PaginatorModule} from "primeng/components/paginator/paginator";
 import { AllCandidatesComponent } from './staffHome/candidates/all-candidates/all-candidates.component';
 import { EditDeleteDirective } from './services/edit-delete.directive';
@@ -81,7 +82,8 @@ let options: ToastOptions = new ToastOptions({
     SharedModule,
     ButtonModule,
     PaginatorModule,
-    SelectModule
+    SelectModule,
+    TabViewModule
   ],
 
   providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService,EmployeeService],
