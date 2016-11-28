@@ -72,7 +72,7 @@ a.hover {
   cursor: pointer;
 }
 
-/* Scrollable */
+/*/ Scrollable /*/
 .ui-datatable-scrollable-body {
   overflow:auto;
 }
@@ -135,12 +135,12 @@ a.hover {
   text-align: right;
 }
 
-/* Row Toggler */
+/*/ Row Toggler /*/
 .ui-row-toggler {
   cursor: pointer;
 }
 
-/* Resizable */
+/*/ Resizable /*/
 .ui-datatable .ui-column-resizer {
   display: block;
   position: absolute !important;
@@ -177,12 +177,12 @@ a.hover {
   position: relative;
 }
 
-/** Reflow **/
+/*/ Reflow /*/
 .ui-datatable-reflow .ui-datatable-data td .ui-column-title {
   display: none;
 }
 
-/* Filter */
+/*/ Filter /*/
 .ui-datatable .ui-column-filter {
   display: block;
   width: 100%;
@@ -190,7 +190,7 @@ a.hover {
   margin-top: 4px;
 }
 
-/* Editing */
+/*/ Editing /*/
 .ui-datatable td.ui-cell-editing {
   padding: 0px;
 }
@@ -352,3 +352,81 @@ a.hover {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
 }
+
+/*------------->>>>> search button<<<-------*/
+.search-form .form-group {
+  float: right !important;
+  transition: all 0.35s, border-radius 0s;
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+.search-form .form-group input.form-control {
+  padding-right: 20px;
+  border: 0 none;
+  background: transparent;
+  box-shadow: none;
+  display:block;
+}
+.search-form .form-group input.form-control::-webkit-input-placeholder {
+  display: none;
+}
+.search-form .form-group input.form-control:-moz-placeholder {
+  /* Firefox 18- */
+  display: none;
+}
+.search-form .form-group input.form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  display: none;
+}
+.search-form .form-group input.form-control:-ms-input-placeholder {
+  display: none;
+}
+.search-form .form-group:hover,
+.search-form .form-group.hover {
+  width: 100%;
+  border-radius: 4px 25px 25px 4px;
+}
+.search-form .form-group span.form-control-feedback {
+  position: absolute;
+  top: -1px;
+  right: -2px;
+  z-index: 2;
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  color: #3596e0;
+  left: initial;
+  font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+/*.icon-addon.addon-md .glyphicon,*/
+/*.icon-addon .glyphicon,*/
+/*.icon-addon.addon-md .fa,*/
+/*.icon-addon .fa {*/
+  /*!*float: right;*!*/
+  /*position: absolute;*/
+  /*z-index: 10;*/
+  /*right: 10px;*/
+  /*font-size: 14px;*/
+  /*width: 10px;*/
+  /*margin-left: -2.5px;*/
+  /*text-align: right;*/
+  /*padding: 9px 30px;*/
+  /*top: 1px;*/
+
+ /*}*/
+
