@@ -3,6 +3,7 @@ import {StaffService} from "../staffservices/staff.service";
 import {Response} from "@angular/http";
 import {error} from "util";
 import {Router} from "@angular/router";
+import {ToastsManager} from "ng2-toastr";
 
 
 @Component({
@@ -23,7 +24,7 @@ export class LoginComponent {
   error: String = '';
 
 
-  constructor(private staffLoginService: StaffService, private router: Router) {
+  constructor(private staffLoginService: StaffService, private router: Router, private toast: ToastsManager) {
     this.currentStaffEmailAddress = localStorage.getItem("currentStaffEmailAddress");
   }
 
@@ -53,8 +54,10 @@ export class LoginComponent {
           }
         else {
           console.log("error....");
-          return this.error = "Oops!  login credentials are wrong";
+          // return this.error = "Oops!  login credentials are wrong";
+          this.toast.error('Sorry Wrong Credentials.. try again','Oops!!');
         }
+
   }
     );
 }

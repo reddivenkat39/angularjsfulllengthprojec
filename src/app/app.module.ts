@@ -36,7 +36,13 @@ import {SelectModule} from "angular2-select";
 import { SelectRowCandidatesComponent } from './staffHome/candidates/select-row-candidates/select-row-candidates.component';
 import { EmployeesComponent } from './staffHome/employees/Allemployeesdetails/employees.component';
 import {EmployeeService} from "./staffHome/employees/employee.service";
+import {ToastrModule} from "toastr-ng2";
+import {ToastModule, ToastOptions} from "ng2-toastr";
 
+let options: ToastOptions = new ToastOptions({
+  animate: 'fade',
+  positionClass: 'toast-top-center',
+});
 
 
 @NgModule({
@@ -61,6 +67,8 @@ import {EmployeeService} from "./staffHome/employees/employee.service";
     EmployeesComponent
   ],
   imports: [
+    ToastrModule,
+    ToastModule.forRoot(options),
     BrowserModule,
     FormsModule,
     HttpModule,
