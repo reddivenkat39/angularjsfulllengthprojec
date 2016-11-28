@@ -1,4 +1,4 @@
-<div *ngIf="error"  class="alert alert-danger" >
+<!--<div *ngIf="error"  class="alert alert-danger" >
   {{error}}
 </div>
 <div class="container">
@@ -33,7 +33,176 @@
     </div>
 </div>
   </div>
+</div>-->
+<div class="x-header">
+  <div class="inner">
+    <h1>
+      <a href="http://www.tabnerglobal.com/" class="logo" accesskey="1">
+        <div class="text-center">
+          <img src="http://www.tabnerglobal.com/images/ico/fav1.png" style="width:45px;height:50px;padding-top:10px;"/>
+        </div>
+        <span class="hidden">Tabner Employee Portal</span>
+      </a>
+    </h1>
+  </div>
 </div>
+<div class="content">
+  <div class="inner">
+    <div id="content-top" class="clear"></div>
+    <!--<div class="login-container">
+      <div class="form-container">
+
+
+        <h2 class="x-boxed noBorder">Welcome to Xero</h2>
+
+        <div id="browserErrorPanel"></div>
+        &lt;!&ndash; Start Federated Logout &ndash;&gt;
+        &lt;!&ndash; End Federated Logout &ndash;&gt;
+
+        <div id="submitForm" class="x-boxed">
+
+
+          <form action="/" id="LoginForm" method="POST">
+            <input id="fragment" name="fragment" style="display:none" type="hidden" value="">
+            <fieldset>
+              <div class="field">
+                <label for="email">Email</label>
+                <input autocomplete="off" id="email" name="userName" placeholder="Email address" title="Please enter your Email address" type="email" value="">
+              </div>
+              <div class="field">
+                <label for="password">Password</label>
+                <input autocomplete="off" id="password" name="password" placeholder="Password" title="Please enter your Xero password" type="password">
+              </div>
+            </fieldset>
+
+            <div class="actions">
+              <button type="submit" id="submitButton" class="x-btn blue main">Login</button>
+              <input name="__RequestVerificationToken" type="hidden" value="v_suESwmIWD5Zq7vbvR-1RrYEgAmb7vKEP9AqR&#45;&#45;mVtKN77ydaqZHUAU1rxRdNF4SGnfGJIInEVZYqY2fq6BCXykuVNMyrxGteCTpsphgEANZYTp3X7H5VT-syrahwHdSrjMZA2">
+            </div>
+          </form>
+
+        </div>
+        <a href="/ForgottenPassword" class="forgot-password-advert">Forgot your password?</a>
+
+        <script type="text/javascript">
+          var userFocus = false;
+          Ext.select('.field input').on('focus', function() {
+            userFocus = true;
+          });
+
+          Ext.onReady(function() {
+            var emailField = Ext.get("email"),
+              passwordField = Ext.get("password");
+
+            if (!userFocus) {
+              if (emailField) {
+                if (emailField.getValue().length === 0 || emailField.dom.getAttribute('data-placeholder-active') === 'true') {
+                  emailField.focus();
+                } else {
+                  if (passwordField) {
+                    // This setTimeout is needed to ensure our placeholder polyfill doesn't interfere with the input
+                    // and set it as a text input instead of a password input.
+                    window.setTimeout(function() {
+                      passwordField.focus();
+                    }, 0);
+                  }
+                }
+              }
+            }
+
+            var fragmentField = Ext.get('fragment');
+            if (fragmentField) {
+              var token = Ext.History.getToken();
+              if (fragmentField.dom.value == "" && token) {
+                fragmentField.dom.value = Ext.History.getToken();
+              }
+            }
+          });
+        </script>
+
+        <iframe src="https://go.xero.com:443/common/preloader/preloadcss.htm?date=636157152000000000" frameborder="0"></iframe>
+
+
+        <iframe src="https://go.xero.com:443/common/preloader/preloadjs.htm?date=636157152000000000" frameborder="0"></iframe>
+
+
+      </div>
+
+
+      <div id="loginAdvert" class="iframe-container load-failed loaded">
+        <div class="fallback">
+          <div class="img"></div>
+          <h3>Stay up to date with Xero</h3>
+          <p>Get the latest news, tweets and photos from Xero. Just follow us on your favorite social media network.</p>
+          <div class="social-media">
+            <span>Follow Xero on</span>
+            <ul>
+              <li><a href="https://www.facebook.com/Xero.Accounting" target="_blank">Facebook</a> • </li>
+              <li><a href="https://twitter.com/Xero" target="_blank">Twitter</a> • </li>
+              <li><a href="https://plus.google.com/+xero" target="_blank">Google+</a> • </li>
+              <li><a href="http://www.linkedin.com/company/xero" target="_blank">LinkedIn</a></li>
+            </ul>
+          </div>
+        </div>
+        <iframe frameborder="0" scrolling="no" src="https://www.xero.com/login-iframe/" id="ext-comp-1001"></iframe></div>
+
+    </div>-->
+    <br/>
+    <br/>
+    <div class="container">
+      <div class="text-center">
+        <ul style="width:800px; height:500px;">
+          <li style="left: 0px; margin: 0px; position: absolute; width: 480px;height:400px;background-color:#F3F3F3;overflow: hidden;" class="">
+            <div class="text-center">
+              <br/>
+              <br/>
+              <br/>
+              <img src="https://s3.us-east-2.amazonaws.com/devh2o/TabnerLogo.png" style="width: 350px;height:200px"/>
+            </div>
+          </li>
+          <li style="right: 0px; margin: 0px; position: absolute; overflow: hidden; width: 290px;height:400px;background-color: #3399ff" class="">
+            <div class="text-center">
+              <br/>
+              <br/>
+              <br/>
+              <h4 style="color:white;font-family:'Lucida Sans';"><strong>Welcome to Tabner</strong></h4>
+              <br/>
+              <br/>
+                <div class="col-xs-12">
+                  <fieldset>
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                      <input class="form-control" type="text" placeholder="Email address">
+                    </div>
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                      <input class="form-control" type="password" placeholder="Password">
+                    </div>
+                  </fieldset>
+                  <br/>
+                  <div class="form-group">
+                    <input type="button" class="form-control btn-primary" name="login" value="Login" (click)="login()"/>
+                  </div>
+                </div>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <a [routerLink]="['/forgotpassword']" style="color:white;">Forget Your Password?</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 

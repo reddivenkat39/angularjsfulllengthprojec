@@ -1,2 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-
+.x-header{
+  background: #3399ff;
+  padding-top: 0;
+}
+.x-header .inner{
+  height:68px;
+  padding-top: 0;
+  margin-top: 0;
+}
