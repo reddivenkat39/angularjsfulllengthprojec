@@ -7,16 +7,15 @@ import {ToastsManager} from "ng2-toastr";
 
 
 @Component({
-  selector: 'app-login',
+  selector   : 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls  : ['./login.component.css']
 })
 export class LoginComponent {
   private staffLogin = {
     'emailAddress': 'chandu.adabala@tabnergc.com',
-    'password': 'asdf'
+    'password'    : 'asdf'
   };
-
 
 
   private currentStaffEmailAddress;
@@ -31,36 +30,36 @@ export class LoginComponent {
 
   login() {
     this.staffLoginService.sendLoginCredentials(this.staffLogin).subscribe(
-      data=> {
-        if (data!=null) {
+      data => {
+        if (data != null) {
 
-            console.log(data);
+          console.log(data);
           console.log(window.location.origin);
 
-            localStorage.setItem("token", data);
+          localStorage.setItem("token", data);
 
-            this.staffLoginService.sendToken(data).subscribe(
-              res=> {
-                this.currentStaffEmailAddress = this.staffLogin.emailAddress;
-                localStorage.setItem("currentStaffEmailAddress", this.currentStaffEmailAddress);
-                this.staffLogin.emailAddress = '';
-                this.staffLogin.password = '';
-                // location.reload();
-              }
-            );
+          this.staffLoginService.sendToken(data).subscribe(
+            res => {
+              this.currentStaffEmailAddress = this.staffLogin.emailAddress;
+              localStorage.setItem("currentStaffEmailAddress", this.currentStaffEmailAddress);
+              this.staffLogin.emailAddress = '';
+              this.staffLogin.password = '';
+              // location.reload();
+            }
+          );
 
-            /*this.router.navigate(['/home']);*/
-          this.router.navigate(['/employees']);
-          }
+          this.router.navigate(['/home']);
+          /*this.router.navigate(['/employees']);*/
+        }
         else {
           console.log("error....");
           // return this.error = "Oops!  login credentials are wrong";
-          this.toast.error('Sorry Wrong Credentials.. try again','Oops!!');
+          this.toast.error('Sorry Wrong Credentials.. try again', 'Oops!!');
         }
 
-  }
+      }
     );
-}
+  }
 
 
   clear() {
