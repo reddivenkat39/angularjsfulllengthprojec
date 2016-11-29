@@ -66,9 +66,7 @@ return res.json();
     );
   }
 
-  getAllEmployeeDetails(){
 
-  }
 
 
 }

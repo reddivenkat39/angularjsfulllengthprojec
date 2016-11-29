@@ -34,14 +34,21 @@
       </div>
     <p-dataTable #dt1 [value]="allEmployees" [rows]="10" [paginator]="true" sortField="hireDate" sortOrder="-1" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate" [globalFilter]="gb" exportFilename="employees">
       <!--<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">-->
-
+      <p-column styleClass="col-button">
+        <template pTemplate type="header">
+          <p>Screened Profile</p>
+        </template>
+        <template  let-screenCandid="rowData" pTemplate type="body">
+          <button pButton type="text"   (click)="onClickView(screenCandid)" label="View"></button>
+        </template>
+      </p-column>
       <p-column field="empId" header="emp  Id"  [hidden]="true" [sortable]="true"></p-column>
       <p-column field="firstName" header="First Name" [sortable]="true"></p-column>
       <p-column  field="midName" header="Middle Name" [sortable]="true"></p-column>
       <p-column field="lastName" header="Last Name" [sortable]="true"></p-column>
       <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
       <p-column field="ssn" header="SSN" [sortable]="true"></p-column>
-      <p-column field="hireDate" header="Hire Date"  [sortable]="true"></p-column>
+      <p-column field=hireDate header="Hire Date"  [sortable]="true"></p-column>
       <p-column field="termDate" header="Term Date"  [sortable]="true"></p-column>
     </p-dataTable>
   </div>

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-tab-content',
   templateUrl: './tab-content.component.html',
-  styleUrls: ['./tab-content.component.css']
+  styleUrls: ['./tab-content.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class TabContentComponent implements OnInit {
 private employeesButtonClicked = false;
@@ -15,7 +16,7 @@ private employeesButtonClicked = false;
   }
 
   onEmployeeClick(){
-    // this.router.navigateByUrl('/employees');
+    this.router.navigateByUrl('/employees');
   }
 
 
