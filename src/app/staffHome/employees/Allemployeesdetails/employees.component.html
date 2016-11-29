@@ -43,11 +43,12 @@
           </div>
         </form>
       </div>
-    <p-dataTable #dt1 [value]="allEmployees" [rows]="10" [paginator]="true" sortField="hireDate" sortOrder="-1" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate" [globalFilter]="gb" exportFilename="employees">
+      <div class="table table-striped">
+    <p-dataTable  #dt1 [value]="allEmployees" [rows]="10" [paginator]="true" sortField="hireDate" sortOrder="-1" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate" [globalFilter]="gb" exportFilename="employees">
       <!--<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">-->
       <p-column styleClass="col-button">
         <template pTemplate type="header">
-          <p>Screened Profile</p>
+          <p>Employee Profile</p>
         </template>
         <template  let-screenCandid="rowData" pTemplate type="body">
           <button pButton type="text"   (click)="onClickView(screenCandid)" label="View"></button>
@@ -62,6 +63,7 @@
       <p-column field=hireDate header="Hire Date"  [sortable]="true"></p-column>
       <p-column field="termDate" header="Term Date"  [sortable]="true"></p-column>
     </p-dataTable>
+      </div>
   </div>
 
 
@@ -78,7 +80,7 @@
         </div>
       </div>
 
-    <p-dataTable #dt2  [value]="allActiveEmployees"  [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate"   [globalFilter]="gb" exportFilename="employees">
+    <p-dataTable #dt2  [value]="allActiveEmployees"  [rows]="10" sortField="hireDate" sortOrder="-1" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate"   [globalFilter]="gb" exportFilename="employees">
       <!--<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">-->
 
       <p-column field="empId" header="emp  Id"  [hidden]="true" [sortable]="true"></p-column>
@@ -99,7 +101,7 @@
       <i class="fa fa-search" style="float:right;margin:4px 4px 0 0"></i>
       <input #gb type="text" pInputText size="50" style="float:left" placeholder="Search by Name or Keywords">
     </div>
-    <p-dataTable #dt3 [value]="allInactiveEmployees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate"  [globalFilter]="gb" exportFilename="employees">
+    <p-dataTable #dt3 [value]="allInactiveEmployees" [rows]="10" sortField="termDate" sortOrder="-1" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate"  [globalFilter]="gb" exportFilename="employees">
       <!--<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">-->
 
       <p-column field="empId" header="emp  Id"  [hidden]="true" [sortable]="true"></p-column>

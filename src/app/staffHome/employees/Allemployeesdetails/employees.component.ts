@@ -33,7 +33,7 @@ this.onAllEmployeeClicked();
 
 
   onAllEmployeeClicked() {
-    this.allEmployee = !this.allEmployee;
+    this.allEmployee = true;
     this.allActive = false;
     this.allInActive = false;
     let errorConfig = new ToastConfig();
@@ -61,7 +61,7 @@ this.onAllEmployeeClicked();
   }
 
   onAllActiveClicked() {
-    this.allActive = !this.allActive;
+    this.allActive = true;
     this.allEmployee = false;
     this.allInActive = false;
     this.employeeService.getAllEmployeeDetails().subscribe(
@@ -88,7 +88,7 @@ this.onAllEmployeeClicked();
   }
 
   onAllInActiveClicked() {
-    this.allInActive = !this.allInActive;
+    this.allInActive = true;
     this.allActive = false;
     this.allEmployee = false;
     this.employeeService.getAllEmployeeDetails().subscribe(
