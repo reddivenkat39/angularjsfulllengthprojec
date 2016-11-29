@@ -430,3 +430,7 @@ a.hover {
 
  /*}*/
 
+.borderless td, .borderless th {
+  border: none !important;
+  text-align:left !important;
+}
