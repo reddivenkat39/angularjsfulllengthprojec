@@ -43,8 +43,7 @@
           </div>
         </form>
       </div>
-      <div class="table table-striped">
-    <p-dataTable  #dt1 [value]="allEmployees" [rows]="10" [paginator]="true" sortField="hireDate" sortOrder="-1" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate" [globalFilter]="gb" exportFilename="employees">
+      <p-dataTable  #dt1 [value]="allEmployees" [rows]="10" [paginator]="true" sortField="hireDate" sortOrder="-1" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate" [globalFilter]="gb" exportFilename="employees">
       <!--<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">-->
       <p-column styleClass="col-button">
         <template pTemplate type="header">
@@ -60,17 +59,16 @@
       <p-column field="lastName" header="Last Name" [sortable]="true"></p-column>
       <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
       <p-column field="ssn" header="SSN" [sortable]="true"></p-column>
-      <p-column field=hireDate header="Hire Date"  [sortable]="true"></p-column>
+      <p-column field="hireDate" header="Hire Date"  [sortable]="true"></p-column>
       <p-column field="termDate" header="Term Date"  [sortable]="true"></p-column>
     </p-dataTable>
-      </div>
   </div>
 
 
 </div>
 <div class="container">
   <div *ngIf="allActive">
-    <div class="row" >
+    <!--<div class="row" >
       <div class="col-md-5" style="margin-top: 2%; float: right">
         <div class="form-group">
           <div class="icon-addon addon-lg">
@@ -78,9 +76,10 @@
             <label for="allActiveSearch" class="glyphicon glyphicon-search" rel="tooltip" title="allActiveSearch"></label>
           </div>
         </div>
-      </div>
-
-    <p-dataTable #dt2  [value]="allActiveEmployees"  [rows]="10" sortField="hireDate" sortOrder="-1" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate"   [globalFilter]="gb" exportFilename="employees">
+      </div>-->
+    <br/>
+    <br/>
+    <p-dataTable #dt2  [value]="allActiveEmployees"  [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate"   [globalFilter]="gb" exportFilename="employees">
       <!--<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">-->
 
       <p-column field="empId" header="emp  Id"  [hidden]="true" [sortable]="true"></p-column>
@@ -97,11 +96,13 @@
 
 <div class="container">
   <div *ngIf="allInActive">
-    <div class="ui-widget-header ui-helper-clearfix" style="padding:4px 10px;border-bottom: 0 none">
+   <!-- <div class="ui-widget-header ui-helper-clearfix" style="padding:4px 10px;border-bottom: 0 none">
       <i class="fa fa-search" style="float:right;margin:4px 4px 0 0"></i>
       <input #gb type="text" pInputText size="50" style="float:left" placeholder="Search by Name or Keywords">
-    </div>
-    <p-dataTable #dt3 [value]="allInactiveEmployees" [rows]="10" sortField="termDate" sortOrder="-1" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate"  [globalFilter]="gb" exportFilename="employees">
+    </div>-->
+    <br/>
+    <br/>
+    <p-dataTable #dt3 [value]="allInactiveEmployees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate"  [globalFilter]="gb" exportFilename="employees">
       <!--<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">-->
 
       <p-column field="empId" header="emp  Id"  [hidden]="true" [sortable]="true"></p-column>
