@@ -39,6 +39,7 @@ import {EmployeeService} from "./staffHome/employees/employee.service";
 import {ToastrModule} from "toastr-ng2";
 import {ToastModule, ToastOptions} from "ng2-toastr";
 import { TabContentComponent } from './staffHome/tab-content/tab-content.component';
+import { TabsModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 let options: ToastOptions = new ToastOptions({
   animate: 'fade',
@@ -81,7 +82,8 @@ let options: ToastOptions = new ToastOptions({
     SharedModule,
     ButtonModule,
     PaginatorModule,
-    SelectModule
+    SelectModule,
+    TabsModule
   ],
 
   providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService,EmployeeService],

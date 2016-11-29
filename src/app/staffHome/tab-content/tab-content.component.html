@@ -1,12 +1,44 @@
 <br><br><br>
 <div class="container">
 
-  <ul class="nav nav-tabs">
+  <!--<ul class="nav nav-tabs">
     <li ><a data-toggle="tab" [routerLinkActive]="['active']" href="#home">Home</a></li>
-    <li  ><a data-toggle="tab"    (click)="onEmployeeClick()" >Employees</a></li>
+    <li  ><a data-toggle="tab"   style="cursor: pointer;" (click)="onEmployeeClick()" >Employees</a></li>
     <li><a data-toggle="tab" [routerLinkActive]="['active']" href="#menu2">Menu 2</a></li>
     <li><a data-toggle="tab" [routerLinkActive]="['active']" href="#menu3">Menu 3</a></li>
-  </ul>
+  </ul>-->
+  <!--<ul class="nav nav-pills">
+    <li><a [routerLinkActive]="['active']" [routerLink]="['/home']"><strong>Home</strong></a></li>
+    <li><a [routerLinkActive]="['active']" [routerLink]="['/employees']"><strong>Employees</strong></a></li>
+  </ul>-->
+ <!-- <tabset>
+    &lt;!&ndash;<tab heading='Home'>Tab 1 content</tab>
+    <tab heading='Employees' (click)="onEmployeeClick()">Employees</tab>&ndash;&gt;
+  &lt;!&ndash;<tab *ngFor="let tabz of tabs"
+  [heading]="tabz.title"
+  [active]="tabz.active">
+  {{tabz?.content}}
+  </tab>&ndash;&gt;
+    <tab >
+      <template tabHeading><a [routerLinkActive]="['active']"  [routerLink]="['/employees']">Employees</a></template>
+    </tab>
+    <tab> <template tabHeading><a [routerLinkActive]="['active']"  [routerLink]="['/home']">Welcome to Home</a></template></tab>
+
+  </tabset>-->
+
+
+
+  <nav>
+    <button><a [routerLink]="['/home']"><strong>Home</strong></a></button>
+    <button><a [routerLink]="['/employees']"><strong>Employees</strong></a></button>
+    <button><a [routerLink]="['']"><strong>Candidates</strong></a></button>
+    <button><a [routerLink]="['']"><strong>Templates</strong></a></button>
+  </nav>
+
+
+
+
+
 
   <!--<div class="tab-content">-->
     <!--<div id="home" class="tab-pane fade in active">-->

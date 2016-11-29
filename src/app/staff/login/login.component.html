@@ -173,11 +173,11 @@
                   <fieldset>
                     <div class="input-group">
                       <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-                      <input class="form-control" type="text" placeholder="Email address">
+                      <input id="emailAddress" type="text" placeholder="Email Address" class="form-control" [(ngModel)]="staffLogin.emailAddress" ngDefaultControl="staffLogin.emailAddress" >
                     </div>
                     <div class="input-group">
                       <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-                      <input class="form-control" type="password" placeholder="Password">
+                      <input id="password" type="password" placeholder="Password" class="form-control" [(ngModel)]="staffLogin.password" ngDefaultControl="staffLogin.password" >
                     </div>
                   </fieldset>
                   <br/>
