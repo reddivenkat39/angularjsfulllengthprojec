@@ -1,14 +1,25 @@
 <app-header ></app-header>
 
-<div class="container-fluid">
-  <ul class="nav nav-pills pull-right">
-    <!--<li><a [routerLinkActive]="['active']" [routerLink]="['/candidates/addnewcandidate']"><strong><span class="glyphicon glyphicon-plus"></span>Add new candidate</strong></a></li>-->
-    <li ><a [routerLinkActive]="['active']" (click)="onAllEmployeeClicked()" style="cursor: pointer;"><strong>All</strong></a></li>
-    <li ><a [routerLinkActive]="['active']" (click)="onAllActiveClicked()" style="cursor: pointer;"><strong>Active</strong></a></li>
-    <li ><a [routerLinkActive]="['active']" (click)="onAllInActiveClicked()" style="cursor: pointer;"><strong>Terminated</strong></a></li>
-    <li ><a [routerLinkActive]="['active']" (click)="onAllSubContClicked()" style="cursor: pointer;"><strong>Sub-Cont</strong></a></li>
-    <!--<li><a href="#"><Strong>Export Details</Strong></a></li>-->
-  </ul>
+<div class="container">
+  <hr>
+  <div class="row">
+    <div class="col-xs-6">
+     <!-- <ul class="nav nav-pills pull-left">
+        &lt;!&ndash;<li><a [routerLinkActive]="['active']" [routerLink]="['/candidates/addnewcandidate']"><strong><span class="glyphicon glyphicon-plus"></span>Add new candidate</strong></a></li>&ndash;&gt;
+        <li ><a [routerLinkActive]="['active']" (click)="onAllEmployeeClicked()" style="cursor: pointer;"><strong>All</strong></a></li>
+        <li ><a [routerLinkActive]="['active']" (click)="onAllActiveClicked()" style="cursor: pointer;"><strong>Active</strong></a></li>
+        <li ><a [routerLinkActive]="['active']" (click)="onAllInActiveClicked()" style="cursor: pointer;"><strong>Terminated</strong></a></li>
+        <li ><a [routerLinkActive]="['active']" (click)="onAllSubContClicked()" style="cursor: pointer;"><strong>Sub-Cont</strong></a></li>
+        &lt;!&ndash;<li><a href="#"><Strong>Export Details</Strong></a></li>&ndash;&gt;
+      </ul>-->
+      <nav>
+        <a (click)="onAllEmployeeClicked()" style="cursor: pointer;"><strong>All</strong></a>&nbsp;|&nbsp;
+        <a (click)="onAllActiveClicked()" style="cursor: pointer;"><strong>Active</strong></a>&nbsp;|&nbsp;
+        <a (click)="onAllInActiveClicked()" style="cursor: pointer;"><strong>Terminated</strong></a>&nbsp;|&nbsp;
+        <a (click)="onAllSubContClicked()" style="cursor: pointer;"><strong>Sub-Cont</strong></a>
+      </nav>
+    </div>
+  </div>
 </div>
 <!--<router-outlet></router-outlet>-->
 <div class="container">

@@ -28,7 +28,6 @@ import {DatatableService} from "./staffHome/candidates/datatable/datatable.servi
 import {DataTableModule} from "primeng/components/datatable/datatable";
 import {SharedModule} from "primeng/components/common/shared";
 import {ButtonModule} from "primeng/components/button/button";
-import {TabViewModule} from "primeng/primeng";
 import {PaginatorModule} from "primeng/components/paginator/paginator";
 import { AllCandidatesComponent } from './staffHome/candidates/all-candidates/all-candidates.component';
 import { EditDeleteDirective } from './services/edit-delete.directive';
@@ -40,6 +39,7 @@ import {EmployeeService} from "./staffHome/employees/employee.service";
 import {ToastrModule} from "toastr-ng2";
 import {ToastModule, ToastOptions} from "ng2-toastr";
 import { TabContentComponent } from './staffHome/tab-content/tab-content.component';
+import { TabsModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 let options: ToastOptions = new ToastOptions({
   animate: 'fade',
@@ -83,7 +83,7 @@ let options: ToastOptions = new ToastOptions({
     ButtonModule,
     PaginatorModule,
     SelectModule,
-    TabViewModule
+    TabsModule
   ],
 
   providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService,EmployeeService],

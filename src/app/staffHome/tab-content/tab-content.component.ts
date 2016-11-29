@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -6,19 +6,22 @@ import {Router} from "@angular/router";
   templateUrl: './tab-content.component.html',
   styleUrls: ['./tab-content.component.css'],
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabContentComponent implements OnInit {
-private employeesButtonClicked = false;
+  private employeesButtonClicked = false;
   constructor(private router: Router) { }
-
+  /*public tabs:Array<any> = [
+   {title: 'Home', content: 'content 1'},
+   {title: 'Employees', content: 'content 2'}
+   ];*/
   ngOnInit() {
     // this.employeesButtonClicked=!this.employeesButtonClicked;
   }
 
-  onEmployeeClick(){
+  onEmployeeClick(event){
+    event.preventDefault();
     this.router.navigateByUrl('/employees');
   }
-
-
 
 }
