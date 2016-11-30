@@ -128,21 +128,21 @@ this.onAllEmployeeClicked();
   onClickView(){
     console.log("view clicked");
     this.viewEmployee=true;
-    this.employeeService.getDetailedViewEachEmployee(this.viewEmployeeDetails).subscribe(
-      res=>{
-        if (res.datares != null) {
-          console.log("yes getting data of each employee details ", res.datares);
-        } else if (res.successres != null) {
-          console.log("success ", res.successres);
-        } else if (res.errorres != null) {
-          console.log("OOPs no data  found", res.errorres);
-          this.toastManager.error(res.errorres,'No data Found');
-        } else {
-          console.log("server problem ");
-          this.toastManager.info('Oops!','Server Problem please Try Again');
-        }
-      }
-    );
+    // this.employeeService.getDetailedViewEachEmployee(this.viewEmployeeDetails).subscribe(
+    //   res=>{
+    //     if (res.datares != null) {
+    //       console.log("yes getting data of each employee details ", res.datares);
+    //     } else if (res.successres != null) {
+    //       console.log("success ", res.successres);
+    //     } else if (res.errorres != null) {
+    //       console.log("OOPs no data  found", res.errorres);
+    //       this.toastManager.error(res.errorres,'No data Found');
+    //     } else {
+    //       console.log("server problem ");
+    //       this.toastManager.info('Oops!','Server Problem please Try Again');
+    //     }
+    //   }
+    // );
   }
 
 
