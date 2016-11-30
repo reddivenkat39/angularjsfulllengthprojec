@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-.x-header{
+/*.x-header{
   background: #3399ff;
   padding-top: 0;
 }
@@ -7,7 +7,7 @@
   height:60px;
   padding-top: 0 !important;
   margin-top: 0;
-}
+}*/
 
 div.ui-datatable th, td {
   padding: 8px !important;

@@ -128,7 +128,7 @@ this.onAllEmployeeClicked();
   onClickView(){
     console.log("view clicked");
     this.viewEmployee=true;
-    this.employeeService.getDetailedViewEachEmployee(this.viewEmployeeDetails).subscribe(
+    /*this.employeeService.getDetailedViewEachEmployee(this.viewEmployeeDetails).subscribe(
       res=>{
         if (res.datares != null) {
           console.log("yes getting data of each employee details ", res.datares);
@@ -142,7 +142,7 @@ this.onAllEmployeeClicked();
           this.toastManager.info('Oops!','Server Problem please Try Again');
         }
       }
-    );
+    );*/
   }
 
 
