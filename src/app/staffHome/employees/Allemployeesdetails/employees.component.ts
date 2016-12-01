@@ -18,28 +18,28 @@ export class EmployeesComponent implements OnInit {
   private allActive = false;
   private allInActive = false;
   private allSubCont = false;
-  private viewEmployee=false;
+  private viewEmployee = false;
   allEmployees: Employee[];
   allActiveEmployees: Employee[];
   allInactiveEmployees: Employee[];
 
   isTermDate = '';
-  private viewEmployeeDetails ={
-    'mobilePhone':'',
-    'addrLine1':'',
-    'homeEmail':'',
-    'city':'',
-    'homePhone':'',
-    'state':'',
-    'zipCd':'',
+  private viewEmployeeDetails = {
+    'mobilePhone': '',
+    'addrLine1'  : '',
+    'homeEmail'  : '',
+    'city'       : '',
+    'homePhone'  : '',
+    'state'      : '',
+    'zipCd'      : '',
 
   };
 
-  constructor(private employeeService: EmployeeService, private toastManager: ToastsManager ) {
+  constructor(private employeeService: EmployeeService, private toastManager: ToastsManager) {
   }
 
   ngOnInit() {
-this.onAllEmployeeClicked();
+    this.onAllActiveClicked();
   }
 
 
@@ -48,7 +48,7 @@ this.onAllEmployeeClicked();
     this.allActive = false;
     this.allInActive = false;
     let errorConfig = new ToastConfig();
-    errorConfig.timeOut=0;
+    errorConfig.timeOut = 0;
     this.employeeService.getAllEmployeeDetails().subscribe(
       res => {
         if (res.datares != null) {
@@ -62,10 +62,10 @@ this.onAllEmployeeClicked();
           console.log("success ", res.successres);
         } else if (res.errorres != null) {
           console.log("OOPs no data  found", res.errorres);
-          this.toastManager.error(res.errorres,'No data Found');
+          this.toastManager.error(res.errorres, 'No data Found');
         } else {
           console.log("server problem ");
-          this.toastManager.info('Oops!','Server Problem please Try Again');
+          this.toastManager.info('Oops!', 'Server Problem please Try Again');
         }
       }
     );
@@ -79,9 +79,9 @@ this.onAllEmployeeClicked();
       res => {
         if (res.datares != null) {
           console.log("yes getting data ", res.datares);
-          this.allActiveEmployees = res.datares.filter(row =>  {
-            if(row.termDate == null)
-            return row;
+          this.allActiveEmployees = res.datares.filter(row => {
+            if (row.termDate == null)
+              return row;
           });
 
 
@@ -91,7 +91,7 @@ this.onAllEmployeeClicked();
           console.log("OOPs no data  found", res.errorres);
         } else {
           console.log("server problem ");
-          this.toastManager.info('Oops!','Server Problem please Try Again');
+          this.toastManager.info('Oops!', 'Server Problem please Try Again');
         }
       }
     );
@@ -106,8 +106,8 @@ this.onAllEmployeeClicked();
       res => {
         if (res.datares != null) {
           console.log("yes getting data ", res.datares);
-          this.allInactiveEmployees = res.datares.filter(row =>  {
-            if(row.termDate != null)
+          this.allInactiveEmployees = res.datares.filter(row => {
+            if (row.termDate != null)
               return row;
           });
 
@@ -118,16 +118,16 @@ this.onAllEmployeeClicked();
           console.log("OOPs no data  found", res.errorres);
         } else {
           console.log("server problem ");
-          this.toastManager.info('Oops!','Server Problem please Try Again');
+          this.toastManager.info('Oops!', 'Server Problem please Try Again');
         }
       }
     );
 
   }
 
-  onClickView(){
+  onClickView() {
     console.log("view clicked");
-    this.viewEmployee=true;
+    this.viewEmployee = true;
     // this.employeeService.getDetailedViewEachEmployee(this.viewEmployeeDetails).subscribe(
     //   res=>{
     //     if (res.datares != null) {
