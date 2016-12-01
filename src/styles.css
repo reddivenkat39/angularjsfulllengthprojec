@@ -11,16 +11,14 @@
   margin-top: 0;
 }*/
 #logo{
-  animation-name: rotate;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  background-size: 210px;
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
 }
-@keyframes rotate {
-  from { background-position-x: 0px; }
-  to { background-position-x: 210px; }
-}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 div.ui-datatable th, td {
   padding: 8px !important;
   text-align: center !important;
