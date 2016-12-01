@@ -1,9 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('../node_modules/primeng/resources/themes/omega/theme.css');
 @import url('../node_modules/primeng/resources/primeng.min.css');
-/*@import url('../node_modules/font-awesome/css/font-awesome.min.css');*/
-
-.x-header{
+/*.x-header{
   background: #3399ff;
   padding-top: 0;
 }
@@ -11,7 +9,16 @@
   height:60px;
   padding-top: 0 !important;
   margin-top: 0;
+}*/
+#logo{
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
 }
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 
 div.ui-datatable th, td {
   padding: 8px !important;

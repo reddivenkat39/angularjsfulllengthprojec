@@ -2,10 +2,10 @@
 
   <div class="navbar-header">
     <div class="navbar-header">
-      <a class="navbar-brand" [routerLink]="['/employee']">
-        <img class="img-circle" alt="Tabner" src="https://media.glassdoor.com/sqll/712673/tabner-squarelogo-1441891241504.png"
-             style="width:35px;height:35px;padding-bottom: 5%;text-align: center;">
-      </a>
+        <a class="navbar-brand" [routerLink]="['/employee']">
+          <img class="img-circle" alt="Tabner" src="./assets/fav1.png"
+               style="width:35px;height:35px;padding-bottom: 0px;text-align: center;padding-top: -30px !important;">
+        </a>
     </div>
 
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -38,7 +38,7 @@
       </li>
     </ul>
     <ul class="nav navbar-nav pull-right">
-      <li><a style="color: white;"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Logged in As chandu.adabala@tabnergc.com</a></li>
+      <li id="emailAddress"><a style="color: white;"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Logged in As {{loggedUserEmailAddress.emailAddress}}</a></li>
       <li id="logout"><a (click)="onLogout()" style="cursor:pointer;color: white;"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
     </ul>
 
