@@ -58,8 +58,11 @@ this.onAllEmployeeClicked();
           console.log("yes getting data ", res.datares);
           // this.toastManager.info('Employeedata','got the employee data');
           // this.toastrService.success('Hello world!', 'Toastr fun!',errorConfig);
-          this.allEmployees = res.datares;
-          console.log("term date ...", res.datares);
+          if(res.datares.midName == "NULL"){
+            this.allEmployees = res.datares;
+          }
+          /*this.allEmployees = res.datares;*/
+
 
         } else if (res.successres != null) {
           console.log("success ", res.successres);

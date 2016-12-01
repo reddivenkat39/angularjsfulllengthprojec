@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit{
 
   }
   ngOnInit(){
-    this.staffService.getUserName().subscribe(
+    /*this.staffService.getUserName().subscribe(
       res=>{
         if (res.datares != null) {
           console.log(res.datares);
@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit{
           console.log("server problem");
         }
       }
-    );
+    );*/
   }
   onLogout(){
     this.staffService.logout();

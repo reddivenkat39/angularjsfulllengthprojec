@@ -40,6 +40,8 @@ import {ToastrModule} from "toastr-ng2";
 import {ToastModule, ToastOptions} from "ng2-toastr";
 import { TabContentComponent } from './staffHome/tab-content/tab-content.component';
 import { TabsModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { VendorsComponent } from './staffHome/vendors/allvendordetails/vendors.component';
+import {VendorsService} from "./staffHome/vendors/vendors.service";
 
 let options: ToastOptions = new ToastOptions({
   animate: 'fade',
@@ -67,7 +69,8 @@ let options: ToastOptions = new ToastOptions({
     DetailsByIdComponent,
     SelectRowCandidatesComponent,
     EmployeesComponent,
-    TabContentComponent
+    TabContentComponent,
+    VendorsComponent
   ],
   imports: [
     ToastrModule,
@@ -86,7 +89,7 @@ let options: ToastOptions = new ToastOptions({
     TabsModule
   ],
 
-  providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService,EmployeeService],
+  providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService,EmployeeService, VendorsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

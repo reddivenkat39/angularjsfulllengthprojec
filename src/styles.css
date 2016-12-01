@@ -11,16 +11,16 @@
   margin-top: 0;
 }*/
 #logo{
-  -webkit-animation:spin 4s linear infinite;
-  -moz-animation:spin 4s linear infinite;
-  animation:spin 4s linear infinite;
+  -webkit-animation:spinHorizontal 800ms linear infinite;
+  -moz-animation:spinHorizontal 800ms linear infinite;
+  animation:spinHorizontal 800ms linear infinite;
 }
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+@-moz-keyframes spinHorizontal { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spinHorizontal { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spinHorizontal { 100% { -webkit-transform: rotateX(360deg); transform:rotateY(360deg); } }
 
 div.ui-datatable th, td {
-  padding: 8px !important;
+  padding: 1px !important;
   text-align: center !important;
   border-bottom: 1px solid #ddd !important;
   border-left:hidden !important;
@@ -31,3 +31,8 @@ div.ui-datatable table{
 div.ui-datatable tr:hover {
   background-color: #f5f5f5 !important;
 }
+/*div.ui-datatable td.ui-state-active{
+  background-color: #186ba0 !important;
+  color:white !important;
+}*/
+
