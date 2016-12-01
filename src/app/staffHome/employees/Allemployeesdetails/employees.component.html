@@ -1,7 +1,5 @@
 <app-header ></app-header>
-
 <div class="container">
-  <hr>
   <div class="row">
     <div class="col-xs-6">
      <!-- <ul class="nav nav-pills pull-left">
@@ -12,12 +10,12 @@
         <li ><a [routerLinkActive]="['active']" (click)="onAllSubContClicked()" style="cursor: pointer;"><strong>Sub-Cont</strong></a></li>
         &lt;!&ndash;<li><a href="#"><Strong>Export Details</Strong></a></li>&ndash;&gt;
       </ul>-->
-      <nav>
-        <a (click)="onAllEmployeeClicked()" style="cursor: pointer;"><strong>All</strong></a>&nbsp;|&nbsp;
-        <a (click)="onAllActiveClicked()" style="cursor: pointer;"><strong>Active</strong></a>&nbsp;|&nbsp;
-        <a (click)="onAllInActiveClicked()" style="cursor: pointer;"><strong>Terminated</strong></a>&nbsp;|&nbsp;
-        <a (click)="onAllSubContClicked()" style="cursor: pointer;"><strong>Sub-Cont</strong></a>
-      </nav>
+      <!--<nav class="empActiveColor">-->
+        <a (click)="onAllEmployeeClicked()" class="empActive"><strong>All</strong></a>&nbsp;|&nbsp;
+        <a (click)="onAllActiveClicked()" class="empActive"><strong>Active</strong></a>&nbsp;|&nbsp;
+        <a (click)="onAllInActiveClicked()" class="empActive"><strong>Terminated</strong></a>&nbsp;|&nbsp;
+        <a (click)="onAllSubContClicked()" ><strong>Sub-Cont</strong></a>
+     <!-- </nav>-->
     </div>
   </div>
 </div>
@@ -43,7 +41,7 @@
           </div>
         </form>
       </div>
-      <p-dataTable  #dt1 [value]="allEmployees" [rows]="10" [paginator]="true" sortField="hireDate" sortOrder="-1" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate" [globalFilter]="gb" exportFilename="employees">
+      <p-dataTable  #dt1 [value]="allEmployees" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate" [globalFilter]="gb" exportFilename="employees">
       <!--<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">-->
       <p-column styleClass="col-button">
         <template pTemplate type="header">View</template>
@@ -76,9 +74,7 @@
         </div>
       </form>
     </div>
-    <br/>
-    <br/>
-    <p-dataTable #dt2  [value]="allActiveEmployees"  [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate"   [globalFilter]="gb" exportFilename="employees">
+    <p-dataTable #dt2  [value]="allActiveEmployees"  [rows]="5" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate"   [globalFilter]="gb" exportFilename="employees">
       <!--<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">-->
       <p-column styleClass="col-button">
         <template pTemplate type="header">View</template>
@@ -112,9 +108,7 @@
         </div>
       </form>
     </div>
-    <br/>
-    <br/>
-    <p-dataTable #dt3 [value]="allInactiveEmployees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate"  [globalFilter]="gb" exportFilename="employees">
+    <p-dataTable #dt3 [value]="allInactiveEmployees" [rows]="5" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate"  [globalFilter]="gb" exportFilename="employees">
       <!--<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">-->
       <p-column styleClass="col-button">
         <template pTemplate type="header">View</template>
@@ -136,8 +130,6 @@
 </div>
 </div>
 <br/>
-<br/>
-<br/>
 <div class="container">
   <div *ngIf="viewEmployee">
     <div class="well">
@@ -148,10 +140,12 @@
             <table class="table borderless">
               <thead></thead>
               <tbody>
-              <!--<tr class="hide">-->
-                <!--<td>Emp Id</td>-->
-                <!--<td id="empId" [(ngModel)]="viewEmployeeAddressDetails.empId" ngDefaultControl="viewEmployeeAddressDetails.empId"></td>-->
-              <!--</tr>-->
+              <br/>
+              <br/>
+              <tr class="hide">
+                <td>Emp Id</td>
+                <td id="empId" [(ngModel)]="viewEmployeeAddressDetails.empId" ngDefaultControl="viewEmployeeAddressDetails.empId"></td>
+              </tr>
               <tr class="table-row">
                 <td>Current Position:</td>
                 <td></td>
@@ -175,8 +169,9 @@
           </div>
           <div class="col-xs-8">
             <table class="table borderless">
-              <thead>Contact Information</thead>
+              <thead><strong>Contact Information</strong></thead>
               <tbody>
+              <br/>
               <tr class="table-row">
                 <td>Phone No:</td>
                 <td id="mobilePhone" [(ngModel)]="viewEmployeeContactDetails.mobilePhone" ngDefaultControl="viewEmployeeContactDetails.mobilePhone">

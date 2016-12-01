@@ -4,7 +4,6 @@ import {Employee} from "../Employee";
 import {DataTable} from "primeng/components/datatable/datatable";
 import {ToastrService, ToastConfig} from "toastr-ng2";
 import {ToastsManager} from "ng2-toastr";
-import {Response} from "@angular/http";
 
 @Component({
   selector     : 'app-employees',
@@ -26,7 +25,8 @@ export class EmployeesComponent implements OnInit {
   empId:'';
   isTermDate = '';
   private viewEmployeeAddressDetails ={
-    'addrLine1':'asdfasdfasdf',
+    'empId':'',
+    'addrLine1':'',
     'city':'',
     'state':'',
     'zipCd':'',
@@ -57,11 +57,11 @@ export class EmployeesComponent implements OnInit {
           console.log("yes getting data ", res.datares);
           // this.toastManager.info('Employeedata','got the employee data');
           // this.toastrService.success('Hello world!', 'Toastr fun!',errorConfig);
-          this.allEmployees = res.datares;
+          if(res.datares.midName == "NULL"){
+            this.allEmployees = res.datares;
+          }
+          /*this.allEmployees = res.datares;*/
 
-          console.log("term date ...", this.allEmployees);
-          this.viewEmployeeAddressDetails = res.datares;
-          console.log("view employee address details", this.viewEmployeeAddressDetails);
 
         } else if (res.successres != null) {
           console.log("success ", res.successres);

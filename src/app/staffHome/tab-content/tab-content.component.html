@@ -30,12 +30,12 @@
 
   <nav>
     <button><a [ngClass]="{active: isActive}" [routerLink]="['/home']"><strong>Home</strong></a></button>
-    <button><a [ngClass]="{active: isActive}" [routerLink]="['/employees']"><strong>Employees</strong></a></button>
     <button><a [routerLink]="['']"><strong>Candidates</strong></a></button>
-    <button><a [routerLink]="['']"><strong>Templates</strong></a></button>
+    <button><a [ngClass]="{active: isActive}" [routerLink]="['/employees']"><strong>Employees</strong></a></button>
+    <button><a [ngClass]="{active: isActive}" [routerLink]="['/vendors']"><strong>Vendors</strong></a></button>
   </nav>
 
-
+<hr>
 
 
 
