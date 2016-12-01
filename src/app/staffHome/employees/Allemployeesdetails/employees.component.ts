@@ -22,17 +22,20 @@ export class EmployeesComponent implements OnInit {
   allEmployees: Employee[];
   allActiveEmployees: Employee[];
   allInactiveEmployees: Employee[];
-
+  empId:'';
   isTermDate = '';
-  private viewEmployeeDetails ={
-    'mobilePhone':'',
+  private viewEmployeeAddressDetails ={
+    'empId':'',
     'addrLine1':'',
-    'homeEmail':'',
     'city':'',
-    'homePhone':'',
     'state':'',
     'zipCd':'',
 
+  };
+  private viewEmployeeContactDetails ={
+    'mobilePhone':'',
+    'homePhone':'',
+    'homeEmail':'',
   };
 
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager ) {
@@ -125,13 +128,25 @@ this.onAllEmployeeClicked();
 
   }
 
-  onClickView(){
-    console.log("view clicked");
+  onClickView(eachEmployeeDetailId: Employee){
     this.viewEmployee=true;
-    /*this.employeeService.getDetailedViewEachEmployee(this.viewEmployeeDetails).subscribe(
+    console.log("on click eachEmployeeDetailId");
+    this.empId=eachEmployeeDetailId.empId;
+    console.log(eachEmployeeDetailId);
+    console.log("employee Id"+this.empId);
+    console.log("view clicked");
+
+    this.employeeService.getDetailedViewEachEmployee(this.empId).subscribe(
       res=>{
         if (res.datares != null) {
           console.log("yes getting data of each employee details ", res.datares);
+            this.viewEmployeeContactDetails=res.datares.map(
+              res => {
+                console.log("view employee contact details",res);
+                /*this.viewEmployeeContactDetails.homeEmail*/
+              }
+            );
+
         } else if (res.successres != null) {
           console.log("success ", res.successres);
         } else if (res.errorres != null) {
@@ -142,7 +157,7 @@ this.onAllEmployeeClicked();
           this.toastManager.info('Oops!','Server Problem please Try Again');
         }
       }
-    );*/
+    );
   }
 
 

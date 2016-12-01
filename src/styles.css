@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('../node_modules/primeng/resources/themes/omega/theme.css');
+@import url('../node_modules/primeng/resources/primeng.min.css');
 /*.x-header{
   background: #3399ff;
   padding-top: 0;
@@ -8,7 +10,17 @@
   padding-top: 0 !important;
   margin-top: 0;
 }*/
-
+#logo{
+  animation-name: rotate;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  background-size: 210px;
+}
+@keyframes rotate {
+  from { background-position-x: 0px; }
+  to { background-position-x: 210px; }
+}
 div.ui-datatable th, td {
   padding: 8px !important;
   text-align: center !important;
