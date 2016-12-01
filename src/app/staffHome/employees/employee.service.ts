@@ -30,7 +30,7 @@ export class EmployeeService {
     const candBody = {empId : empId };
     console.log("empId in bodySend",candBody);
     console.log("empId in headersSend",headersSend);
-    return this.http.post("http://10.10.5.55:8080/getemployeepersonalbyid",candBody,{headers: headersSend}).map(
+    return this.http.post("http://localhost:8080/employeeinformationbyid",candBody,{headers: headersSend}).map(
       (res:Response)=> {
         console.log("res.json from getemployeepersonalinfo By id",res.json());
         return res.json();

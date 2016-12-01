@@ -4,6 +4,7 @@ import {Employee} from "../Employee";
 import {DataTable} from "primeng/components/datatable/datatable";
 import {ToastrService, ToastConfig} from "toastr-ng2";
 import {ToastsManager} from "ng2-toastr";
+import {Response} from "@angular/http";
 
 @Component({
   selector     : 'app-employees',
@@ -25,8 +26,7 @@ export class EmployeesComponent implements OnInit {
   empId:'';
   isTermDate = '';
   private viewEmployeeAddressDetails ={
-    'empId':'',
-    'addrLine1':'',
+    'addrLine1':'asdfasdfasdf',
     'city':'',
     'state':'',
     'zipCd':'',
@@ -58,7 +58,10 @@ export class EmployeesComponent implements OnInit {
           // this.toastManager.info('Employeedata','got the employee data');
           // this.toastrService.success('Hello world!', 'Toastr fun!',errorConfig);
           this.allEmployees = res.datares;
-          console.log("term date ...", res.datares);
+
+          console.log("term date ...", this.allEmployees);
+          this.viewEmployeeAddressDetails = res.datares;
+          console.log("view employee address details", this.viewEmployeeAddressDetails);
 
         } else if (res.successres != null) {
           console.log("success ", res.successres);
@@ -138,13 +141,11 @@ export class EmployeesComponent implements OnInit {
     this.employeeService.getDetailedViewEachEmployee(this.empId).subscribe(
       res=>{
         if (res.datares != null) {
-          console.log("yes getting data of each employee details ", res.datares);
-            this.viewEmployeeContactDetails=res.datares.map(
-              res => {
-                console.log("view employee contact details",res);
-                /*this.viewEmployeeContactDetails.homeEmail*/
-              }
-            );
+          console.log("yes getting data of each employee details ", res.datares.empAddrDtls.empId);
+            this.viewEmployeeContactDetails=res.datares.empContactDtls;
+            this.viewEmployeeAddressDetails= res.datares.empAddrDtls;
+
+            console.log("view employee address details by id",this.viewEmployeeAddressDetails);
 
         } else if (res.successres != null) {
           console.log("success ", res.successres);
