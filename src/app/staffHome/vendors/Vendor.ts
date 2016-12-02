@@ -1,7 +1,7 @@
 export interface Vendor {
-  vendorId;
-  vendorName;
-  invoiceMode;
-  paymentTerm;
+  venId;
+  venNm;
+  invMode;
+  pmntTerm;
 }
 

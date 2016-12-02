@@ -6,13 +6,13 @@ export class VendorsService {
 
   constructor(private http: Http) { }
   getAllVendorDetails(){
-    /*console.log("Into get all vendor details method");
+    console.log("Into get all vendor details method");
     const headersSend = new Headers({'Content-Type':'application/json'});
-    return this.http.get("http://10.10.5.55:8080/getvendordetailinfo",{headers: headersSend}).map(
+    return this.http.get("http://localhost:8080/allvendordetails",{headers: headersSend}).map(
       (res:Response)=> {
         console.log("getting all Vendor details ",res.json());
         return res.json();
       }
-    );*/
+    );
   }
 }

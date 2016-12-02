@@ -14,7 +14,7 @@ export class VendorsComponent implements OnInit {
   constructor(private vendorService:VendorsService) { }
 
   ngOnInit() {
-    /*this.vendorService.getAllVendorDetails().subscribe(
+    this.vendorService.getAllVendorDetails().subscribe(
       res => {
         console.log("Into get all vendor details method response");
         if (res.datares != null) {
@@ -30,7 +30,7 @@ export class VendorsComponent implements OnInit {
           console.log("server problem ");
         }
       }
-    );*/
+    );
   }
   onClickView(onEachVendorDetail){
     this.allVendor=true;
