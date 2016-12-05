@@ -1,9 +1,10 @@
-import {Component, OnInit, ViewEncapsulation, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, ViewChild, ElementRef} from '@angular/core';
 import {EmployeeService} from "../employee.service";
 import {Employee} from "../Employee";
 import {DataTable} from "primeng/components/datatable/datatable";
 import {ToastrService, ToastConfig} from "toastr-ng2";
 import {ToastsManager} from "ng2-toastr";
+declare var $:any;
 
 @Component({
   selector     : 'app-employees',
@@ -12,7 +13,6 @@ import {ToastsManager} from "ng2-toastr";
   encapsulation: ViewEncapsulation.None,
 })
 export class EmployeesComponent implements OnInit {
-
 
   private allEmployee = false;
   private allActive = false;
@@ -24,6 +24,7 @@ export class EmployeesComponent implements OnInit {
   allInactiveEmployees: Employee[];
   empId:'';
   isTermDate = '';
+  selectedEmployee: Employee;
   private viewEmployeeAddressDetails ={
     'empId':'',
     'addrLine1':'',
@@ -41,8 +42,12 @@ export class EmployeesComponent implements OnInit {
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager ) {
   }
 
-  ngOnInit() {
+  ngOnInit(){
     this.onAllActiveClicked();
+    $("ul li").click(function() {
+      $(this).parent().children().removeClass("active");
+      $(this).addClass("active");
+    });
   }
 
 
@@ -130,6 +135,7 @@ export class EmployeesComponent implements OnInit {
 
   }
 
+
   onClickView(eachEmployeeDetailId: Employee){
     this.viewEmployee=true;
     console.log("on click eachEmployeeDetailId");
@@ -159,6 +165,4 @@ export class EmployeesComponent implements OnInit {
       }
     );
   }
-
-
 }

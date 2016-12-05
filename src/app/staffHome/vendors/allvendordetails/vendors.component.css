@@ -1,3 +1,4 @@
+/*
 .search-form .form-group {
   float: right !important;
   transition: all 0.35s, border-radius 0s;
@@ -19,11 +20,11 @@
   display: none;
 }
 .search-form .form-group input.form-control:-moz-placeholder {
-  /* Firefox 18- */
+  !* Firefox 18- *!
   display: none;
 }
 .search-form .form-group input.form-control::-moz-placeholder {
-  /* Firefox 19+ */
+  !* Firefox 19+ *!
   display: none;
 }
 .search-form .form-group input.form-control:-ms-input-placeholder {
@@ -48,3 +49,25 @@
   left: initial;
   font-size: 14px;
 }
+*/
+li{
+  cursor:pointer;
+}
+#vendorTab a{
+  border: 1px solid greenyellow;
+  font-size: medium;
+  background-color: #cccccc;
+}
+/*.nav>li>a {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}*/
+
+#pillTab >li>a{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+
+
+

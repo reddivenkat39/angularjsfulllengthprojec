@@ -404,15 +404,6 @@ a.hover {
   left: initial;
   font-size: 14px;
 }
-
-
-
-
-
-
-
-
-
 /*.icon-addon.addon-md .glyphicon,*/
 /*.icon-addon .glyphicon,*/
 /*.icon-addon.addon-md .fa,*/
@@ -434,7 +425,11 @@ a.hover {
   border: none !important;
   text-align:left !important;
 }
-.empActive{
-  cursor: pointer;
-}
 
+li{
+  cursor:pointer;
+}
+li.active {
+  background: Yellow;
+  color: black !important;
+}
