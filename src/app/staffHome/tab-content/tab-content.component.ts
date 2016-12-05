@@ -21,7 +21,10 @@ export class TabContentComponent implements OnInit {
 
   onEmployeeClick(event){
     event.preventDefault();
+    console.log("clicked.....")
     this.router.navigateByUrl('/employees');
   }
+
+
 
 }

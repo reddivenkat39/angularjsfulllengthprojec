@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers, Response} from "@angular/http";
+import {HttpService} from "../../globalservices/http.service";
 
 @Injectable()
 export class CandidatesService {
 
-  constructor(private http: Http) {
+  constructor(private http: HttpService) {
   }
 
   sendScreeningDetails(myForm) {

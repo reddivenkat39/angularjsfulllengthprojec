@@ -1,8 +1,6 @@
-import {Component, OnInit, ViewEncapsulation, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, AfterViewInit} from '@angular/core';
 import {EmployeeService} from "../employee.service";
 import {Employee} from "../Employee";
-import {DataTable} from "primeng/components/datatable/datatable";
-import {ToastrService, ToastConfig} from "toastr-ng2";
 import {ToastsManager} from "ng2-toastr";
 
 @Component({
@@ -11,7 +9,7 @@ import {ToastsManager} from "ng2-toastr";
   styleUrls    : ['employees.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class EmployeesComponent implements OnInit {
+export class EmployeesComponent implements AfterViewInit  {
 
 
   private allEmployee = false;
@@ -41,7 +39,7 @@ export class EmployeesComponent implements OnInit {
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager ) {
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.onAllActiveClicked();
   }
 
@@ -50,6 +48,7 @@ export class EmployeesComponent implements OnInit {
     this.allEmployee = true;
     this.allActive = false;
     this.allInActive = false;
+
 
     this.employeeService.getAllEmployeeDetails().subscribe(
       res => {
@@ -142,10 +141,10 @@ export class EmployeesComponent implements OnInit {
       res=>{
         if (res.datares != null) {
           console.log("yes getting data of each employee details ", res.datares.empAddrDtls.empId);
-            this.viewEmployeeContactDetails=res.datares.empContactDtls;
+            this.viewEmployeeContactDetails=res.datares.empContacts;
             this.viewEmployeeAddressDetails= res.datares.empAddrDtls;
 
-            console.log("view employee address details by id",this.viewEmployeeAddressDetails);
+            console.log("view employee address details by id",this.viewEmployeeContactDetails);
 
         } else if (res.successres != null) {
           console.log("success ", res.successres);
@@ -159,6 +158,7 @@ export class EmployeesComponent implements OnInit {
       }
     );
   }
+
 
 
 }

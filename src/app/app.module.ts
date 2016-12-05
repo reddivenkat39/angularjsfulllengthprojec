@@ -1,27 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {HttpModule, XHRBackend, RequestOptions} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './staffHome/header/header.component';
 
 
-import { LoginComponent } from './staff/login/login.component';
-import { ForgetpasswordComponent } from './staff/forgetpassword/forgetpassword.component';
-import {StaffService} from "./staff/staffservices/staff.service";
+import { LoginComponent } from './users/login/login.component';
+import { ForgetpasswordComponent } from './users/forgetpassword/forgetpassword.component';
+import {StaffService} from "./users/userservices/staff.service";
 import {routing} from "./app.routing";
-import { LoginGuard } from "./services/login.guard";
+import { LoginGuard } from "./globalservices/login.guard";
 import { HomeComponent } from './staffHome/home/home.component';
 import { CandidatesComponent } from './staffHome/candidates/candidates.component';
 import { ScreeningComponent } from './staffHome/candidates/screening.component';
 import {CandidatesService} from "./staffHome/candidates/candidates.service";
-import { ResetpasswordComponent } from './staff/forgetpassword/resetpassword.component';
+import { ResetpasswordComponent } from './users/forgetpassword/resetpassword.component';
 
-import { AddstaffComponent } from './staff/addstaff/addstaff.component';
-import {AddstaffService} from "./staff/staffservices/addstaff.service";
+import { AddstaffComponent } from './users/createloginaccount/addstaff/addstaff.component';
+import {AddstaffService} from "./users/userservices/addstaff.service";
 import {MaterialModule} from "@angular/material";
-import { FileUploadComponent } from "./staff/file-upload/file-upload.component";
+import { FileUploadComponent } from "./users/file-upload/file-upload.component";
 import { AddnewcandidateComponent } from './staffHome/candidates/addnewcandidate/addnewcandidate.component';
 import { DatatableComponent } from './staffHome/candidates/datatable/datatable.component';
 import {DatatableService} from "./staffHome/candidates/datatable/datatable.service";
@@ -30,7 +30,7 @@ import {SharedModule} from "primeng/components/common/shared";
 import {ButtonModule} from "primeng/components/button/button";
 import {PaginatorModule} from "primeng/components/paginator/paginator";
 import { AllCandidatesComponent } from './staffHome/candidates/all-candidates/all-candidates.component';
-import { EditDeleteDirective } from './services/edit-delete.directive';
+import { EditDeleteDirective } from './globalservices/edit-delete.directive';
 import { DetailsByIdComponent } from './staffHome/candidates/all-candidates/details-by-id/details-by-id.component';
 import {SelectModule} from "angular2-select";
 import { SelectRowCandidatesComponent } from './staffHome/candidates/select-row-candidates/select-row-candidates.component';
@@ -42,6 +42,11 @@ import { TabContentComponent } from './staffHome/tab-content/tab-content.compone
 import { TabsModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { VendorsComponent } from './staffHome/vendors/allvendordetails/vendors.component';
 import {VendorsService} from "./staffHome/vendors/vendors.service";
+import {TabViewModule} from "primeng/components/tabview/tabview";
+import {HttpService} from "./globalservices/http.service";
+import { RoleRestrictDirective } from './globalservices/role-restrict.directive';
+import {RoleAccessService} from "./globalservices/role-access.service";
+
 
 let options: ToastOptions = new ToastOptions({
   animate: 'fade',
@@ -70,7 +75,8 @@ let options: ToastOptions = new ToastOptions({
     SelectRowCandidatesComponent,
     EmployeesComponent,
     TabContentComponent,
-    VendorsComponent
+    VendorsComponent,
+    RoleRestrictDirective
   ],
   imports: [
     ToastrModule,
@@ -86,10 +92,19 @@ let options: ToastOptions = new ToastOptions({
     ButtonModule,
     PaginatorModule,
     SelectModule,
-    TabsModule
+    TabsModule,
+    TabViewModule,
   ],
 
-  providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService,EmployeeService, VendorsService],
+  providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService,EmployeeService, VendorsService,RoleAccessService,
+    {
+      provide: HttpService,
+      useFactory: (backend: XHRBackend, options: RequestOptions) => {
+        return new HttpService(backend, options);
+      },
+      deps: [XHRBackend, RequestOptions]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

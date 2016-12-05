@@ -11,9 +11,9 @@
         &lt;!&ndash;<li><a href="#"><Strong>Export Details</Strong></a></li>&ndash;&gt;
       </ul>-->
       <!--<nav class="empActiveColor">-->
-        <a (click)="onAllEmployeeClicked()" class="empActive"><strong>All</strong></a>&nbsp;|&nbsp;
-        <a (click)="onAllActiveClicked()" class="empActive"><strong>Active</strong></a>&nbsp;|&nbsp;
-        <a (click)="onAllInActiveClicked()" class="empActive"><strong>Terminated</strong></a>&nbsp;|&nbsp;
+        <a (click)="onAllEmployeeClicked()" id="allEmployees" class="empActive"><strong>All</strong></a>&nbsp;|&nbsp;
+        <a (click)="onAllActiveClicked()" id="activeEmployees" class="empActive"><strong>Active</strong></a>&nbsp;|&nbsp;
+        <a (click)="onAllInActiveClicked()" id="inActiveEmployees" class="empActive"><strong>Terminated</strong></a>&nbsp;|&nbsp;
         <a (click)="onAllSubContClicked()" ><strong>Sub-Cont</strong></a>
      <!-- </nav>-->
     </div>
@@ -144,7 +144,7 @@
               <br/>
               <tr class="hide">
                 <td>Emp Id</td>
-                <td id="empId" [(ngModel)]="viewEmployeeAddressDetails.empId" ngDefaultControl="viewEmployeeAddressDetails.empId"></td>
+                <td id="empId" ></td>
               </tr>
               <tr class="table-row">
                 <td>Current Position:</td>
@@ -174,36 +174,37 @@
               <br/>
               <tr class="table-row">
                 <td>Phone No:</td>
-                <td id="mobilePhone" [(ngModel)]="viewEmployeeContactDetails.mobilePhone" ngDefaultControl="viewEmployeeContactDetails.mobilePhone">
-                  {{viewEmployeeContactDetails.mobilePhone}}
+                <td id="mobilePhone">
+                  {{viewEmployeeContactDetails?.mobilePhone}}
                 </td>
                 <td>Home Address:</td>
-                <td id="addrLine1" [(ngModel)]="viewEmployeeAddressDetails.addrLine1" ngDefaultControl="viewEmployeeAddressDetails.addrLine1">
-                {{viewEmployeeAddressDetails.addrLine1}}
+                <td id="addrLine1" >
+                {{viewEmployeeAddressDetails?.addrLine1}}
                 </td>
               </tr>
               <tr>
                 <td>Email:</td>
-                <td id="homeEmail" [(ngModel)]="viewEmployeeContactDetails.homeEmail" ngDefaultControl="viewEmployeeContactDetails.homeEmail">
-                  {{viewEmployeeContactDetails.homeEmail}}
+                <td id="homeEmail" >
+                  {{viewEmployeeContactDetails?.homeEmail}}
                 </td>
                 <td>City:</td>
-                <td id="city" [(ngModel)]="viewEmployeeAddressDetails.city" ngDefaultControl="viewEmployeeAddressDetails.city">
-                  {{viewEmployeeAddressDetails.city}}
+                <td id="city" >
+                  {{viewEmployeeAddressDetails?.city}}
+
                 </td>
               </tr>
               <tr>
                 <td>Emergency Contact:</td>
-                <td id="homePhone" [(ngModel)]="viewEmployeeContactDetails.homePhone" ngDefaultControl="viewEmployeeContactDetails.homePhone">
-                  {{viewEmployeeContactDetails.homePhone}}
+                <td id="homePhone">
+                  {{viewEmployeeContactDetails?.homePhone}}
                 </td>
                 <td>State:</td>
-                <td id="state" [(ngModel)]="viewEmployeeAddressDetails.state" ngDefaultControl="viewEmployeeAddressDetails.state">
-                  {{viewEmployeeAddressDetails.state}}
+                <td id="state" >
+                  {{viewEmployeeAddressDetails?.state}}
                 </td>
                 <td>Zip:</td>
-                <td id="zipCd" [(ngModel)]="viewEmployeeAddressDetails.zipCd" ngDefaultControl="viewEmployeeAddressDetails.zipCd">
-                  {{viewEmployeeAddressDetails.zipCd}}
+                <td id="zipCd">
+                  {{viewEmployeeAddressDetails?.zipCd}}
                 </td>
               </tr>
               </tbody>

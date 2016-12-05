@@ -29,13 +29,26 @@
 
 
   <nav>
-    <button><a [ngClass]="{active: isActive}" [routerLink]="['/home']"><strong>Home</strong></a></button>
-    <button><a [routerLink]="['']"><strong>Candidates</strong></a></button>
-    <button><a [ngClass]="{active: isActive}" [routerLink]="['/employees']"><strong>Employees</strong></a></button>
+    <button routerLinkActive="active" routerLinkActive="active-link"  [routerLink]="['/home']"><a ><strong>Home</strong></a></button>
+    <button><a  [routerLink]="['']"><strong>Candidates</strong></a></button>
+    <button><a routerLinkActive="active" [ngClass]="{active: isActive}"  [routerLink]="['/employees']"><strong>Employees</strong></a></button>
     <button><a [ngClass]="{active: isActive}" [routerLink]="['/vendors']"><strong>Vendors</strong></a></button>
   </nav>
 
 <hr>
+
+  <!--<h3 class="first">Default</h3>-->
+  <!--<p-tabView>-->
+    <!--<p-tabPanel header="Godfather I" leftIcon="fa-calendar">-->
+
+    <!--</p-tabPanel>-->
+    <!--<p-tabPanel header="Godfather II" leftIcon="fa-print">-->
+      <!--Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.-->
+    <!--</p-tabPanel>-->
+    <!--<p-tabPanel header="Godfather III" leftIcon="fa-bell-o" rightIcon="fa-bookmark-o">-->
+      <!--After a break of more than  15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.-->
+    <!--</p-tabPanel>-->
+  <!--</p-tabView>-->
 
 
 

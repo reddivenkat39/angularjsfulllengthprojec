@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {StaffService} from "../../staff/staffservices/staff.service";
+import {Component, OnInit, Input} from '@angular/core';
+import {StaffService} from "../../users/userservices/staff.service";
+import {LoginComponent} from "../../users/login/login.component";
 
 @Component({
   selector: 'app-header',
@@ -7,13 +8,17 @@ import {StaffService} from "../../staff/staffservices/staff.service";
   styleUrls: ['header.component.css']
 })
 export class HeaderComponent implements OnInit{
+  @Input() loggedUser: string;
+
   private loggedUserEmailAddress={
     'emailAddress':''
   };
-  constructor(private staffService:StaffService){
+  constructor(private staffService:StaffService, private loginComponent: LoginComponent){
 
   }
   ngOnInit(){
+    console.log('loggedUser is ', this.loggedUser);
+    console.log('user role is ', this.loginComponent.getDetailsByLogin.userRole);
     /*this.staffService.getUserName().subscribe(
       res=>{
         if (res.datares != null) {

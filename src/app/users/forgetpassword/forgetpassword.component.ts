@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {FormGroup, FormBuilder} from "@angular/forms";
-import {StaffService} from "../staffservices/staff.service";
+import {StaffService} from "../userservices/staff.service";
 
 @Component({
   selector: 'app-forgetpassword',

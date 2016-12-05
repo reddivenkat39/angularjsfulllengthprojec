@@ -1,14 +1,15 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, Response} from "@angular/http";
+import { Headers, Response} from "@angular/http";
 import 'rxjs/Rx';
 import {Router} from "@angular/router";
+import {HttpService} from "../../globalservices/http.service";
 
 
 @Injectable()
 export class StaffService {
 
 
-  constructor(private http: Http, private  router: Router) {
+  constructor(private http: HttpService, private  router: Router) {
   }
 
   sendLoginCredentials(staffLogin) {
