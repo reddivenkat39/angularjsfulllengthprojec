@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 })
 export class TabContentComponent implements OnInit {
   private employeesButtonClicked = false;
+  private abc=true;
   constructor(private router: Router) { }
   /*public tabs:Array<any> = [
    {title: 'Home', content: 'content 1'},
@@ -23,6 +24,9 @@ export class TabContentComponent implements OnInit {
     event.preventDefault();
     console.log("clicked.....")
     this.router.navigateByUrl('/employees');
+  }
+  xyz(){
+    this.abc=false;
   }
 
 

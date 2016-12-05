@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
-import {Http,Headers, Response} from "@angular/http";
+import {Headers, Response} from "@angular/http";
 import {HttpService} from "../../globalservices/http.service";
+import {ActiveVendorEmployee} from "./ActiveVendorEmployee.interface";
+import {InActiveVendorEmployee} from "./InActiveVendorEmployee.interface";
+import {EmployeeInvoice} from "./EmployeeInvoice.interface";
+import {VendorInvoice} from "./VendorInvoice.interface";
 
 @Injectable()
 export class VendorsService {
@@ -15,5 +19,29 @@ export class VendorsService {
         return res.json();
       }
     );
+  }
+  getVendorActiveEmployees() {
+    return this.http.get('/app/staffHome/vendors/activeVendorEmployees.json')
+      .toPromise()
+      .then(res =>< ActiveVendorEmployee[] > res.json().data)
+      .then(data => { return data; });
+  }
+  getVendorInActiveEmployees(){
+    return this.http.get('/app/staffHome/vendors/inActiveVendorEmployees.json')
+      .toPromise()
+      .then(res =>< InActiveVendorEmployee[] > res.json().data)
+      .then(data => { return data; });
+  }
+  getEmployeeInvoices(){
+    return this.http.get('/app/staffHome/vendors/employeeInvoices.json')
+      .toPromise()
+      .then(res =>< EmployeeInvoice[] > res.json().data)
+      .then(data => { return data; });
+  }
+  getVendorInvoices(){
+    return this.http.get('/app/staffHome/vendors/vendorInvoices.json')
+      .toPromise()
+      .then(res =>< VendorInvoice[] > res.json().data)
+      .then(data => { return data; });
   }
 }

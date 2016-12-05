@@ -1,8 +1,17 @@
-nav .nav-pills a:active {
+/*nav .nav-pills a:active {
   color:black;
-  background-color: white;
+  background-color: blue;
+}*/
+
+a{
+  text-decoration: none !important;
 }
 
-.a {
+a.active{
+  font-weight: bold !important;
+  color: darkblue !important;
 
+}
+.panel-header{
+ color:orange;
 }
