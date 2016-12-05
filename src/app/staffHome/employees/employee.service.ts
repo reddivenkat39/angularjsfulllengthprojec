@@ -20,7 +20,7 @@ export class EmployeeService {
     /*console.log("Get each employee details: viewEmployeeDetails ", empId);
     console.log("get detailed view of each employee invoked");
     const headersSend = new Headers({'Content-Type':'application/json'});
-    return this.http.get("http://10.10.5.55:8080/getemployeepersonalinfo",{headers: headersSend}).map(
+    return this.http.get("http://localhost:8080/getemployeepersonalinfo",{headers: headersSend}).map(
       (res:Response)=> {
         console.log("getting each employee details",res.json());
         return res.json();

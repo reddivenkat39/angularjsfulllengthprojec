@@ -6,7 +6,7 @@ import {LoginComponent} from "../users/login/login.component";
   selector: '[role-restrict]'
 })
 export class RoleRestrictDirective {
-  constructor(private roleAccessService: RoleAccessService, private _elementRef: ElementRef, private loginComponent: LoginComponent) {}
+  constructor(private roleAccessService: RoleAccessService, private _elementRef: ElementRef) {}
 
   ngOnInit() {
     this.roleRestrict();
@@ -23,9 +23,9 @@ export class RoleRestrictDirective {
     for (let role of roles)
       if (role.toLowerCase().trim() === this.roleAccessService.user.admin.toLowerCase().trim() )
         accessDenied = true;
-      else if(role.toLowerCase().trim() === this.loginComponent.getDetailsByLogin.userRole.toLowerCase().trim()){
-        accessDenied = true;
-      }
+      // else if(role.toLowerCase().trim() === this.loginComponent.getDetailsByLogin.userRole.toLowerCase().trim()){
+      //   accessDenied = true;
+      // }
 
 
     if (!accessDenied) {

@@ -1,6 +1,8 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Inject} from '@angular/core';
 import {StaffService} from "../../users/userservices/staff.service";
 import {LoginComponent} from "../../users/login/login.component";
+import {Router} from "@angular/router";
+import {ToastsManager} from "ng2-toastr";
 
 @Component({
   selector: 'app-header',
@@ -13,12 +15,12 @@ export class HeaderComponent implements OnInit{
   private loggedUserEmailAddress={
     'emailAddress':''
   };
-  constructor(private staffService:StaffService, private loginComponent: LoginComponent){
+  constructor(private staffService:StaffService, private router: Router, private toast: ToastsManager, @Inject(StaffService) loginService: StaffService){
 
   }
   ngOnInit(){
     console.log('loggedUser is ', this.loggedUser);
-    console.log('user role is ', this.loginComponent.getDetailsByLogin.userRole);
+    // console.log('user role is ', this.loginComponent.getDetailsByLogin.userRole);
     /*this.staffService.getUserName().subscribe(
       res=>{
         if (res.datares != null) {
@@ -38,6 +40,27 @@ export class HeaderComponent implements OnInit{
     );*/
   }
   onLogout(){
-    this.staffService.logout();
+    this.staffService.logout().subscribe(
+      res=>{
+        if(res.successres!=null) {
+          localStorage.removeItem("token");
+          localStorage.removeItem("currentStaffEmailAddress");
+          this.router.navigate(['']);
+          this.toast.info('', res.successres);
+
+        }
+        else if(res.errorres!=null){
+
+
+          localStorage.removeItem("token");
+          localStorage.removeItem("currentStaffEmailAddress");
+          this.router.navigate(['']);
+          this.toast.error(res.errorres,'something went wrong...');
+        }
+        else {
+          this.toast.error('server is not working','Oops!!');
+        }
+      }
+    );
   }
 }

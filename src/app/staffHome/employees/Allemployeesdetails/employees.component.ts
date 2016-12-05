@@ -4,7 +4,7 @@ import {Employee} from "../Employee";
 import {DataTable} from "primeng/components/datatable/datatable";
 import {ToastrService, ToastConfig} from "toastr-ng2";
 import {ToastsManager} from "ng2-toastr";
-declare var $:any;
+declare var $: any;
 
 @Component({
   selector     : 'app-employees',
@@ -18,33 +18,37 @@ export class EmployeesComponent implements OnInit {
   private allActive = false;
   private allInActive = false;
   private allSubCont = false;
-  private viewEmployee=false;
+  private viewEmployee = false;
   allEmployees: Employee[];
   allActiveEmployees: Employee[];
   allInactiveEmployees: Employee[];
-  empId:'';
+  empId: '';
   isTermDate = '';
   selectedEmployee: Employee;
-  private viewEmployeeAddressDetails ={
-    'empId':'',
-    'addrLine1':'',
-    'city':'',
-    'state':'',
-    'zipCd':'',
+  private viewEmployeeDetails = {
+    'empId'  : '',
+    'empName': ''
+  }
+  private viewEmployeeAddressDetails = {
+
+    'addrLine1': '',
+    'city'     : '',
+    'state'    : '',
+    'zipCd'    : '',
 
   };
-  private viewEmployeeContactDetails ={
-    'mobilePhone':'',
-    'homePhone':'',
-    'homeEmail':'',
+  private viewEmployeeContactDetails = {
+    'mobilePhone': '',
+    'homePhone'  : '',
+    'homeEmail'  : '',
   };
 
-  constructor(private employeeService: EmployeeService, private toastManager: ToastsManager ) {
+  constructor(private employeeService: EmployeeService, private toastManager: ToastsManager) {
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.onAllActiveClicked();
-    $("ul li").click(function() {
+    $("ul li").click(function () {
       $(this).parent().children().removeClass("active");
       $(this).addClass("active");
     });
@@ -73,10 +77,10 @@ export class EmployeesComponent implements OnInit {
           console.log("success ", res.successres);
         } else if (res.errorres != null) {
           console.log("OOPs no data  found", res.errorres);
-          this.toastManager.error(res.errorres,'No data Found');
+          this.toastManager.error(res.errorres, 'No data Found');
         } else {
           console.log("server problem ");
-          this.toastManager.info('Oops!','Server Problem please Try Again');
+          this.toastManager.info('Oops!', 'Server Problem please Try Again');
         }
       }
     );
@@ -90,9 +94,9 @@ export class EmployeesComponent implements OnInit {
       res => {
         if (res.datares != null) {
           console.log("yes getting data ", res.datares);
-          this.allActiveEmployees = res.datares.filter(row =>  {
-            if(row.termDate == null)
-            return row;
+          this.allActiveEmployees = res.datares.filter(row => {
+            if (row.termDate == null)
+              return row;
           });
 
 
@@ -102,7 +106,7 @@ export class EmployeesComponent implements OnInit {
           console.log("OOPs no data  found", res.errorres);
         } else {
           console.log("server problem ");
-          this.toastManager.info('Oops!','Server Problem please Try Again');
+          this.toastManager.info('Oops!', 'Server Problem please Try Again');
         }
       }
     );
@@ -117,8 +121,8 @@ export class EmployeesComponent implements OnInit {
       res => {
         if (res.datares != null) {
           console.log("yes getting data ", res.datares);
-          this.allInactiveEmployees = res.datares.filter(row =>  {
-            if(row.termDate != null)
+          this.allInactiveEmployees = res.datares.filter(row => {
+            if (row.termDate != null)
               return row;
           });
 
@@ -129,7 +133,7 @@ export class EmployeesComponent implements OnInit {
           console.log("OOPs no data  found", res.errorres);
         } else {
           console.log("server problem ");
-          this.toastManager.info('Oops!','Server Problem please Try Again');
+          this.toastManager.info('Oops!', 'Server Problem please Try Again');
         }
       }
     );
@@ -137,31 +141,36 @@ export class EmployeesComponent implements OnInit {
   }
 
 
-  onClickView(eachEmployeeDetailId: Employee){
-    this.viewEmployee=true;
+  onClickView(eachEmployeeDetailId: Employee) {
+    this.viewEmployee = true;
     console.log("on click eachEmployeeDetailId");
-    this.empId=eachEmployeeDetailId.empId;
+    this.empId = eachEmployeeDetailId.empId;
     console.log(eachEmployeeDetailId);
-    console.log("employee Id"+this.empId);
+    console.log("employee Id" + this.empId);
     console.log("view clicked");
 
-    this.employeeService.getDetailedViewEachEmployee(this.empId).subscribe(
-      res=>{
-        if (res.datares != null) {
-          console.log("yes getting data of each employee details ", res.datares.empAddrDtls.empId);
-            this.viewEmployeeContactDetails=res.datares.empContacts;
-            this.viewEmployeeAddressDetails= res.datares.empAddrDtls;
 
-            console.log("view employee address details by id",this.viewEmployeeContactDetails);
+    this.employeeService.getDetailedViewEachEmployee(this.empId).subscribe(
+      res => {
+        if (res.datares != null) {
+          console.log("yes getting data of each employee details ", res.datares.empAddrDtls);
+          this.viewEmployeeDetails.empName = res.datares.firstName.concat(' ', res.datares.lastName);
+          console.log(this.viewEmployeeDetails.empName);
+          this.viewEmployeeContactDetails = res.datares.empContacts;
+          this.viewEmployeeAddressDetails = res.datares.empAddrDtls;
+          this.viewEmployeeDetails.empName = res.datares.empName;
+
+          //   Array.prototype.slice.call(res.datares.empAddrDtls,0);
+          // console.log("view employee address details by id",this.viewEmployeeAddressDetails);
 
         } else if (res.successres != null) {
           console.log("success ", res.successres);
         } else if (res.errorres != null) {
           console.log("OOPs no data  found", res.errorres);
-          this.toastManager.error(res.errorres,'No data Found');
+          this.toastManager.error(res.errorres, 'No data Found');
         } else {
           console.log("server problem ");
-          this.toastManager.info('Oops!','Server Problem please Try Again');
+          this.toastManager.info('Oops!', 'Server Problem please Try Again');
         }
       }
     );

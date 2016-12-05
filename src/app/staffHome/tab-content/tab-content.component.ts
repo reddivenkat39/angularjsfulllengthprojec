@@ -9,8 +9,9 @@ import {Router} from "@angular/router";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabContentComponent implements OnInit {
-  private employeesButtonClicked = false;
-  private abc=true;
+
+
+
   constructor(private router: Router) { }
   /*public tabs:Array<any> = [
    {title: 'Home', content: 'content 1'},
@@ -25,9 +26,7 @@ export class TabContentComponent implements OnInit {
     console.log("clicked.....")
     this.router.navigateByUrl('/employees');
   }
-  xyz(){
-    this.abc=false;
-  }
+
 
 
 
