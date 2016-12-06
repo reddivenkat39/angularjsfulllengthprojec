@@ -1,28 +1,32 @@
-<app-header ></app-header>
+<app-header></app-header>
 <div class="container">
-    <div class="row" >
-      <div class="col-md-4 col-md-offset-3" style=" float: right">
-        <form  class="search-form">
-          <div class="form-group has-feedback">
-            <!--<label for="search" class="sr-only">Search</label>-->
-            <input #gb type="text" class="form-control" name="search" pInputText size="30" style="float:right" placeholder="Search by Name or Keywords">
-            <span class="glyphicon glyphicon-search form-control-feedback"></span>
-          </div>
-        </form>
-      </div>
-      <p-dataTable  #dt1 [value]="allVendors" selectionMode="single" [(selection)]="selectedVendor" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [globalFilter]="gb">
-        <p-column styleClass="col-button">
-          <template pTemplate type="header">View</template>
-          <template let-allVendor="rowData" pTemplate type="body">
-            <span (click)="onClickView(allVendor)" style="cursor: pointer;"><i class="fa fa-angle-double-right" style="font-size: 16px;" aria-hidden="true"></i></span>
-          </template>
-        </p-column>
-        <p-column field="venId" header="Vendor Id"  [hidden]="true" [sortable]="true"></p-column>
-        <p-column field="venNm" header="Vendor Name" [sortable]="true"></p-column>
-        <p-column  field="invMode" header="Invoice Mode" [sortable]="true"></p-column>
-        <p-column field="pmntTerm" header="Payment Term" [sortable]="true"></p-column>
-      </p-dataTable>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-3" style=" float: right">
+      <form class="search-form">
+        <div class="form-group has-feedback">
+          <!--<label for="search" class="sr-only">Search</label>-->
+          <input #gb type="text" class="form-control" name="search" pInputText size="30" style="float:right"
+                 placeholder="Search by Name or Keywords">
+          <span class="glyphicon glyphicon-search form-control-feedback"></span>
+        </div>
+      </form>
     </div>
+    <p-dataTable #dt1 [value]="allVendors" selectionMode="single" [(selection)]="selectedVendor" [rows]="5"
+                 [paginator]="true" sortOrder="-1" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [globalFilter]="gb">
+      <p-column styleClass="col-button">
+        <template pTemplate type="header">View</template>
+        <template let-allVendor="rowData" pTemplate type="body">
+          <span (click)="onClickView(allVendor)" style="cursor: pointer;"><i class="fa fa-angle-double-right"
+                                                                             style="font-size: 16px;"
+                                                                             aria-hidden="true"></i></span>
+        </template>
+      </p-column>
+      <p-column field="venId" header="Vendor Id" [hidden]="true" [sortable]="true"></p-column>
+      <p-column field="venNm" header="Vendor Name" [sortable]="true"></p-column>
+      <p-column field="invMode" header="Invoice Mode" [sortable]="true"></p-column>
+      <p-column field="pmntTerm" header="Payment Term" [sortable]="true"></p-column>
+    </p-dataTable>
+  </div>
 </div>
 <br>
 <br>
@@ -34,7 +38,7 @@
         <a class="btn-xs" (click)="onClickVendorInvoice()" style="cursor: pointer;"><strong>Invoices</strong></a>
       </nav>-->
       <ul class="nav nav-pills" id="pillTab">
-        <li class="active" (click)="onClickVendorEmployee()" ><a data-toggle="pill">Employees</a></li>
+        <li class="active" (click)="onClickVendorEmployee()"><a data-toggle="pill">Employees</a></li>
         <li (click)="onClickVendorInvoice()"><a data-toggle="pill">Invoices</a></li>
         <li><a data-toggle="pill">Contact</a></li>
       </ul>
@@ -50,25 +54,33 @@
           <a (click)="onClickEachInActiveVendorEmployee()" style="cursor: pointer;">Inactive</a>
         </nav>-->
         <ul id="pillTab1" class="nav nav-pills">
-          <li class="list-inline active" (click)="onClickEachActiveVendorEmployee()"><a data-toggle="pill">Active</a></li>
+          <li class="list-inline active" (click)="onClickEachActiveVendorEmployee()"><a data-toggle="pill">Active</a>
+          </li>
           <li></li>
           <li (click)="onClickEachInActiveVendorEmployee()"><a data-toggle="pill">Inactive</a></li>
         </ul>
         <div *ngIf="eachActiveVendorEmployees">
+
           <div class="panel panel-default">
+            <div class="panel-header">
+              <button style="float: right" type="button" (click)="onClickEachEmployeeInvoice()" pButton
+                      label="invoices"></button>
+              <br>
+            </div>
             <div class="panel-body">
-              <p-dataTable  #dt1 [value]="activeVendorEmployees" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3" [rowsPerPageOptions]="[5,10]"
-                            scrollable="true" scrollHeight="100px">
+              <p-dataTable #dt1 [value]="activeVendorEmployees" [rows]="5" [paginator]="true" sortOrder="-1"
+                           [pageLinks]="3" [rowsPerPageOptions]="[5,10]"
+                           scrollable="true" scrollHeight="100px">
                 <p-column field="empName" header="Employee Name" [sortable]="true"></p-column>
                 <p-column field="clName" header="Client Name" [sortable]="true"></p-column>
-                <p-column  field="payRate" header="Pay Rate" [sortable]="true"></p-column>
+                <p-column field="payRate" header="Pay Rate" [sortable]="true"></p-column>
                 <p-column field="strtDate" header="Start Date" [sortable]="true"></p-column>
                 <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
-                <p-column styleClass="col-button">
-                  <template pTemplate type="header"></template>
-                  <template let-activeVendorEmployee="rowData" pTemplate type="body">
-                    <button pButton type="text" label="Employee Invoices" (click)="onClickEachEmployeeInvoice()"></button>
+                <p-column [style]="{'width':'38px'}" selectionMode="single" styleClass="col-button">
+                  <template let-activeVendorEmployee="rowData" pTemplate type="header">
+
                   </template>
+
                 </p-column>
               </p-dataTable>
             </div>
@@ -76,20 +88,28 @@
           </div>
         </div>
         <div *ngIf="eachInActiveVendorEmployees">
+
+
           <div class="panel panel-default">
+            <div class="panel-header">
+              <button style="float: right" type="button" (click)="onClickEachEmployeeInvoice()" pButton
+                      label="invoices"></button>
+              <br>
+            </div>
             <div class="panel-body">
-              <p-dataTable  #dt1 [value]="inActiveVendorEmployees" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3" [rowsPerPageOptions]="[5,10]"
-                            scrollable="true" scrollHeight="100px">
+              <p-dataTable #dt1 [value]="inActiveVendorEmployees" [rows]="5" [paginator]="true" sortOrder="-1"
+                           [pageLinks]="3" [rowsPerPageOptions]="[5,10]"
+                           scrollable="true" scrollHeight="100px">
                 <p-column field="empName" header="Employee Name" [sortable]="true"></p-column>
                 <p-column field="clName" header="Client Name" [sortable]="true"></p-column>
-                <p-column  field="payRate" header="Pay Rate" [sortable]="true"></p-column>
+                <p-column field="payRate" header="Pay Rate" [sortable]="true"></p-column>
                 <p-column field="strtDate" header="Start Date" [sortable]="true"></p-column>
                 <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
-                <p-column styleClass="col-button">
-                  <template pTemplate type="header"></template>
-                  <template let-inActiveVendorEmployees="rowData" pTemplate type="body">
-                    <button pButton type="text" label="Employee Invoices" (click)="onClickEachEmployeeInvoice()"></button>
+                <p-column [style]="{'width':'38px'}" selectionMode="single" styleClass="col-button">
+                  <template let-inActiveVendorEmployee="rowData" pTemplate type="header">
+
                   </template>
+
                 </p-column>
               </p-dataTable>
             </div>
@@ -105,12 +125,13 @@
             <strong>Vendor Name</strong>
           </div>
           <div class="panel-body">
-            <p-dataTable  #dt1 [value]="vendorInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3" [rowsPerPageOptions]="[5,10]"
-                          scrollable="true" scrollHeight="100px">
+            <p-dataTable #dt1 [value]="vendorInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3"
+                         [rowsPerPageOptions]="[5,10]"
+                         scrollable="true" scrollHeight="100px">
               <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
               <p-column field="strtDate" header="Start Date" [sortable]="true"></p-column>
               <p-column field="dueDate" header="Due Date" [sortable]="true"></p-column>
-              <p-column  field="hrs" header="Hours" [sortable]="true"></p-column>
+              <p-column field="hrs" header="Hours" [sortable]="true"></p-column>
               <p-column field="invAmt" header="INV_Amount" [sortable]="true"></p-column>
               <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
 
@@ -124,12 +145,13 @@
             <strong>Employee Name</strong>
           </div>
           <div class="panel body">
-            <p-dataTable  #dt1 [value]="employeeInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3" [rowsPerPageOptions]="[5,10]"
-                          scrollable="true" scrollHeight="100px">
+            <p-dataTable #dt1 [value]="employeeInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3"
+                         [rowsPerPageOptions]="[5,10]"
+                         scrollable="true" scrollHeight="100px">
               <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
               <p-column field="strtDate" header="Start Date" [sortable]="true"></p-column>
               <p-column field="dueDate" header="Due Date" [sortable]="true"></p-column>
-              <p-column  field="hrs" header="Hours" [sortable]="true"></p-column>
+              <p-column field="hrs" header="Hours" [sortable]="true"></p-column>
               <p-column field="invAmt" header="INV_Amount" [sortable]="true"></p-column>
               <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
             </p-dataTable>
