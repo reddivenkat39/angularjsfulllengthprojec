@@ -1,8 +1,8 @@
 
-#login{
+/*#login{
   background-color: #f1eded;
   color: blue;
-}
+}*/
 /*nav a.active {
   background-color: darkcyan;
   color:greenyellow;
@@ -115,3 +115,23 @@ rotating globe
 }
 
 
+#earth {
+  width: 100px;
+  height: 100px;
+  background: url(http://www.noirextreme.com/digital/Earth-Color4096.jpg);
+  border-radius: 50%;
+  background-size: 210px;
+  /*box-shadow: inset 16px 0 40px 6px ,*/
+  /*inset -3px 0 6px 2px ;*/
+  box-shadow: none;
+  animation-name: rotate;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  filter:brightness(200%);
+}
+
+@keyframes rotate {
+  from { background-position-x: 0px; }
+  to { background-position-x: 210px; }
+}

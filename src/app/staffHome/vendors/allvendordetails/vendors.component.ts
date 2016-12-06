@@ -46,14 +46,16 @@ export class VendorsComponent implements OnInit {
       }
     );
     this.allVendor=true;
-    this.eachActiveVendorEmployees=true;
-    this.eachInActiveVendorEmployees=false;
-    this.vendorService.getVendorActiveEmployees().then(activeVendorEmployees => this.activeVendorEmployees = activeVendorEmployees);
-    $("ul li").click(function() {
+    $("ol li").click(function() {
       $(this).parent().children().removeClass("active");
       $(this).addClass("active");
     });
-    $('nav a').click(function() {
+    this.eachActiveVendorEmployees=true;
+    this.eachInActiveVendorEmployees=false;
+    this.vendorService.getVendorActiveEmployees().then(activeVendorEmployees => this.activeVendorEmployees = activeVendorEmployees);
+
+
+    $("ul li").click(function() {
       $(this).parent().children().removeClass("active");
       $(this).addClass("active");
     });

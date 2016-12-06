@@ -28,21 +28,30 @@
 <br>
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <nav id="vendorTab">
+    <div class="col-md-6">
+      <!--<nav>
         <a class="active btn-xs" (click)="onClickVendorEmployee()" style="cursor: pointer;"><strong>Employees</strong></a>|
         <a class="btn-xs" (click)="onClickVendorInvoice()" style="cursor: pointer;"><strong>Invoices</strong></a>
-      </nav>
+      </nav>-->
+      <ul class="nav nav-pills" id="pillTab">
+        <li class="active" (click)="onClickVendorEmployee()" ><a data-toggle="pill">Employees</a></li>
+        <li (click)="onClickVendorInvoice()"><a data-toggle="pill">Invoices</a></li>
+        <li><a data-toggle="pill">Contact</a></li>
+      </ul>
     </div>
   </div>
 </div>
-<br/>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
       <div *ngIf="allVendor">
-        <ul id="pillTab" class="nav nav-pills">
-          <li class="active" (click)="onClickEachActiveVendorEmployee()"><a data-toggle="pill">Active</a></li>
+        <!--<nav id="vendorTab">
+          <a class="active" (click)="onClickEachActiveVendorEmployee()" style="cursor: pointer;">Active</a>|
+          <a (click)="onClickEachInActiveVendorEmployee()" style="cursor: pointer;">Inactive</a>
+        </nav>-->
+        <ul id="pillTab1" class="nav nav-pills">
+          <li class="list-inline active" (click)="onClickEachActiveVendorEmployee()"><a data-toggle="pill">Active</a></li>
+          <li></li>
           <li (click)="onClickEachInActiveVendorEmployee()"><a data-toggle="pill">Inactive</a></li>
         </ul>
         <div *ngIf="eachActiveVendorEmployees">
@@ -63,6 +72,7 @@
                 </p-column>
               </p-dataTable>
             </div>
+
           </div>
         </div>
         <div *ngIf="eachInActiveVendorEmployees">

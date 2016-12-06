@@ -2,13 +2,11 @@
 
   <div class="navbar-header">
     <div class="navbar-header">
-
-      <a class="navbar-brand">
-        <li style="text-align: left;padding-bottom: 3px;">
-          <!--<img id="logo"  class="img-circle" src="./assets/logoTabner.jpg" style="width:50px;height:50px;"/>-->
-          <img id="earth"    style="width:50px;height:50px;"/>
-        </li>
-      </a>
+        <a class="navbar-brand">
+          <!--<img class="img-circle" alt="Tabner" src="./assets/fav1.png"
+               style="width:35px;height:35px;padding-bottom: 0px;text-align: center;padding-top: -30px !important;">-->
+          <img id="earth"    style="width:30px;height:30px;"/>
+        </a>
     </div>
 
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -41,8 +39,8 @@
       </li>
     </ul>
     <ul class="nav navbar-nav pull-right">
-      <li id="emailAddress"><a style="color: white;"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Welcome, Chandu{{loggedUserEmailAddress.emailAddress}}</a></li>
-      <li id="logout"><a (click)="onLogout()" style="cursor:pointer;color: white;"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+      <li id="emailAddress"><a style="color: white;font-weight: bold;"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Welcome, Chandu{{loggedUserEmailAddress.emailAddress}}</a></li>
+      <li id="logout"><a (click)="onLogout()" style="cursor:pointer;color: white;font-weight: bold;"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
     </ul>
 
   </div>
