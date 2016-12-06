@@ -54,8 +54,7 @@
           <a (click)="onClickEachInActiveVendorEmployee()" style="cursor: pointer;">Inactive</a>
         </nav>-->
         <ul id="pillTab1" class="nav nav-pills">
-          <li class="list-inline active" (click)="onClickEachActiveVendorEmployee()"><a data-toggle="pill">Active</a>
-          </li>
+          <li class="list-inline active" (click)="onClickEachActiveVendorEmployee()"><a data-toggle="pill">Active</a></li>
           <li></li>
           <li (click)="onClickEachInActiveVendorEmployee()"><a data-toggle="pill">Inactive</a></li>
         </ul>
@@ -73,7 +72,7 @@
                            scrollable="true" scrollHeight="100px">
                 <p-column field="empName" header="Employee Name" [sortable]="true"></p-column>
                 <p-column field="clName" header="Client Name" [sortable]="true"></p-column>
-                <p-column field="payRate" header="Pay Rate" [sortable]="true"></p-column>
+                <p-column  field="payRate" header="Pay Rate" [sortable]="true"></p-column>
                 <p-column field="strtDate" header="Start Date" [sortable]="true"></p-column>
                 <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
                 <p-column [style]="{'width':'38px'}" selectionMode="single" styleClass="col-button">
@@ -116,48 +115,85 @@
           </div>
         </div>
       </div>
-      <div *ngIf="allInvoice">
+      <div *ngIf="allVendorInvoice">
+        <ul id="pillTab2" class="nav nav-pills">
+          <li (click)="onClickAllVendor()"><a data-toggle="pill">All</a></li>
+          <li class="list-inline active" (click)="onClickOpenInvoice()"><a data-toggle="pill">Open</a></li>
+          <li><a data-toggle="pill" (click)="onClickCloseInvoice()">Closed</a></li>
+        </ul>
+        <div *ngIf="eachVendorInvoice">
 
-      </div>
-      <div *ngIf="eachVendorInvoice">
-        <div class="panel panel-default">
-          <div class="panel-header">
-            <strong>Vendor Name</strong>
+          <div class="panel panel-default">
+            <div *ngIf="allInvoice">
+              <div class="panel-header">
+                <strong>Vendor 1</strong>
+                <!--<span><strong>Total Invoice Amount</strong></span>-->
+                <div style="float: right" class="form-group-inline">
+                  <label>
+                    Total Invoive Amt:
+                  </label>
+                  $20,000.00
+                </div>
+              </div>
+            </div>
+            <div *ngIf="openInvoice">
+              <div class="panel-header">
+                <strong>Vendor 1</strong>
+                <!--<span><strong>Total Invoice Amount</strong></span>-->
+                <div style="float: right" class="form-group-inline">
+                  <label>
+                    Total Invoive Amt:
+                  </label>
+                  $15,000.00
+                </div>
+              </div>
+            </div>
+            <div *ngIf="closeInvoice">
+              <div class="panel-header">
+                <strong>Vendor 1</strong>
+                <!--<span><strong>Total Invoice Amount</strong></span>-->
+                <div style="float: right" class="form-group-inline">
+                  <label>
+                    Total Invoive Amt:
+                  </label>
+                  $5,000.00
+                </div>
+              </div>
+            </div>
+            <div class="panel-body">
+              <p-dataTable  #dt1 [value]="vendorInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3" [rowsPerPageOptions]="[5,10]"
+                            scrollable="true" scrollHeight="100px">
+                <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
+                <p-column field="strtDate" header="Start Date" [sortable]="true"></p-column>
+                <p-column field="dueDate" header="Due Date" [sortable]="true"></p-column>
+                <p-column  field="hrs" header="Hours" [sortable]="true"></p-column>
+                <p-column field="invAmt" header="INV_Amount" [sortable]="true"></p-column>
+                <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
+
+              </p-dataTable>
+            </div>
           </div>
-          <div class="panel-body">
-            <p-dataTable #dt1 [value]="vendorInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3"
-                         [rowsPerPageOptions]="[5,10]"
-                         scrollable="true" scrollHeight="100px">
-              <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
-              <p-column field="strtDate" header="Start Date" [sortable]="true"></p-column>
-              <p-column field="dueDate" header="Due Date" [sortable]="true"></p-column>
-              <p-column field="hrs" header="Hours" [sortable]="true"></p-column>
-              <p-column field="invAmt" header="INV_Amount" [sortable]="true"></p-column>
-              <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
-
-            </p-dataTable>
+        </div>
+        <div *ngIf="eachEmployeeInvoice">
+          <div class="panel panel-default">
+            <div class="panel-header">
+              <strong>Employee Name</strong>
+            </div>
+            <div class="panel body">
+              <p-dataTable  #dt1 [value]="employeeInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3" [rowsPerPageOptions]="[5,10]"
+                            scrollable="true" scrollHeight="100px">
+                <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
+                <p-column field="strtDate" header="Start Date" [sortable]="true"></p-column>
+                <p-column field="dueDate" header="Due Date" [sortable]="true"></p-column>
+                <p-column  field="hrs" header="Hours" [sortable]="true"></p-column>
+                <p-column field="invAmt" header="INV_Amount" [sortable]="true"></p-column>
+                <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
+              </p-dataTable>
+            </div>
           </div>
         </div>
       </div>
-      <div *ngIf="eachEmployeeInvoice">
-        <div class="panel panel-default">
-          <div class="panel-header">
-            <strong>Employee Name</strong>
-          </div>
-          <div class="panel body">
-            <p-dataTable #dt1 [value]="employeeInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3"
-                         [rowsPerPageOptions]="[5,10]"
-                         scrollable="true" scrollHeight="100px">
-              <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
-              <p-column field="strtDate" header="Start Date" [sortable]="true"></p-column>
-              <p-column field="dueDate" header="Due Date" [sortable]="true"></p-column>
-              <p-column field="hrs" header="Hours" [sortable]="true"></p-column>
-              <p-column field="invAmt" header="INV_Amount" [sortable]="true"></p-column>
-              <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
-            </p-dataTable>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
 </div>

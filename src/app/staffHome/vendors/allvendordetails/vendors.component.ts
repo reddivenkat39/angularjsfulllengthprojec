@@ -18,7 +18,11 @@ export class VendorsComponent implements OnInit {
   private eachActiveVendorEmployees=false;
   private eachInActiveVendorEmployees=false;
   private eachVendorInvoice=false;
+  private allVendorInvoice=false;
   private eachEmployeeInvoice=false;
+  private allInvoice=false;
+  private openInvoice=false;
+  private closeInvoice=false;
   allVendors: Vendor[];
   activeVendorEmployees:ActiveVendorEmployee[];
   inActiveVendorEmployees :InActiveVendorEmployee[];
@@ -71,6 +75,7 @@ export class VendorsComponent implements OnInit {
     this.eachActiveVendorEmployees=true;
     this.eachInActiveVendorEmployees=false;
     this.allVendor=true;
+    this.allVendorInvoice=false;
     this.eachVendorInvoice=false;
     this.eachEmployeeInvoice=false;
     this.vendorService.getVendorActiveEmployees().then(activeVendorEmployees => this.activeVendorEmployees = activeVendorEmployees);
@@ -90,11 +95,12 @@ export class VendorsComponent implements OnInit {
     console.log("Inactive vendor employees");
   }
   onClickVendorInvoice(){
+    this.allVendorInvoice=true;
     this.eachVendorInvoice=true;
     this.eachEmployeeInvoice=false;
     this.allVendor=false;
+    this.openInvoice=true;
     this.vendorService.getVendorInvoices().then(vendorInvoices => this.vendorInvoices = vendorInvoices);
-
   }
   onClickEachEmployeeInvoice(){
     this.eachActiveVendorEmployees=false;
@@ -103,5 +109,21 @@ export class VendorsComponent implements OnInit {
     this.eachVendorInvoice=false;
     this.allVendor=false;
     this.vendorService.getEmployeeInvoices().then(employeeInvoices => this.employeeInvoices = employeeInvoices);
+  }
+  onClickAllVendor(){
+    this.allInvoice=true;
+    this.openInvoice=false;
+    this.closeInvoice=false;
+  }
+  onClickOpenInvoice(){
+    this.openInvoice=true;
+    this.allInvoice=false;
+    this.closeInvoice=false;
+  }
+  onClickCloseInvoice(){
+    this.closeInvoice=true;
+    this.allInvoice=false;
+    this.openInvoice=false;
+
   }
 }
