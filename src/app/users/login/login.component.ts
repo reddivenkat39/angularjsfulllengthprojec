@@ -1,22 +1,31 @@
-import {Component} from '@angular/core';
-import {StaffService} from "../staffservices/staff.service";
+import {Component, Output} from '@angular/core';
+import {StaffService} from "../userservices/staff.service";
 import {Response} from "@angular/http";
 import {error} from "util";
 import {Router} from "@angular/router";
 import {ToastsManager} from "ng2-toastr";
+import {HeaderComponent} from "../../staffHome/header/header.component";
 
 
 @Component({
   selector   : 'app-login',
   templateUrl: './login.component.html',
-  styleUrls  : ['./login.component.css']
+  styleUrls  : ['./login.component.css'],
+
 })
 export class LoginComponent {
+  @Output() loggedUserInLoginForm: string = "chandu";
+
   private staffLogin = {
     'emailAddress': 'chandu.adabala@tabnergc.com',
     'password'    : 'asdf'
   };
 
+  getDetailsByLogin = {
+    userRole: 'hr',
+    firstName: '',
+    lastName : ''
+  };
 
   private currentStaffEmailAddress;
   staffLogged: boolean = false;

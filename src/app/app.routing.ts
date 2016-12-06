@@ -2,15 +2,15 @@
  * Created by bapirazz naidu on 11/8/2016.
  */
 import { RouterModule,Routes} from "@angular/router";
-import {LoginComponent} from "./staff/login/login.component";
+import {LoginComponent} from "./users/login/login.component";
 import {HeaderComponent} from "./staffHome/header/header.component";
 import {HomeComponent} from "./staffHome/home/home.component";
 import {CandidatesComponent} from "./staffHome/candidates/candidates.component";
 import {ScreeningComponent} from "./staffHome/candidates/screening.component";
-import {LoginGuard} from "./services/login.guard";
-import {ForgetpasswordComponent} from "./staff/forgetpassword/forgetpassword.component";
-import {AddstaffComponent} from "./staff/addstaff/addstaff.component";
-import {ResetpasswordComponent} from "./staff/forgetpassword/resetpassword.component";
+import {LoginGuard} from "./globalservices/login.guard";
+import {ForgetpasswordComponent} from "./users/forgetpassword/forgetpassword.component";
+import {AddstaffComponent} from "./users/createloginaccount/addstaff/addstaff.component";
+import {ResetpasswordComponent} from "./users/forgetpassword/resetpassword.component";
 import {AddnewcandidateComponent} from "./staffHome/candidates/addnewcandidate/addnewcandidate.component";
 import {AllCandidatesComponent} from "./staffHome/candidates/all-candidates/all-candidates.component";
 import {DetailsByIdComponent} from "./staffHome/candidates/all-candidates/details-by-id/details-by-id.component";

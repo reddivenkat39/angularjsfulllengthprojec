@@ -4,11 +4,12 @@ import {
   FormBuilder,
   Validators,
 } from "@angular/forms";
-import {AddstaffService} from "../staffservices/addstaff.service";
+import {AddstaffService} from "../../userservices/addstaff.service";
+
 @Component({
   selector: 'app-addstaff',
-  templateUrl: './addstaff.component.html',
-  styleUrls: ['./addstaff.component.css']
+  templateUrl: 'addstaff.component.html',
+  styleUrls: ['addstaff.component.css']
 })
 export class AddstaffComponent {
   myAddStaffForm: FormGroup;
@@ -28,7 +29,7 @@ export class AddstaffComponent {
     });
   }
   onSubmit(){
-    console.log("form for add staff on submit");
+    console.log("form for add users on submit");
     console.log(this.myAddStaffForm.value.addStaffData);
     this.addStaffService.sendAddStaffDetails(this.myAddStaffForm.value.addStaffData).subscribe(
       res=>{

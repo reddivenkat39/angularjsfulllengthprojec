@@ -42,6 +42,10 @@ fieldset {
   border: 0;
   color: #000;
 }
+
+/*
+rotating globe
+ */
 #earth {
   width: 100px;
   height: 100px;

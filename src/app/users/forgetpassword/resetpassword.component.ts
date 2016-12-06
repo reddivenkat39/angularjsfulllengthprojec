@@ -2,7 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs";
 import {Http} from "@angular/http";
-import {StaffService} from "../staffservices/staff.service";
+import {StaffService} from "../userservices/staff.service";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 
 @Component({
