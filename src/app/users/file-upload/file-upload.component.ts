@@ -36,7 +36,7 @@ export class FileUploadComponent {
 
     console.log(formData,"form data........");
     this.http
-      .post('http://localhost:8080/uploadfile', formData,{headers: headersSend})
+      .post('http://10.10.5.55:8080/uploadfile', formData,{headers: headersSend})
       .subscribe(
         res=>{
           console.log(res);
