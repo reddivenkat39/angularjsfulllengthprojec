@@ -31,7 +31,7 @@
       </div>
       <p-dataTable #dt1 [value]="allEmployees" pInputText size="30" selectionMode="single"
                    [(selection)]="selectedEmployee" [rows]="5" [paginator]="true" sortField="hireDate" sortOrder="-1"
-                   [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate"
+                   [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
                    [globalFilter]="gb" exportFilename="employees">
         <!--<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">-->
         <p-column styleClass="col-button">
@@ -69,7 +69,7 @@
       </form>
     </div>
     <p-dataTable #dt2 [value]="allActiveEmployees" selectionMode="single" [(selection)]="selectedEmployee" [rows]="5"
-                 [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate"
+                 [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
                  [globalFilter]="gb" exportFilename="employees">
       <!--<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">-->
       <p-column styleClass="col-button">
@@ -108,11 +108,11 @@
       </form>
     </div>
     <p-dataTable #dt3 [value]="allInactiveEmployees" selectionMode="single" [(selection)]="selectedEmployee" [rows]="5"
-                 [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [(selection)]="selectedCandidate"
+                 [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
                  [globalFilter]="gb" exportFilename="employees">
       <!--<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">-->
-      <p-column styleClass="col-button">
-        <template pTemplate type="header">View</template>
+      <p-column field="view" header="view" >
+        <!--<template pTemplate type="header">View</template>-->
         <template let-allInactiveEmployee="rowData" pTemplate type="body">
           <!--<button pButton type="text"   (click)="onClickView(screenCandid)" label="View"></button>-->
           <span (click)="onClickView(allInactiveEmployee)" style="cursor: pointer;"><i class="fa fa-angle-double-right"
@@ -136,14 +136,8 @@
 <div class="container">
   <div *ngIf="viewEmployee">
     <div>
-      <h5 style="float: left"><strong>Employee Name </strong></h5>
-      <div class="form-group" >
-        <label for="empName">Candidate ID</label>
-        <input id="empName" type="text"
-               class="form-control" [(ngModel)]="viewEmployeeDetails.empName"
-               ngDefaultControl="viewEmployeeDetails.empName">
+      <h5 style="float: left"><strong>{{viewEmployeeDetails.empName}}</strong></h5>
 
-      </div>
     </div>
     <div class="panel panel-default">
       <div class="panel-body">
@@ -188,8 +182,7 @@
                   <br/>
                   <tr class="table-row">
                     <td>Phone No:</td>
-                    <td id="mobilePhone" [(ngModel)]="viewEmployeeContactDetails.mobilePhone"
-                        ngDefaultControl="viewEmployeeContactDetails.mobilePhone">
+                    <td id="mobilePhone">
                       {{viewEmployeeContactDetails.mobilePhone}}
                     </td>
                     <td>Home Address:</td>

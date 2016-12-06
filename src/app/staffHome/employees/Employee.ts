@@ -10,4 +10,5 @@ export interface Employee {
   ssn;
   hireDate;
   termDate;
+  view;
 }
