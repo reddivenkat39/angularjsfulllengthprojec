@@ -21,9 +21,9 @@ const APP_ROUTES: Routes = [
   { path: '', component: LoginComponent },
   {path:'forgotpassword', component:ForgetpasswordComponent},// used in login component
   {path:'resetpassword/:token', component:ResetpasswordComponent},
-  {path:'home', component: HomeComponent, canActivate: [LoginGuard]}, //given in
-  {path:'employees', component:EmployeesComponent, canActivate:[LoginGuard]},
-  {path:'vendors', component:VendorsComponent, canActivate:[LoginGuard]},
+  {path:'home', component: HomeComponent}, //given in
+  {path:'employees', component:EmployeesComponent},
+  {path:'vendors', component:VendorsComponent},
   {path:'candidates', component: CandidatesComponent, canActivate: [LoginGuard],
    children:[
      {path:'',component:AllCandidatesComponent,canActivate:[LoginGuard]},

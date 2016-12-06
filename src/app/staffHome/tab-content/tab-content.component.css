@@ -9,7 +9,7 @@ a{
 
 a.active{
   font-weight: bold !important;
-  color: darkblue !important;
+  color: darkblue;
 
 }
 .panel-header{

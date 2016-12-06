@@ -10,6 +10,9 @@
   padding-top: 0 !important;
   margin-top: 0;
 }*/
+body{
+  background-color: whitesmoke;
+}
 #logo{
   -webkit-animation:spinHorizontal 800ms linear infinite;
   -moz-animation:spinHorizontal 800ms linear infinite;

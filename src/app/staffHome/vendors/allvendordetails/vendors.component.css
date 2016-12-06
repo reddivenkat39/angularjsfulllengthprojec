@@ -53,11 +53,11 @@
 li{
   cursor:pointer;
 }
-#vendorTab a{
-  border: 1px solid greenyellow;
+/*#vendorTab a{
+  !*border: 1px solid greenyellow;*!
   font-size: medium;
-  background-color: #cccccc;
-}
+  !*background-color: #cccccc;*!
+}*/
 /*.nav>li>a {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -67,7 +67,14 @@ li{
   padding-top: 5px;
   padding-bottom: 5px;
 }
-
-
+#pillTab1>li>a{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color:whitesmoke;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
+  color:black !important;
+  font-weight: bold;
+}
 
 
