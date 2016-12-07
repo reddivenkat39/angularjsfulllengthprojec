@@ -65,7 +65,12 @@ export class VendorsComponent implements OnInit {
     });
   }
 
-  onClickView(onEachVendorDetail){
+  onClickView($event,onEachVendorDetail){
+    //TODO : optimise the below line
+    if($(".fa-angle-double-down").length > 0) {
+      $(".fa-angle-double-down")[0].className = "fa fa-angle-double-right";
+    }
+    $event.currentTarget.children[0].className = "fa fa-angle-double-down";
     this.allVendor=true;
     this.eachActiveVendorEmployees=true;
     this.vendorService.getVendorActiveEmployees().then(activeVendorEmployees => this.activeVendorEmployees = activeVendorEmployees);
@@ -100,6 +105,8 @@ export class VendorsComponent implements OnInit {
     this.eachEmployeeInvoice=false;
     this.allVendor=false;
     this.openInvoice=true;
+    this.allInvoice=false;
+    this.closeInvoice=false;
     this.vendorService.getVendorInvoices().then(vendorInvoices => this.vendorInvoices = vendorInvoices);
   }
   onClickEachEmployeeInvoice(){
@@ -107,6 +114,7 @@ export class VendorsComponent implements OnInit {
     this.eachInActiveVendorEmployees=false;
     this.eachEmployeeInvoice=true;
     this.eachVendorInvoice=false;
+    this.allVendorInvoice=true;
     this.allVendor=false;
     this.vendorService.getEmployeeInvoices().then(employeeInvoices => this.employeeInvoices = employeeInvoices);
   }

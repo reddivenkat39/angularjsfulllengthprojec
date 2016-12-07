@@ -46,6 +46,10 @@ import {TabViewModule} from "primeng/components/tabview/tabview";
 import {HttpService} from "./globalservices/http.service";
 import { RoleRestrictDirective } from './globalservices/role-restrict.directive';
 import {RoleAccessService} from "./globalservices/role-access.service";
+import { ProjectsComponent } from './staffHome/projects/projects.component';
+import {ProjectService} from "./staffHome/projects/project.service";
+import { InvoicesComponent } from './staffHome/invoices/invoices.component';
+import {InvoiceService} from "./staffHome/invoices/invoice.service";
 
 
 let options: ToastOptions = new ToastOptions({
@@ -76,7 +80,9 @@ let options: ToastOptions = new ToastOptions({
     EmployeesComponent,
     TabContentComponent,
     VendorsComponent,
-    RoleRestrictDirective
+    RoleRestrictDirective,
+    ProjectsComponent,
+    InvoicesComponent
   ],
   imports: [
     ToastrModule,
@@ -96,7 +102,7 @@ let options: ToastOptions = new ToastOptions({
     TabViewModule,
   ],
 
-  providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService,EmployeeService, VendorsService,RoleAccessService,
+  providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService,EmployeeService, VendorsService,RoleAccessService, ProjectService,InvoiceService,
     {
       provide: HttpService,
       useFactory: (backend: XHRBackend, options: RequestOptions) => {

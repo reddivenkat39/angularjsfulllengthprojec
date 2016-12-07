@@ -41,7 +41,12 @@ export class EmployeesComponent implements OnInit {
       $(this).parent().children().removeClass("active");
       $(this).addClass("active");
     });
-  }
+    /*$("#arrowChange").click(function (){
+      $("i", this).toggleClass("icon-circle-arrow-up icon-circle-arrow-down");
+    })*/
+
+
+    }
 
 
   onAllEmployeeClicked() {
@@ -131,7 +136,25 @@ export class EmployeesComponent implements OnInit {
   }
 
 
-  onClickView(eachEmployeeDetailId: Employee) {
+  onClickView($event, eachEmployeeDetailId: Employee) {
+    /*$('#arroySymbol').on('click', function () {
+      $("c", this).toggleClass("fa fa-angle-double-right fa fa-angle-double-down");
+      /!*var iSelector = $(this).find('i');
+      if (iSelector.hasClass('fa fa-angle-double-right')) {
+        iSelector.removeClass('fa fa-angle-double-right');
+        iSelector.addClass('fa fa-angle-double-down');
+      } else if (iSelector.hasClass('fa fa-angle-double-down')) {
+        iSelector.removeClass('fa fa-angle-double-down');
+        iSelector.addClass('fa fa-angle-double-right');
+      }*!/
+    });*/
+
+    //TODO : optimise the below line
+    if($(".fa-angle-double-down").length > 0) {
+      $(".fa-angle-double-down")[0].className = "fa fa-angle-double-right";
+    }
+    $event.currentTarget.children[0].className = "fa fa-angle-double-down";
+
     this.viewEmployee = true;
     console.log("on click eachEmployeeDetailId");
     this.viewClicked = !this.viewClicked;
