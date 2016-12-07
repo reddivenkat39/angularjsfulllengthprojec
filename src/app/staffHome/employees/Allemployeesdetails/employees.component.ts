@@ -132,6 +132,17 @@ export class EmployeesComponent implements OnInit {
 
 
   onClickView(eachEmployeeDetailId: Employee) {
+    $('#arroySymbol').on('click', function () {
+      var iSelector = $(this).find('i')
+      if (iSelector.hasClass('fa fa-angle-double-right')) {
+        iSelector.removeClass('fa fa-angle-double-right')
+        iSelector.addClass('fa fa-angle-double-down')
+      } else if (iSelector.hasClass('fa fa-angle-double-down')) {
+        iSelector.removeClass('fa fa-angle-double-down')
+        iSelector.addClass('fa fa-angle-double-right')
+      }
+    });
+
     this.viewEmployee = true;
     console.log("on click eachEmployeeDetailId");
     this.viewClicked = !this.viewClicked;
@@ -139,6 +150,15 @@ export class EmployeesComponent implements OnInit {
     console.log(eachEmployeeDetailId);
     console.log("employee Id" + this.empId);
     console.log("view clicked");
+
+    // $("template span").click(function() {
+    //   $(this).parent().children().removeClass("active");
+    //   $(this).addClass("active");
+    // });
+
+
+
+
     this.employeeService.getDetailedViewEachEmployee(this.empId).subscribe(
       res => {
         if (res.datares != null) {

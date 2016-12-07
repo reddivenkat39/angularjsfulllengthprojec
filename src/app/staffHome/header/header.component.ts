@@ -59,6 +59,10 @@ export class HeaderComponent implements OnInit{
         }
         else {
           this.toast.error('server is not working','Oops!!');
+          localStorage.removeItem("token");
+          localStorage.removeItem("currentStaffEmailAddress");
+          this.router.navigate(['']);
+
         }
       }
     );
