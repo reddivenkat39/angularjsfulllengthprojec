@@ -63,18 +63,29 @@ li{
   padding-bottom: 5px;
 }*/
 
-#pillTab >li>a{
+/*#pillTab >li>a{
   padding-top: 5px;
   padding-bottom: 5px;
+}*/
+#pillTab> li.active > a{
+  border-bottom: 2px solid blue;
+}
+#pillTab> li> a:hover{
+  background-color: lightgrey;
+}
+#pillTab>li>a{
+  color:black;
 }
 #pillTab1>li>a{
   padding-top: 5px;
   padding-bottom: 5px;
   background-color:whitesmoke;
 }
+
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
   color:black !important;
   font-weight: bold;
+  background-color: lightblue;
 }
 #pillTab2>li>a{
   padding-top: 5px;

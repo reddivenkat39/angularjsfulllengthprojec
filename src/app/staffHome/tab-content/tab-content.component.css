@@ -2,7 +2,9 @@
   color:black;
   background-color: blue;
 }*/
-
+#tabcontent a{
+  font-size: medium;
+}
 a{
   text-decoration: none !important;
 }
@@ -10,8 +12,10 @@ a{
 a.active{
   font-weight: bold !important;
   color: darkblue;
+  background-color: whitesmoke !important;
+
 
 }
-.panel-header{
- color:orange;
-}
+/*.panel-header{*/
+ /*color:orange;*/
+/*}*/

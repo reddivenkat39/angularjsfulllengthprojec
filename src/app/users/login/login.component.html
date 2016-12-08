@@ -74,16 +74,16 @@
                   <img src="https://s3.us-east-2.amazonaws.com/devh2o/TabnerLogo.png" style="width: 350px;height:200px"/>
                 </div>
               </li>
-              <li style="right: 0px; margin: 0px; position: absolute; overflow: hidden; width: 290px;height:400px;background-color:#3399ff" class="">
-                <div class="text-center">
+              <li style="right: 0px; margin: 0px; position: absolute; overflow: hidden; width: 300px;height:400px;background-color:#3399ff" class="">
+                <div >
                   <br/>
                   <br/>
                   <br/>
-                  <h4 style="color:white;font-family:'Lucida Sans';"><strong>Welcome to Tabner</strong></h4>
+                  <h4 class="text-center" style="color:white;font-family:'Lucida Sans';"><strong>Welcome to Tabner</strong></h4>
                   <br/>
                   <br/>
                   <div class="col-xs-12">
-                    <fieldset>
+
                       <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
                         <input id="emailAddress" type="text" placeholder="Email Address" class="form-control" [(ngModel)]="staffLogin.emailAddress" ngDefaultControl="staffLogin.emailAddress" >
@@ -92,7 +92,6 @@
                         <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
                         <input id="password" type="password" placeholder="Password" class="form-control" [(ngModel)]="staffLogin.password" ngDefaultControl="staffLogin.password" >
                       </div>
-                    </fieldset>
                     <br/>
                     <div class="form-group">
                       <input type="button" class="form-control btn-primary" name="login" value="Login" (click)="login()"/>
@@ -106,7 +105,7 @@
                   <br>
                   <br>
                   <br>
-                  <a [routerLink]="['/forgotpassword']" style="color:white;">Forget Your Password?</a>
+                  <a [routerLink]="['/forgotpassword']" style="color:white;">Forgot Your Password?</a>
                 </div>
               </li>
             </ul>

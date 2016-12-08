@@ -1,20 +1,9 @@
-
-/*#login{
-  background-color: #f1eded;
-  color: blue;
-}*/
-/*nav a.active {
-  background-color: darkcyan;
-  color:greenyellow;
-}
-nav a:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
-}*/
-
 nav {
   height: 5%;
   background-color: #3399ff;
+}
+.navbar-brand{
+  padding:10px 15px;
 }
 .search-form .form-group {
   float: right !important;
@@ -79,14 +68,11 @@ font-size: 14px;
 width: 10px;
 margin-left: -2.5px;
 text-align: right;
-padding: 9px 30px;
+padding: 14px 10px;
 top: 1px;
 
 }
 
-.a {
-  background-color: #cccccc;
-}
 
 
 /*
@@ -103,7 +89,7 @@ rotating globe
   /*inset -3px 0 6px 2px ;*/
   box-shadow: none;
   animation-name: rotate;
-  animation-duration: 4s;
+  animation-duration: 20s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   filter:brightness(200%);
@@ -115,23 +101,3 @@ rotating globe
 }
 
 
-#earth {
-  width: 100px;
-  height: 100px;
-  background: url(http://www.noirextreme.com/digital/Earth-Color4096.jpg);
-  border-radius: 50%;
-  background-size: 210px;
-  /*box-shadow: inset 16px 0 40px 6px ,*/
-  /*inset -3px 0 6px 2px ;*/
-  box-shadow: none;
-  animation-name: rotate;
-  animation-duration: 10s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  filter:brightness(200%);
-}
-
-@keyframes rotate {
-  from { background-position-x: 0px; }
-  to { background-position-x: 210px; }
-}
