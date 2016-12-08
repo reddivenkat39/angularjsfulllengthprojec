@@ -1,8 +1,9 @@
 export interface ActiveVendorEmployee {
-  empName;
-  clName;
-  payRate;
-  strtDate;
-  endDate;
+  // empName;
+  // clName;
+  rate;
+  invStDt;
+  invEndDt;
+  empId;
 }
 

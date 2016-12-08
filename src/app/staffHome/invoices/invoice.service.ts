@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core';
-import {Http} from "@angular/http";
+import {Http, Headers, Response} from "@angular/http";
 import {Invoice} from "./Invoice.interface";
+import {HttpService} from "../../globalservices/http.service";
 
 @Injectable()
 export class InvoiceService {
 
-  constructor(private http:Http) { }
-  getInvoices(){
-    return this.http.get('/app/staffHome/invoices/invoice.json')
-      .toPromise()
-      .then(res =>< Invoice[] > res.json().data)
-      .then(data => { return data; });
+  constructor(private http:HttpService) { }
+
+  getAllInvoices(){
+    const headersSend = new Headers({'Content-Type':'application/json'});
+
+    return this.http.get("http://localhost:8080/allinvoices",{headers: headersSend}).map(
+      (res:Response)=> {
+        console.log("getting all invoices ",res.json());
+        return res.json();
+      }
+    );
+
+
+
   }
 }
