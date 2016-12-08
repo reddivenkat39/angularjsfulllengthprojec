@@ -17,13 +17,17 @@ import {DetailsByIdComponent} from "./staffHome/candidates/all-candidates/detail
 import {SelectRowCandidatesComponent} from "./staffHome/candidates/select-row-candidates/select-row-candidates.component";
 import {EmployeesComponent} from "./staffHome/employees/Allemployeesdetails/employees.component";
 import {VendorsComponent} from "./staffHome/vendors/allvendordetails/vendors.component";
+import {ProjectsComponent} from "./staffHome/projects/projects.component";
+import {InvoicesComponent} from "./staffHome/invoices/invoices.component";
 const APP_ROUTES: Routes = [
   { path: '', component: LoginComponent },
   {path:'forgotpassword', component:ForgetpasswordComponent},// used in login component
   {path:'resetpassword/:token', component:ResetpasswordComponent},
-  {path:'home', component: HomeComponent}, //given in
-  {path:'employees', component:EmployeesComponent},
-  {path:'vendors', component:VendorsComponent},
+  {path:'home', component: HomeComponent,canActivate: [LoginGuard]}, //given in
+  {path:'employees', component:EmployeesComponent,canActivate: [LoginGuard]},
+  {path:'vendors', component:VendorsComponent,canActivate: [LoginGuard]},
+  {path:'projects',component:ProjectsComponent, canActivate:[LoginGuard]},
+  {path:'invoices',component:InvoicesComponent, canActivate:[LoginGuard]},
   {path:'candidates', component: CandidatesComponent, canActivate: [LoginGuard],
    children:[
      {path:'',component:AllCandidatesComponent,canActivate:[LoginGuard]},

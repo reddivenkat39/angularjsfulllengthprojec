@@ -125,7 +125,7 @@ rotating globe
   /*inset -3px 0 6px 2px ;*/
   box-shadow: none;
   animation-name: rotate;
-  animation-duration: 4s;
+  animation-duration: 10s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   filter:brightness(200%);

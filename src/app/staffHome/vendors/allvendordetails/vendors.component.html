@@ -14,9 +14,9 @@
     <p-dataTable #dt1 [value]="allVendors" selectionMode="single" [(selection)]="selectedVendor" [rows]="5"
                  [paginator]="true" sortOrder="-1" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [globalFilter]="gb">
       <p-column styleClass="col-button">
-        <template pTemplate type="header">View</template>
+        <template pTemplate type="header"></template>
         <template let-allVendor="rowData" pTemplate type="body">
-          <span (click)="onClickView(allVendor)" style="cursor: pointer;"><i class="fa fa-angle-double-right"
+          <span (click)="onClickView($event,allVendor)" style="cursor: pointer;"><i class="fa fa-angle-double-right"
                                                                              style="font-size: 16px;"
                                                                              aria-hidden="true"></i></span>
         </template>
@@ -91,7 +91,7 @@
 
           <div class="panel panel-default">
             <div class="panel-header">
-              <button style="float: right" type="button" (click)="onClickEachEmployeeInvoice()" pButton
+              <button style="float: right;color: blue;" type="button" (click)="onClickEachEmployeeInvoice()" pButton
                       label="invoices"></button>
               <br>
             </div>
@@ -126,11 +126,11 @@
           <div class="panel panel-default">
             <div *ngIf="allInvoice">
               <div class="panel-header">
-                <strong>Vendor 1</strong>
+                <strong style="color: blue;">Vendor 1</strong>
                 <!--<span><strong>Total Invoice Amount</strong></span>-->
-                <div style="float: right" class="form-group-inline">
+                <div style="float: right;color: blue;" class="form-group-inline">
                   <label>
-                    Total Invoive Amt:
+                    Total Invoice Amount:
                   </label>
                   $20,000.00
                 </div>
@@ -138,11 +138,11 @@
             </div>
             <div *ngIf="openInvoice">
               <div class="panel-header">
-                <strong>Vendor 1</strong>
+                <strong style="color: blue;">Vendor 1</strong>
                 <!--<span><strong>Total Invoice Amount</strong></span>-->
-                <div style="float: right" class="form-group-inline">
+                <div style="float: right;color: blue;" class="form-group-inline">
                   <label>
-                    Total Invoive Amt:
+                    Total Invoice Amount:
                   </label>
                   $15,000.00
                 </div>
@@ -150,11 +150,11 @@
             </div>
             <div *ngIf="closeInvoice">
               <div class="panel-header">
-                <strong>Vendor 1</strong>
+                <strong style="color: blue;">Vendor 1</strong>
                 <!--<span><strong>Total Invoice Amount</strong></span>-->
-                <div style="float: right" class="form-group-inline">
+                <div style="float: right;color: blue;" class="form-group-inline">
                   <label>
-                    Total Invoive Amt:
+                    Total Invoice Amount:
                   </label>
                   $5,000.00
                 </div>
@@ -176,10 +176,17 @@
         </div>
         <div *ngIf="eachEmployeeInvoice">
           <div class="panel panel-default">
+            <div *ngIf=""></div>
             <div class="panel-header">
-              <strong>Employee Name</strong>
+              <strong style="color: blue;">Pradeep Invoices</strong>
+              <div style="float: right;color: blue" class="form-group-inline">
+                <label>
+                  Total Invoice Amount:
+                </label>
+                $8,000.00
+              </div>
             </div>
-            <div class="panel body">
+            <div class="panel-body">
               <p-dataTable  #dt1 [value]="employeeInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3" [rowsPerPageOptions]="[5,10]"
                             scrollable="true" scrollHeight="100px">
                 <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
