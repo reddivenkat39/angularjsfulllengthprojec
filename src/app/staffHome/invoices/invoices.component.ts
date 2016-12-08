@@ -19,7 +19,22 @@ export class InvoicesComponent implements OnInit {
       $(this).parent().children().removeClass("active");
       $(this).addClass("active");
     });
-    this.invoiceService.getInvoices().then(allTabnerInvoices => this.allTabnerInvoices = allTabnerInvoices);
+    this.invoiceService.getAllInvoices().subscribe(
+      res=>{
+        if(res.datares!=null){
+          this.allTabnerInvoices = res.datares;
+        }
+        else if(res.datares!=null){
+          console.log('server problem');
+        }else if(res.errorres!=null){
+          console.log('server problem');
+        }else if(res.successres!=null){
+          console.log('server problem');
+        }else {
+          console.log('server problem');
+        }
+      }
+    );
   }
 
 }

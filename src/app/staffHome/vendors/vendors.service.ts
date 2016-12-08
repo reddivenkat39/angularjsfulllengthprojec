@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Headers, Response} from "@angular/http";
 import {HttpService} from "../../globalservices/http.service";
-import {ActiveVendorEmployee} from "./ActiveVendorEmployee.interface";
+
 import {InActiveVendorEmployee} from "./InActiveVendorEmployee.interface";
 import {EmployeeInvoice} from "./EmployeeInvoice.interface";
 import {VendorInvoice} from "./VendorInvoice.interface";
@@ -20,11 +20,21 @@ export class VendorsService {
       }
     );
   }
-  getVendorActiveEmployees() {
-    return this.http.get('/app/staffHome/vendors/activeVendorEmployees.json')
-      .toPromise()
-      .then(res =>< ActiveVendorEmployee[] > res.json().data)
-      .then(data => { return data; });
+  getVendorEmployeesByVendId(vendorId) {
+    // return this.http.get('/app/staffHome/vendors/activeVendorEmployees.json')
+    //   .toPromise()
+    //   .then(res =>< ActiveVendorEmployee[] > res.json().data)
+    //   .then(data => { return data; });
+
+    const headersSend = new Headers({'Content-Type':'application/json'});
+    const bodySend = {venId:vendorId};
+    console.log(bodySend);
+    return this.http.post("http://localhost:8080/allemployeesbyvendId",bodySend,{headers: headersSend}).map(
+      (res:Response)=> {
+        console.log("getting all employee details by vendor id"+" bodySend ",res.json());
+        return res.json();
+      }
+    );
   }
   getVendorInActiveEmployees(){
     return this.http.get('/app/staffHome/vendors/inActiveVendorEmployees.json')

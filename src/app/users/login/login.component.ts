@@ -14,7 +14,7 @@ import {HeaderComponent} from "../../staffHome/header/header.component";
 
 })
 export class LoginComponent {
-  @Output() loggedUserInLoginForm: string = "chandu";
+  public loggedUserInLoginForm: string = "chandu";
 
   private staffLogin = {
     'emailAddress': 'chandu.adabala@tabnergc.com',
