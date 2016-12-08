@@ -26,7 +26,7 @@ export class CandidatesService {
     const bodySend = JSON.stringify(addNewCandiddtls);
     console.log("myForm body ...........", bodySend);
     const headersSend = new Headers({'Content-Type': 'application/json'});
-    return this.http.post("/tep/savecandiddtls", bodySend, {headers: headersSend}).map((res: Response)=> {
+    return this.http.post("http://localhost:8080/savecandiddtls", bodySend, {headers: headersSend}).map((res: Response)=> {
         console.log("send candid deails", res);
         console.log("only key value pairs", res);
         return res.json()
@@ -37,7 +37,7 @@ export class CandidatesService {
   getScreenedCandids(){ //get screened candidates and selected candidates from the one get url itself
     console.log("get screenedcandidates invoked");
     const headersSend = new Headers({'Content-Type':'application/json'});
-    return this.http.get("/tep/getscreenedcands",{headers: headersSend}).map(
+    return this.http.get("http://localhost:8080/getscreenedcands",{headers: headersSend}).map(
       (res:Response)=> {
 return res.json();
       }
@@ -47,7 +47,7 @@ return res.json();
   getCandidateDetails(){
     console.log("get candidates invoked");
     const headersSend = new Headers({'Content-Type':'application/json'});
-    return this.http.get("/tep/getscreenedcands",{headers: headersSend}).map(
+    return this.http.get("http://localhost:8080/getscreenedcands",{headers: headersSend}).map(
       (res:Response)=> {
         return res.json().candDlts;
       }
@@ -59,7 +59,7 @@ return res.json();
     const candBody = {candId : candId };
     console.log("candId in bodySend",candBody);
     console.log("candId in headersSend",headersSend);
-    return this.http.post("/tep/screenedcandsbyid",candBody,{headers: headersSend}).map(
+    return this.http.post("http://localhost:8080/screenedcandsbyid",candBody,{headers: headersSend}).map(
       (res:Response)=> {
         console.log("res.json from getscreenedcanddetails By id",res.json());
         return res.json();

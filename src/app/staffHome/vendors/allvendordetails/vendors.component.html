@@ -79,6 +79,8 @@
                            [pageLinks]="3" [rowsPerPageOptions]="[5,10]"
                            scrollable="true" scrollHeight="100px"
                            reorderableColumns="true">
+                           [pageLinks]="3" [rowsPerPageOptions]="[5,10]" scrollable="true" scrollHeight="100px">
+                <p-column field="empId" header="Employee Id" [hidden]="true" [sortable]="true"></p-column>
                 <p-column field="empName" header="Employee Name" [sortable]="true"></p-column>
                 <p-column field="clName" header="Client Name" [sortable]="true"></p-column>
                 <p-column field="payRate" header="Pay Rate" [sortable]="true"></p-column>
