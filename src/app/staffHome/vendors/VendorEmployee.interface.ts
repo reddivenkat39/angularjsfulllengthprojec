@@ -1,4 +1,4 @@
-export interface ActiveVendorEmployee {
+export interface VendorEmployee {
   // empName;
   // clName;
   rate;

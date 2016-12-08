@@ -3,9 +3,9 @@ import {Vendor} from "./Vendor.interface";
 import {VendorsService} from "../vendors.service";
 import {EmployeeInvoice} from "../EmployeeInvoice.interface";
 import {VendorInvoice} from "../VendorInvoice.interface";
-import {ActiveVendorEmployee} from "../ActiveVendorEmployee.interface";
 import {InActiveVendorEmployee} from "../InActiveVendorEmployee.interface";
 import {ToastsManager} from "ng2-toastr";
+import {VendorEmployee} from "../VendorEmployee.interface";
 declare var $: any;
 
 @Component({
@@ -25,8 +25,8 @@ export class VendorsComponent implements OnInit {
   private openInvoice = false;
   private closeInvoice = false;
   allVendors: Vendor[];
-  activeVendorEmployees: ActiveVendorEmployee[];
-  inActiveVendorEmployees: InActiveVendorEmployee[];
+  vendorActiveEmployees: VendorEmployee[];
+  vendorInActiveEmployees: VendorEmployee[];
   employeeInvoices: EmployeeInvoice[];
   vendorInvoices: VendorInvoice[];
   selectedVendor: Vendor;
@@ -35,6 +35,7 @@ export class VendorsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.onClickEachActiveVendorEmployee();
     this.vendorService.getAllVendorDetails().subscribe(
       res => {
         console.log("Into get all vendor details method response");
@@ -53,13 +54,13 @@ export class VendorsComponent implements OnInit {
         }
       }
     );
-    this.allVendor = true;
+    /*this.allVendor = true;*/
     $("ol li").click(function () {
       $(this).parent().children().removeClass("active");
       $(this).addClass("active");
     });
-    this.eachActiveVendorEmployees = true;
-    this.eachInActiveVendorEmployees = false;
+    /*this.eachActiveVendorEmployees = true;
+    this.eachInActiveVendorEmployees = false;*/
     // this.vendorService.getVendorActiveEmployeesByVendId().then(activeVendorEmployees => this.activeVendorEmployees = activeVendorEmployees);
 
 
@@ -68,15 +69,11 @@ export class VendorsComponent implements OnInit {
       $(this).addClass("active");
     });
   }
+  onRowSelectVendor(event){
 
+  }
   onClickView($event, vendor: Vendor) {
-    //TODO : optimise the below line
-    if ($(".fa-angle-double-down").length > 0) {
-      $(".fa-angle-double-down")[0].className = "fa fa-angle-double-right";
-    }
-    $event.currentTarget.children[0].className = "fa fa-angle-double-down";
-
-    console.log("vendors tab clicked")
+    console.log("vendors tab clicked");
     this.allVendor = true;
     this.eachActiveVendorEmployees = true;
 
@@ -84,12 +81,14 @@ export class VendorsComponent implements OnInit {
       res => {
         if (res.datares != null) {
         console.log(res.datares);
-        this.activeVendorEmployees = res.datares;
-        //   .filter(
-        //   row=>{
-        //     if(row.)
-        //   }
-        // );
+        this.vendorActiveEmployees = res.datares.filter(row => {
+            if (row.invEndDt == null)
+              return row;
+          });
+        this.vendorInActiveEmployees = res.datares.filter(row => {
+            if (row.invEndDt != null)
+              return row;
+          });
         } else if (res.errorres != null) {
           console.log(res.errorres);
         } else if (res.successres != null) {
@@ -101,30 +100,33 @@ export class VendorsComponent implements OnInit {
     );
   }
 
-  onClickVendorEmployee() {
+  onClickVendorEmployee(){
+    console.log("vendor employees clicked");
+    this.allVendor = true;
     this.eachActiveVendorEmployees = true;
     this.eachInActiveVendorEmployees = false;
-    this.allVendor = true;
     this.allVendorInvoice = false;
     this.eachVendorInvoice = false;
     this.eachEmployeeInvoice = false;
-    // this.vendorService.getVendorActiveEmployees().then(activeVendorEmployees => this.activeVendorEmployees = activeVendorEmployees);
-  }
 
+  }
   onClickEachActiveVendorEmployee() {
     console.log("Active vendor employees");
     this.allVendor = true;
     this.eachActiveVendorEmployees = true;
     this.eachInActiveVendorEmployees = false;
-    // this.vendorService.getVendorActiveEmployees().then(activeVendorEmployees => this.activeVendorEmployees = activeVendorEmployees);
+    this.allVendorInvoice = false;
+    this.eachVendorInvoice = false;
+    this.eachEmployeeInvoice = false;
   }
-
   onClickEachInActiveVendorEmployee() {
+    console.log("In Active vendor employees");
     this.allVendor = true;
-    this.eachInActiveVendorEmployees = true;
     this.eachActiveVendorEmployees = false;
-    this.vendorService.getVendorInActiveEmployees().then(inActiveVendorEmployees => this.inActiveVendorEmployees = inActiveVendorEmployees);
-    console.log("Inactive vendor employees");
+    this.eachInActiveVendorEmployees = true;
+    this.allVendorInvoice = false;
+    this.eachVendorInvoice = false;
+    this.eachEmployeeInvoice = false;
   }
 
   onClickVendorInvoice() {
@@ -138,7 +140,7 @@ export class VendorsComponent implements OnInit {
     this.vendorService.getVendorInvoices().then(vendorInvoices => this.vendorInvoices = vendorInvoices);
   }
 
-  onClickEachEmployeeInvoice() {
+ /* onClickEachEmployeeInvoice() {
     this.eachActiveVendorEmployees = false;
     this.eachInActiveVendorEmployees = false;
     this.eachEmployeeInvoice = true;
@@ -146,7 +148,7 @@ export class VendorsComponent implements OnInit {
     this.allVendorInvoice = true;
     this.allVendor = false;
     this.vendorService.getEmployeeInvoices().then(employeeInvoices => this.employeeInvoices = employeeInvoices);
-  }
+  }*/
 
   onClickAllVendor() {
     this.allInvoice = true;

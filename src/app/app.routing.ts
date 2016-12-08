@@ -24,10 +24,10 @@ const APP_ROUTES: Routes = [
   {path:'forgotpassword', component:ForgetpasswordComponent},// used in login component
   {path:'resetpassword/:token', component:ResetpasswordComponent},
   {path:'home', component: HomeComponent,canActivate: [LoginGuard]}, //given in
-  {path:'employees', component:EmployeesComponent/*,canActivate: [LoginGuard]*/},
-  {path:'vendors', component:VendorsComponent/*,canActivate: [LoginGuard]*/},
-  {path:'projects',component:ProjectsComponent/*, canActivate:[LoginGuard]*/},
-  {path:'invoices',component:InvoicesComponent/*, canActivate:[LoginGuard]*/},
+  {path:'employees', component:EmployeesComponent,canActivate: [LoginGuard]},
+  {path:'vendors', component:VendorsComponent,canActivate: [LoginGuard]},
+  {path:'projects',component:ProjectsComponent, canActivate:[LoginGuard]},
+  {path:'invoices',component:InvoicesComponent, canActivate:[LoginGuard]},
   {path:'candidates', component: CandidatesComponent, canActivate: [LoginGuard],
    children:[
      {path:'',component:AllCandidatesComponent,canActivate:[LoginGuard]},

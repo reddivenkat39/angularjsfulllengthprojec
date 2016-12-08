@@ -28,8 +28,20 @@ div.ui-datatable th, td {
   text-align: center !important;
   font-size: 1.0em;
   font-family: calibri;
+ /* background-color: #777;*/
  /* border-bottom: 1px solid #ddd !important;
   border-left:hidden !important;*/
+}
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight{
+  background-color: #777;
+}
+.ui-button, button.ui-button.ui-state-default, .ui-button.ui-state-default{
+  border: none;
+  color: black;
+  background: whitesmoke;
+}
+.ui-button, .ui-button span, button.ui-button.ui-state-default span, .ui-button.ui-state-default span {
+  font-weight: lighter;
 }
 /*div.ui-datatable table{
   border: hidden !important;

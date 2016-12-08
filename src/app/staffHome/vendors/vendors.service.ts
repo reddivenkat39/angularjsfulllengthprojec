@@ -29,19 +29,19 @@ export class VendorsService {
     const headersSend = new Headers({'Content-Type':'application/json'});
     const bodySend = {venId:vendorId};
     console.log(bodySend);
-    return this.http.post("http://localhost:8080/allemployeesbyvendId",bodySend,{headers: headersSend}).map(
+    return this.http.post("http://10.10.5.55:8080/allemployeesbyvendId",bodySend,{headers: headersSend}).map(
       (res:Response)=> {
         console.log("getting all employee details by vendor id"+" bodySend ",res.json());
         return res.json();
       }
     );
   }
-  getVendorInActiveEmployees(){
+  /*getVendorInActiveEmployees(){
     return this.http.get('/app/staffHome/vendors/inActiveVendorEmployees.json')
       .toPromise()
       .then(res =>< InActiveVendorEmployee[] > res.json().data)
       .then(data => { return data; });
-  }
+  }*/
   getEmployeeInvoices(){
     return this.http.get('/app/staffHome/vendors/employeeInvoices.json')
       .toPromise()

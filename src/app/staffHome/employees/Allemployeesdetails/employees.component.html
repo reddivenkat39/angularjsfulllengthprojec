@@ -25,20 +25,24 @@
           </div>
         </form>
       </div>
-      <p-dataTable #dt1 [value]="allEmployees" pInputText size="30" selectionMode="single"
-                   [(selection)]="selectedEmployee" [rows]="5" [paginator]="true" sortField="hireDate" sortOrder="-1"
+      <p-dataTable #dt1 [value]="allEmployees" selectionMode="single"
+                   [(selection)]="selectedEmployee" (onRowSelect)="onRowSelectAllEmployees($event)"
+                   [rows]="5" [paginator]="true" sortField="hireDate" sortOrder="-1"
                    [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
-                   [globalFilter]="gb" exportFilename="employees" reorderableColumns="true">
-        <!--<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">-->
-        <p-column styleClass="col-button">
+                   [globalFilter]="gb" exportFilename="AllEmployees" reorderableColumns="true">
+        <!--<p-column styleClass="col-button">
           <template pTemplate type="header"></template>
           <template let-allEmployee="rowData" pTemplate type="body">
-            <!--<button pButton type="text"   (click)="onClickView(screenCandid)" label="View"></button>-->
             <span (click)="onClickViewAll($event,allEmployee)" style="cursor: pointer;"><i class="fa fa-angle-double-right"
                                                                                  style="font-size: 16px;"
                                                                                  aria-hidden="true"></i></span>
           </template>
-        </p-column>
+        </p-column>-->
+        <header>
+          <div class="ui-helper-clearfix">
+            <button type="button" pButton icon="fa-file-o" iconPos="left" label="Export Data" (click)="dt1.exportCSV()" style="float:left"></button>
+          </div>
+        </header>
         <p-column field="empId" header="emp  Id" [hidden]="true" [sortable]="true"></p-column>
         <p-column field="firstName" header="First Name" [sortable]="true"></p-column>
         <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
@@ -64,27 +68,23 @@
         </div>
       </form>
     </div>
-    <p-dataTable #dt2 [value]="allActiveEmployees" selectionMode="single" [(selection)]="selectedEmployee" [rows]="5"
+    <p-dataTable #dt2 [value]="allActiveEmployees" selectionMode="single" [(selection)]="selectedEmployee" (onRowSelect)="onRowSelectActiveEmployees($event)"
+                 [rows]="5"
                  [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
-                 [globalFilter]="gb" exportFilename="employees" reorderableColumns="true">
-      <!--<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">-->
-      <p-column styleClass="col-button">
+                 [globalFilter]="gb" exportFilename="ActiveEmployees" reorderableColumns="true">
+      <!--<p-column styleClass="col-button">
         <template pTemplate type="header"></template>
         <template let-allActiveEmployee="rowData" pTemplate type="body">
-          <!--<button pButton type="text"   ((click)="onClickView(allActiveEmployee)" label="View"></button>
-         &lt;!&ndash; <!--<span id="arroySymbol" (click)="onClickView(allActiveEmployee)" style="cursor: pointer;"><i id="foo1" class="fa fa-angle-double-right"
-                                                                                     style="font-size: 16px;"
-                                                                                   aria-hidden="true"></i></span>&ndash;&gt;-->
           <span (click)="onClickViewActive($event, allActiveEmployee)" style="cursor: pointer;"><i id="foo1" class="fa fa-angle-double-right"
                                                                                                       style="font-size: 16px;"
                                                                                                       aria-hidden="true"></i></span>
         </template>
-      </p-column>
-      <!--<p-column expander="true" styleClass="col-icon">
-        <template let-allActiveEmployee>
-          <div (click)="onClickView(allActiveEmployee)" style="cursor: pointer;"></div>
-        </template>
       </p-column>-->
+      <header>
+        <div class="ui-helper-clearfix">
+          <button type="button" pButton icon="fa-file-o" iconPos="left" label="Export Data" (click)="dt2.exportCSV()" style="float:left"></button>
+        </div>
+      </header>
       <p-column field="empId" header="emp  Id" [hidden]="true" [sortable]="true"></p-column>
       <p-column field="firstName" header="First Name" [sortable]="true"></p-column>
       <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
@@ -111,19 +111,22 @@
         </div>
       </form>
     </div>
-    <p-dataTable #dt3 [value]="allInactiveEmployees" selectionMode="single" [(selection)]="selectedEmployee" [rows]="5"
+    <p-dataTable #dt3 [value]="allInactiveEmployees" selectionMode="single" [(selection)]="selectedEmployee" (onRowSelect)="onRowSelectInActiveEmployees($event)"
+                 [rows]="5"
                  [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
-                 [globalFilter]="gb" exportFilename="employees" reorderableColumns="true">
-      <!--<p-dataTable #dt [value]="employees" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" exportFilename="employees">-->
-      <p-column field="view" >
-        <!--<template pTemplate type="header">View</template>-->
+                 [globalFilter]="gb" exportFilename="InActiveEmployees" reorderableColumns="true">
+     <!-- <p-column field="view" >
         <template let-allInactiveEmployee="rowData" pTemplate type="body">
-          <!--<button pButton type="text"   (click)="onClickView(screenCandid)" label="View"></button>-->
           <span (click)="onClickViewInActive($event,allInactiveEmployee)" style="cursor: pointer;"><i class="fa fa-angle-double-right"
                                                                                        style="font-size: 16px;"
                                                                                        aria-hidden="true"></i></span>
         </template>
-      </p-column>
+      </p-column>-->
+      <header>
+        <div class="ui-helper-clearfix">
+          <button type="button" pButton icon="fa-file-o" iconPos="left" label="Export Data" (click)="dt3.exportCSV()" style="float:left"></button>
+        </div>
+      </header>
       <p-column field="empId" header="emp  Id" [hidden]="true" [sortable]="true"></p-column>
       <p-column field="firstName" header="First Name" [sortable]="true"></p-column>
       <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
@@ -140,7 +143,7 @@
 <div class="container">
   <div *ngIf="viewActiveEmployee">
     <div>
-      <p style="float: left;color:blue;font-size: 12pt"><strong>{{viewEmployeeDetails.empName}}</strong></p>
+      <p style="float: left;color:blue;font-size: 11pt"><strong>{{viewEmployeeDetails.empName}}</strong></p>
 
     </div>
     <div class="panel panel-default">
@@ -155,8 +158,9 @@
                   <br/>
                   <tr class="hide">
                     <td style="font-weight: bold;">Emp Id</td>
-                    <td id="empId" [(ngModel)]="viewEmployeeAddressDetails.empId"
-                        ngDefaultControl="viewEmployeeAddressDetails.empId"></td>
+                    <td>
+                      {{viewEmployeeAddressDetails.empId}}
+                    </td>
                   </tr>
                   <tr class="table-row">
                     <td style="font-weight: bold;">Current Position:</td>
@@ -186,41 +190,35 @@
                   <br/>
                   <tr class="table-row">
                     <td style="font-weight: bold;">Phone No:</td>
-                    <td id="mobilePhone">
+                    <td>
                       {{viewEmployeeContactDetails.mobilePhone}}
                     </td>
                     <td style="font-weight: bold;">Home Address:</td>
-                    <td id="addrLine1" [(ngModel)]="viewEmployeeAddressDetails.addrLine1"
-                        ngDefaultControl="viewEmployeeAddressDetails.addrLine1">
+                    <td>
                       {{viewEmployeeAddressDetails.addrLine1}}
                     </td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Email:</td>
-                    <td id="homeEmail" [(ngModel)]="viewEmployeeContactDetails.homeEmail"
-                        ngDefaultControl="viewEmployeeContactDetails.homeEmail">
+                    <td>
                       {{viewEmployeeContactDetails.homeEmail }}
                     </td>
                     <td style="font-weight: bold;">City:</td>
-                    <td id="city" [(ngModel)]="viewEmployeeAddressDetails.city"
-                        ngDefaultControl="viewEmployeeAddressDetails.city">
+                    <td>
                       {{viewEmployeeAddressDetails.city}}
                     </td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Emergency Contact:</td>
-                    <td id="homePhone" [(ngModel)]="viewEmployeeContactDetails.homePhone"
-                        ngDefaultControl="viewEmployeeContactDetails.homePhone">
+                    <td>
                       {{viewEmployeeContactDetails.homePhone}}
                     </td>
                     <td style="font-weight: bold;">State:</td>
-                    <td id="state" [(ngModel)]="viewEmployeeAddressDetails.state"
-                        ngDefaultControl="viewEmployeeAddressDetails.state">
+                    <td>
                       {{viewEmployeeAddressDetails.state}}
                     </td>
                     <td style="font-weight: bold;">Zip:</td>
-                    <td id="zipCd" [(ngModel)]="viewEmployeeAddressDetails.zipCd"
-                        ngDefaultControl="viewEmployeeAddressDetails.zipCd">
+                    <td>
                       {{viewEmployeeAddressDetails.zipCd}}
                     </td>
                   </tr>
@@ -252,8 +250,9 @@
                   <br/>
                   <tr class="hide">
                     <td style="font-weight: bold;">Emp Id</td>
-                    <td id="empId" [(ngModel)]="viewEmployeeAddressDetails.empId"
-                        ngDefaultControl="viewEmployeeAddressDetails.empId"></td>
+                    <td>
+                      {{viewEmployeeAddressDetails.empId}}
+                    </td>
                   </tr>
                   <tr class="table-row">
                     <td style="font-weight: bold;">Current Position:</td>
@@ -283,41 +282,35 @@
                   <br/>
                   <tr class="table-row">
                     <td style="font-weight: bold;">Phone No:</td>
-                    <td id="mobilePhone">
+                    <td>
                       {{viewEmployeeContactDetails.mobilePhone}}
                     </td>
                     <td style="font-weight: bold;">Home Address:</td>
-                    <td id="addrLine1" [(ngModel)]="viewEmployeeAddressDetails.addrLine1"
-                        ngDefaultControl="viewEmployeeAddressDetails.addrLine1">
+                    <td>
                       {{viewEmployeeAddressDetails.addrLine1}}
                     </td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Email:</td>
-                    <td id="homeEmail" [(ngModel)]="viewEmployeeContactDetails.homeEmail"
-                        ngDefaultControl="viewEmployeeContactDetails.homeEmail">
+                    <td>
                       {{viewEmployeeContactDetails.homeEmail }}
                     </td>
                     <td style="font-weight: bold;">City:</td>
-                    <td id="city" [(ngModel)]="viewEmployeeAddressDetails.city"
-                        ngDefaultControl="viewEmployeeAddressDetails.city">
+                    <td>
                       {{viewEmployeeAddressDetails.city}}
                     </td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Emergency Contact:</td>
-                    <td id="homePhone" [(ngModel)]="viewEmployeeContactDetails.homePhone"
-                        ngDefaultControl="viewEmployeeContactDetails.homePhone">
+                    <td>
                       {{viewEmployeeContactDetails.homePhone}}
                     </td>
                     <td style="font-weight: bold;">State:</td>
-                    <td id="state" [(ngModel)]="viewEmployeeAddressDetails.state"
-                        ngDefaultControl="viewEmployeeAddressDetails.state">
+                    <td>
                       {{viewEmployeeAddressDetails.state}}
                     </td>
                     <td style="font-weight: bold;">Zip:</td>
-                    <td id="zipCd" [(ngModel)]="viewEmployeeAddressDetails.zipCd"
-                        ngDefaultControl="viewEmployeeAddressDetails.zipCd">
+                    <td>
                       {{viewEmployeeAddressDetails.zipCd}}
                     </td>
                   </tr>
@@ -334,7 +327,7 @@
 <div class="container">
   <div *ngIf="viewInActiveEmployee">
     <div>
-      <p style="float: left;color:blue;font-size: 12pt"><strong>{{viewEmployeeDetails.empName}}</strong></p>
+      <p style="float: left;color:blue;font-size: 11pt"><strong>{{viewEmployeeDetails.empName}}</strong></p>
 
     </div>
     <div class="panel panel-default">
@@ -380,7 +373,7 @@
                   <br/>
                   <tr class="table-row">
                     <td style="font-weight: bold;">Phone No:</td>
-                    <td id="mobilePhone">
+                    <td>
                       {{viewEmployeeContactDetails.mobilePhone}}
                     </td>
                     <td style="font-weight: bold;">Home Address:</td>
@@ -391,30 +384,25 @@
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Email:</td>
-                    <td id="homeEmail" [(ngModel)]="viewEmployeeContactDetails.homeEmail"
-                        ngDefaultControl="viewEmployeeContactDetails.homeEmail">
+                    <td>
                       {{viewEmployeeContactDetails.homeEmail }}
                     </td>
                     <td style="font-weight: bold;">City:</td>
-                    <td id="city" [(ngModel)]="viewEmployeeAddressDetails.city"
-                        ngDefaultControl="viewEmployeeAddressDetails.city">
+                    <td>
                       {{viewEmployeeAddressDetails.city}}
                     </td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Emergency Contact:</td>
-                    <td id="homePhone" [(ngModel)]="viewEmployeeContactDetails.homePhone"
-                        ngDefaultControl="viewEmployeeContactDetails.homePhone">
+                    <td>
                       {{viewEmployeeContactDetails.homePhone}}
                     </td>
                     <td style="font-weight: bold;">State:</td>
-                    <td id="state" [(ngModel)]="viewEmployeeAddressDetails.state"
-                        ngDefaultControl="viewEmployeeAddressDetails.state">
+                    <td>
                       {{viewEmployeeAddressDetails.state}}
                     </td>
                     <td style="font-weight: bold;">Zip:</td>
-                    <td id="zipCd" [(ngModel)]="viewEmployeeAddressDetails.zipCd"
-                        ngDefaultControl="viewEmployeeAddressDetails.zipCd">
+                    <td>
                       {{viewEmployeeAddressDetails.zipCd}}
                     </td>
                   </tr>
