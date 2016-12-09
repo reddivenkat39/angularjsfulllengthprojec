@@ -4,6 +4,7 @@ import {Employee} from "../Employee";
 import {DataTable} from "primeng/components/datatable/datatable";
 import {ToastrService, ToastConfig} from "toastr-ng2";
 import {ToastsManager} from "ng2-toastr";
+import {SelectItem} from "./SelectItem.interface";
 declare var $: any;
 
 @Component({
@@ -33,7 +34,6 @@ export class EmployeesComponent implements OnInit {
   }
   private viewEmployeeAddressDetails = {};
   private viewEmployeeContactDetails = {};
-
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager) {
   }
 
@@ -43,12 +43,7 @@ export class EmployeesComponent implements OnInit {
       $(this).parent().children().removeClass("active");
       $(this).addClass("active");
     });
-    /*$("#arrowChange").click(function (){
-      $("i", this).toggleClass("icon-circle-arrow-up icon-circle-arrow-down");
-    })*/
-
-
-    }
+  }
 
 
   onAllEmployeeClicked() {
@@ -140,7 +135,7 @@ export class EmployeesComponent implements OnInit {
 
   }
 
-  onClickViewAll($event, eachEmployeeDetailId: Employee) {
+  /*onClickViewAll($event, eachEmployeeDetailId: Employee) {
     //TODO : optimise the below line
     if($(".fa-angle-double-down").length > 0) {
       $(".fa-angle-double-down")[0].className = "fa fa-angle-double-right";
@@ -193,8 +188,140 @@ export class EmployeesComponent implements OnInit {
         }
       }
     );
+  }*/
+  onRowSelectActiveEmployees(event) {
+    console.log("on row select",event.data.empId);
+    this.viewActiveEmployee = true;
+    this.viewAllEmployee = false;
+    this.viewInActiveEmployee = false;
+    this.viewClicked = !this.viewClicked;
+    this.employeeService.getDetailedViewEachEmployee(event.data.empId).subscribe(
+      res => {
+        if (res.datares != null) {
+          console.log("yes getting data of each employee details ", res.datares.empAddrDtls);
+          this.viewEmployeeDetails.empName = res.datares.firstName + ' ' + res.datares.lastName;
+          console.log(this.viewEmployeeDetails.empName);
+          if (res.datares.empContacts[0] != null) {
+            this.viewEmployeeContactDetails = res.datares.empContacts[0];
+            console.log(this.viewEmployeeContactDetails);
+          } else {
+            console.log(this.viewEmployeeContactDetails, 'contact details not found');
+            this.viewEmployeeContactDetails = '';
+          }
+
+          if (res.datares.empAddrDtls[0] != null) {
+            this.viewEmployeeAddressDetails = res.datares.empAddrDtls[0];
+          }
+          else {
+            console.log(this.viewEmployeeAddressDetails, 'addresss details not found');
+            this.viewEmployeeAddressDetails = '';
+          }
+
+          //   Array.prototype.slice.call(res.datares.empAddrDtls,0);
+          // console.log("view employee address details by id",this.viewEmployeeAddressDetails);
+
+        }
+        else if (res.successres != null) {
+          console.log("success ", res.successres);
+        } else if (res.errorres != null) {
+          console.log("OOPs no data  found", res.errorres);
+          this.toastManager.error(res.errorres, 'No data Found');
+        } else {
+          console.log("server problem ");
+          this.toastManager.info('Oops!', 'Server Problem please Try Again');
+        }
+      }
+    );
+
   }
-  onClickViewActive($event, eachEmployeeDetailId: Employee) {
+  onRowSelectAllEmployees(event){
+    this.viewAllEmployee = true;
+    this.viewInActiveEmployee = false;
+    this.viewActiveEmployee=false;
+    console.log("on click eachEmployeeDetailId");
+    this.viewClicked = !this.viewClicked;
+    console.log("view clicked");
+    this.employeeService.getDetailedViewEachEmployee(event.data.empId).subscribe(
+      res => {
+        if (res.datares != null) {
+          console.log("yes getting data of each employee details ", res.datares.empAddrDtls);
+          this.viewEmployeeDetails.empName = res.datares.firstName + ' ' + res.datares.lastName;
+          console.log(this.viewEmployeeDetails.empName);
+          if (res.datares.empContacts[0] != null) {
+            this.viewEmployeeContactDetails = res.datares.empContacts[0];
+            console.log(this.viewEmployeeContactDetails);
+          } else {
+            console.log(this.viewEmployeeContactDetails, 'contact details not found');
+            this.viewEmployeeContactDetails = '';
+          }
+
+          if (res.datares.empAddrDtls[0] != null) {
+            this.viewEmployeeAddressDetails = res.datares.empAddrDtls[0];
+          }
+          else {
+            console.log(this.viewEmployeeAddressDetails, 'addresss details not found');
+            this.viewEmployeeAddressDetails = '';
+          }
+        }
+        else if (res.successres != null) {
+          console.log("success ", res.successres);
+        } else if (res.errorres != null) {
+          console.log("OOPs no data  found", res.errorres);
+          this.toastManager.error(res.errorres, 'No data Found');
+        } else {
+          console.log("server problem ");
+          this.toastManager.info('Oops!', 'Server Problem please Try Again');
+        }
+      }
+    );
+  }
+  onRowSelectInActiveEmployees(event){
+    this.viewInActiveEmployee = true;
+    this.viewActiveEmployee = false;
+    this.viewAllEmployee = false;
+    console.log("on click eachEmployeeDetailId");
+    this.viewClicked = !this.viewClicked;
+    console.log("view clicked");
+    this.employeeService.getDetailedViewEachEmployee(event.data.empId).subscribe(
+      res => {
+        if (res.datares != null) {
+          console.log("yes getting data of each employee details ", res.datares.empAddrDtls);
+          this.viewEmployeeDetails.empName = res.datares.firstName + ' ' + res.datares.lastName;
+          console.log(this.viewEmployeeDetails.empName);
+          if (res.datares.empContacts[0] != null) {
+            this.viewEmployeeContactDetails = res.datares.empContacts[0];
+            console.log(this.viewEmployeeContactDetails);
+          } else {
+            console.log(this.viewEmployeeContactDetails, 'contact details not found');
+            this.viewEmployeeContactDetails = '';
+          }
+
+          if (res.datares.empAddrDtls[0] != null) {
+            this.viewEmployeeAddressDetails = res.datares.empAddrDtls[0];
+          }
+          else {
+            console.log(this.viewEmployeeAddressDetails, 'addresss details not found');
+            this.viewEmployeeAddressDetails = '';
+          }
+
+          //   Array.prototype.slice.call(res.datares.empAddrDtls,0);
+          // console.log("view employee address details by id",this.viewEmployeeAddressDetails);
+
+        }
+        else if (res.successres != null) {
+          console.log("success ", res.successres);
+        } else if (res.errorres != null) {
+          console.log("OOPs no data  found", res.errorres);
+          this.toastManager.error(res.errorres, 'No data Found');
+        } else {
+          console.log("server problem ");
+          this.toastManager.info('Oops!', 'Server Problem please Try Again');
+        }
+      }
+    );
+  }
+
+  /*onClickViewActive($event, eachEmployeeDetailId: Employee) {
     //TODO : optimise the below line
     if($(".fa-angle-double-down").length > 0) {
       $(".fa-angle-double-down")[0].className = "fa fa-angle-double-right";
@@ -247,8 +374,8 @@ export class EmployeesComponent implements OnInit {
         }
       }
     );
-  }
-  onClickViewInActive($event, eachEmployeeDetailId: Employee) {
+  }*/
+  /*onClickViewInActive($event, eachEmployeeDetailId: Employee) {
     //TODO : optimise the below line
     if($(".fa-angle-double-down").length > 0) {
       $(".fa-angle-double-down")[0].className = "fa fa-angle-double-right";
@@ -301,10 +428,5 @@ export class EmployeesComponent implements OnInit {
         }
       }
     );
-  }
-
-  onRowSelect(){
-
-  }
-
+  }*/
 }

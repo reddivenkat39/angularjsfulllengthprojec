@@ -13,14 +13,13 @@ export class AddstaffService {
     const bodySend = JSON.stringify(myAddStaffForm);
     console.log("myForm body ...........", bodySend);
     const headersSend = new Headers({'Content-Type': 'application/json'});
-
-      return this.http.post("http://localhost:8080/staffregistration", bodySend, {headers: headersSend}).map((res: Response) => {
-          console.log("send Add Staff details", res);
-          console.log("only key value pairs", res);
-          return res.json()
-        }
-      );
-    }
+    return this.http.post("http://localhost:8080/staffregistration", bodySend, {headers: headersSend}).map((res: Response)=> {
+        console.log("send Add Staff details", res);
+        console.log("only key value pairs", res);
+        return res.json()
+      }
+    );
+  }
 
 
 }
