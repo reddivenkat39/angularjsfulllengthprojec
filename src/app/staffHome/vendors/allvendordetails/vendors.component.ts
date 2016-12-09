@@ -119,6 +119,8 @@ export class VendorsComponent implements OnInit {
     this.eachVendorInvoice = false;
     this.eachEmployeeInvoice = false;
   }
+
+
   onClickEachInActiveVendorEmployee() {
     console.log("In Active vendor employees");
     this.allVendor = true;

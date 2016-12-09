@@ -4,6 +4,7 @@ import {Subscription} from "rxjs";
 import {Http} from "@angular/http";
 import {StaffService} from "../userservices/staff.service";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+import {ToastsManager} from "ng2-toastr";
 
 @Component({
   selector   : 'app-resetpassword',
@@ -13,7 +14,8 @@ import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 export class ResetpasswordComponent implements OnDestroy, OnInit {
   private subscription: Subscription;
   token: string;
-  private resetpasswordClicked=true;
+  private resetpasswordClicked = true;
+  private tokenExpired =false;
   private resetPassword = {
     'emailAddress'      : '',
     'newPassword'       : '',
@@ -21,7 +23,7 @@ export class ResetpasswordComponent implements OnDestroy, OnInit {
   };
 
 
-  constructor(private router:Router, private activatedRoute: ActivatedRoute, private staffService: StaffService) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private staffService: StaffService, private toastMsg: ToastsManager) {
     // this.emailAddressFromToken='';
     this.subscription = activatedRoute.queryParams.subscribe(
       queryParam => this.token = queryParam['token']
@@ -39,15 +41,21 @@ export class ResetpasswordComponent implements OnDestroy, OnInit {
 
         if (res.datares != null) {
           console.log(res.datares);
+          this.tokenExpired = false;
           this.resetPassword.emailAddress = res.datares;
 
         }
         else if (res.successres != null) {
           console.log(res.successres);
+
         }
         else if (res.errorres != null) {
           console.log(res.errorres);
+          this.tokenExpired = true;
+          this.toastMsg.error('', res.errorres);
+          this.router.navigate(['/']);
         } else {
+
           console.log("server problem");
         }
       }
@@ -55,21 +63,26 @@ export class ResetpasswordComponent implements OnDestroy, OnInit {
 
   }
 
-  onSubmit(){
-    this.resetpasswordClicked=!this.resetpasswordClicked;
+  onSubmit() {
+    this.resetpasswordClicked = !this.resetpasswordClicked;
     this.staffService.sendResetPasswordCredentials(this.resetPassword).subscribe(
       res => {
 
-        if (res.successres != null) {
 
-          console.log(res.successres);
-          this.router.navigate(['/home']);
-        }
-        else if (res.errorres != null) {
+        if (res.errorres != null) {
           console.log(res.errorres);
         }
         else if (res.datares != null) {
           console.log(res.datares);
+          localStorage.getItem("token");
+          console.log(localStorage.getItem("token"));
+          localStorage.removeItem("token");
+          console.log(localStorage.getItem("token"));
+          localStorage.setItem("token", res.datares);
+          this.router.navigate(['/home']);
+        }
+        else if (res.successres != null) {
+          console.log(res.successres);
         }
         else {
           console.log("server problem");

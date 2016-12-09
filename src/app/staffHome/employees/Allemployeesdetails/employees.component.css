@@ -429,6 +429,7 @@ a.hover {
 li{
   cursor:pointer;
 }
+
 li.active {
   font-weight: bold;
  /*background-color: white;*/
