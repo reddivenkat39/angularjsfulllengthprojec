@@ -302,4 +302,9 @@ export class EmployeesComponent implements OnInit {
       }
     );
   }
+
+  onRowSelect(){
+
+  }
+
 }
