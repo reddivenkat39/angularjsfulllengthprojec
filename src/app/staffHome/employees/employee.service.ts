@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers, Response} from "@angular/http";
+import {HttpService} from "../../globalservices/http.service";
 
 @Injectable()
 export class EmployeeService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpService) { }
 
   getAllEmployeeDetails(){
     const headersSend = new Headers({'Content-Type':'application/json'});
@@ -15,7 +16,7 @@ export class EmployeeService {
       }
     );
   }
-  getDetailedViewEachEmployee(){
+  getDetailedViewEachEmployee(empId){
     console.log("get detailed view of each employee invoked");
     const headersSend = new Headers({'Content-Type':'application/json'});
     return this.http.get("http://10.10.5.55:8080/getemployeepersonalinfo",{headers: headersSend}).map(
