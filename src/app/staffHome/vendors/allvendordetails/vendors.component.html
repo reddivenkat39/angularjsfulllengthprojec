@@ -1,16 +1,6 @@
 <app-header></app-header>
-<div class="container">
-  <div class="row">
-    <div class="col-md-4 col-md-offset-3" style=" float: right">
-      <form class="search-form">
-        <div class="form-group has-feedback">
-          <!--<label for="search" class="sr-only">Search</label>-->
-          <input #gb type="text" class="form-control" name="search" pInputText size="30" style="float:right"
-                 placeholder="Search by Name or Keywords">
-          <span class="glyphicon glyphicon-search form-control-feedback"></span>
-        </div>
-      </form>
-    </div>
+<div class="container-fluid">
+  <div class="col-xs-12">
     <p-dataTable #dt1 [value]="allVendors" selectionMode="single" [(selection)]="selectedVendor" (onRowSelect)="onRowSelectVendor($event)"
                  [rows]="5"
                  [paginator]="true" sortOrder="-1" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [globalFilter]="gb"
@@ -23,6 +13,23 @@
                                                                                     aria-hidden="true"></i></span>
         </template>
       </p-column>-->
+      <header style="background: #3399ff !important;">
+        <div class="ui-helper-clearfix">
+          <div style="float: left">
+            <h6><strong>&nbsp;&nbsp;All Vendors</strong></h6>
+          </div>
+          <span style="border:1px solid white;background-color: white;color: black;float: left;margin-left:4px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%" (click)="dt1.exportCSV()">Export</span>
+          <div class="col-md-3 col-md-offset-3" style=" float: right">
+            <form class="search-form">
+              <div class="form-group has-feedback">
+                <input #gb type="text" class="form-control" name="search"
+                       style="float:right;font-size: 10pt;font-family: Calibri;" placeholder="Search by Name or Keywords"/>
+                <span style="padding-top: 3px;" class="glyphicon glyphicon-search form-control-feedback"></span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </header>
       <p-column field="venId" header="Vendor Id" [sortable]="true"></p-column>
       <p-column field="venNm" header="Vendor Name" [sortable]="true"></p-column>
       <p-column field="invMode" header="Invoice Term" [sortable]="true"></p-column>
@@ -30,11 +37,9 @@
     </p-dataTable>
   </div>
 </div>
-<br>
-<br>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
+<div class="container-fluid">
+  <div>
+    <div class="col-xs-12">
       <!--<nav>
         <a class="active btn-xs" (click)="onClickVendorEmployee()" style="cursor: pointer;"><strong>Employees</strong></a>|
         <a class="btn-xs" (click)="onClickVendorInvoice()" style="cursor: pointer;"><strong>Invoices</strong></a>
@@ -47,9 +52,9 @@
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
+<div class="container-fluid">
+  <div>
+    <div class="col-xs-12">
       <div *ngIf="allVendor">
         <!--<nav id="vendorTab">
           <a class="active" (click)="onClickEachActiveVendorEmployee()" style="cursor: pointer;">Active</a>|
@@ -63,9 +68,6 @@
           <li (click)="onClickEachInActiveVendorEmployee()"><a data-toggle="pill">Inactive</a></li>
         </ul>
 
-
-
-
         <!--active employees list by vendor Id-->
 
         <div *ngIf="eachActiveVendorEmployees">
@@ -77,7 +79,6 @@
             <!--<br>-->
             <!--</div>-->
             <div class="panel-header">
-              <br>
             </div>
             <div class="panel-body">
               <p-dataTable #dt1 [value]="vendorActiveEmployees" [rows]="5" [paginator]="true" sortOrder="-1"
@@ -92,7 +93,7 @@
                 <p-column field="invEndDt" header="End Date" [sortable]="true" [hidden]="true" filterMatchMode="contains"></p-column>
                 <p-column [style]="{'width':'90px'}" selectionMode="single" styleClass="col-button">
                   <template let-vendorActiveEmployee="rowData" pTemplate type="header">
-                    <button [style]="{'width':'90px'}" (click)="onClickEachEmployeeInvoice()" pButton label="invoices">
+                    <button [style]="{'width':'90px'}" (click)="onClickEachEmployeeInvoice()" pButton label="Invoices">
                     </button>
                   </template>
                 </p-column>
@@ -113,7 +114,6 @@
 
           <div class="panel panel-default">
             <div class="panel-header">
-              <br>
             </div>
             <div class="panel-body">
               <p-dataTable #dt1 [value]="vendorInActiveEmployees" [rows]="5" [paginator]="true" sortOrder="-1"

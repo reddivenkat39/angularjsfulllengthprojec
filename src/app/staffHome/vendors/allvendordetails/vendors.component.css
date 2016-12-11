@@ -19,15 +19,16 @@ li{
   border-bottom: 2px solid blue;
 }
 #pillTab> li> a:hover{
-  background-color: lightgrey;
+  background-color: white;
 }
 #pillTab>li>a{
   color:black;
 }
 #pillTab1>li>a{
-  padding-top: 5px;
-  padding-bottom: 5px;
-  background-color:whitesmoke;
+  margin-top: 0px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  background-color:white;
 }
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{

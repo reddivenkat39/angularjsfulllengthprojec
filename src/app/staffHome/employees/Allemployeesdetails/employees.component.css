@@ -49,23 +49,6 @@
   left: initial;
   font-size: 14px;
 }
-/*.icon-addon.addon-md .glyphicon,*/
-/*.icon-addon .glyphicon,*/
-/*.icon-addon.addon-md .fa,*/
-/*.icon-addon .fa {*/
-  /*!*float: right;*!*/
-  /*position: absolute;*/
-  /*z-index: 10;*/
-  /*right: 10px;*/
-  /*font-size: 14px;*/
-  /*width: 10px;*/
-  /*margin-left: -2.5px;*/
-  /*text-align: right;*/
-  /*padding: 9px 30px;*/
-  /*top: 1px;*/
-
- /*}*/
-
 .borderless td {
   border: none !important;
   padding: 0px !important;
@@ -80,16 +63,6 @@
   border-bottom:1px solid black !important;
   color: blue;
 }
-.form-group{
-  margin-top: 1px;
-  margin-bottom: 2px;
-}
-.search-form .form-group{
-  height:30px;
-}
-.search-form .form-group span.form-control-feedback{
-  top:-5px;
-}
 li{
   cursor:pointer;
 }
@@ -103,13 +76,4 @@ li.active {
   color:black;
   font-weight: bold;
    border-bottom: 2px solid blue;
-}
-h6{
-  color: white;
-  font-family: 'Calibri';
-  border: 1px solid white;
-  padding: 2px 3px 2px 1px;
-  margin-bottom: 1px;
-  margin-left:4px;
-  margin-right: 5px;
 }
