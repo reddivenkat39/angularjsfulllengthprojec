@@ -64,6 +64,10 @@
         </ul>
 
 
+
+
+        <!--active employees list by vendor Id-->
+
         <div *ngIf="eachActiveVendorEmployees">
 
           <div class="panel panel-default">
@@ -79,9 +83,9 @@
               <p-dataTable #dt1 [value]="vendorActiveEmployees" [rows]="5" [paginator]="true" sortOrder="-1"
                            [pageLinks]="3" [rowsPerPageOptions]="[5,10]"
                            scrollable="true" scrollHeight="100px"
-                           reorderableColumns="true">
+                           reorderableColumns="true" [(selection)]="selectedVendor" (onRowSelect)=onVendorSelectActiveEmployee($event)>
                 <p-column field="empId" header="Employee Id" [hidden]="true" [sortable]="true"></p-column>
-               <!-- <p-column field="empName" header="Employee Name" [sortable]="true"></p-column>-->
+                <p-column field="empName" header="Employee Name" [sortable]="true"></p-column>
                 <p-column field="clName" header="Client Name" [sortable]="true"></p-column>
                 <p-column field="rate" header="Billing Rate" [sortable]="true"></p-column>
                 <p-column field="invStDt" header="Start Date" [sortable]="true"></p-column>
@@ -99,6 +103,11 @@
         </div>
 
 
+
+
+
+<!--Inactive employees list by vendor Id-->
+
         <div *ngIf="eachInActiveVendorEmployees">
 
 
@@ -113,9 +122,9 @@
                            reorderableColumns="true">
                 <p-column field="empName" header="Employee Name" [sortable]="true"></p-column>
                 <p-column field="clName" header="Client Name" [sortable]="true"></p-column>
-                <p-column field="payRate" header="Billing Rate" [sortable]="true"></p-column>
-                <p-column field="strtDate" header="Start Date" [sortable]="true"></p-column>
-                <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
+                <p-column field="rate" header="Billing Rate" [sortable]="true"></p-column>
+                <p-column field="invStDt" header="Start Date" [sortable]="true"></p-column>
+                <p-column field="invEndDt" header="End Date" [sortable]="true"></p-column>
                 <p-column [style]="{'width':'90px'}" selectionMode="single" styleClass="col-button">
                   <template let-vendorInActiveEmployee="rowData" pTemplate type="header">
                     <button [style]="{'width':'90px'}" class="btn btn-default" type="button" (click)="onClickEachEmployeeInvoice()" pButton
@@ -127,6 +136,13 @@
           </div>
         </div>
       </div>
+
+
+
+
+
+      <!--getting all Invoices by Vendor id-->
+
       <div *ngIf="allVendorInvoice">
         <ul id="pillTab2" class="nav nav-pills">
           <li (click)="onClickAllVendor()"><a data-toggle="pill">All</a></li>
@@ -177,16 +193,85 @@
                            [rowsPerPageOptions]="[5,10]"
                            scrollable="true" scrollHeight="100px">
                 <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
-                <p-column field="strtDate" header="Start Date" [sortable]="true"></p-column>
-                <p-column field="dueDate" header="Due Date" [sortable]="true"></p-column>
-                <p-column field="hrs" header="Hours" [sortable]="true"></p-column>
+                <p-column field="invStDt" header="Start Date" [sortable]="true"></p-column>
+                <p-column field="dueDt" header="Due Date" [sortable]="true"></p-column>
+                <p-column field="wrkHrs" header="Hours" [sortable]="true"></p-column>
                 <p-column field="invAmt" header="INV_Amount" [sortable]="true"></p-column>
-                <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
+                <p-column field="invEndDt" header="End Date" [sortable]="true"></p-column>
 
               </p-dataTable>
             </div>
           </div>
         </div>
+
+        <!--getting all open invoices by vendor id-->
+
+        <div *ngIf="allVendorInvoice">
+          <ul id="pillTab3" class="nav nav-pills">
+            <li (click)="onClickAllVendor()"><a data-toggle="pill">All</a></li>
+            <li class="list-inline active" (click)="onClickOpenInvoice()"><a data-toggle="pill">Open</a></li>
+            <li><a data-toggle="pill" (click)="onClickCloseInvoice()">Closed</a></li>
+          </ul>
+          <div *ngIf="eachVendorInvoice">
+
+            <div class="panel panel-default">
+              <div *ngIf="allInvoice">
+                <div class="panel-header">
+                  <strong style="color: blue;">Vendor 1</strong>
+                  <!--<span><strong>Total Invoice Amount</strong></span>-->
+                  <div style="float: right;color: blue;" class="form-group-inline">
+                    <label>
+                      Total Invoice Amount:
+                    </label>
+                    $20,000.00
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="openInvoice">
+                <div class="panel-header">
+                  <strong style="color: blue;">Vendor 1</strong>
+                  <!--<span><strong>Total Invoice Amount</strong></span>-->
+                  <div style="float: right;color: blue;" class="form-group-inline">
+                    <label>
+                      Total Invoice Amount:
+                    </label>
+                    $15,000.00
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="closeInvoice">
+                <div class="panel-header">
+                  <strong style="color: blue;">Vendor 1</strong>
+                  <!--<span><strong>Total Invoice Amount</strong></span>-->
+                  <div style="float: right;color: blue;" class="form-group-inline">
+                    <label>
+                      Total Invoice Amount:
+                    </label>
+                    $5,000.00
+                  </div>
+                </div>
+              </div>
+              <div class="panel-body">
+                <p-dataTable #dt1 [value]="vendorInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3"
+                             [rowsPerPageOptions]="[5,10]"
+                             scrollable="true" scrollHeight="100px">
+                  <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
+                  <p-column field="invStDt" header="Start Date" [sortable]="true"></p-column>
+                  <p-column field="dueDt" header="Due Date" [sortable]="true"></p-column>
+                  <p-column field="wrkHrs" header="Hours" [sortable]="true"></p-column>
+                  <p-column field="invAmt" header="INV_Amount" [sortable]="true"></p-column>
+                  <p-column field="invEndDt" header="End Date" [sortable]="true"></p-column>
+
+                </p-dataTable>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
         <div *ngIf="eachEmployeeInvoice">
           <div class="panel panel-default">
             <div *ngIf=""></div>
@@ -217,4 +302,5 @@
 
     </div>
   </div>
+</div>
 </div>
