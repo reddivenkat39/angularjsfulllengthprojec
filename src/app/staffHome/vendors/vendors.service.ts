@@ -10,43 +10,44 @@ import {VendorInvoice} from "./VendorInvoice.interface";
 export class VendorsService {
 
   constructor(private http: HttpService) { }
+
+
   getAllVendorDetails(){
     console.log("Into get all vendor details method");
     const headersSend = new Headers({'Content-Type':'application/json'});
-    return this.http.get("http://10.10.5.55:8080/allvendordetails",{headers: headersSend}).map(
+    return this.http.get("http://localhost:8080/allvendordetails",{headers: headersSend}).map(
       (res:Response)=> {
         console.log("getting all Vendor details ",res.json());
         return res.json();
       }
     );
   }
-  getVendorEmployeesByVendId(vendorId) {
-    // return this.http.get('/app/staffHome/vendors/activeVendorEmployees.json')
-    //   .toPromise()
-    //   .then(res =>< ActiveVendorEmployee[] > res.json().data)
-    //   .then(data => { return data; });
 
+  getVendorEmployeesByVendId(vendorId) {
     const headersSend = new Headers({'Content-Type':'application/json'});
     const bodySend = {venId:vendorId};
     console.log(bodySend);
-    return this.http.post("http://10.10.5.55:8080/allemployeesbyvendId",bodySend,{headers: headersSend}).map(
+    return this.http.post("http://localhost:8080/allemployeesbyvendId",bodySend,{headers: headersSend}).map(
       (res:Response)=> {
         console.log("getting all employee details by vendor id"+" bodySend ",res.json());
         return res.json();
       }
     );
   }
-  /*getVendorInActiveEmployees(){
-    return this.http.get('/app/staffHome/vendors/inActiveVendorEmployees.json')
-      .toPromise()
-      .then(res =>< InActiveVendorEmployee[] > res.json().data)
-      .then(data => { return data; });
-  }*/
-  getEmployeeInvoices(){
-    return this.http.get('/app/staffHome/vendors/employeeInvoices.json')
-      .toPromise()
-      .then(res =>< EmployeeInvoice[] > res.json().data)
-      .then(data => { return data; });
+
+
+
+  getAllInvoicesByVendorId(vendorID){
+    const headersSend = new Headers({'Content-Type':'application/json'});
+    const bodySend = {venId:vendorID};
+    console.log(bodySend);
+    return this.http.post("http://localhost:8080/allinvoicesbyvendid",bodySend,{headers: headersSend}).map(
+      (res:Response)=> {
+        console.log("getting all invoices details by vendor id"+" bodySend ",res.json());
+        return res.json();
+      }
+    );
+
   }
   getVendorInvoices(){
     return this.http.get('/app/staffHome/vendors/vendorInvoices.json')

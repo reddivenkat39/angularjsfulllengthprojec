@@ -1,6 +1,6 @@
 export interface VendorEmployee {
-  // empName;
-  // clName;
+  empName;
+  clName;
   rate;
   invStDt;
   invEndDt;

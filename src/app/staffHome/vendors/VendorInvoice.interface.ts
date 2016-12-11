@@ -1,7 +1,8 @@
 export interface VendorInvoice{
   invNum;
-  strtDate;
-  hrs;
+  invStDt;
+  wrkHrs;
   invAmt;
-  endDate;
+  invEndDt;
+  dueDt;
 }
