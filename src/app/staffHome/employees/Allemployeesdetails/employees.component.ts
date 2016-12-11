@@ -4,7 +4,7 @@ import {Employee} from "../Employee";
 import {DataTable} from "primeng/components/datatable/datatable";
 import {ToastrService, ToastConfig} from "toastr-ng2";
 import {ToastsManager} from "ng2-toastr";
-// import {SelectItem} from "./SelectItem.interface";
+
 declare var $: any;
 
 @Component({
@@ -43,6 +43,7 @@ export class EmployeesComponent implements OnInit {
       $(this).parent().children().removeClass("active");
       $(this).addClass("active");
     });
+    $("a .ui-paginator-first .ui-paginator-element").addClass("hide");
 
   }
 

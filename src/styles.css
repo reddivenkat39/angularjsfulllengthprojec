@@ -1,39 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('../node_modules/primeng/resources/themes/omega/theme.css');
 @import url('../node_modules/primeng/resources/primeng.min.css');
-/*.x-header{
-  background: #3399ff;
-  padding-top: 0;
-}
-.x-header .inner{
-  height:60px;
-  padding-top: 0 !important;
-  margin-top: 0;
-}*/
 body{
-  background-color: whitesmoke;
+  background-color: white;
+  font-family:Calibri;
 }
 #logo{
   -webkit-animation:spinHorizontal 800ms linear infinite;
   -moz-animation:spinHorizontal 800ms linear infinite;
   animation:spinHorizontal 800ms linear infinite;
 }
+#mainTab{
+  height:20px;
+ background-color: #ebedf0;
+  margin-bottom:1px;
+}
 @-moz-keyframes spinHorizontal { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spinHorizontal { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spinHorizontal { 100% { -webkit-transform: rotateX(360deg); transform:rotateY(360deg); } }
 
 
-div.ui-datatable th, td {
-  padding: 0px !important;
+div.ui-datatable td {
+  padding: 2px !important;
   text-align: center !important;
-  font-size: 1.0em;
+  font-size: 0.9em;
   font-family: calibri;
- /* background-color: #777;*/
- /* border-bottom: 1px solid #ddd !important;
-  border-left:hidden !important;*/
+}
+div.ui-widget{
+  font-family: "Calibri";
 }
 .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight{
-  background-color: #777;
+  background-color: #fffc7f;
+  color:blue;
 }
 .ui-button, button.ui-button.ui-state-default, .ui-button.ui-state-default{
   border: none;
@@ -43,18 +41,29 @@ div.ui-datatable th, td {
 .ui-button, .ui-button span, button.ui-button.ui-state-default span, .ui-button.ui-state-default span {
   font-weight: lighter;
 }
-/*div.ui-datatable table{
-  border: hidden !important;
-}*/
-/*div.ui-datatable tr:hover {
-  background-color: #f5f5f5 !important;
-}*/
-/*div.ui-datatable td.ui-state-active{
-  background-color: #186ba0 !important;
-  color:white !important;
-}*/
+.ui-datatable .ui-datatable-header, .ui-datatable .ui-datatable-caption, .ui-datatable .ui-datatable-footer{
+  padding-top:0px;
+  padding-bottom: 0px !important;
+  padding-right:0px;
+  padding-left:0px;
+}
+div.ui-datatable thead th, .ui-datatable tfoot td, .ui-datatable tbody td {
+  border-color: skyblue;
+}
+div.ui-paginator-bottom .ui-paginator .ui-widget-header{
+  background: #cccccc;
+}
 
-/*.ui-datatable tr.ui-state-active {
-  background: #186ba0 !important;
-  color: #ffffff !important;
-}*/
+.ui-paginator .ui-paginator-page.ui-state-active {
+  background: #3399ff;
+  color: #ffffff;
+  border-color: #3399ff;
+}
+.panel .panel-heading{
+  padding: 3px;
+  color:blue;
+  font-weight: bold;
+}
+.panel .panel-body{
+  padding:0px;
+}
