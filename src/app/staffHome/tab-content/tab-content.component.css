@@ -12,9 +12,6 @@ a{
 a.active{
   font-weight: bold !important;
   color: darkblue;
-  background-color: whitesmoke !important;
-
-
 }
 /*.panel-header{*/
  /*color:orange;*/
