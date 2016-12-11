@@ -15,7 +15,7 @@ export class VendorsService {
   getAllVendorDetails(){
     console.log("Into get all vendor details method");
     const headersSend = new Headers({'Content-Type':'application/json'});
-    return this.http.get("http://localhost:8080/allvendordetails",{headers: headersSend}).map(
+    return this.http.get("http://localhost:8080//allvendordetails",{headers: headersSend}).map(
       (res:Response)=> {
         console.log("getting all Vendor details ",res.json());
         return res.json();
@@ -27,7 +27,7 @@ export class VendorsService {
     const headersSend = new Headers({'Content-Type':'application/json'});
     const bodySend = {venId:vendorId};
     console.log(bodySend);
-    return this.http.post("http://localhost:8080/allemployeesbyvendId",bodySend,{headers: headersSend}).map(
+    return this.http.post("http://localhost:8080//allemployeesbyvendId",bodySend,{headers: headersSend}).map(
       (res:Response)=> {
         console.log("getting all employee details by vendor id"+" bodySend ",res.json());
         return res.json();
@@ -41,7 +41,7 @@ export class VendorsService {
     const headersSend = new Headers({'Content-Type':'application/json'});
     const bodySend = {venId:vendorID};
     console.log(bodySend);
-    return this.http.post("http://localhost:8080/allinvoicesbyvendid",bodySend,{headers: headersSend}).map(
+    return this.http.post("http://localhost:8080//allinvoicesbyvendid",bodySend,{headers: headersSend}).map(
       (res:Response)=> {
         console.log("getting all invoices details by vendor id"+" bodySend ",res.json());
         return res.json();
