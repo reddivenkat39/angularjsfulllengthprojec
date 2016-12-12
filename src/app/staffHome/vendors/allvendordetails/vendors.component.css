@@ -1,46 +1,41 @@
 li{
   cursor:pointer;
 }
-/*#vendorTab a{
-  !*border: 1px solid greenyellow;*!
-  font-size: medium;
-  !*background-color: #cccccc;*!
-}*/
-/*.nav>li>a {
-  padding-top: 5px;
-  padding-bottom: 5px;
-}*/
 
-/*#pillTab >li>a{
+#pillTab >li>a{
   padding-top: 5px;
   padding-bottom: 5px;
-}*/
+}
+
 #pillTab> li.active > a{
-  border-bottom: 2px solid blue;
-}
-#pillTab> li> a:hover{
-  background-color: white;
-}
-#pillTab>li>a{
   color:black;
+}
+
+#pillTab>li>a{
+  color:blue;
 }
 #pillTab1>li>a{
   margin-top: 0px;
   padding-top: 3px;
   padding-bottom: 3px;
-  background-color:white;
+  background-color:white !important;
+  border: none !important;
+}
+.nav-pills > li.active > a {
+  color: black !important;
 }
 
-.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
+#pillTab .nav-pills > li.active > a{
   color:black !important;
-  font-weight: bold;
-  background-color: lightblue;
 }
 
 #pillTab2>li>a{
   padding-top: 5px;
   padding-bottom: 5px;
-  background-color:whitesmoke;
+  background-color:white;
+  color:blue;
 }
-
+#pillTab2 .nav-pills > li.active > a{
+  color:black !important;
+}
 
