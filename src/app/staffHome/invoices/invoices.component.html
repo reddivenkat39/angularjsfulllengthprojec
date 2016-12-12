@@ -76,7 +76,7 @@
       <header style="background: #3399ff !important;">
         <div class="ui-helper-clearfix">
           <div style="float: left">
-            <h6><strong>&nbsp;&nbsp;All Invoices</strong></h6>
+            <h6><strong>&nbsp;&nbsp;Open Invoices</strong></h6>
           </div>
           <span style="border:1px solid white;background-color: white;color: black;float: left;margin-left:4px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%" (click)="dt1.exportCSV()">Export</span>
           <div class="col-md-3 col-md-offset-3" style=" float: right">
@@ -114,7 +114,7 @@
 
 <div class="container-fluid">
   <div *ngIf="isClosedInvoices">
-    <p-dataTable #dt1 [value]="openInvoices" selectionMode="single" [(selection)]="selectedProject" [rows]="5"
+    <p-dataTable #dt1 [value]="closedInvoices" selectionMode="single" [(selection)]="selectedProject" [rows]="5"
                  [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
                  [globalFilter]="gb" exportFilename="projects" reorderableColumns="true"
                  scrollable="true" scrollWidth="100%" >
@@ -122,7 +122,53 @@
       <header style="background: #3399ff !important;">
         <div class="ui-helper-clearfix">
           <div style="float: left">
-            <h6><strong>&nbsp;&nbsp;All Invoices</strong></h6>
+            <h6><strong>&nbsp;&nbsp;Closed Invoices</strong></h6>
+          </div>
+          <span style="border:1px solid white;background-color: white;color: black;float: left;margin-left:4px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%" (click)="dt1.exportCSV()">Export</span>
+          <div class="col-md-3 col-md-offset-3" style=" float: right">
+            <form class="search-form">
+              <div class="form-group has-feedback">
+                <input #gb type="text" class="form-control" name="search"
+                       style="float:right;font-size: 10pt;font-family: Calibri;" placeholder="Search by Name or Keywords"/>
+                <span style="padding-top: 3px;" class="glyphicon glyphicon-search form-control-feedback"></span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </header>
+      <p-column field="invNum" header="Inv Number" [sortable]="true" [style]="{'width':'150px'}"></p-column>
+      <p-column field="invMode" header="Invoice Mode" [sortable]="true" [style]="{'width':'150px'}"></p-column>
+      <p-column field="venName" header="Vendor" [sortable]="true" [style]="{'width':'150px'}"></p-column>
+      <p-column field="empName" header="Employee" [sortable]="true" [style]="{'width':'150px'}"></p-column>
+      <p-column field="invStDt" header="Start Date" [sortable]="true"[style]="{'width':'150px'}"></p-column>
+      <p-column field="invEndDt" header="End Date" [sortable]="true" [style]="{'width':'150px'}"></p-column>
+      <p-column field="invDt" header="Inv Date" [sortable]="true" [style]="{'width':'150px'}"></p-column>
+      <p-column field="dueDt" header="Due Date" [sortable]="true" [style]="{'width':'150px'}"></p-column>
+      <p-column field="pymtTerms" header="Pay Term" [sortable]="true" [style]="{'width':'150px'}"></p-column>
+      <p-column field="wrkHrs" header="Hours" [sortable]="true" [style]="{'width':'150px'}"></p-column>
+      <p-column field="rate" header="Rate" [sortable]="true" [style]="{'width':'150px'}"></p-column>
+      <p-column field="invAmt" header="Inv Amount" [sortable]="true" [style]="{'width':'150px'}"></p-column>
+      <p-column field="recvdAmt" header="Received Amount" [sortable]="true" [style]="{'width':'150px'}"></p-column>
+      <p-column field="balAmt" header="Bal Amount" [sortable]="true" [style]="{'width':'150px'}"></p-column>
+      <p-column field="recvdDt" header="Received Date" [sortable]="true" [style]="{'width':'150px'}"></p-column>
+      <p-column field="invStatus" header="Invoice Status" [sortable]="true" [style]="{'width':'150px'}"></p-column>
+    </p-dataTable>
+  </div>
+</div>
+
+<!--to get pastdue invoices-->
+
+<div class="container-fluid">
+  <div *ngIf="ispastDueInvoices">
+    <p-dataTable #dt1 [value]="pastDueInvoices" selectionMode="single" [(selection)]="selectedProject" [rows]="5"
+                 [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
+                 [globalFilter]="gb" exportFilename="projects" reorderableColumns="true"
+                 scrollable="true" scrollWidth="100%" >
+
+      <header style="background: #3399ff !important;">
+        <div class="ui-helper-clearfix">
+          <div style="float: left">
+            <h6><strong>&nbsp;&nbsp;Past Due Invoices</strong></h6>
           </div>
           <span style="border:1px solid white;background-color: white;color: black;float: left;margin-left:4px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%" (click)="dt1.exportCSV()">Export</span>
           <div class="col-md-3 col-md-offset-3" style=" float: right">

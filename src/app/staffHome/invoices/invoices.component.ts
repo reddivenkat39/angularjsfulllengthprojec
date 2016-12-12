@@ -18,6 +18,7 @@ export class InvoicesComponent implements OnInit {
   allTabnerInvoices:Invoice[];
   openInvoices: Invoice[];
   closedInvoices: Invoice[];
+  pastDueInvoices : Invoice[];
 
 
 
@@ -91,7 +92,7 @@ export class InvoicesComponent implements OnInit {
     this.invoiceService.getAllInvoices().subscribe(
       res=>{
         if(res.datares!=null){
-          this.openInvoices = res.datares.filter(row => {
+          this.closedInvoices = res.datares.filter(row => {
             if (row.invStatus != 'OPEN')
               return row;
           });
