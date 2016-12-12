@@ -35,22 +35,28 @@
             <div style="float: left">
               <h6><strong>&nbsp;&nbsp;All Employees</strong></h6>
             </div>
-            <span style="border:1px solid white;background-color: white;color: black;float: left;margin-left:4px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%" (click)="dt1.exportCSV()">Export</span>
-            <div class="col-md-3 col-md-offset-3" style=" float: right">
-              <form class="search-form">
-                <div class="form-group has-feedback">
-                  <input #gb type="text" class="form-control" name="search"
-                         style="float:right;font-size: 10pt;font-family: Calibri;" placeholder="Search by Name or Keywords"/>
-                  <span style="padding-top: 3px;" class="glyphicon glyphicon-search form-control-feedback"></span>
-                </div>
-              </form>
+            <div>
+              <span style="border:1px solid white;background-color: white;color: black;float: right;margin-top: 10px;margin-right:3px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%;cursor:pointer;" (click)="dt1.exportCSV()">Export</span>
+              <div class="col-md-3 col-md-offset-3" style=" float: right">
+                <form class="search-form">
+                  <div class="form-group has-feedback">
+                    <input #gb type="text" class="form-control" name="search"
+                           style="float:right;font-size: 10pt;font-family: Calibri;" placeholder="Search by Name or Keywords"/>
+                    <span style="padding-top: 3px;" class="glyphicon glyphicon-search form-control-feedback"></span>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </header>
         <p-column field="empId" header="emp  Id" [hidden]="true" [sortable]="true"></p-column>
         <p-column field="firstName" header="First Name" [sortable]="true"></p-column>
         <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
-        <p-column field="lastName" header="Last Name" [sortable]="true"></p-column>
+        <p-column field="lastName" header="Last Name" [sortable]="true">
+          <template let-col let-allEmployee="rowData" pTemplate type="body">
+            <a><span style="color:blue;">{{allEmployee[col.field]}}</span></a>
+          </template>
+        </p-column>
         <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
         <p-column field="ssn" header="SSN" [sortable]="true"></p-column>
         <p-column field="hireDate" header="Hire Date" [sortable]="true"></p-column>
@@ -82,7 +88,7 @@
             </div>
             <span style="border:1px solid white;background-color: white;color: black;float: left;margin-left:3px;margin-top: 10px;margin-right:4px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%">Add</span>
             <span style="border:1px solid white;background-color: white;color: black;float: left;margin-left:4px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%">Save</span>
-            <span style="border:1px solid white;background-color: white;color: black;float: right;margin-right:3px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%" (click)="dt2.exportCSV()">Export</span>
+            <span style="cursor:pointer;border:1px solid white;background-color: white;color: black;float: right;margin-right:3px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%" (click)="dt2.exportCSV()">Export</span>
             <div class="col-md-3 col-md-offset-3" style=" float: right">
               <form class="search-form">
                 <div class="form-group has-feedback">
@@ -97,7 +103,11 @@
         <p-column field="empId" header="emp  Id" [hidden]="true" [sortable]="true"></p-column>
         <p-column field="firstName" header="First Name" [sortable]="true"></p-column>
         <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
-        <p-column field="lastName" header="Last Name" [sortable]="true"></p-column>
+        <p-column field="lastName" header="Last Name" [sortable]="true">
+          <template let-col let-allActiveEmployees="rowData" pTemplate type="body">
+            <a><span style="color:blue;">{{allActiveEmployees[col.field]}}</span></a>
+          </template>
+        </p-column>
         <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
         <p-column field="ssn" header="SSN" [sortable]="true"></p-column>
         <p-column field="hireDate" header="Hire Date" [sortable]="true"></p-column>
@@ -132,7 +142,7 @@
             <div style="float: left">
               <h6><strong>&nbsp;&nbsp;Terminated Employees</strong></h6>
             </div>
-            <span style="border:1px solid white;background-color: white;color: black;float: left;margin-left:4px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%" (click)="dt3.exportCSV()">Export</span>
+            <span style="cursor:pointer;border:1px solid white;background-color: white;color: black;float: right;margin-left:4px;margin-right:3px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%" (click)="dt3.exportCSV()">Export</span>
             <div class="col-md-3 col-md-offset-3" style=" float: right">
               <form class="search-form">
                 <div class="form-group has-feedback">
@@ -147,7 +157,11 @@
         <p-column field="empId" header="emp  Id" [hidden]="true" [sortable]="true"></p-column>
         <p-column field="firstName" header="First Name" [sortable]="true"></p-column>
         <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
-        <p-column field="lastName" header="Last Name" [sortable]="true"></p-column>
+        <p-column field="lastName" header="Last Name" [sortable]="true">
+          <template let-col let-allInactiveEmployees="rowData" pTemplate type="body">
+            <a><span style="color:blue;">{{allInactiveEmployees[col.field]}}</span></a>
+          </template>
+        </p-column>
         <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
         <p-column field="ssn" header="SSN" [sortable]="true"></p-column>
         <p-column field="hireDate" header="Hire Date" [sortable]="true"></p-column>

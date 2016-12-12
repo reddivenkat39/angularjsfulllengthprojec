@@ -20,13 +20,13 @@ export class VendorsComponent implements OnInit {
   private eachActiveVendorEmployees = false; // to show active vendor employees in html
   private eachInActiveVendorEmployees = false; // to show inactive vendor employees in html
 
-  private eachVendorInvoice = false;
+  private isEachAllVendorInvoice = false;
+  private isEachOpenVendorInvoice = false;
+  private isEachCloseVendorInvoice = false;
   private allVendorInvoice = false;
   private eachEmployeeInvoice = false;
 
-  private allInvoice = false;
-  private openInvoice = false;
-  private closeInvoice = false;
+
 
 
   allVendors: Vendor[];   // to show all vendors table
@@ -35,7 +35,9 @@ export class VendorsComponent implements OnInit {
 
 
   employeeInvoices: EmployeeInvoice[]; // employee invoices used to insert the invoices by empId
-  vendorInvoices: VendorInvoice[]; // all vendor invoices by vendor id
+  allVendorInvoices: VendorInvoice[]; // all vendor invoices by vendor id
+  openVendorInvoices: VendorInvoice[]; // open vendor invoices by vendor id
+  closeVendorInvoices: VendorInvoice[]; // close vendor invoices by vendor id
 
   selectedVendor: Vendor;
 
@@ -81,8 +83,8 @@ export class VendorsComponent implements OnInit {
   onRowSelectVendor(event) {
     console.log(event.data.venId);
     console.log("vendors tab clicked");
-    this.allVendor = true;
-     let vendorId = event.data.venId;
+    this.allVendor=true;
+    let vendorId = event.data.venId;
 
     /*
      to insert the employee details by vendor id from backend by filtering active employees
@@ -141,40 +143,42 @@ export class VendorsComponent implements OnInit {
         }
       );
     }
+      /*
+       to get the invoices by vendor id from backend
+       */
+      {
+        this.vendorService.getAllInvoicesByVendorId(vendorId).subscribe(
+          res=> {
+            if(res.datares!=null){
+              console.log("datares of vendor invoices : ",res.datares);
+                this.openVendorInvoices=res.datares.filter(row => {
+                  if (row.invStatus == "OPEN")
+                    return row;
+                });
+                this.closeVendorInvoices=res.datares.filter(row => {
+                if (row.invStatus == "CLOSED")
+                  return row;
+                });
+                this.allVendorInvoices=res.datares;
 
-    /*
-     to get the invoices by vendor id from backend
-     */
+            }else if(res.errorres!=null){
 
-    {
-      this.vendorService.getAllInvoicesByVendorId(vendorId).subscribe(
-        res=> {
-          if(res.datares!=null){
-            console.log("datares is : ",res.datares);
-          }else if(res.errorres!=null){
+            }else if(res.successres!=null){
 
-          }else if(res.successres!=null){
-
-          }else {
-            console.log("server problem");
+            }else {
+              console.log("server problem");
+            }
           }
-        }
-      );
-    }
-
-
+        );
+      }
   }
-
-
-
-
   onClickVendorEmployee() {
     console.log("vendor employees clicked");
     this.allVendor = true;
     this.eachActiveVendorEmployees = true;
     this.eachInActiveVendorEmployees = false;
     this.allVendorInvoice = false;
-    this.eachVendorInvoice = false;
+    this.isEachOpenVendorInvoice=true;
     this.eachEmployeeInvoice = false;
 
   }
@@ -185,7 +189,7 @@ export class VendorsComponent implements OnInit {
     this.eachActiveVendorEmployees = true;
     this.eachInActiveVendorEmployees = false;
     this.allVendorInvoice = false;
-    this.eachVendorInvoice = false;
+    this.isEachOpenVendorInvoice=false;
     this.eachEmployeeInvoice = false;
   }
 
@@ -196,20 +200,17 @@ export class VendorsComponent implements OnInit {
     this.eachActiveVendorEmployees = false;
     this.eachInActiveVendorEmployees = true;
     this.allVendorInvoice = false;
-    this.eachVendorInvoice = false;
+    this.isEachOpenVendorInvoice=false;
     this.eachEmployeeInvoice = false;
   }
 
-  // onClickVendorInvoice() {
-  //   this.allVendorInvoice = true;
-  //   this.eachVendorInvoice = true;
-  //   this.eachEmployeeInvoice = false;
-  //   this.allVendor = false;
-  //   this.openInvoice = true;
-  //   this.allInvoice = false;
-  //   this.closeInvoice = false;
-  //   this.vendorService.getVendorInvoices().then(vendorInvoices => this.vendorInvoices = vendorInvoices);
-  // }
+  onClickVendorInvoice() {
+    this.allVendorInvoice = true;
+    this.eachEmployeeInvoice = false;
+    this.isEachOpenVendorInvoice=true;
+    this.allVendor = false;
+    /*this.vendorService.getVendorInvoices().then(vendorInvoices => this.vendorInvoices = vendorInvoices);*/
+  }
 
   /* onClickEachEmployeeInvoice() {
    this.eachActiveVendorEmployees = false;
@@ -221,21 +222,24 @@ export class VendorsComponent implements OnInit {
    this.vendorService.getEmployeeInvoices().then(employeeInvoices => this.employeeInvoices = employeeInvoices);
    }*/
 
-  onClickAllVendor() {
-    this.allInvoice = true;
-    this.openInvoice = false;
-    this.closeInvoice = false;
+  onClickAllInvoice() {
+    console.log("All Invoice clicked");
+    this.isEachAllVendorInvoice = true;
+    this.isEachOpenVendorInvoice = false;
+    this.isEachCloseVendorInvoice = false;
   }
 
   onClickOpenInvoice() {
-    this.openInvoice = true;
-    this.allInvoice = false;
-    this.closeInvoice = false;
+   console.log("Open Invoice clicked");
+    this.isEachAllVendorInvoice = false;
+    this.isEachOpenVendorInvoice = true;
+    this.isEachCloseVendorInvoice = false;
   }
 
   onClickCloseInvoice() {
-    this.closeInvoice = true;
-    this.allInvoice = false;
-    this.openInvoice = false;
+    console.log("Close Invoice clicked");
+    this.isEachAllVendorInvoice = false;
+    this.isEachOpenVendorInvoice = false;
+    this.isEachCloseVendorInvoice = true;
   }
 }
