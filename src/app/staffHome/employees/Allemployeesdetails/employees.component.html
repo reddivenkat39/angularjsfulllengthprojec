@@ -250,13 +250,13 @@
     </div>
   </div>
 </div>-->
-<div class="container-fluid">
+<!--<div class="container-fluid">
   <div *ngIf="viewAllEmployee">
     <div class="col-xs-12">
-      <!--<div>
+      &lt;!&ndash;<div>
         <p style="float: left;color:blue;font-size: 12pt"><strong>{{viewEmployeeDetails.empName}}</strong></p>
 
-      </div>-->
+      </div>&ndash;&gt;
       <div class="panel-heading">
         {{viewEmployeeDetails.empName}}
       </div>
@@ -346,8 +346,8 @@
       </div>
     </div>
   </div>
-</div>
-<div class="container-fluid">
+</div>-->
+<!--<div class="container-fluid">
   <div *ngIf="viewInActiveEmployee">
     <div class="panel-heading">
       {{viewEmployeeDetails.empName}}
@@ -437,8 +437,274 @@
       </div>
     </div>
   </div>
+</div>-->
+<div class="container-fluid">
+  <div *ngIf="viewInActiveEmployee">
+    <div>
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            {{viewEmployeeDetails.empName}}
+          </div>
+          <div class="panel-body" >
+            <div class="container-fluid">
+              <div  class="col-xs-3" style="border-right: 1px solid #ccc;">
+                <table class="table borderless">
+                  <thead>More Info</thead>
+                  <tbody>
+                  <tr class="hide">
+                    <td>Emp Id</td>
+                    <td>
+                      {{viewEmployeeAddressDetails.empId}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Designation:</td>
+                    <td>Software Developer</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Department:</td>
+                    <td>Internal</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Work Authorization:</td>
+                    <td>H1B</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Hire Date:</td>
+                    <td>12/7/2014</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Billable:</td>
+                    <td><input type="checkbox"/></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-xs-3" style="border-right: 1px solid #ccc;">
+                <table class="table borderless">
+                  <thead>Work Address</thead>
+                  <tbody>
+                  <tr>
+                    <td style="font-weight: bold;">Address Line1:</td>
+                    <td>2865 Crescent View Dr</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Address Line2:</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">City:</td>
+                    <td>Charlotte</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">State:</td>
+                    <td>NC</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Zipcode:</td>
+                    <td>28269</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-xs-3" style="border-right: 1px solid #ccc;">
+                <table class="table borderless">
+                  <thead>Home Address</thead>
+                  <tr>
+                    <td style="font-weight: bold;">Address Line1:</td>
+                    <td>
+                      {{viewEmployeeAddressDetails.addrLine1}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Address Line2:</td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">City:</td>
+                    <td>
+                      {{viewEmployeeAddressDetails.city}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">State:</td>
+                    <td>
+                      {{viewEmployeeAddressDetails.state}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">ZipCode:</td>
+                    <td>
+                      {{viewEmployeeAddressDetails.zipCd}}
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div class="col-xs-3">
+                <table class="table borderless">
+                  <thead>Contact Details</thead>
+                  <tr>
+                    <td style="font-weight: bold;">Phone No:</td>
+                    <td>
+                      {{viewEmployeeContactDetails.mobilePhone}}
+                    </td>
+                  <tr>
+                    <td style="font-weight: bold;">Email:</td>
+                    <td>
+                      {{viewEmployeeContactDetails.homeEmail }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Emergency Contact:</td>
+                    <td>
+                      {{viewEmployeeContactDetails.homePhone}}
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
+<div class="container-fluid">
+  <div *ngIf="viewAllEmployee">
+    <div>
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            {{viewEmployeeDetails.empName}}
+          </div>
+          <div class="panel-body" >
+            <div class="container-fluid">
+              <div  class="col-xs-3" style="border-right: 1px solid #ccc;">
+                <table class="table borderless">
+                  <thead>More Info</thead>
+                  <tbody>
+                  <tr class="hide">
+                    <td>Emp Id</td>
+                    <td>
+                      {{viewEmployeeAddressDetails.empId}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Designation:</td>
+                    <td>Software Engineer</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Department:</td>
+                    <td>Internal</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Work Authorization:</td>
+                    <td>OPT-EAD</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Hire Date:</td>
+                    <td>11/2/2015</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Billable:</td>
+                    <td><input type="checkbox"/></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-xs-3" style="border-right: 1px solid #ccc;">
+                <table class="table borderless">
+                  <thead>Work Address</thead>
+                  <tbody>
+                  <tr>
+                    <td style="font-weight: bold;">Address Line1:</td>
+                    <td>2865 Crescent View Dr</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Address Line2:</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">City:</td>
+                    <td>Charlotte</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">State:</td>
+                    <td>NC</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Zipcode:</td>
+                    <td>28269</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-xs-3" style="border-right: 1px solid #ccc;">
+                <table class="table borderless">
+                  <thead>Home Address</thead>
+                  <tr>
+                    <td style="font-weight: bold;">Address Line1:</td>
+                    <td>
+                      {{viewEmployeeAddressDetails.addrLine1}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Address Line2:</td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">City:</td>
+                    <td>
+                      {{viewEmployeeAddressDetails.city}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">State:</td>
+                    <td>
+                      {{viewEmployeeAddressDetails.state}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">ZipCode:</td>
+                    <td>
+                      {{viewEmployeeAddressDetails.zipCd}}
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div class="col-xs-3">
+                <table class="table borderless">
+                  <thead>Contact Details</thead>
+                  <tr>
+                    <td style="font-weight: bold;">Phone No:</td>
+                    <td>
+                      {{viewEmployeeContactDetails.mobilePhone}}
+                    </td>
+                  <tr>
+                    <td style="font-weight: bold;">Email:</td>
+                    <td>
+                      {{viewEmployeeContactDetails.homeEmail }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Emergency Contact:</td>
+                    <td>
+                      {{viewEmployeeContactDetails.homePhone}}
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container-fluid">
   <div *ngIf="viewActiveEmployee">
     <div>

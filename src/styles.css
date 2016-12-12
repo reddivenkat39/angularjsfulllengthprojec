@@ -67,3 +67,23 @@ div.ui-paginator-bottom .ui-paginator .ui-widget-header{
 .panel .panel-body{
   padding:0px;
 }
+.form-group{
+  margin-top: 1px;
+  margin-bottom: 2px;
+}
+.search-form .form-group{
+  height:30px;
+}
+.search-form .form-group span.form-control-feedback{
+  top:-5px;
+}
+h6{
+  color: white;
+  font-family: 'Calibri';
+  border: 1px solid white;
+  padding: 2px 3px 2px 1px;
+  margin-bottom: 1px;
+  margin-left:4px;
+  margin-right: 5px;
+}
+
