@@ -81,7 +81,7 @@
                 <p-column field="endDate" header="End Date" [sortable]="true" [hidden]="true" filterMatchMode="contains"></p-column>
                 <p-column [style]="{'width':'90px'}" selectionMode="single" styleClass="col-button">
                   <template let-vendorActiveEmployee="rowData" pTemplate type="header">
-                    <button [style]="{'width':'90px'}" (click)="onClickButtonEmployeeInvoice()" pButton label="Invoices">
+                    <button style="width:80px;background-color:lightblue;margin-right:7px;" (click)="onClickButtonEmployeeInvoice()" pButton label="Invoices">
                     </button>
                   </template>
                 </p-column>
@@ -108,7 +108,7 @@
                 <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
                 <p-column [style]="{'width':'90px'}" selectionMode="single" styleClass="col-button">
                   <template let-vendorInActiveEmployee="rowData" pTemplate type="header">
-                    <button [style]="{'width':'90px'}" class="btn btn-default" type="button" (click)="onClickButtonEmployeeInvoice()" pButton
+                    <button style="width:80px;background-color:lightblue;margin-right:7px;" class="btn btn-default" type="button" (click)="onClickButtonEmployeeInvoice()" pButton
                             label="Invoices"></button>
                   </template>
                 </p-column>

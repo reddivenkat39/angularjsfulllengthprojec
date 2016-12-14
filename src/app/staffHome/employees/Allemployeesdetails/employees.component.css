@@ -26,3 +26,8 @@ li.active {
   font-weight: bold;
    border-bottom: 2px solid blue;
 }
+.EachEmployeeEditableDetailsTabs li.active>a{
+  border-bottom: 2px solid blue;
+  color:black;
+  font-weight: bold;
+}

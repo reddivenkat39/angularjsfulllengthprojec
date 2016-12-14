@@ -54,7 +54,7 @@
         <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
         <p-column field="lastName" header="Last Name" [sortable]="true">
           <template let-col let-allEmployee="rowData" pTemplate type="body">
-            <a (click)="onClickLastName()"><span style="color:darkviolet !important;">{{allEmployee[col.field]}}</span></a>
+            <a (click)="onClickLastName()"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{allEmployee[col.field]}}</span></a>
           </template>
         </p-column>
         <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
@@ -105,7 +105,7 @@
         <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
         <p-column field="lastName" header="Last Name" [sortable]="true">
           <template let-col let-allActiveEmployees="rowData" pTemplate type="body">
-            <a (click)="onClickLastName()"><span style="color:darkviolet !important;">{{allActiveEmployees[col.field]}}</span></a>
+            <a (click)="onClickLastName()"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{allActiveEmployees[col.field]}}</span></a>
           </template>
         </p-column>
         <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
@@ -219,23 +219,23 @@
                   <tbody>
                   <tr>
                     <td style="font-weight: bold;">Address Line1:</td>
-                    <td>2865 Crescent View Dr</td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliAddrLine1}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Address Line2:</td>
-                    <td></td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliAddrLine2}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">City:</td>
-                    <td>Charlotte</td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliCity}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">State:</td>
-                    <td>NC</td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliState}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Zipcode:</td>
-                    <td>28269</td>
+                    <td>{{viewEmployeeWorkAddressDetails.zipCd}}</td>
                   </tr>
                   </tbody>
                 </table>
@@ -353,23 +353,23 @@
                   <tbody>
                   <tr>
                     <td style="font-weight: bold;">Address Line1:</td>
-                    <td>2865 Crescent View Dr</td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliAddrLine1}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Address Line2:</td>
-                    <td></td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliAddrLine2}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">City:</td>
-                    <td>Charlotte</td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliCity}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">State:</td>
-                    <td>NC</td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliState}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Zipcode:</td>
-                    <td>28269</td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliZipCode}}</td>
                   </tr>
                   </tbody>
                 </table>
@@ -486,23 +486,23 @@
                   <tbody>
                   <tr>
                     <td style="font-weight: bold;">Address Line1:</td>
-                    <td>2865 Crescent View Dr</td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliAddrLine1}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Address Line2:</td>
-                    <td></td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliAddrLine2}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">City:</td>
-                    <td>Charlotte</td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliCity}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">State:</td>
-                    <td>NC</td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliState}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Zipcode:</td>
-                    <td>28269</td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliZipCode}}</td>
                   </tr>
                   </tbody>
                 </table>
@@ -572,16 +572,16 @@
 </div>
 <div class="container-fluid">
   <div class="EachEmployeeEditableDetailsTabs">
-    <ul class="nav nav-pills">
-      <li><a data-toggle="pill">Education</a></li>
-      <li ><a data-toggle="pill">Contact</a></li>
-      <li><a data-toggle="pill">Address</a></li>
-      <li><a data-toggle="pill">Vendor</a></li>
-      <li ><a data-toggle="pill">Projects</a></li>
-      <li><a data-toggle="pill">Pay rate</a></li>
-      <li><a data-toggle="pill">Passport</a></li>
-      <li ><a data-toggle="pill">Work Authorization</a></li>
-      <li><a data-toggle="pill">Benefits</a></li>
+    <ul class="list-inline">
+      <li class="list-inline active" ><a>Education</a></li>|
+      <li ><a>Contact</a></li>|
+      <li><a>Address</a></li>|
+      <li><a>Vendor</a></li>|
+      <li ><a>Projects</a></li>|
+      <li><a>Pay rate</a></li>|
+      <li><a>Passport</a></li>|
+      <li ><a>Work Authorization</a></li>|
+      <li><a>Benefits</a></li>
     </ul>
   </div>
 </div>

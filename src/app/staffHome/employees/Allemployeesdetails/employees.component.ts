@@ -32,6 +32,7 @@ export class EmployeesComponent implements OnInit {
     'empId'  : '',
     'empName': ''
   };
+  private viewEmployeeWorkAddressDetails={};
   private viewEmployeeAddressDetails = {};
   private viewEmployeeContactDetails = {};
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager) {
@@ -200,8 +201,10 @@ export class EmployeesComponent implements OnInit {
     this.employeeService.getDetailedViewEachEmployee(event.data.empId).subscribe(
       res => {
         if (res.datares != null) {
+          console.log("view details of employee",res.datares);
           console.log("yes getting data of each employee details ", res.datares.empAddrDtls);
           this.viewEmployeeDetails.empName = res.datares.firstName + ' ' + res.datares.lastName;
+
           console.log(this.viewEmployeeDetails.empName);
           if (res.datares.empContacts[0] != null) {
             this.viewEmployeeContactDetails = res.datares.empContacts[0];
@@ -298,6 +301,7 @@ export class EmployeesComponent implements OnInit {
             this.viewEmployeeContactDetails = '';
           }
 
+
           if (res.datares.empAddrDtls[0] != null) {
             this.viewEmployeeAddressDetails = res.datares.empAddrDtls[0];
           }
@@ -321,6 +325,7 @@ export class EmployeesComponent implements OnInit {
         }
       }
     );
+
   }
   onClickLastName(){
     $("#nav").hide();
@@ -329,6 +334,10 @@ export class EmployeesComponent implements OnInit {
     this.allInActive=false;
     this.allActive=false;
     $(".EachEmployeeEditableDetailsTabs").show();
+    $("ul li").click(function () {
+      $(this).parent().children().removeClass("active");
+      $(this).addClass("active");
+    });
 
   }
 
