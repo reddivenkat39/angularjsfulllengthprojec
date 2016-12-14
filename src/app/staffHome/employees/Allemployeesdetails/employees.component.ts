@@ -30,11 +30,13 @@ export class EmployeesComponent implements OnInit {
   selectedEmployee: Employee;
   private viewEmployeeDetails = {
     'empId'  : '',
-    'empName': ''
-  };
-  private viewEmployeeWorkAddressDetails={};
+    'empName': '',
+    'hireDate': ''
+  }
   private viewEmployeeAddressDetails = {};
   private viewEmployeeContactDetails = {};
+  private viewEmployeeWorkAddressDetails={};
+
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager) {
   }
 
@@ -53,8 +55,7 @@ export class EmployeesComponent implements OnInit {
     this.allActive = false;
     this.allInActive = false;
     this.viewInActiveEmployee = false;
-    this.viewActiveEmployee=false;
-
+    this.viewActiveEmployee = false;
     this.employeeService.getAllEmployeeDetails().subscribe(
       res => {
         if (res.datares != null) {
@@ -138,60 +139,7 @@ export class EmployeesComponent implements OnInit {
 
   }
 
-  /*onClickViewAll($event, eachEmployeeDetailId: Employee) {
-    //TODO : optimise the below line
-    if($(".fa-angle-double-down").length > 0) {
-      $(".fa-angle-double-down")[0].className = "fa fa-angle-double-right";
-    }
-    $event.currentTarget.children[0].className = "fa fa-angle-double-down";
 
-    this.viewAllEmployee = true;
-    this.viewInActiveEmployee = false;
-    this.viewActiveEmployee=false;
-    console.log("on click eachEmployeeDetailId");
-    this.viewClicked = !this.viewClicked;
-    this.empId = eachEmployeeDetailId.empId;
-    console.log(eachEmployeeDetailId);
-    console.log("employee Id" + this.empId);
-    console.log("view clicked");
-    this.employeeService.getDetailedViewEachEmployee(this.empId).subscribe(
-      res => {
-        if (res.datares != null) {
-          console.log("yes getting data of each employee details ", res.datares.empAddrDtls);
-          this.viewEmployeeDetails.empName = res.datares.firstName + ' ' + res.datares.lastName;
-          console.log(this.viewEmployeeDetails.empName);
-          if (res.datares.empContacts[0] != null) {
-            this.viewEmployeeContactDetails = res.datares.empContacts[0];
-            console.log(this.viewEmployeeContactDetails);
-          } else {
-            console.log(this.viewEmployeeContactDetails, 'contact details not found');
-            this.viewEmployeeContactDetails = '';
-          }
-
-          if (res.datares.empAddrDtls[0] != null) {
-            this.viewEmployeeAddressDetails = res.datares.empAddrDtls[0];
-          }
-          else {
-            console.log(this.viewEmployeeAddressDetails, 'addresss details not found');
-            this.viewEmployeeAddressDetails = '';
-          }
-
-          //   Array.prototype.slice.call(res.datares.empAddrDtls,0);
-          // console.log("view employee address details by id",this.viewEmployeeAddressDetails);
-
-        }
-        else if (res.successres != null) {
-          console.log("success ", res.successres);
-        } else if (res.errorres != null) {
-          console.log("OOPs no data  found", res.errorres);
-          this.toastManager.error(res.errorres, 'No data Found');
-        } else {
-          console.log("server problem ");
-          this.toastManager.info('Oops!', 'Server Problem please Try Again');
-        }
-      }
-    );
-  }*/
   onRowSelectActiveEmployees(event) {
     console.log("on row select",event.data.empId);
     this.viewActiveEmployee = true;
@@ -201,10 +149,8 @@ export class EmployeesComponent implements OnInit {
     this.employeeService.getDetailedViewEachEmployee(event.data.empId).subscribe(
       res => {
         if (res.datares != null) {
-          console.log("view details of employee",res.datares);
           console.log("yes getting data of each employee details ", res.datares.empAddrDtls);
           this.viewEmployeeDetails.empName = res.datares.firstName + ' ' + res.datares.lastName;
-
           console.log(this.viewEmployeeDetails.empName);
           if (res.datares.empContacts[0] != null) {
             this.viewEmployeeContactDetails = res.datares.empContacts[0];
@@ -213,6 +159,14 @@ export class EmployeesComponent implements OnInit {
             console.log(this.viewEmployeeContactDetails, 'contact details not found');
             this.viewEmployeeContactDetails = '';
           }
+
+
+          if(res.datares!=null){
+            this.viewEmployeeDetails.hireDate = res.datares.hireDate;
+          }else{
+            this.viewEmployeeDetails.hireDate = '';
+          }
+
 
           if (res.datares.empAddrDtls[0] != null) {
             this.viewEmployeeAddressDetails = res.datares.empAddrDtls[0];
@@ -238,6 +192,21 @@ export class EmployeesComponent implements OnInit {
       }
     );
 
+    this.employeeService.getEmpWorkAddressById(event.data.empId).subscribe(
+      res=>{
+        if(res.datares!=null){
+          console.log(res.datares," get work address by empid");
+          this.viewEmployeeWorkAddressDetails = res.datares[0];
+        }else if(res.successres!=null){
+          console.log(res.successres," success");
+        }else if(res.errorres!=null){
+          this.viewEmployeeAddressDetails = '';
+          console.log(res.errorres," error");
+        }else {
+
+        }
+      }
+    );
   }
   onRowSelectAllEmployees(event){
     this.viewAllEmployee = true;
@@ -260,6 +229,12 @@ export class EmployeesComponent implements OnInit {
             this.viewEmployeeContactDetails = '';
           }
 
+          if(res.datares!=null){
+            this.viewEmployeeDetails.hireDate = res.datares.hireDate;
+          }else{
+            this.viewEmployeeDetails.hireDate = '';
+          }
+
           if (res.datares.empAddrDtls[0] != null) {
             this.viewEmployeeAddressDetails = res.datares.empAddrDtls[0];
           }
@@ -279,6 +254,23 @@ export class EmployeesComponent implements OnInit {
         }
       }
     );
+
+    this.employeeService.getEmpWorkAddressById(event.data.empId).subscribe(
+      res=>{
+        if(res.datares!=null){
+          console.log(res.datares," get work address by empid");
+          this.viewEmployeeWorkAddressDetails = res.datares[0];
+        }else if(res.successres!=null){
+          console.log(res.successres," success");
+        }else if(res.errorres!=null){
+          this.viewEmployeeAddressDetails = '';
+          console.log(res.errorres," error");
+        }else {
+
+        }
+      }
+    );
+
   }
   onRowSelectInActiveEmployees(event){
     this.viewInActiveEmployee = true;
@@ -301,6 +293,11 @@ export class EmployeesComponent implements OnInit {
             this.viewEmployeeContactDetails = '';
           }
 
+          if(res.datares!=null){
+            this.viewEmployeeDetails.hireDate = res.datares.hireDate;
+          }else{
+            this.viewEmployeeDetails.hireDate = '';
+          }
 
           if (res.datares.empAddrDtls[0] != null) {
             this.viewEmployeeAddressDetails = res.datares.empAddrDtls[0];
@@ -325,7 +322,6 @@ export class EmployeesComponent implements OnInit {
         }
       }
     );
-
   }
   onClickLastName(){
     $("#nav").hide();
@@ -340,61 +336,6 @@ export class EmployeesComponent implements OnInit {
     });
 
   }
-
-  /*onClickViewActive($event, eachEmployeeDetailId: Employee) {
-    //TODO : optimise the below line
-    if($(".fa-angle-double-down").length > 0) {
-      $(".fa-angle-double-down")[0].className = "fa fa-angle-double-right";
-    }
-    $event.currentTarget.children[0].className = "fa fa-angle-double-down";
-
-    this.viewActiveEmployee = true;
-    this.viewAllEmployee = false;
-    this.viewInActiveEmployee = false;
-    console.log("on click eachEmployeeDetailId");
-    this.viewClicked = !this.viewClicked;
-    this.empId = eachEmployeeDetailId.empId;
-    console.log(eachEmployeeDetailId);
-    console.log("employee Id" + this.empId);
-    console.log("view clicked");
-    this.employeeService.getDetailedViewEachEmployee(this.empId).subscribe(
-      res => {
-        if (res.datares != null) {
-          console.log("yes getting data of each employee details ", res.datares.empAddrDtls);
-          this.viewEmployeeDetails.empName = res.datares.firstName + ' ' + res.datares.lastName;
-          console.log(this.viewEmployeeDetails.empName);
-          if (res.datares.empContacts[0] != null) {
-            this.viewEmployeeContactDetails = res.datares.empContacts[0];
-            console.log(this.viewEmployeeContactDetails);
-          } else {
-            console.log(this.viewEmployeeContactDetails, 'contact details not found');
-            this.viewEmployeeContactDetails = '';
-          }
-
-          if (res.datares.empAddrDtls[0] != null) {
-            this.viewEmployeeAddressDetails = res.datares.empAddrDtls[0];
-          }
-          else {
-            console.log(this.viewEmployeeAddressDetails, 'addresss details not found');
-            this.viewEmployeeAddressDetails = '';
-          }
-
-          //   Array.prototype.slice.call(res.datares.empAddrDtls,0);
-          // console.log("view employee address details by id",this.viewEmployeeAddressDetails);
-
-        }
-        else if (res.successres != null) {
-          console.log("success ", res.successres);
-        } else if (res.errorres != null) {
-          console.log("OOPs no data  found", res.errorres);
-          this.toastManager.error(res.errorres, 'No data Found');
-        } else {
-          console.log("server problem ");
-          this.toastManager.info('Oops!', 'Server Problem please Try Again');
-        }
-      }
-    );
-  }*/
   /*onClickViewInActive($event, eachEmployeeDetailId: Employee) {
     //TODO : optimise the below line
     if($(".fa-angle-double-down").length > 0) {
@@ -402,51 +343,22 @@ export class EmployeesComponent implements OnInit {
     }
     $event.currentTarget.children[0].className = "fa fa-angle-double-down";
 
-    this.viewInActiveEmployee = true;
-    this.viewActiveEmployee = false;
-    this.viewAllEmployee = false;
-    console.log("on click eachEmployeeDetailId");
-    this.viewClicked = !this.viewClicked;
-    this.empId = eachEmployeeDetailId.empId;
-    console.log(eachEmployeeDetailId);
-    console.log("employee Id" + this.empId);
-    console.log("view clicked");
-    this.employeeService.getDetailedViewEachEmployee(this.empId).subscribe(
-      res => {
-        if (res.datares != null) {
-          console.log("yes getting data of each employee details ", res.datares.empAddrDtls);
-          this.viewEmployeeDetails.empName = res.datares.firstName + ' ' + res.datares.lastName;
-          console.log(this.viewEmployeeDetails.empName);
-          if (res.datares.empContacts[0] != null) {
-            this.viewEmployeeContactDetails = res.datares.empContacts[0];
-            console.log(this.viewEmployeeContactDetails);
-          } else {
-            console.log(this.viewEmployeeContactDetails, 'contact details not found');
-            this.viewEmployeeContactDetails = '';
-          }
+    this.employeeService.getEmpWorkAddressById(event.data.empId).subscribe(
+      res=>{
+        if(res.datares!=null){
+        console.log(res.datares," get work address by empid");
+        this.viewEmployeeWorkAddressDetails = res.datares[0];
+        }else if(res.successres!=null){
+          console.log(res.successres," success");
+        }else if(res.errorres!=null){
+          this.viewEmployeeAddressDetails = '';
+          console.log(res.errorres," error");
+        }else {
 
-          if (res.datares.empAddrDtls[0] != null) {
-            this.viewEmployeeAddressDetails = res.datares.empAddrDtls[0];
-          }
-          else {
-            console.log(this.viewEmployeeAddressDetails, 'addresss details not found');
-            this.viewEmployeeAddressDetails = '';
-          }
-
-          //   Array.prototype.slice.call(res.datares.empAddrDtls,0);
-          // console.log("view employee address details by id",this.viewEmployeeAddressDetails);
-
-        }
-        else if (res.successres != null) {
-          console.log("success ", res.successres);
-        } else if (res.errorres != null) {
-          console.log("OOPs no data  found", res.errorres);
-          this.toastManager.error(res.errorres, 'No data Found');
-        } else {
-          console.log("server problem ");
-          this.toastManager.info('Oops!', 'Server Problem please Try Again');
         }
       }
     );
-  }*/
+  }
+
+
 }

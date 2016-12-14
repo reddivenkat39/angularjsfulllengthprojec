@@ -6,6 +6,7 @@ import {VendorInvoice} from "../VendorInvoice.interface";
 import {InActiveVendorEmployee} from "../InActiveVendorEmployee.interface";
 import {ToastsManager} from "ng2-toastr";
 import {VendorEmployee} from "../VendorEmployee.interface";
+import {forEach} from "@angular/router/src/utils/collection";
 declare var $: any;
 
 @Component({
@@ -20,9 +21,14 @@ export class VendorsComponent implements OnInit {
   private eachActiveVendorEmployees = false; // to show active vendor employees in html
   private eachInActiveVendorEmployees = false; // to show inactive vendor employees in html
 
-  private isEachAllVendorInvoice = false; // to show all vendor invoice in html
-  private isEachOpenVendorInvoice = false;// to show open vendor invoice in html
-  private isEachCloseVendorInvoice = false;// to show close vendor invoice in html
+  private isEachAllVendorInvoice = false;
+  private isEachOpenVendorInvoice = false;
+  private isEachCloseVendorInvoice = false;
+  private totalInvoiceAmount = {
+    allInvoicesTotalAmount   : 0.00,
+    openInvoicesTotalAmount  : 0.00,
+    closedInvoicesTotalAmount: 0.00
+  };
   private allVendorInvoice = false;
   private tabsForEmployeeInvoice=false;
   private isEachAllEmployeeInvoice = false;
@@ -41,6 +47,10 @@ export class VendorsComponent implements OnInit {
   allVendorInvoices: VendorInvoice[]; // all vendor invoices by vendor id
   openVendorInvoices: VendorInvoice[]; // open vendor invoices by vendor id
   closeVendorInvoices: VendorInvoice[]; // close vendor invoices by vendor id
+
+  openInvsAmnt: number = 0;
+  closedInvsAmnt: number = 0;
+  allInvsAmnt: number = 0;
 
   selectedVendor: Vendor;
 
@@ -88,6 +98,11 @@ export class VendorsComponent implements OnInit {
     console.log("vendors tab clicked");
     let vendorId = event.data.venId;
 
+    //reset count to zero
+    this.allInvsAmnt=0;
+    this.closedInvsAmnt=0;
+    this.openInvsAmnt=0;
+
     /*
      to insert the employee details by vendor id from backend by filtering active employees
      */
@@ -100,42 +115,15 @@ export class VendorsComponent implements OnInit {
               if (row.endDate == null)
                 return row;
             });
-            // this.vendorInActiveEmployees = res.datares.filter(row => {
-            //   if (row.invEndDt != null)
-            //     return row;
-            // });
-          } else if (res.errorres != null) {
-            console.log(res.errorres);
-            console.log(res.datares);
-            this.vendorActiveEmployees = null;
-          } else if (res.successres != null) {
-            console.log(res.successres);
-          } else {
-            this.toastMsg.error('Please Login Again', 'Server Problem');
-          }
-        }
-      );
-    }
 
-    /*
-     to insert the employee details by vendor id from backend by filtering inactive employees
-     */
-
-    {
-      this.vendorService.getVendorEmployeesByVendId(vendorId).subscribe(
-        res => {
-          if (res.datares != null) {
-            console.log(res.datares);
-            // this.vendorActiveEmployees = res.datares.filter(row => {
-            //   if (row.invEndDt == null)
-            //     return row;
-            // });
             this.vendorInActiveEmployees = res.datares.filter(row => {
               if (row.endDate != null)
                 return row;
             });
           } else if (res.errorres != null) {
             console.log(res.errorres);
+            console.log(res.datares);
+            this.vendorActiveEmployees = null;
             this.vendorInActiveEmployees = null;
           } else if (res.successres != null) {
             console.log(res.successres);
@@ -145,23 +133,68 @@ export class VendorsComponent implements OnInit {
         }
       );
     }
-      /*
-       to get the invoices by vendor id from backend
-       */
-      {
-        this.vendorService.getAllInvoicesByVendorId(vendorId).subscribe(
-          res=> {
-            if(res.datares!=null){
-              console.log("datares of vendor invoices : ",res.datares);
-                this.openVendorInvoices=res.datares.filter(row => {
-                  if (row.invStatus == "OPEN")
-                    return row;
-                });
-                this.closeVendorInvoices=res.datares.filter(row => {
-                if (row.invStatus == "CLOSED")
-                  return row;
-                });
-                this.allVendorInvoices=res.datares;
+
+
+    /*
+     to insert the employee details by vendor id from backend by filtering inactive employees
+     */
+
+    // {
+    //   this.vendorService.getVendorEmployeesByVendId(vendorId).subscribe(
+    //     res => {
+    //       if (res.datares != null) {
+    //         console.log(res.datares);
+    //         // this.vendorActiveEmployees = res.datares.filter(row => {
+    //         //   if (row.invEndDt == null)
+    //         //     return row;
+    //         // });
+    //         this.vendorInActiveEmployees = res.datares.filter(row => {
+    //             if (row.invEndDt != null)
+    //               return row;
+    //         });
+    //       } else if (res.errorres != null) {
+    //         console.log(res.errorres);
+    //         this.vendorInActiveEmployees = null;
+    //       } else if (res.successres != null) {
+    //         console.log(res.successres);
+    //       } else {
+    //         this.toastMsg.error('Please Login Again', 'Server Problem');
+    //       }
+    //     }
+    //   );
+    // }
+    /*
+     to get the invoices by vendor id from backend
+     */
+    {
+      this.vendorService.getAllInvoicesByVendorId(vendorId).subscribe(
+        res => {
+          if (res.datares != null) {
+            console.log("datares of vendor invoices : ", res.datares);
+            /*
+             to seperate OPEN invoices and to show sum of all OPEN invoices total amount
+             */
+            this.openVendorInvoices = res.datares.filter(row => {
+              if (row.invStatus == "OPEN") {
+                this.openInvsAmnt += row.invAmt;
+                return row;
+              }
+            });
+
+            /*
+             to seperate closed invoices and to show sum of all closed invoices total amount
+             */
+            this.closeVendorInvoices = res.datares.filter(row => {
+              if (row.invStatus == "CLOSED") {
+                this.closedInvsAmnt += row.invAmt;
+                return row;
+              }
+              });
+
+            this.allVendorInvoices = res.datares;
+            for (let i = 0; i < this.allVendorInvoices.length; i++) {
+              this.allInvsAmnt += this.allVendorInvoices[i].invAmt;
+            }
 
             }else if(res.errorres!=null){
               console.log(res.errorres);
