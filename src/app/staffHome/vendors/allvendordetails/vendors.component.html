@@ -131,7 +131,7 @@
               <header>
                 <div class="ui-helper-clearfix">
                 <strong style="float: left">Vendor</strong>
-                <span style="float: right">Total Invoice Amount:</span>
+                <span style="float: right">Total Invoice Amount:{{allInvsAmnt | currency:'USD':true}}</span>
                 </div>
               </header>
               <p-dataTable #dt1 [value]="allVendorInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3"
@@ -154,7 +154,7 @@
               <header>
                 <div class="ui-helper-clearfix">
                   <strong style="float: left">Vendor</strong>
-                  <span style="float: right">Total Invoice Amount:</span>
+                  <span style="float: right">Total Invoice Amount:{{openInvsAmnt | currency:'USD':true}}</span>
                 </div>
               </header>
               <p-dataTable #dt1 [value]="openVendorInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3"
@@ -177,7 +177,7 @@
               <header>
                 <div class="ui-helper-clearfix">
                   <strong style="float: left">Vendor</strong>
-                  <span style="float: right">Total Invoice Amount:</span>
+                  <span style="float: right">Total Invoice Amount:{{closedInvsAmnt | currency:'USD':true}}</span>
                 </div>
               </header>
               <p-dataTable #dt1 [value]="closeVendorInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3"

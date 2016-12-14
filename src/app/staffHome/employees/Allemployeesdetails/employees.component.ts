@@ -20,8 +20,8 @@ export class EmployeesComponent implements OnInit {
   private allInActive = false;
   private viewClicked = false;
   private viewActiveEmployee = false;
-  private viewAllEmployee=false;
-  private viewInActiveEmployee=false;
+  private viewAllEmployee = false;
+  private viewInActiveEmployee = false;
   allEmployees: Employee[];
   allActiveEmployees: Employee[];
   allInactiveEmployees: Employee[];
@@ -29,13 +29,13 @@ export class EmployeesComponent implements OnInit {
   isTermDate = '';
   selectedEmployee: Employee;
   private viewEmployeeDetails = {
-    'empId'  : '',
+    'empId': '',
     'empName': '',
     'hireDate': ''
   }
   private viewEmployeeAddressDetails = {};
   private viewEmployeeContactDetails = {};
-  private viewEmployeeWorkAddressDetails={};
+  private viewEmployeeWorkAddressDetails = {};
 
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager) {
   }
@@ -47,6 +47,7 @@ export class EmployeesComponent implements OnInit {
       $(this).addClass("active");
     });
     $(".EachEmployeeEditableDetailsTabs").hide();
+    $(".backBtnToEmployeesList").hide();
   }
 
 
@@ -141,7 +142,7 @@ export class EmployeesComponent implements OnInit {
 
 
   onRowSelectActiveEmployees(event) {
-    console.log("on row select",event.data.empId);
+    console.log("on row select", event.data.empId);
     this.viewActiveEmployee = true;
     this.viewAllEmployee = false;
     this.viewInActiveEmployee = false;
@@ -161,9 +162,9 @@ export class EmployeesComponent implements OnInit {
           }
 
 
-          if(res.datares!=null){
+          if (res.datares != null) {
             this.viewEmployeeDetails.hireDate = res.datares.hireDate;
-          }else{
+          } else {
             this.viewEmployeeDetails.hireDate = '';
           }
 
@@ -193,25 +194,26 @@ export class EmployeesComponent implements OnInit {
     );
 
     this.employeeService.getEmpWorkAddressById(event.data.empId).subscribe(
-      res=>{
-        if(res.datares!=null){
-          console.log(res.datares," get work address by empid");
+      res=> {
+        if (res.datares != null) {
+          console.log(res.datares, " get work address by empid");
           this.viewEmployeeWorkAddressDetails = res.datares[0];
-        }else if(res.successres!=null){
-          console.log(res.successres," success");
-        }else if(res.errorres!=null){
+        } else if (res.successres != null) {
+          console.log(res.successres, " success");
+        } else if (res.errorres != null) {
           this.viewEmployeeAddressDetails = '';
-          console.log(res.errorres," error");
-        }else {
+          console.log(res.errorres, " error");
+        } else {
 
         }
       }
     );
   }
-  onRowSelectAllEmployees(event){
+
+  onRowSelectAllEmployees(event) {
     this.viewAllEmployee = true;
     this.viewInActiveEmployee = false;
-    this.viewActiveEmployee=false;
+    this.viewActiveEmployee = false;
     console.log("on click eachEmployeeDetailId");
     this.viewClicked = !this.viewClicked;
     console.log("view clicked");
@@ -229,9 +231,9 @@ export class EmployeesComponent implements OnInit {
             this.viewEmployeeContactDetails = '';
           }
 
-          if(res.datares!=null){
+          if (res.datares != null) {
             this.viewEmployeeDetails.hireDate = res.datares.hireDate;
-          }else{
+          } else {
             this.viewEmployeeDetails.hireDate = '';
           }
 
@@ -256,23 +258,24 @@ export class EmployeesComponent implements OnInit {
     );
 
     this.employeeService.getEmpWorkAddressById(event.data.empId).subscribe(
-      res=>{
-        if(res.datares!=null){
-          console.log(res.datares," get work address by empid");
+      res=> {
+        if (res.datares != null) {
+          console.log(res.datares, " get work address by empid");
           this.viewEmployeeWorkAddressDetails = res.datares[0];
-        }else if(res.successres!=null){
-          console.log(res.successres," success");
-        }else if(res.errorres!=null){
+        } else if (res.successres != null) {
+          console.log(res.successres, " success");
+        } else if (res.errorres != null) {
           this.viewEmployeeAddressDetails = '';
-          console.log(res.errorres," error");
-        }else {
+          console.log(res.errorres, " error");
+        } else {
 
         }
       }
     );
 
   }
-  onRowSelectInActiveEmployees(event){
+
+  onRowSelectInActiveEmployees(event) {
     this.viewInActiveEmployee = true;
     this.viewActiveEmployee = false;
     this.viewAllEmployee = false;
@@ -293,9 +296,9 @@ export class EmployeesComponent implements OnInit {
             this.viewEmployeeContactDetails = '';
           }
 
-          if(res.datares!=null){
+          if (res.datares != null) {
             this.viewEmployeeDetails.hireDate = res.datares.hireDate;
-          }else{
+          } else {
             this.viewEmployeeDetails.hireDate = '';
           }
 
@@ -323,12 +326,14 @@ export class EmployeesComponent implements OnInit {
       }
     );
   }
-  onClickLastName(){
+
+  onClickLastName() {
+    $(".backBtnToEmployeesList").show();
     $("#nav").hide();
     this.allEmployee = false;
     this.viewClicked = true;
-    this.allInActive=false;
-    this.allActive=false;
+    this.allInActive = false;
+    this.allActive = false;
     $(".EachEmployeeEditableDetailsTabs").show();
     $("ul li").click(function () {
       $(this).parent().children().removeClass("active");
@@ -336,6 +341,7 @@ export class EmployeesComponent implements OnInit {
     });
 
   }
+}
   /*onClickViewInActive($event, eachEmployeeDetailId: Employee) {
     //TODO : optimise the below line
     if($(".fa-angle-double-down").length > 0) {
@@ -361,4 +367,4 @@ export class EmployeesComponent implements OnInit {
   }
 
 
-}
+}*/
