@@ -54,7 +54,7 @@
         <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
         <p-column field="lastName" header="Last Name" [sortable]="true">
           <template let-col let-allEmployee="rowData" pTemplate type="body">
-            <a><span style="color:blue;">{{allEmployee[col.field]}}</span></a>
+            <a (click)="onClickLastName()"><span style="color:darkviolet !important;">{{allEmployee[col.field]}}</span></a>
           </template>
         </p-column>
         <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
@@ -105,7 +105,7 @@
         <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
         <p-column field="lastName" header="Last Name" [sortable]="true">
           <template let-col let-allActiveEmployees="rowData" pTemplate type="body">
-            <a><span style="color:blue;">{{allActiveEmployees[col.field]}}</span></a>
+            <a (click)="onClickLastName()"><span style="color:darkviolet !important;">{{allActiveEmployees[col.field]}}</span></a>
           </template>
         </p-column>
         <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
@@ -159,7 +159,7 @@
         <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
         <p-column field="lastName" header="Last Name" [sortable]="true">
           <template let-col let-allInactiveEmployees="rowData" pTemplate type="body">
-            <a><span style="color:blue;">{{allInactiveEmployees[col.field]}}</span></a>
+            <a (click)="onClickLastName()"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{allInactiveEmployees[col.field]}}</span></a>
           </template>
         </p-column>
         <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
@@ -170,288 +170,6 @@
     </div>
   </div>
 </div>
-
-<!--<div class="container-fluid">
-  <div *ngIf="viewActiveEmployee">
-    <div class="col-xs-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        {{viewEmployeeDetails.empName}}
-      </div>
-      <div class="panel-body">
-        <div>
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="col-xs-4">
-                <table class="table borderless">
-                  <thead><strong style="color:#cc0000">Work Information</strong></thead>
-                  <tbody>
-                  <br/>
-                  <tr class="hide">
-                    <td style="font-weight: bold;">Emp Id</td>
-                    <td>
-                      {{viewEmployeeAddressDetails.empId}}
-                    </td>
-                  </tr>
-                  <tr class="table-row">
-                    <td style="font-weight: bold;">Current Position:</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">Client Name:</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">Work Address:</td>
-                    <td></td>
-                  </tr>
-                  <tr style="width:40%;">
-                    <td style="font-weight: bold;">City:</td>
-                    <td></td>
-                    <td style="font-weight: bold;">State:</td>
-                    <td></td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="col-xs-8">
-                <table class="table borderless">
-                  <thead><strong  style="color:#cc0000">Contact Information</strong></thead>
-                  <tbody>
-                  <br/>
-                  <tr class="table-row">
-                    <td style="font-weight: bold;">Phone No:</td>
-                    <td>
-                      {{viewEmployeeContactDetails.mobilePhone}}
-                    </td>
-                    <td style="font-weight: bold;">Home Address:</td>
-                    <td>
-                      {{viewEmployeeAddressDetails.addrLine1}}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">Email:</td>
-                    <td>
-                      {{viewEmployeeContactDetails.homeEmail }}
-                    </td>
-                    <td style="font-weight: bold;">City:</td>
-                    <td>
-                      {{viewEmployeeAddressDetails.city}}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">Emergency Contact:</td>
-                    <td>
-                      {{viewEmployeeContactDetails.homePhone}}
-                    </td>
-                    <td style="font-weight: bold;">State:</td>
-                    <td>
-                      {{viewEmployeeAddressDetails.state}}
-                    </td>
-                    <td style="font-weight: bold;">Zip:</td>
-                    <td>
-                      {{viewEmployeeAddressDetails.zipCd}}
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
-</div>-->
-<!--<div class="container-fluid">
-  <div *ngIf="viewAllEmployee">
-    <div class="col-xs-12">
-      &lt;!&ndash;<div>
-        <p style="float: left;color:blue;font-size: 12pt"><strong>{{viewEmployeeDetails.empName}}</strong></p>
-
-      </div>&ndash;&gt;
-      <div class="panel-heading">
-        {{viewEmployeeDetails.empName}}
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="col-xs-4">
-                  <table class="table borderless">
-                    <thead><strong style="color:#cc0000">Work Information</strong></thead>
-                    <tbody>
-                    <br/>
-                    <tr class="hide">
-                      <td style="font-weight: bold;">Emp Id</td>
-                      <td>
-                        {{viewEmployeeAddressDetails.empId}}
-                      </td>
-                    </tr>
-                    <tr class="table-row">
-                      <td style="font-weight: bold;">Current Position:</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td style="font-weight: bold;">Client Name:</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td style="font-weight: bold;">Work Address:</td>
-                      <td></td>
-                    </tr>
-                    <tr style="width:40%;">
-                      <td style="font-weight: bold;">City:</td>
-                      <td></td>
-                      <td style="font-weight: bold;">State:</td>
-                      <td></td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="col-xs-8">
-                  <table class="table borderless">
-                    <thead><strong  style="color:#cc0000">Contact Information</strong></thead>
-                    <tbody>
-                    <br/>
-                    <tr class="table-row">
-                      <td style="font-weight: bold;">Phone No:</td>
-                      <td>
-                        {{viewEmployeeContactDetails.mobilePhone}}
-                      </td>
-                      <td style="font-weight: bold;">Home Address:</td>
-                      <td>
-                        {{viewEmployeeAddressDetails.addrLine1}}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="font-weight: bold;">Email:</td>
-                      <td>
-                        {{viewEmployeeContactDetails.homeEmail }}
-                      </td>
-                      <td style="font-weight: bold;">City:</td>
-                      <td>
-                        {{viewEmployeeAddressDetails.city}}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="font-weight: bold;">Emergency Contact:</td>
-                      <td>
-                        {{viewEmployeeContactDetails.homePhone}}
-                      </td>
-                      <td style="font-weight: bold;">State:</td>
-                      <td>
-                        {{viewEmployeeAddressDetails.state}}
-                      </td>
-                      <td style="font-weight: bold;">Zip:</td>
-                      <td>
-                        {{viewEmployeeAddressDetails.zipCd}}
-                      </td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>-->
-<!--<div class="container-fluid">
-  <div *ngIf="viewInActiveEmployee">
-    <div class="panel-heading">
-      {{viewEmployeeDetails.empName}}
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="col-xs-4">
-                <table class="table borderless">
-                  <thead><strong style="color:#cc0000">Work Information</strong></thead>
-                  <tbody>
-                  <br/>
-                  <tr class="hide">
-                    <td style="font-weight: bold;">Emp Id</td>
-                    <td id="empId" [(ngModel)]="viewEmployeeAddressDetails.empId"
-                        ngDefaultControl="viewEmployeeAddressDetails.empId"></td>
-                  </tr>
-                  <tr class="table-row">
-                    <td style="font-weight: bold;">Current Position:</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">Client Name:</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">Work Address:</td>
-                    <td></td>
-                  </tr>
-                  <tr style="width:40%;">
-                    <td style="font-weight: bold;">City:</td>
-                    <td></td>
-                    <td style="font-weight: bold;">State:</td>
-                    <td></td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="col-xs-8">
-                <table class="table borderless">
-                  <thead><strong  style="color:#cc0000">Contact Information</strong></thead>
-                  <tbody>
-                  <br/>
-                  <tr class="table-row">
-                    <td style="font-weight: bold;">Phone No:</td>
-                    <td>
-                      {{viewEmployeeContactDetails.mobilePhone}}
-                    </td>
-                    <td style="font-weight: bold;">Home Address:</td>
-                    <td id="addrLine1" [(ngModel)]="viewEmployeeAddressDetails.addrLine1"
-                        ngDefaultControl="viewEmployeeAddressDetails.addrLine1">
-                      {{viewEmployeeAddressDetails.addrLine1}}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">Email:</td>
-                    <td>
-                      {{viewEmployeeContactDetails.homeEmail }}
-                    </td>
-                    <td style="font-weight: bold;">City:</td>
-                    <td>
-                      {{viewEmployeeAddressDetails.city}}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">Emergency Contact:</td>
-                    <td>
-                      {{viewEmployeeContactDetails.homePhone}}
-                    </td>
-                    <td style="font-weight: bold;">State:</td>
-                    <td>
-                      {{viewEmployeeAddressDetails.state}}
-                    </td>
-                    <td style="font-weight: bold;">Zip:</td>
-                    <td>
-                      {{viewEmployeeAddressDetails.zipCd}}
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>-->
 <div class="container-fluid">
   <div *ngIf="viewInActiveEmployee">
     <div>
@@ -852,137 +570,18 @@
     </div>
   </div>
 </div>
-<!--<div class="container-fluid">
-  <div *ngIf="viewActiveEmployee">
-    <div>
-      <div class="col-xs-12">
-        <div class="panel panel-default" id="panelDetails">
-          <div class="panel-heading">
-            {{viewEmployeeDetails.empName}}
-          </div>
-          <div class="panel-body" >
-            <div class="container-fluid">
-              <div  class="col-xs-3">
-                <table class="table borderless">
-                  <thead>More Info</thead>
-                  <tbody>
-                  <tr class="hide">
-                    <td>Emp Id</td>
-                    <td>
-                      {{viewEmployeeAddressDetails.empId}}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">Designation:</td>
-                    <td><input tye="text" value="Software Engineer"/></td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">Department:</td>
-                    <td><input type="text" value="Internal"/></td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">Work Authorization:</td>
-                    <td><input type="text" value="OPT-EAD"/></td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">Hire Date:</td>
-                    <td><input type="text" value="11/2/2015"/></td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">Billable:</td>
-                    <td><input type="checkbox"/></td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="col-xs-3">
-                <table class="table borderless">
-                  <thead>Work Address</thead>
-                  <tbody>
-                  <tr>
-                    <td style="font-weight: bold;">Address Line1:</td>
-                    <td><input type="text" value="2865 Crescent View Dr"/></td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">Address Line2:</td>
-                    <td><input type="text" value=""/></td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">City:</td>
-                    <td><input type="text" value="Charlotte"/></td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">State:</td>
-                    <td><input type="text" value="NC"/></td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">Zipcode:</td>
-                    <td><input type="text" value="28269"/></td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="col-xs-3">
-                <table class="table borderless">
-                  <thead>Home Address</thead>
-                  <tr>
-                    <td style="font-weight: bold;">Address Line1:</td>
-                    <td>
-                      <input type="text" value="{{viewEmployeeAddressDetails.addrLine1}}"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">Address Line2:</td>
-                    <td>
-                      <input type="text" value=""/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">City:</td>
-                    <td>
-                      <input type="text" value="{{viewEmployeeAddressDetails.city}}"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">State:</td>
-                    <td>
-                      <input type="text" value=" {{viewEmployeeAddressDetails.state}}"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">ZipCode:</td>
-                    <td>
-                      <input type="text" value="{{viewEmployeeAddressDetails.zipCd}}"/>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <div class="col-xs-3">
-                <table class="table borderless">
-                  <thead>Contact Details</thead>
-                  <tr>
-                    <td style="font-weight: bold;">Phone No:</td>
-                    <td>
-                      <input type="text" value="{{viewEmployeeContactDetails.mobilePhone}}"/>
-                    </td>
-                  <tr>
-                    <td style="font-weight: bold;">Email:</td>
-                    <td>
-                      <input type="text" value="{{viewEmployeeContactDetails.homeEmail }}"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: bold;">Emergency Contact:</td>
-                    <td>
-                      <input type="text" value="{{viewEmployeeContactDetails.homePhone}}"/>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="container-fluid">
+  <div class="EachEmployeeEditableDetailsTabs">
+    <ul class="nav nav-pills">
+      <li><a data-toggle="pill">Education</a></li>
+      <li ><a data-toggle="pill">Contact</a></li>
+      <li><a data-toggle="pill">Address</a></li>
+      <li><a data-toggle="pill">Vendor</a></li>
+      <li ><a data-toggle="pill">Projects</a></li>
+      <li><a data-toggle="pill">Pay rate</a></li>
+      <li><a data-toggle="pill">Passport</a></li>
+      <li ><a data-toggle="pill">Work Authorization</a></li>
+      <li><a data-toggle="pill">Benefits</a></li>
+    </ul>
   </div>
-</div>-->
+</div>

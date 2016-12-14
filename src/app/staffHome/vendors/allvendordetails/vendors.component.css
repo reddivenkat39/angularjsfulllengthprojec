@@ -34,8 +34,33 @@ li{
   padding-bottom: 5px;
   background-color:white;
   color:blue;
+  border-bottom:none !important;
 }
 #pillTab2 .nav-pills > li.active > a{
   color:black !important;
 }
 
+#pillTab3>li>a{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color:white;
+  color:blue;
+  border-bottom:none !important;
+}
+#pillTab3 .nav-pills > li.active > a{
+  color:black !important;
+}
+.borderless td {
+  border: none !important;
+  padding: 0px !important;
+  text-align:left !important;
+}
+.borderless th {
+  padding: 0px !important;
+  text-align: left !important;
+  font-weight: bold !important;
+}
+.borderless thead{
+  border-bottom:1px solid black !important;
+  color: blue;
+}

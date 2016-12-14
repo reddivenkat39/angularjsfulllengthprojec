@@ -27,7 +27,7 @@ export class VendorsService {
     const headersSend = new Headers({'Content-Type':'application/json'});
     const bodySend = {venId:vendorId};
     console.log(bodySend);
-    return this.http.post("http://10.10.5.55:8080/allemployeesbyvendId",bodySend,{headers: headersSend}).map(
+    return this.http.post("http://10.10.5.55:8080/getallemployeesbyvendorid",bodySend,{headers: headersSend}).map(
       (res:Response)=> {
         console.log("getting all employee details by vendor id"+" bodySend ",res.json());
         return res.json();
@@ -49,10 +49,26 @@ export class VendorsService {
     );
 
   }
-  getVendorInvoices(){
-    return this.http.get('/app/staffHome/vendors/vendorInvoices.json')
-      .toPromise()
-      .then(res =>< VendorInvoice[] > res.json().data)
-      .then(data => { return data; });
+  getEmployeeInvoicesById(empId){
+    const headersSend = new Headers({'Content-Type':'application/json'});
+    const bodySend = {empId:empId};
+    console.log(bodySend);
+    return this.http.post("http://10.10.5.55:8080/allinvoicesbyempid",bodySend,{headers: headersSend}).map(
+      (res:Response)=> {
+        console.log("getting all employee invoices details by emp id"+" bodySend ",res.json());
+        return res.json();
+      }
+    );
+  }
+  getAllContactsByVendorId(vendorID){
+    const headersSend = new Headers({'Content-Type':'application/json'});
+    const bodySend = {venId:vendorID};
+    console.log(bodySend);
+    return this.http.post("http://10.10.5.55:8080/vendorinfobyid",bodySend,{headers: headersSend}).map(
+      (res:Response)=> {
+        console.log("getting all contact details by vendor id"+" bodySend ",res.json());
+        return res.json();
+      }
+    );
   }
 }

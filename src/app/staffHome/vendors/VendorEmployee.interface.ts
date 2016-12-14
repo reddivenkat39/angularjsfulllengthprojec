@@ -1,9 +1,9 @@
 export interface VendorEmployee {
   empName;
-  clName;
+  clientName;
   rate;
-  invStDt;
-  invEndDt;
+  startDate;
+  endDate;
   empId;
 }
 

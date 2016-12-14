@@ -1,7 +1,9 @@
 export interface EmployeeInvoice{
   invNum;
-  strtDate;
-  hrs;
+  invStDt;
+  dueDt;
+  wrkHrs;
   invAmt;
-  endDate;
+  invEndDt;
+  invStatus;
 }

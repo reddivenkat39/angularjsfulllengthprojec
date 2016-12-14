@@ -31,7 +31,7 @@ export class EmployeesComponent implements OnInit {
   private viewEmployeeDetails = {
     'empId'  : '',
     'empName': ''
-  }
+  };
   private viewEmployeeAddressDetails = {};
   private viewEmployeeContactDetails = {};
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager) {
@@ -43,8 +43,7 @@ export class EmployeesComponent implements OnInit {
       $(this).parent().children().removeClass("active");
       $(this).addClass("active");
     });
-    $("a .ui-paginator-first .ui-paginator-element").addClass("hide");
-
+    $(".EachEmployeeEditableDetailsTabs").hide();
   }
 
 
@@ -54,6 +53,7 @@ export class EmployeesComponent implements OnInit {
     this.allInActive = false;
     this.viewInActiveEmployee = false;
     this.viewActiveEmployee=false;
+
     this.employeeService.getAllEmployeeDetails().subscribe(
       res => {
         if (res.datares != null) {
@@ -321,6 +321,15 @@ export class EmployeesComponent implements OnInit {
         }
       }
     );
+  }
+  onClickLastName(){
+    $("#nav").hide();
+    this.allEmployee = false;
+    this.viewClicked = true;
+    this.allInActive=false;
+    this.allActive=false;
+    $(".EachEmployeeEditableDetailsTabs").show();
+
   }
 
   /*onClickViewActive($event, eachEmployeeDetailId: Employee) {
