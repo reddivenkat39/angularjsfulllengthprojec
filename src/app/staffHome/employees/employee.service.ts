@@ -40,5 +40,20 @@ export class EmployeeService {
   }
 
 
+  getEmpWorkAddressById(empId){
+    console.log("into getDetailedViewEachEmployee method");
+    const headersSend = new Headers({'Content-Type':'application/json'});
+    const candBody = {empId : empId };
+    console.log("empId in bodySend",candBody);
+    console.log("empId in headersSend",headersSend);
+    return this.http.post("http://localhost:8080/getempwrkaddrbyid",candBody,{headers: headersSend}).map(
+      (res:Response)=> {
+        console.log("res.json from getemployeepersonalinfo By id",res.json());
+        return res.json();
+      }
+    );
+
+  }
+
 
 }

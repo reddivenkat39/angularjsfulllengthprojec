@@ -3,10 +3,17 @@
   <div>
     <div class="col-xs-12">
       <ul class="list-inline" id="nav">
-        <li  (click)="onAllEmployeeClicked()"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic'">All</span></a></li>|
-        <li class="list-inline active" (click)="onAllActiveClicked()"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic">Active</span></a></li>|
-        <li (click)="onAllInActiveClicked()"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic">Terminated</span></a></li>|
-        <li (click)="onAllSubContClicked()"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic">Sub-Cont</span></a></li>
+        <li (click)="onAllEmployeeClicked()"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic'">All</span></a>
+        </li>
+        |
+        <li class="list-inline active" (click)="onAllActiveClicked()"><a><span
+          style="color: black;font-size:12px;font-family: 'Century Gothic">Active</span></a></li>
+        |
+        <li (click)="onAllInActiveClicked()"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic">Terminated</span></a>
+        </li>
+        |
+        <li (click)="onAllSubContClicked()"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic">Sub-Cont</span></a>
+        </li>
       </ul>
     </div>
   </div>
@@ -15,8 +22,10 @@
   <div *ngIf="allEmployee">
     <div class="col-xs-12">
       <p-dataTable #dt1 [value]="allEmployees" selectionMode="single"
-                   [(selection)]="selectedEmployee" (onRowSelect)="onRowSelectAllEmployees($event)" [globalFilter]="gb" exportFilename="AllEmployees" reorderableColumns="true"
-                   scrollable="true" scrollHeight="218px" [rows]="20" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+                   [(selection)]="selectedEmployee" (onRowSelect)="onRowSelectAllEmployees($event)" [globalFilter]="gb"
+                   exportFilename="AllEmployees" reorderableColumns="true"
+                   scrollable="true" scrollHeight="218px" [rows]="20" [paginator]="true" [pageLinks]="3"
+                   [rowsPerPageOptions]="[5,10,20]">
         <!--<p-column styleClass="col-button">
           <template pTemplate type="header"></template>
           <template let-allEmployee="rowData" pTemplate type="body">
@@ -36,12 +45,15 @@
               <h6><strong>&nbsp;&nbsp;All Employees</strong></h6>
             </div>
             <div>
-              <span style="border:1px solid white;background-color: white;color: black;float: right;margin-top: 10px;margin-right:3px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%;cursor:pointer;" (click)="dt1.exportCSV()">Export</span>
+              <span
+                style="border:1px solid white;background-color: white;color: black;float: right;margin-top: 10px;margin-right:3px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%;cursor:pointer;"
+                (click)="dt1.exportCSV()">Export</span>
               <div class="col-md-3 col-md-offset-3" style=" float: right">
                 <form class="search-form">
                   <div class="form-group has-feedback">
                     <input #gb type="text" class="form-control" name="search"
-                           style="float:right;font-size: 10pt;font-family: Calibri;" placeholder="Search by Name or Keywords"/>
+                           style="float:right;font-size: 10pt;font-family: Calibri;"
+                           placeholder="Search by Name or Keywords"/>
                     <span style="padding-top: 3px;" class="glyphicon glyphicon-search form-control-feedback"></span>
                   </div>
                 </form>
@@ -66,12 +78,14 @@
   </div>
 </div>
 
-<div class="container-fluid" >
-  <div *ngIf="allActive" >
+<div class="container-fluid">
+  <div *ngIf="allActive">
     <div class="col-xs-12">
-      <p-dataTable #dt2 [value]="allActiveEmployees" selectionMode="single" [(selection)]="selectedEmployee" (onRowSelect)="onRowSelectActiveEmployees($event)"
+      <p-dataTable #dt2 [value]="allActiveEmployees" selectionMode="single" [(selection)]="selectedEmployee"
+                   (onRowSelect)="onRowSelectActiveEmployees($event)"
                    [globalFilter]="gb" exportFilename="ActiveEmployees" reorderableColumns="true"
-                   scrollable="true" scrollHeight="218px" [rows]="20" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+                   scrollable="true" scrollHeight="218px" [rows]="20" [paginator]="true" [pageLinks]="3"
+                   [rowsPerPageOptions]="[5,10,20]">
 
         <!--<p-column styleClass="col-button">
           <template pTemplate type="header"></template>
@@ -86,14 +100,19 @@
             <div style="float: left">
               <h6><strong>&nbsp;&nbsp;Active Employees</strong></h6>
             </div>
-            <span style="border:1px solid white;background-color: white;color: black;float: left;margin-left:3px;margin-top: 10px;margin-right:4px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%">Add</span>
-            <span style="border:1px solid white;background-color: white;color: black;float: left;margin-left:4px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%">Save</span>
-            <span style="cursor:pointer;border:1px solid white;background-color: white;color: black;float: right;margin-right:3px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%" (click)="dt2.exportCSV()">Export</span>
+            <span
+              style="border:1px solid white;background-color: white;color: black;float: left;margin-left:3px;margin-top: 10px;margin-right:4px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%">Add</span>
+            <span
+              style="border:1px solid white;background-color: white;color: black;float: left;margin-left:4px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%">Save</span>
+            <span
+              style="cursor:pointer;border:1px solid white;background-color: white;color: black;float: right;margin-right:3px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%"
+              (click)="dt2.exportCSV()">Export</span>
             <div class="col-md-3 col-md-offset-3" style=" float: right">
               <form class="search-form">
                 <div class="form-group has-feedback">
                   <input #gb type="text" class="form-control" name="search"
-                         style="float:right;font-size: 10pt;font-family: Calibri;" placeholder="Search by Name or Keywords"/>
+                         style="float:right;font-size: 10pt;font-family: Calibri;"
+                         placeholder="Search by Name or Keywords"/>
                   <span style="padding-top: 3px;" class="glyphicon glyphicon-search form-control-feedback"></span>
                 </div>
               </form>
@@ -122,7 +141,8 @@
 <div class="container-fluid">
   <div *ngIf="allInActive">
     <div class="col-xs-12">
-      <p-dataTable #dt3 [value]="allInactiveEmployees" selectionMode="single" [(selection)]="selectedEmployee" (onRowSelect)="onRowSelectInActiveEmployees($event)"
+      <p-dataTable #dt3 [value]="allInactiveEmployees" selectionMode="single" [(selection)]="selectedEmployee"
+                   (onRowSelect)="onRowSelectInActiveEmployees($event)"
                    [globalFilter]="gb" exportFilename="InActiveEmployees" reorderableColumns="true"
                    scrollable="true" scrollHeight="218px">
         <!-- <p-column field="view" >
@@ -142,12 +162,15 @@
             <div style="float: left">
               <h6><strong>&nbsp;&nbsp;Terminated Employees</strong></h6>
             </div>
-            <span style="cursor:pointer;border:1px solid white;background-color: white;color: black;float: right;margin-left:4px;margin-right:3px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%" (click)="dt3.exportCSV()">Export</span>
+            <span
+              style="cursor:pointer;border:1px solid white;background-color: white;color: black;float: right;margin-left:4px;margin-right:3px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%"
+              (click)="dt3.exportCSV()">Export</span>
             <div class="col-md-3 col-md-offset-3" style=" float: right">
               <form class="search-form">
                 <div class="form-group has-feedback">
                   <input #gb type="text" class="form-control" name="search"
-                         style="float:right;font-size: 10pt;font-family: Calibri;" placeholder="Search by Name or Keywords"/>
+                         style="float:right;font-size: 10pt;font-family: Calibri;"
+                         placeholder="Search by Name or Keywords"/>
                   <span style="padding-top: 3px;" class="glyphicon glyphicon-search form-control-feedback"></span>
                 </div>
               </form>
@@ -460,9 +483,9 @@
           <div class="panel-heading">
             {{viewEmployeeDetails.empName}}
           </div>
-          <div class="panel-body" >
+          <div class="panel-body">
             <div class="container-fluid">
-              <div  class="col-xs-3" style="border-right: 1px solid #ccc;">
+              <div class="col-xs-3" style="border-right: 1px solid #ccc;">
                 <table class="table borderless">
                   <thead>More Info</thead>
                   <tbody>
@@ -501,23 +524,23 @@
                   <tbody>
                   <tr>
                     <td style="font-weight: bold;">Address Line1:</td>
-                    <td>2865 Crescent View Dr</td>
+                    <td>{{viewEmployeeWorkAddressDetails.addrLine1}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Address Line2:</td>
-                    <td></td>
+                    <td>{{viewEmployeeWorkAddressDetails.addrLine2}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">City:</td>
-                    <td>Charlotte</td>
+                    <td>{{viewEmployeeWorkAddressDetails.city}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">State:</td>
-                    <td>NC</td>
+                    <td>{{viewEmployeeWorkAddressDetails.state}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Zipcode:</td>
-                    <td>28269</td>
+                    <td>{{viewEmployeeWorkAddressDetails.zipCode}}</td>
                   </tr>
                   </tbody>
                 </table>
@@ -594,9 +617,9 @@
           <div class="panel-heading">
             {{viewEmployeeDetails.empName}}
           </div>
-          <div class="panel-body" >
+          <div class="panel-body">
             <div class="container-fluid">
-              <div  class="col-xs-3" style="border-right: 1px solid #ccc;">
+              <div class="col-xs-3" style="border-right: 1px solid #ccc;">
                 <table class="table borderless">
                   <thead>More Info</thead>
                   <tbody>
@@ -635,23 +658,23 @@
                   <tbody>
                   <tr>
                     <td style="font-weight: bold;">Address Line1:</td>
-                    <td>2865 Crescent View Dr</td>
+                    <td>{{viewEmployeeWorkAddressDetails.addrLine1}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Address Line2:</td>
-                    <td></td>
+                    <td>{{viewEmployeeWorkAddressDetails.addrLine2}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">City:</td>
-                    <td>Charlotte</td>
+                    <td>{{viewEmployeeWorkAddressDetails.city}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">State:</td>
-                    <td>NC</td>
+                    <td>{{viewEmployeeWorkAddressDetails.state}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Zipcode:</td>
-                    <td>28269</td>
+                    <td>{{viewEmployeeWorkAddressDetails.zipCode}}</td>
                   </tr>
                   </tbody>
                 </table>
@@ -727,9 +750,9 @@
           <div class="panel-heading">
             {{viewEmployeeDetails.empName}}
           </div>
-          <div class="panel-body" >
+          <div class="panel-body">
             <div class="container-fluid">
-              <div  class="col-xs-3" style="border-right: 1px solid #ccc;">
+              <div class="col-xs-3" style="border-right: 1px solid #ccc;">
                 <table class="table borderless">
                   <thead>More Info</thead>
                   <tbody>
@@ -768,23 +791,23 @@
                   <tbody>
                   <tr>
                     <td style="font-weight: bold;">Address Line1:</td>
-                    <td>2865 Crescent View Dr</td>
+                    <td>{{viewEmployeeWorkAddressDetails.addrLine1}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Address Line2:</td>
-                    <td></td>
+                    <td>{{viewEmployeeWorkAddressDetails.addrLine2}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">City:</td>
-                    <td>Charlotte</td>
+                    <td>{{viewEmployeeWorkAddressDetails.city}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">State:</td>
-                    <td>NC</td>
+                    <td>{{viewEmployeeWorkAddressDetails.state}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Zipcode:</td>
-                    <td>28269</td>
+                    <td>{{viewEmployeeWorkAddressDetails.zipCode}}</td>
                   </tr>
                   </tbody>
                 </table>

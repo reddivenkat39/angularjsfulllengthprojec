@@ -35,6 +35,7 @@ export class EmployeesComponent implements OnInit {
   }
   private viewEmployeeAddressDetails = {};
   private viewEmployeeContactDetails = {};
+  private viewEmployeeWorkAddressDetails={};
 
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager) {
   }
@@ -192,6 +193,21 @@ export class EmployeesComponent implements OnInit {
       }
     );
 
+    this.employeeService.getEmpWorkAddressById(event.data.empId).subscribe(
+      res=>{
+        if(res.datares!=null){
+          console.log(res.datares," get work address by empid");
+          this.viewEmployeeWorkAddressDetails = res.datares[0];
+        }else if(res.successres!=null){
+          console.log(res.successres," success");
+        }else if(res.errorres!=null){
+          this.viewEmployeeAddressDetails = '';
+          console.log(res.errorres," error");
+        }else {
+
+        }
+      }
+    );
   }
 
   onRowSelectAllEmployees(event) {
@@ -240,6 +256,23 @@ export class EmployeesComponent implements OnInit {
         }
       }
     );
+
+    this.employeeService.getEmpWorkAddressById(event.data.empId).subscribe(
+      res=>{
+        if(res.datares!=null){
+          console.log(res.datares," get work address by empid");
+          this.viewEmployeeWorkAddressDetails = res.datares[0];
+        }else if(res.successres!=null){
+          console.log(res.successres," success");
+        }else if(res.errorres!=null){
+          this.viewEmployeeAddressDetails = '';
+          console.log(res.errorres," error");
+        }else {
+
+        }
+      }
+    );
+
   }
 
   onRowSelectInActiveEmployees(event) {
@@ -292,5 +325,23 @@ export class EmployeesComponent implements OnInit {
         }
       }
     );
+
+    this.employeeService.getEmpWorkAddressById(event.data.empId).subscribe(
+      res=>{
+        if(res.datares!=null){
+        console.log(res.datares," get work address by empid");
+        this.viewEmployeeWorkAddressDetails = res.datares[0];
+        }else if(res.successres!=null){
+          console.log(res.successres," success");
+        }else if(res.errorres!=null){
+          this.viewEmployeeAddressDetails = '';
+          console.log(res.errorres," error");
+        }else {
+
+        }
+      }
+    );
   }
+
+
 }
