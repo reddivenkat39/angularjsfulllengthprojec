@@ -11,7 +11,7 @@ export class InvoiceService {
   getAllInvoices(){
     const headersSend = new Headers({'Content-Type':'application/json'});
 
-    return this.http.get("http://10.10.5.55:8080/allinvoices",{headers: headersSend}).map(
+    return this.http.get("http://localhost:8080//allinvoices",{headers: headersSend}).map(
       (res:Response)=> {
         console.log("getting all invoices ",res.json());
         return res.json();
