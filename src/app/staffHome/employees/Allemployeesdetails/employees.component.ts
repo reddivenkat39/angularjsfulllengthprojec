@@ -42,6 +42,7 @@ export class EmployeesComponent implements OnInit {
 
   ngOnInit() {
     this.onAllActiveClicked();
+    debugger;
     $("ul li").click(function () {
       $(this).parent().children().removeClass("active");
       $(this).addClass("active");
