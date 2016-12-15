@@ -36,7 +36,7 @@ export class EmployeesComponent implements OnInit {
   private viewEmployeeAddressDetails = {};
   private viewEmployeeContactDetails = {};
   private viewEmployeeWorkAddressDetails = {};
-
+  private viewEmployeeMoreInfo={};
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager) {
   }
 
@@ -47,7 +47,6 @@ export class EmployeesComponent implements OnInit {
       $(this).addClass("active");
     });
     $(".EachEmployeeEditableDetailsTabs").hide();
-    $(".backBtnToEmployeesList").hide();
   }
 
 
@@ -208,6 +207,21 @@ export class EmployeesComponent implements OnInit {
         }
       }
     );
+    this.employeeService.getEmpMoreInfoById(event.data.empId).subscribe(
+      res=> {
+        if (res.datares != null) {
+          console.log(res.datares, " get more info by empid");
+          this.viewEmployeeMoreInfo = res.datares[0];
+        } else if (res.successres != null) {
+          console.log(res.successres, " success");
+        } else if (res.errorres != null) {
+          this.viewEmployeeMoreInfo = '';
+          console.log(res.errorres, " error");
+        } else {
+
+        }
+      }
+    );
   }
 
   onRowSelectAllEmployees(event) {
@@ -272,6 +286,21 @@ export class EmployeesComponent implements OnInit {
         }
       }
     );
+    this.employeeService.getEmpMoreInfoById(event.data.empId).subscribe(
+      res=> {
+        if (res.datares != null) {
+          console.log(res.datares, " get more info by empid");
+          this.viewEmployeeMoreInfo = res.datares[0];
+        } else if (res.successres != null) {
+          console.log(res.successres, " success");
+        } else if (res.errorres != null) {
+          this.viewEmployeeMoreInfo = '';
+          console.log(res.errorres, " error");
+        } else {
+
+        }
+      }
+    );
 
   }
 
@@ -325,10 +354,42 @@ export class EmployeesComponent implements OnInit {
         }
       }
     );
+    this.employeeService.getEmpWorkAddressById(event.data.empId).subscribe(
+      res=> {
+        if (res.datares != null) {
+          console.log(res.datares, " get work address by empid");
+          this.viewEmployeeWorkAddressDetails = res.datares[0];
+        } else if (res.successres != null) {
+          console.log(res.successres, " success");
+        } else if (res.errorres != null) {
+          this.viewEmployeeAddressDetails = '';
+          console.log(res.errorres, " error");
+        } else {
+          console.log("server problem ");
+          this.toastManager.info('Oops!', 'Server Problem please Try Again');
+        }
+      }
+    );
+    this.employeeService.getEmpMoreInfoById(event.data.empId).subscribe(
+      res=> {
+        if (res.datares != null) {
+          console.log(res.datares, " get more info by empid");
+          this.viewEmployeeMoreInfo = res.datares[0];
+          // this.viewEmployeeMoreInfo["billable"] = this.viewEmployeeMoreInfo["billable"] == "NO" ? "false" : "true";
+        } else if (res.successres != null) {
+          console.log(res.successres, " success");
+        } else if (res.errorres != null) {
+          this.viewEmployeeMoreInfo = '';
+          console.log(res.errorres, " error");
+        } else {
+          console.log("server problem ");
+          this.toastManager.info('Oops!', 'Server Problem please Try Again');
+        }
+      }
+    );
   }
 
   onClickLastName() {
-    $(".backBtnToEmployeesList").show();
     $("#nav").hide();
     this.allEmployee = false;
     this.viewClicked = true;

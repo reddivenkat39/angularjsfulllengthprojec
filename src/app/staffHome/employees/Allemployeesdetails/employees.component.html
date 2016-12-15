@@ -192,23 +192,24 @@
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Designation:</td>
-                    <td>Software Developer</td>
+                    <td>{{viewEmployeeMoreInfo.empDesg}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Department:</td>
-                    <td>Internal</td>
+                    <td>{{viewEmployeeMoreInfo.deptName}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Work Authorization:</td>
-                    <td>H1B</td>
+                    <td></td>
                   </tr>
                   <tr>
-                    <td style="font-weight: bold;">Hire Date:</td>
-                    <td>{{viewEmployeeDetails.hireDate}}</td>
+                    <td style="font-weight: bold;">Primary Skill:</td>
+                    <td>{{viewEmployeeMoreInfo.primarySkill}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Billable:</td>
-                    <td><input type="checkbox"/></td>
+                    <td><input type="checkbox" [checked]="viewEmployeeMoreInfo.billable"/>
+                    <!--<span>{{viewEmployeeMoreInfo.billable}}</span></td>-->
                   </tr>
                   </tbody>
                 </table>
@@ -219,23 +220,23 @@
                   <tbody>
                   <tr>
                     <td style="font-weight: bold;">Address Line1:</td>
-                    <td>{{viewEmployeeWorkAddressDetails.addrLine1}}</td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliAddrLine1}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Address Line2:</td>
-                    <td>{{viewEmployeeWorkAddressDetails.addrLine2}}</td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliAddrLine2}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">City:</td>
-                    <td>{{viewEmployeeWorkAddressDetails.city}}</td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliCity}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">State:</td>
-                    <td>{{viewEmployeeWorkAddressDetails.state}}</td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliState}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Zipcode:</td>
-                    <td>{{viewEmployeeWorkAddressDetails.zipCd}}</td>
+                    <td>{{viewEmployeeWorkAddressDetails.cliZipCode}}</td>
                   </tr>
                   </tbody>
                 </table>
@@ -246,31 +247,31 @@
                   <tr>
                     <td style="font-weight: bold;">Address Line1:</td>
                     <td>
-                      {{viewEmployeeAddressDetails.cliAddrLine1}}
+                      {{viewEmployeeAddressDetails.addrLine1}}
                     </td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Address Line2:</td>
                     <td>
-                      {{viewEmployeeAddressDetails.cliAddrLine2}}
+                      {{viewEmployeeAddressDetails.addrLine2}}
                     </td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">City:</td>
                     <td>
-                      {{viewEmployeeAddressDetails.cliCity}}
+                      {{viewEmployeeAddressDetails.city}}
                     </td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">State:</td>
                     <td>
-                      {{viewEmployeeAddressDetails.cliState}}
+                      {{viewEmployeeAddressDetails.state}}
                     </td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">ZipCode:</td>
                     <td>
-                      {{viewEmployeeAddressDetails.cliZipCode}}
+                      {{viewEmployeeAddressDetails.zipCd}}
                     </td>
                   </tr>
                 </table>
@@ -327,24 +328,25 @@
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Designation:</td>
-                    <td>Software Engineer</td>
+                    <td>{{viewEmployeeMoreInfo.empDesg}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Department:</td>
-                    <td>Internal</td>
+                    <td>{{viewEmployeeMoreInfo.deptName}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Work Authorization:</td>
-                    <td>OPT-EAD</td>
+                    <td></td>
                   </tr>
                   <tr>
-                    <td style="font-weight: bold;">Hire Date:</td>
-                    <td>{{viewEmployeeDetails.hireDate }}</td>
+                    <td style="font-weight: bold;">Primary Skill:</td>
+                    <td>{{viewEmployeeMoreInfo.primarySkill}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Billable:</td>
-                    <td><input type="checkbox"/></td>
+                    <td><input type="checkbox" id="billable" checked="checked"/></td>
                   </tr>
+
                   </tbody>
                 </table>
               </div>
@@ -460,23 +462,24 @@
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Designation:</td>
-                    <td>Software Engineer</td>
+                    <td>{{viewEmployeeMoreInfo.empDesg}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Department:</td>
-                    <td>Internal</td>
+                    <td>{{viewEmployeeMoreInfo.deptName}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Work Authorization:</td>
-                    <td>OPT-EAD</td>
+                    <td></td>
                   </tr>
                   <tr>
-                    <td style="font-weight: bold;">Hire Date:</td>
-                    <td>{{viewEmployeeDetails.hireDate}}</td>
+                    <td style="font-weight: bold;">Primary Skill:</td>
+                    <td>{{viewEmployeeMoreInfo.primarySkill}}</td>
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Billable:</td>
-                    <td><input type="checkbox"/></td>
+                    <td><input type="checkbox" checked="checked" />
+                    <span> {{viewEmployeeMoreInfo.billable}}</span></td>
                   </tr>
                   </tbody>
                 </table>
@@ -569,13 +572,6 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
-<div class="container-fluid">
-  <div class="backBtnToEmployeesList">
-    <button>
-      <i class="fa fa-arrow-left" aria-hidden="true"></i>Back
-    </button>
   </div>
 </div>
 <div class="container-fluid">
