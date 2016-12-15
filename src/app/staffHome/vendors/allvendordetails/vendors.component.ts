@@ -37,6 +37,8 @@ export class VendorsComponent implements OnInit {
   private isEachVendorContactInfo =false;
   empId: '';
   private viewVendorContactDetails= { };
+  private vendorEmployeeDetails ={};
+
   allVendors: Vendor[];   // to show all vendors table
   vendorActiveEmployees: VendorEmployee[]; // to show active employees by vendor id
   vendorInActiveEmployees: VendorEmployee[];// to show inactive employees by vendor id
@@ -48,10 +50,15 @@ export class VendorsComponent implements OnInit {
   openVendorInvoices: VendorInvoice[]; // open vendor invoices by vendor id
   closeVendorInvoices: VendorInvoice[]; // close vendor invoices by vendor id
 
+
+
+
   openInvsAmnt: number = 0;
   closedInvsAmnt: number = 0;
   allInvsAmnt: number = 0;
-
+  openEmpInvsAmnt:number=0;
+  closedEmpInvsAmnt:number=0;
+  allEmpInvsAmnt:number=0;
   selectedVendor: Vendor;
 
   constructor(private vendorService: VendorsService, private toastMsg: ToastsManager) {
@@ -102,6 +109,9 @@ export class VendorsComponent implements OnInit {
     this.allInvsAmnt=0;
     this.closedInvsAmnt=0;
     this.openInvsAmnt=0;
+    this.allEmpInvsAmnt=0;
+    this.closedEmpInvsAmnt=0;
+    this.openEmpInvsAmnt=0;
 
     /*
      to insert the employee details by vendor id from backend by filtering active employees
@@ -116,6 +126,8 @@ export class VendorsComponent implements OnInit {
                 return row;
             });
 
+            this.vendorEmployeeDetails= res.datares[0];
+            console.log(this.vendorEmployeeDetails,"-------------------======");
             this.vendorInActiveEmployees = res.datares.filter(row => {
               if (row.endDate != null)
                 return row;
@@ -294,14 +306,22 @@ export class VendorsComponent implements OnInit {
        if(res.datares != null){
          console.log("datares of employee invoices : ",res.datares);
          this.openEmployeeInvoices=res.datares.filter(row => {
-           if (row.invStatus == "OPEN")
+           if (row.invStatus == "OPEN") {
+             this.openEmpInvsAmnt += row.invAmt;
              return row;
+           }
          });
          this.closeEmployeeInvoices=res.datares.filter(row => {
            if (row.invStatus == "CLOSED")
+           {
+             this.closedEmpInvsAmnt += row.invAmt;
              return row;
+           }
          });
          this.allEmployeeInvoices=res.datares;
+         for (let i = 0; i < this.allEmployeeInvoices.length; i++) {
+           this.allEmpInvsAmnt += this.allEmployeeInvoices[i].invAmt;
+         }
        }else if(res.errorres!=null){
          console.log(res.errorres);
         this.openEmployeeInvoices = null;

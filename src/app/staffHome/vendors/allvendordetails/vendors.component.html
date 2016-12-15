@@ -130,8 +130,8 @@
             <div class="panel-body">
               <header>
                 <div class="ui-helper-clearfix">
-                <strong style="float: left">Vendor</strong>
-                <span style="float: right">Total Invoice Amount:{{allInvsAmnt | currency:'USD':true}}</span>
+                <strong style="float: left;color: blue;">{{viewVendorContactDetails.venNm}}</strong>
+                <span style="float: right;color: blue;font-weight:bold;">Total Invoice Amount:{{allInvsAmnt | currency:'USD':true}}</span>
                 </div>
               </header>
               <p-dataTable #dt1 [value]="allVendorInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3"
@@ -153,8 +153,8 @@
             <div class="panel-body">
               <header>
                 <div class="ui-helper-clearfix">
-                  <strong style="float: left">Vendor</strong>
-                  <span style="float: right">Total Invoice Amount:{{openInvsAmnt | currency:'USD':true}}</span>
+                  <strong style="float: left;color: blue;">{{viewVendorContactDetails.venNm}}</strong>
+                  <span style="float: right;color: blue;font-weight:bold;">Total Invoice Amount:{{openInvsAmnt | currency:'USD':true}}</span>
                 </div>
               </header>
               <p-dataTable #dt1 [value]="openVendorInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3"
@@ -176,8 +176,8 @@
             <div class="panel-body">
               <header>
                 <div class="ui-helper-clearfix">
-                  <strong style="float: left">Vendor</strong>
-                  <span style="float: right">Total Invoice Amount:{{closedInvsAmnt | currency:'USD':true}}</span>
+                  <strong style="float: left;color: blue">{{viewVendorContactDetails.venNm}}</strong>
+                  <span style="float: right;color: blue;font-weight:bold;">Total Invoice Amount:{{closedInvsAmnt | currency:'USD':true}}</span>
                 </div>
               </header>
               <p-dataTable #dt1 [value]="closeVendorInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3"
@@ -205,8 +205,8 @@
         <div *ngIf="isEachAllEmployeeInvoice">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <strong style="color: blue;">Vendor</strong>
-              <span style="float:right">Total Invoice Amount:</span>
+              <strong style="color: blue;">{{vendorEmployeeDetails.empName}}</strong>
+              <span style="float:right">Total Invoice Amount:{{allEmpInvsAmnt | currency:'USD':true}}</span>
             </div>
             <div class="panel-body">
               <p-dataTable #dt1 [value]="allEmployeeInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3"
@@ -226,10 +226,9 @@
         <!-- each Active employee invoice by employee invoice id-->
         <div *ngIf="isEachOpenEmployeeInvoice">
           <div class="panel panel-default">
-            <div *ngIf=""></div>
             <div class="panel-heading">
-              <strong style="color: blue;">Pradeep Invoices</strong>
-              <span style="float:right">Total Invoice Amount:</span>
+              <strong style="color: blue;">{{vendorEmployeeDetails.empName}}</strong>
+              <span style="float:right">Total Invoice Amount:{{openEmpInvsAmnt | currency:'USD':true}}</span>
             </div>
             <div class="panel-body">
               <p-dataTable #dt1 [value]="openEmployeeInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3"
@@ -251,8 +250,8 @@
           <div class="panel panel-default">
             <div *ngIf=""></div>
             <div class="panel-heading">
-              <strong style="color: blue;">Pradeep Invoices</strong>
-              <span style="float:right">Total Invoice Amount:</span>
+              <strong style="color: blue;">{{vendorEmployeeDetails.empName}}</strong>
+              <span style="float:right">Total Invoice Amount:{{closedEmpInvsAmnt | currency:'USD':true}}</span>
             </div>
             <div class="panel-body">
               <p-dataTable #dt1 [value]="closeEmployeeInvoices" [rows]="5" [paginator]="true" sortOrder="-1" [pageLinks]="3"
