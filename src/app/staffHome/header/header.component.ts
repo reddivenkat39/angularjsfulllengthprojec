@@ -10,7 +10,7 @@ import {ToastsManager} from "ng2-toastr";
   styleUrls: ['header.component.css'],
 })
 export class HeaderComponent implements OnInit{
-  @Input() loggedUser: string;
+   loggedUser: string;
 
   private loggedUserEmailAddress={
     'emailAddress':''
@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit{
   }
   ngOnInit(){
     console.log('loggedUser is ', this.loggedUser);
+    this.loggedUser =localStorage.getItem("user");
     // console.log('user role is ', this.loginComponent.getDetailsByLogin.userRole);
     /*this.staffService.getUserName().subscribe(
       res=>{
@@ -45,6 +46,7 @@ export class HeaderComponent implements OnInit{
         if(res.successres!=null) {
           localStorage.removeItem("token");
           localStorage.removeItem("currentStaffEmailAddress");
+          localStorage.removeItem("user");
           this.router.navigate(['']);
           this.toast.info('', res.successres);
 
@@ -54,6 +56,7 @@ export class HeaderComponent implements OnInit{
 
           localStorage.removeItem("token");
           localStorage.removeItem("currentStaffEmailAddress");
+          localStorage.removeItem("user");
           this.router.navigate(['']);
           this.toast.error(res.errorres,'something went wrong...');
         }
@@ -61,6 +64,7 @@ export class HeaderComponent implements OnInit{
           this.toast.error('server is not working','Oops!!');
           localStorage.removeItem("token");
           localStorage.removeItem("currentStaffEmailAddress");
+          localStorage.removeItem("user");
           this.router.navigate(['']);
 
         }

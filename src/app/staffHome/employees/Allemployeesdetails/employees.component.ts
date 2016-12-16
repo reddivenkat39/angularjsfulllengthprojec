@@ -29,20 +29,20 @@ export class EmployeesComponent implements OnInit {
   isTermDate = '';
   selectedEmployee: Employee;
   private viewEmployeeDetails = {
-    'empId': '',
-    'empName': '',
+    'empId'   : '',
+    'empName' : '',
     'hireDate': ''
   }
   private viewEmployeeAddressDetails = {};
   private viewEmployeeContactDetails = {};
   private viewEmployeeWorkAddressDetails = {};
-  private viewEmployeeMoreInfo={};
+  private viewEmployeeMoreInfo = {};
+
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager) {
   }
 
   ngOnInit() {
     this.onAllActiveClicked();
-    debugger;
     $("ul li").click(function () {
       $(this).parent().children().removeClass("active");
       $(this).addClass("active");
@@ -50,6 +50,75 @@ export class EmployeesComponent implements OnInit {
     $(".EachEmployeeEditableDetailsTabs").hide();
   }
 
+  loadEmployees(filter : string) {
+    console.log("loadEmployees : employees.components : loademployes for: ", filter);
+
+    this.viewInActiveEmployee = false;
+    this.viewActiveEmployee = false;
+    this.setViewFlags(filter);
+
+    var context = this;
+    this.employeeService.getAllEmployeeDetails().subscribe(
+      res => {
+        if (res.datares != null) {
+          console.log("yes getting data ", res.datares);
+          // this.toastManager.info('Employeedata','got the employee data');
+          // this.toastrService.success('Hello world!', 'Toastr fun!',errorConfig);
+          // if(res.datares.midName == "NULL"){
+          //   this.allEmployees = res.datares;
+          // }
+          this.allEmployees = res.datares;
+
+
+        } else if (res.successres != null) {
+          console.log("success ", res.successres);
+        } else if (res.errorres != null) {
+          console.log("OOPs no data  found", res.errorres);
+          this.toastManager.error(res.errorres, 'No data Found');
+        } else {
+          console.log("server problem ");
+          this.toastManager.info('Oops!', 'Server Problem please Try Again');
+        }
+        context.defaultFirstRowSelect(context);
+      }
+    );
+  }
+
+  setViewFlags(filter : string){
+    switch(filter)
+    {
+      case "All" :
+        this.allEmployee = true;
+        this.allActive = false;
+        this.allInActive = false;
+        break;
+      case "Active" :
+        this.allEmployee = true;
+        this.allActive = false;
+        this.allInActive = false;
+        break;
+      case "InActive" :
+        this.allEmployee = true;
+        this.allActive = false;
+        this.allInActive = false;
+        break;
+    }
+  }
+
+  defaultFirstRowSelect(context) {
+    //TODO: Worst code, Need to refactor later. used setTimeOut because didnt find better way
+    setTimeout(() => {
+      var firstRow = $("table:eq(1) tr:eq(0)");
+      firstRow.click(function(event){
+        event["data"] = {
+          empId:firstRow.find('td:first').text().trim()
+        };
+        context.onRowSelectActiveEmployees(event);
+        firstRow.addClass("ui-state-highlight");
+      });
+      firstRow.trigger('click');
+    }, 1000);
+  }
 
   onAllEmployeeClicked() {
     this.allEmployee = true;
@@ -57,6 +126,7 @@ export class EmployeesComponent implements OnInit {
     this.allInActive = false;
     this.viewInActiveEmployee = false;
     this.viewActiveEmployee = false;
+    var context = this;
     this.employeeService.getAllEmployeeDetails().subscribe(
       res => {
         if (res.datares != null) {
@@ -88,16 +158,15 @@ export class EmployeesComponent implements OnInit {
     this.allInActive = false;
     this.viewAllEmployee = false;
     this.viewInActiveEmployee = false;
+    var context = this;
     this.employeeService.getAllEmployeeDetails().subscribe(
-      res => {
+      (res) => {
         if (res.datares != null) {
           console.log("yes getting data ", res.datares);
           this.allActiveEmployees = res.datares.filter(row => {
             if (row.termDate == null)
               return row;
           });
-
-
         } else if (res.successres != null) {
           console.log("success ", res.successres);
         } else if (res.errorres != null) {
@@ -106,17 +175,21 @@ export class EmployeesComponent implements OnInit {
           console.log("server problem ");
           this.toastManager.info('Oops!', 'Server Problem please Try Again');
         }
+
+        context.defaultFirstRowSelect(context);
       }
     );
 
   }
 
   onAllInActiveClicked() {
+    console.log("Start : employees.component : onAllInActiveClicked");
     this.allInActive = true;
     this.allActive = false;
     this.allEmployee = false;
     this.viewActiveEmployee = false;
     this.viewAllEmployee = false;
+    var context = this;
     this.employeeService.getAllEmployeeDetails().subscribe(
       res => {
         if (res.datares != null) {
@@ -139,6 +212,8 @@ export class EmployeesComponent implements OnInit {
     );
 
   }
+
+
 
 
   onRowSelectActiveEmployees(event) {
@@ -194,7 +269,7 @@ export class EmployeesComponent implements OnInit {
     );
 
     this.employeeService.getEmpWorkAddressById(event.data.empId).subscribe(
-      res=> {
+      res => {
         if (res.datares != null) {
           console.log(res.datares, " get work address by empid");
           this.viewEmployeeWorkAddressDetails = res.datares[0];
@@ -209,7 +284,7 @@ export class EmployeesComponent implements OnInit {
       }
     );
     this.employeeService.getEmpMoreInfoById(event.data.empId).subscribe(
-      res=> {
+      res => {
         if (res.datares != null) {
           console.log(res.datares, " get more info by empid");
           this.viewEmployeeMoreInfo = res.datares[0];
@@ -273,7 +348,7 @@ export class EmployeesComponent implements OnInit {
     );
 
     this.employeeService.getEmpWorkAddressById(event.data.empId).subscribe(
-      res=> {
+      res => {
         if (res.datares != null) {
           console.log(res.datares, " get work address by empid");
           this.viewEmployeeWorkAddressDetails = res.datares[0];
@@ -288,7 +363,7 @@ export class EmployeesComponent implements OnInit {
       }
     );
     this.employeeService.getEmpMoreInfoById(event.data.empId).subscribe(
-      res=> {
+      res => {
         if (res.datares != null) {
           console.log(res.datares, " get more info by empid");
           this.viewEmployeeMoreInfo = res.datares[0];
@@ -356,7 +431,7 @@ export class EmployeesComponent implements OnInit {
       }
     );
     this.employeeService.getEmpWorkAddressById(event.data.empId).subscribe(
-      res=> {
+      res => {
         if (res.datares != null) {
           console.log(res.datares, " get work address by empid");
           this.viewEmployeeWorkAddressDetails = res.datares[0];
@@ -372,7 +447,7 @@ export class EmployeesComponent implements OnInit {
       }
     );
     this.employeeService.getEmpMoreInfoById(event.data.empId).subscribe(
-      res=> {
+      res => {
         if (res.datares != null) {
           console.log(res.datares, " get more info by empid");
           this.viewEmployeeMoreInfo = res.datares[0];
@@ -404,29 +479,29 @@ export class EmployeesComponent implements OnInit {
 
   }
 }
-  /*onClickViewInActive($event, eachEmployeeDetailId: Employee) {
-    //TODO : optimise the below line
-    if($(".fa-angle-double-down").length > 0) {
-      $(".fa-angle-double-down")[0].className = "fa fa-angle-double-right";
-    }
-    $event.currentTarget.children[0].className = "fa fa-angle-double-down";
+/*onClickViewInActive($event, eachEmployeeDetailId: Employee) {
+ //TODO : optimise the below line
+ if($(".fa-angle-double-down").length > 0) {
+ $(".fa-angle-double-down")[0].className = "fa fa-angle-double-right";
+ }
+ $event.currentTarget.children[0].className = "fa fa-angle-double-down";
 
-    this.employeeService.getEmpWorkAddressById(event.data.empId).subscribe(
-      res=>{
-        if(res.datares!=null){
-        console.log(res.datares," get work address by empid");
-        this.viewEmployeeWorkAddressDetails = res.datares[0];
-        }else if(res.successres!=null){
-          console.log(res.successres," success");
-        }else if(res.errorres!=null){
-          this.viewEmployeeAddressDetails = '';
-          console.log(res.errorres," error");
-        }else {
+ this.employeeService.getEmpWorkAddressById(event.data.empId).subscribe(
+ res=>{
+ if(res.datares!=null){
+ console.log(res.datares," get work address by empid");
+ this.viewEmployeeWorkAddressDetails = res.datares[0];
+ }else if(res.successres!=null){
+ console.log(res.successres," success");
+ }else if(res.errorres!=null){
+ this.viewEmployeeAddressDetails = '';
+ console.log(res.errorres," error");
+ }else {
 
-        }
-      }
-    );
-  }
+ }
+ }
+ );
+ }
 
 
-}*/
+ }*/

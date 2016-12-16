@@ -42,10 +42,10 @@ export class LoginComponent {
       data => {
         if (data != null) {
 
-          console.log(data);
+          console.log(data.token);
           console.log(window.location.origin);
-
-          localStorage.setItem("token", data);
+          localStorage.setItem("user",data.role.toUpperCase()+":  "+data.fullName)
+          localStorage.setItem("token", data.token);
 
           this.staffLoginService.sendToken(data).subscribe(
             res => {

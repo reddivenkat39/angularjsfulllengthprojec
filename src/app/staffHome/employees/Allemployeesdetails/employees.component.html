@@ -3,10 +3,10 @@
   <div>
     <div class="col-xs-12">
       <ul class="list-inline" id="nav">
-        <li  (click)="onAllEmployeeClicked()"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic'">All</span></a></li>|
-        <li class="list-inline active" (click)="onAllActiveClicked()"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic">Active</span></a></li>|
-        <li (click)="onAllInActiveClicked()"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic">Terminated</span></a></li>|
-        <li (click)="onAllSubContClicked()"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic">Sub-Cont</span></a></li>
+        <li  (click)="loadEmployees('All')"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic'">All</span></a></li>|
+        <li  (click)="loadEmployees('Active')" class="list-inline active" ><a><span style="color: black;font-size:12px;font-family: 'Century Gothic">Active</span></a></li>|
+        <li  (click)="loadEmployees('InActive')"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic">Terminated</span></a></li>|
+        <li  (click)="onAllSubContClicked()"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic">Sub-Cont</span></a></li>
       </ul>
     </div>
   </div>
