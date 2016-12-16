@@ -3,10 +3,10 @@
   <div>
     <div class="col-xs-12">
       <ul class="list-inline" id="nav">
-        <li  (click)="loadEmployees('All')"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic'">All</span></a></li>|
-        <li  (click)="loadEmployees('Active')" class="list-inline active" ><a><span style="color: black;font-size:12px;font-family: 'Century Gothic">Active</span></a></li>|
-        <li  (click)="loadEmployees('InActive')"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic">Terminated</span></a></li>|
-        <li  (click)="onAllSubContClicked()"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic">Sub-Cont</span></a></li>
+        <li  (click)="onAllEmployeeClicked()"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic'">All</span></a></li>|
+        <li class="list-inline active" (click)="onAllActiveClicked()"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic">Active</span></a></li>|
+        <li (click)="onAllInActiveClicked()"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic">Terminated</span></a></li>|
+        <li (click)="onAllSubContClicked()"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic">Sub-Cont</span></a></li>
       </ul>
     </div>
   </div>
@@ -54,7 +54,7 @@
         <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
         <p-column field="lastName" header="Last Name" [sortable]="true">
           <template let-col let-allEmployee="rowData" pTemplate type="body">
-            <a (click)="onClickLastName()"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{allEmployee[col.field]}}</span></a>
+            <a (click)="onClickLastName($event)"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{allEmployee[col.field]}}</span></a>
           </template>
         </p-column>
         <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
@@ -105,7 +105,7 @@
         <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
         <p-column field="lastName" header="Last Name" [sortable]="true">
           <template let-col let-allActiveEmployees="rowData" pTemplate type="body">
-            <a (click)="onClickLastName()"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{allActiveEmployees[col.field]}}</span></a>
+            <a (click)="onClickLastName($event)"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{allActiveEmployees[col.field]}}</span></a>
           </template>
         </p-column>
         <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
@@ -159,7 +159,7 @@
         <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
         <p-column field="lastName" header="Last Name" [sortable]="true">
           <template let-col let-allInactiveEmployees="rowData" pTemplate type="body">
-            <a (click)="onClickLastName()"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{allInactiveEmployees[col.field]}}</span></a>
+            <a (click)="onClickLastName($event)"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{allInactiveEmployees[col.field]}}</span></a>
           </template>
         </p-column>
         <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
@@ -208,7 +208,8 @@
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Billable:</td>
-                    <td><input type="checkbox" [checked]="viewEmployeeMoreInfo.billable"/>
+                    <td><input type="checkbox" disabled  [checked]="viewEmployeeMoreInfo.billable==='YES'"/> Yes
+                    <td><input type="checkbox" disabled  [checked]="viewEmployeeMoreInfo.billable==='NO'"/>No
                     <!--<span>{{viewEmployeeMoreInfo.billable}}</span></td>-->
                   </tr>
                   </tbody>
@@ -344,7 +345,8 @@
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Billable:</td>
-                    <td><input type="checkbox" id="billable" checked="checked"/></td>
+                    <td><input type="checkbox" disabled  [checked]="viewEmployeeMoreInfo.billable==='YES'"/> Yes
+                    <td><input type="checkbox" disabled  [checked]="viewEmployeeMoreInfo.billable==='NO'"/>No
                   </tr>
 
                   </tbody>
@@ -478,8 +480,9 @@
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Billable:</td>
-                    <td><input type="checkbox" checked="checked" />
-                    <span> {{viewEmployeeMoreInfo.billable}}</span></td>
+                    <td><input type="checkbox" disabled  [checked]="viewEmployeeMoreInfo.billable==='YES'"/> Yes
+                    <td><input type="checkbox" disabled  [checked]="viewEmployeeMoreInfo.billable==='NO'"/>No
+                    <!--<span> {{viewEmployeeMoreInfo.billable}}</span></td>-->
                   </tr>
                   </tbody>
                 </table>

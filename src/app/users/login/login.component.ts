@@ -17,8 +17,8 @@ export class LoginComponent {
   public loggedUserInLoginForm: string = "chandu";
 
   private staffLogin = {
-    'emailAddress': 'chandu.adabala@tabnergc.com',
-    'password'    : 'asdf'
+    'emailAddress': '',
+    'password'    : ''
   };
 
   getDetailsByLogin = {
