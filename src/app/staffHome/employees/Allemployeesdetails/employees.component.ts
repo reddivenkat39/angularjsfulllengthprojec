@@ -11,6 +11,7 @@ declare var $: any;
   selector     : 'app-employees',
   templateUrl  : 'employees.component.html',
   styleUrls    : ['employees.component.css'],
+  entryComponents:  [],
   encapsulation: ViewEncapsulation.None,
 })
 export class EmployeesComponent implements OnInit {
@@ -22,6 +23,7 @@ export class EmployeesComponent implements OnInit {
   private viewActiveEmployee = false;
   private viewAllEmployee = false;
   private viewInActiveEmployee = false;
+  private eachEmployeeBreadcrumb=false;
   allEmployees: Employee[];
   allActiveEmployees: Employee[];
   allInactiveEmployees: Employee[];
@@ -56,6 +58,7 @@ export class EmployeesComponent implements OnInit {
     this.allInActive = false;
     this.viewInActiveEmployee = false;
     this.viewActiveEmployee = false;
+    this.eachEmployeeBreadcrumb=false;
     this.employeeService.getAllEmployeeDetails().subscribe(
       res => {
         if (res.datares != null) {
@@ -87,6 +90,7 @@ export class EmployeesComponent implements OnInit {
     this.allInActive = false;
     this.viewAllEmployee = false;
     this.viewInActiveEmployee = false;
+    this.eachEmployeeBreadcrumb=false;
     this.employeeService.getAllEmployeeDetails().subscribe(
       res => {
         if (res.datares != null) {
@@ -116,6 +120,7 @@ export class EmployeesComponent implements OnInit {
     this.allEmployee = false;
     this.viewActiveEmployee = false;
     this.viewAllEmployee = false;
+    this.eachEmployeeBreadcrumb=false;
     this.employeeService.getAllEmployeeDetails().subscribe(
       res => {
         if (res.datares != null) {
@@ -390,9 +395,10 @@ export class EmployeesComponent implements OnInit {
   }
 
   onClickLastName() {
+    console.log("On click last name");
+    this.eachEmployeeBreadcrumb=true;
     $("#nav").hide();
     this.allEmployee = false;
-    this.viewClicked = true;
     this.allInActive = false;
     this.allActive = false;
     $(".EachEmployeeEditableDetailsTabs").show();
@@ -400,6 +406,12 @@ export class EmployeesComponent implements OnInit {
       $(this).parent().children().removeClass("active");
       $(this).addClass("active");
     });
+
+  }
+  onClickEmployeeBreadcrumb(){
+    $("nav").show();
+    this.onAllActiveClicked();
+    $(".EachEmployeeEditableDetailsTabs").hide();
 
   }
 }

@@ -26,8 +26,14 @@ li.active {
   font-weight: bold;
    border-bottom: 2px solid blue;
 }
-.EachEmployeeEditableDetailsTabs li.active>a{
-  border-bottom: 2px solid blue;
+.EachEmployeeEditableDetailsTabs > li.active>a,  .nav-tabs>li.active>a{
   color:black;
   font-weight: bold;
+  background-color: white !important;
+}
+.EachEmployeeEditableDetailsTabs>li>a, .nav-tabs>li>a
+{
+  padding: 3px 3px;
+  background-color: lightgrey !important;
+  color:blue;
 }

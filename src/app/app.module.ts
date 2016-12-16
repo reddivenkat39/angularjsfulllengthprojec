@@ -50,6 +50,7 @@ import { ProjectsComponent } from './staffHome/projects/projects.component';
 import {ProjectService} from "./staffHome/projects/project.service";
 import { InvoicesComponent } from './staffHome/invoices/invoices.component';
 import {InvoiceService} from "./staffHome/invoices/invoice.service";
+import { EachemployeedetailsComponent } from './staffHome/employees/eachemployeedetails/eachemployeedetails.component';
 
 
 let options: ToastOptions = new ToastOptions({
@@ -82,7 +83,8 @@ let options: ToastOptions = new ToastOptions({
     VendorsComponent,
     RoleRestrictDirective,
     ProjectsComponent,
-    InvoicesComponent
+    InvoicesComponent,
+    EachemployeedetailsComponent
   ],
   imports: [
     ToastrModule,
