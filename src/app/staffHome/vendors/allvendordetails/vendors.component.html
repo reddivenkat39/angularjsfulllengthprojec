@@ -39,18 +39,25 @@
 </div>
 <div class="container-fluid">
   <div>
+    <br>
     <div class="col-xs-12">
       <!--<nav>
         <a class="active btn-xs" (click)="onClickVendorEmployee()" style="cursor: pointer;"><strong>Employees</strong></a>|
         <a class="btn-xs" (click)="onClickVendorInvoice()" style="cursor: pointer;"><strong>Invoices</strong></a>
       </nav>-->
-      <ul id="pillTab" class="list-inline">
-        <li class="list-inline active" (click)="onClickVendorEmployee()"><a>Employees</a></li>|
-        <li (click)="onClickVendorInvoice()"><a>Invoices</a></li>|
-        <li (click)="onClickVendorContactInfo()"><a>Contact</a></li>
+      <!--<ul id="pillTab" class="list-inline">
+        <li class="list-inline active" (click)="onClickVendorEmployee()" data-toggle="pill"><a>Employees</a></li>|
+        <li (click)="onClickVendorInvoice()" data-toggle="pill"><a>Invoices</a></li>
+        <li (click)="onClickVendorContactInfo()" data-toggle="pill"><a>Contact</a></li>
+      </ul>-->
+      <ul id="pillTab" class="nav nav-pills">
+        <li class="active" (click)="onClickVendorEmployee()" data-toggle="pill"><a>Employees</a></li>
+        <li (click)="onClickVendorInvoice()" data-toggle="pill"><a>Invoices</a></li>
+        <li (click)="onClickVendorContactInfo()" data-toggle="pill"><a>Contact</a></li>
       </ul>
     </div>
   </div>
+
 </div>
 <div class="container-fluid">
   <div>

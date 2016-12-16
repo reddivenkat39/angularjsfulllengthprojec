@@ -54,7 +54,7 @@
         <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
         <p-column field="lastName" header="Last Name" [sortable]="true">
           <template let-col let-allEmployee="rowData" pTemplate type="body">
-            <a (click)="onClickLastName()"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{allEmployee[col.field]}}</span></a>
+            <a (click)="onClickLastName($event)"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{allEmployee[col.field]}}</span></a>
           </template>
         </p-column>
         <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
@@ -105,7 +105,7 @@
         <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
         <p-column field="lastName" header="Last Name" [sortable]="true">
           <template let-col let-allActiveEmployees="rowData" pTemplate type="body">
-            <a (click)="onClickLastName()"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{allActiveEmployees[col.field]}}</span></a>
+            <a (click)="onClickLastName($event)"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{allActiveEmployees[col.field]}}</span></a>
           </template>
         </p-column>
         <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
@@ -159,7 +159,7 @@
         <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
         <p-column field="lastName" header="Last Name" [sortable]="true">
           <template let-col let-allInactiveEmployees="rowData" pTemplate type="body">
-            <a (click)="onClickLastName()"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{allInactiveEmployees[col.field]}}</span></a>
+            <a (click)="onClickLastName($event)"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{allInactiveEmployees[col.field]}}</span></a>
           </template>
         </p-column>
         <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
@@ -170,6 +170,7 @@
     </div>
   </div>
 </div>
+<br>
 <div class="container-fluid">
   <div *ngIf="viewInActiveEmployee">
     <div>
@@ -208,7 +209,8 @@
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Billable:</td>
-                    <td><input type="checkbox" [checked]="viewEmployeeMoreInfo.billable"/>
+                    <td><input type="checkbox" disabled  [checked]="viewEmployeeMoreInfo.billable==='YES'"/> Yes
+                    <td><input type="checkbox" disabled  [checked]="viewEmployeeMoreInfo.billable==='NO'"/>No
                     <!--<span>{{viewEmployeeMoreInfo.billable}}</span></td>-->
                   </tr>
                   </tbody>
@@ -305,7 +307,7 @@
     </div>
   </div>
 </div>
-
+<br>
 <div class="container-fluid">
   <div *ngIf="viewAllEmployee">
     <div>
@@ -344,7 +346,8 @@
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Billable:</td>
-                    <td><input type="checkbox" id="billable" checked="checked"/></td>
+                    <td><input type="checkbox" disabled  [checked]="viewEmployeeMoreInfo.billable==='YES'"/> Yes
+                    <td><input type="checkbox" disabled  [checked]="viewEmployeeMoreInfo.billable==='NO'"/>No
                   </tr>
 
                   </tbody>
@@ -478,8 +481,9 @@
                   </tr>
                   <tr>
                     <td style="font-weight: bold;">Billable:</td>
-                    <td><input type="checkbox" checked="checked" />
-                    <span> {{viewEmployeeMoreInfo.billable}}</span></td>
+                    <td><input type="checkbox" disabled  [checked]="viewEmployeeMoreInfo.billable==='YES'"/> Yes
+                    <td><input type="checkbox" disabled  [checked]="viewEmployeeMoreInfo.billable==='NO'"/>No
+                    <!--<span> {{viewEmployeeMoreInfo.billable}}</span></td>-->
                   </tr>
                   </tbody>
                 </table>
