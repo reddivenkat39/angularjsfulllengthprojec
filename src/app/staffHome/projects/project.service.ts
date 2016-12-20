@@ -7,10 +7,23 @@ import {HttpService} from "../../globalservices/http.service";
 export class ProjectService {
 
   constructor(private http: HttpService) { }
-  getProjects() {
-    return this.http.get('/app/staffHome/projects/projects.json')
-      .toPromise()
-      .then(res =>< Project[] > res.json().data)
-      .then(data => { return data; });
+  getSowData() {
+    const headersSend = new Headers({'Content-Type':'application/json'});
+    return this.http.get("http://localhost:8080/sowclirel/allsow",{headers: headersSend}).map(
+      (res:Response)=> {
+        return res.json();
+      }
+    );
   }
+
+
+  getProjectsData(){
+    const headersSend = new Headers({'Content-Type':'application/json'});
+    return this.http.get("http://localhost:8080/empvencli/allprojects",{headers: headersSend}).map(
+      (res:Response)=> {
+        return res.json();
+      }
+    );
+  }
+
 }
