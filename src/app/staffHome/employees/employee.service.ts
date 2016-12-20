@@ -9,7 +9,7 @@ export class EmployeeService {
 
   getAllEmployeeDetails(){
     const headersSend = new Headers({'Content-Type':'application/json'});
-    return this.http.get("/tep/empprsnlinfo/allemployees",{headers: headersSend}).map(
+    return this.http.get("http://localhost:8080/empprsnlinfo/allemployees",{headers: headersSend}).map(
       (res:Response)=> {
         console.log("getting all employees ",res.json());
         return res.json();
@@ -23,7 +23,7 @@ export class EmployeeService {
     const candBody = {empId : empId };
     console.log("empId in bodySend",candBody);
     console.log("empId in headersSend",headersSend);
-    return this.http.post("/tep/empprsnlinfo/empbyid",candBody,{headers: headersSend}).map(
+    return this.http.post("http://localhost:8080/empprsnlinfo/empbyid",candBody,{headers: headersSend}).map(
       (res:Response)=> {
         console.log("res.json from getemployeepersonalinfo By id",res.json());
         return res.json();
@@ -40,7 +40,7 @@ export class EmployeeService {
     const candBody = {empId : empId };
     console.log("empId in bodySend",candBody);
     console.log("empId in headersSend",headersSend);
-    return this.http.post("/tep/empclirel/workaddrbyempid",candBody,{headers: headersSend}).map(
+    return this.http.post("http://localhost:8080/empclirel/workaddrbyempid",candBody,{headers: headersSend}).map(
       (res:Response)=> {
         console.log("res.json from get employee work address By id",res.json());
         return res.json();
@@ -54,7 +54,7 @@ export class EmployeeService {
     const candBody = {empId : empId };
     console.log("empId in bodySend",candBody);
     console.log("empId in headersSend",headersSend);
-    return this.http.post("/tep/empmoreinfo/byempid",candBody,{headers: headersSend}).map(
+    return this.http.post("http://localhost:8080/empmoreinfo/byempid",candBody,{headers: headersSend}).map(
       (res:Response)=> {
         console.log("res.json from get employee more details By id",res.json());
         return res.json();

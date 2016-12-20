@@ -1,8 +1,11 @@
 export interface Project{
-  projectName;
-  strtDate;
+  venId;
+  vendorName;
+  empId;
+  empName;
   rate;
-  vendor;
-  employee;
-  enddate;
+  startDate;
+  endDate;
+  clientId;
+  clientName;
 }

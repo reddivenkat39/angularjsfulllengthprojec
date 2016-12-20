@@ -14,7 +14,7 @@ export interface Invoice{
   recvdDt;
   venId;
   empId;
-  venName;
+  vendorName;
   empName;
   invStatus;
   /*STATUS (open, closed, past due)*/

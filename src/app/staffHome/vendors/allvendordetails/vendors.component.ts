@@ -7,6 +7,7 @@ import {InActiveVendorEmployee} from "../InActiveVendorEmployee.interface";
 import {ToastsManager} from "ng2-toastr";
 import {VendorEmployee} from "../VendorEmployee.interface";
 import {forEach} from "@angular/router/src/utils/collection";
+import {Employee} from "../../employees/Employee";
 declare var $: any;
 
 @Component({
@@ -24,11 +25,6 @@ export class VendorsComponent implements OnInit {
   private isEachAllVendorInvoice = false;
   private isEachOpenVendorInvoice = false;
   private isEachCloseVendorInvoice = false;
-  private totalInvoiceAmount = {
-    allInvoicesTotalAmount   : 0.00,
-    openInvoicesTotalAmount  : 0.00,
-    closedInvoicesTotalAmount: 0.00
-  };
   private allVendorInvoice = false;
   private tabsForEmployeeInvoice=false;
   private isEachAllEmployeeInvoice = false;
@@ -37,7 +33,9 @@ export class VendorsComponent implements OnInit {
   private isEachVendorContactInfo =false;
   empId: '';
   private viewVendorContactDetails= { };
-  private vendorEmployeeDetails ={};
+  private vendorEmployeeDetails ={
+    'empName':''
+  };
 
   allVendors: Vendor[];   // to show all vendors table
   vendorActiveEmployees: VendorEmployee[]; // to show active employees by vendor id
@@ -126,8 +124,8 @@ export class VendorsComponent implements OnInit {
                 return row;
             });
 
-            this.vendorEmployeeDetails= res.datares[0];
-            console.log(this.vendorEmployeeDetails,"-------------------======");
+            // this.vendorEmployeeDetails = res.datares;
+
             this.vendorInActiveEmployees = res.datares.filter(row => {
               if (row.endDate != null)
                 return row;
@@ -135,6 +133,7 @@ export class VendorsComponent implements OnInit {
           } else if (res.errorres != null) {
             console.log(res.errorres);
             console.log(res.datares);
+
             this.vendorActiveEmployees = null;
             this.vendorInActiveEmployees = null;
           } else if (res.successres != null) {
@@ -147,34 +146,7 @@ export class VendorsComponent implements OnInit {
     }
 
 
-    /*
-     to insert the employee details by vendor id from backend by filtering inactive employees
-     */
 
-    // {
-    //   this.vendorService.getVendorEmployeesByVendId(vendorId).subscribe(
-    //     res => {
-    //       if (res.datares != null) {
-    //         console.log(res.datares);
-    //         // this.vendorActiveEmployees = res.datares.filter(row => {
-    //         //   if (row.invEndDt == null)
-    //         //     return row;
-    //         // });
-    //         this.vendorInActiveEmployees = res.datares.filter(row => {
-    //             if (row.invEndDt != null)
-    //               return row;
-    //         });
-    //       } else if (res.errorres != null) {
-    //         console.log(res.errorres);
-    //         this.vendorInActiveEmployees = null;
-    //       } else if (res.successres != null) {
-    //         console.log(res.successres);
-    //       } else {
-    //         this.toastMsg.error('Please Login Again', 'Server Problem');
-    //       }
-    //     }
-    //   );
-    // }
     /*
      to get the invoices by vendor id from backend
      */
@@ -297,13 +269,19 @@ export class VendorsComponent implements OnInit {
     this.isEachVendorContactInfo=false;
   }
 
-  onVendorSelectEmployeeInvoices(event) {
+  onVendorSelectEmployeeInvoices(event, employee: VendorEmployee) {
    console.log("vendor each employee invoice");
-   console.log( event.data.empId);
+   console.log( "event and vendor employee data is..... ",employee.empId);
+   // debugger;
     this.onClickButtonEmployeeInvoice();
-     this.vendorService.getEmployeeInvoicesById( event.data.empId).subscribe(
+    console.log("employee Name is ", employee.empName);
+    this.vendorEmployeeDetails.empName = employee.empName;
+    console.log(" employee name in: vendorEmployeeDetails tab : ", this.vendorEmployeeDetails);
+     this.vendorService.getEmployeeInvoicesById( employee.empId).subscribe(
      res=> {
        if(res.datares != null){
+
+         console.log('employee name after service call done :::: ', this.vendorEmployeeDetails);
          console.log("datares of employee invoices : ",res.datares);
          this.openEmployeeInvoices=res.datares.filter(row => {
            if (row.invStatus == "OPEN") {
@@ -322,6 +300,7 @@ export class VendorsComponent implements OnInit {
          for (let i = 0; i < this.allEmployeeInvoices.length; i++) {
            this.allEmpInvsAmnt += this.allEmployeeInvoices[i].invAmt;
          }
+
        }else if(res.errorres!=null){
          console.log(res.errorres);
         this.openEmployeeInvoices = null;

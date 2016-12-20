@@ -50,6 +50,7 @@ import { ProjectsComponent } from './staffHome/projects/projects.component';
 import {ProjectService} from "./staffHome/projects/project.service";
 import { InvoicesComponent } from './staffHome/invoices/invoices.component';
 import {InvoiceService} from "./staffHome/invoices/invoice.service";
+import {RadioButtonModule} from "primeng/components/radiobutton/radiobutton";
 
 
 let options: ToastOptions = new ToastOptions({
@@ -83,11 +84,13 @@ let options: ToastOptions = new ToastOptions({
     RoleRestrictDirective,
     ProjectsComponent,
     InvoicesComponent
+
   ],
   imports: [
     ToastrModule,
     ToastModule.forRoot(options),
     BrowserModule,
+    RadioButtonModule,
     FormsModule,
     HttpModule,
     routing,
