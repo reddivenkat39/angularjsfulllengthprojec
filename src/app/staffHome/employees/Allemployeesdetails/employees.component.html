@@ -11,6 +11,7 @@
     </div>
   </div>
 </div>
+
 <div class="container-fluid">
   <div *ngIf="allEmployee">
     <div class="col-xs-12">
@@ -115,9 +116,9 @@
                   [sortable]="true"></p-column>
       </p-dataTable>
     </div>
+    <br/>
   </div>
 </div>
-
 
 <div class="container-fluid">
   <div *ngIf="allInActive">
@@ -159,7 +160,7 @@
         <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
         <p-column field="lastName" header="Last Name" [sortable]="true">
           <template let-col let-allInactiveEmployees="rowData" pTemplate type="body">
-            <a (click)="onClickLastName($event)"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{allInactiveEmployees[col.field]}}</span></a>
+            <a (click)="onClickLastName()"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{allInactiveEmployees[col.field]}}</span></a>
           </template>
         </p-column>
         <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
@@ -168,11 +169,24 @@
         <p-column field="termDate" header="Term Date" [sortable]="true"></p-column>
       </p-dataTable>
     </div>
+    <br/>
   </div>
 </div>
-<br>
+
+<div *ngIf="eachEmployeeBreadcrumb">
+  <div class="container-fluid">
+    <div class="col-xs-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item" (click)="onClickEmployeeBreadcrumb()"><a>Employees</a></li>
+        <li class="breadcrumb-item active">Employee Details</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
 <div class="container-fluid">
   <div *ngIf="viewInActiveEmployee">
+    <br>
     <div>
       <div class="col-xs-12">
         <div class="panel panel-default">
@@ -307,9 +321,10 @@
     </div>
   </div>
 </div>
-<br>
+
 <div class="container-fluid">
   <div *ngIf="viewAllEmployee">
+    <br>
     <div>
       <div class="col-xs-12">
         <div class="panel panel-default">
@@ -443,8 +458,10 @@
     </div>
   </div>
 </div>
+
 <div class="container-fluid">
   <div *ngIf="viewActiveEmployee">
+    <br>
     <div>
       <div class="col-xs-12">
         <div class="panel panel-default" id="panelDetails">
@@ -578,18 +595,22 @@
     </div>
   </div>
 </div>
+
+
 <div class="container-fluid">
   <div class="EachEmployeeEditableDetailsTabs">
-    <ul class="list-inline">
-      <li class="list-inline active" ><a>Education</a></li>|
-      <li ><a>Contact</a></li>|
-      <li><a>Address</a></li>|
-      <li><a>Vendor</a></li>|
-      <li ><a>Projects</a></li>|
-      <li><a>Pay rate</a></li>|
-      <li><a>Passport</a></li>|
-      <li ><a>Work Authorization</a></li>|
-      <li><a>Benefits</a></li>
-    </ul>
+    <div class="col-xs-6">
+      <ul class="nav nav-tabs">
+        <li class="active" data-toggle="tab"><a>Education</a></li>
+        <li data-toggle="tab"><a>Contact</a></li>
+        <li data-toggle="tab"><a>Address</a></li>
+        <li data-toggle="tab"><a>Vendor</a></li>
+        <li data-toggle="tab"><a>Projects</a></li>
+        <li data-toggle="tab"><a>Pay rate</a></li>
+        <li data-toggle="tab"><a>Passport</a></li>
+        <li data-toggle="tab"><a>Work Authorization</a></li>
+        <li data-toggle="tab"><a>Benefits</a></li>
+      </ul>
+    </div>
   </div>
 </div>

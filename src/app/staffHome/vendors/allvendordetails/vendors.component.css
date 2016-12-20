@@ -5,20 +5,20 @@ li{
 #pillTab >li>a{
   padding-top: 3px;
   padding-bottom: 3px;
-  background-color:darkgray;
+  color:blue;
+  background-color:lightgrey;
 }
 
 #pillTab> li.active > a{
   color:black;
 }
 
-#pillTab>li>a{
-  color:blue;
-}
 #pillTab1>li>a{
   margin-top: 0px;
   padding-top: 3px;
   padding-bottom: 3px;
+  padding-left: 2px;
+  padding-right:1px;
   background-color:white !important;
   border: none !important;
 }
@@ -31,10 +31,12 @@ li{
 }
 
 #pillTab2>li>a{
-  padding-top: 5px;
-  padding-bottom: 5px;
-  background-color:white;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 1px;
+  padding-right:1px;
   color:blue;
+  background-color:white;
   border-bottom:none !important;
 }
 #pillTab2 .nav-pills > li.active > a{

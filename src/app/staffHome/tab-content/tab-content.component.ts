@@ -1,6 +1,6 @@
 import {Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation} from '@angular/core';
 import {Router} from "@angular/router";
-
+declare var $: any;
 @Component({
   selector: 'app-tab-content',
   templateUrl: './tab-content.component.html',
@@ -9,9 +9,6 @@ import {Router} from "@angular/router";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabContentComponent implements OnInit {
-
-
-
   constructor(private router: Router) { }
   /*public tabs:Array<any> = [
    {title: 'Home', content: 'content 1'},

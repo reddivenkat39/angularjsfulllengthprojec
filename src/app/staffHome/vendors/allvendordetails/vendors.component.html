@@ -44,6 +44,20 @@
         <li class="active" (click)="onClickVendorEmployee()" data-toggle="pill"><a>Employees</a></li>
         <li (click)="onClickVendorInvoice()" data-toggle="pill"><a>Invoices</a></li>
         <li (click)="onClickVendorContactInfo()" data-toggle="pill"><a>Contact</a></li>
+    <div class="col-xs-3">
+      <!--<nav>
+        <a class="active btn-xs" (click)="onClickVendorEmployee()" style="cursor: pointer;"><strong>Employees</strong></a>|
+        <a class="btn-xs" (click)="onClickVendorInvoice()" style="cursor: pointer;"><strong>Invoices</strong></a>
+      </nav>-->
+      <!--<ul id="pillTab" class="list-inline">
+        <li class="list-inline active" (click)="onClickVendorEmployee()" data-toggle="pill"><a>Employees</a></li>|
+        <li (click)="onClickVendorInvoice()" data-toggle="pill"><a>Invoices</a></li>
+        <li (click)="onClickVendorContactInfo()" data-toggle="pill"><a>Contact</a></li>
+      </ul>-->
+      <ul id="pillTab" class="nav nav-tabs">
+        <li class="active" (click)="onClickVendorEmployee()" data-toggle="tab"><a>Employees</a></li>
+        <li (click)="onClickVendorInvoice()" data-toggle="tab"><a>Invoices</a></li>
+        <li (click)="onClickVendorContactInfo()" data-toggle="tab"><a>Contact</a></li>
       </ul>
     </div>
   </div>
@@ -57,6 +71,7 @@
       <div *ngIf="allVendor">
         <ul id="pillTab1" class="nav nav-pills">
           <li class="list-inline active" (click)="onClickEachActiveVendorEmployee()"><a data-toggle="pill">Active</a>
+            <li class="list-inline active" (click)="onClickEachActiveVendorEmployee()"><a data-toggle="pill">Active|</a>
           </li>
           <li></li>
           <li (click)="onClickEachInActiveVendorEmployee()"><a data-toggle="pill">Inactive</a></li>
@@ -125,11 +140,15 @@
       <!--getting all Invoices by Vendor id-->
 
       <div *ngIf="allVendorInvoice">
-        <ul id="pillTab2" class="nav nav-pills">
-          <li (click)="onClickAllInvoice()"><a data-toggle="pill">All</a></li>
-          <li class="list-inline active" (click)="onClickOpenInvoice()"><a data-toggle="pill">Open</a></li>
-          <li><a data-toggle="pill" (click)="onClickCloseInvoice()">Closed</a></li>
-        </ul>
+        <div class="row">
+          <div class="col-xs-6 col-xs-offset-1" >
+            <ul id="pillTab2" class="nav nav-pills">
+              <li (click)="onClickAllInvoice()"><a data-toggle="pill">All|</a></li>
+              <li class="active" (click)="onClickOpenInvoice()"><a data-toggle="pill">Open|</a></li>
+              <li><a data-toggle="pill" (click)="onClickCloseInvoice()">Closed</a></li>
+            </ul>
+          </div>
+        </div>
         <div *ngIf="isEachAllVendorInvoice">
           <div class="panel panel-default">
             <div class="panel-body">

@@ -30,10 +30,6 @@ export class EmployeeService {
       }
     );
   }
-
-
-
-
   getEmpWorkAddressById(empId){
     console.log("into getDetailedViewEachEmployee method for work address details");
     const headersSend = new Headers({'Content-Type':'application/json'});
