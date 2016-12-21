@@ -1,5 +1,6 @@
 <app-header></app-header>
 <div class="container-fluid">
+  <br>
   <div class="col-xs-12">
 <!--allvendordata-->
     <p-dataTable #dt1 [value]="allVendors" selectionMode="single" [(selection)]="selectedVendor"
@@ -34,46 +35,22 @@
     </p-dataTable>
   </div>
 </div>
-
-
 <div class="container-fluid">
-  <div>
     <br>
-    <div class="col-xs-12">
-      <ul id="pillTab" class="nav nav-pills">
-        <li class="active" (click)="onClickVendorEmployee()" data-toggle="pill"><a>Employees</a></li>
-        <li (click)="onClickVendorInvoice()" data-toggle="pill"><a>Invoices</a></li>
-        <li (click)="onClickVendorContactInfo()" data-toggle="pill"><a>Contact</a></li>
     <div class="col-xs-3">
-      <!--<nav>
-        <a class="active btn-xs" (click)="onClickVendorEmployee()" style="cursor: pointer;"><strong>Employees</strong></a>|
-        <a class="btn-xs" (click)="onClickVendorInvoice()" style="cursor: pointer;"><strong>Invoices</strong></a>
-      </nav>-->
-      <!--<ul id="pillTab" class="list-inline">
-        <li class="list-inline active" (click)="onClickVendorEmployee()" data-toggle="pill"><a>Employees</a></li>|
-        <li (click)="onClickVendorInvoice()" data-toggle="pill"><a>Invoices</a></li>
-        <li (click)="onClickVendorContactInfo()" data-toggle="pill"><a>Contact</a></li>
-      </ul>-->
       <ul id="pillTab" class="nav nav-tabs">
         <li class="active" (click)="onClickVendorEmployee()" data-toggle="tab"><a>Employees</a></li>
         <li (click)="onClickVendorInvoice()" data-toggle="tab"><a>Invoices</a></li>
         <li (click)="onClickVendorContactInfo()" data-toggle="tab"><a>Contact</a></li>
       </ul>
     </div>
-  </div>
 </div>
 
-
-
 <div class="container-fluid">
-  <div>
     <div class="col-xs-12">
       <div *ngIf="allVendor">
         <ul id="pillTab1" class="nav nav-pills">
-          <li class="list-inline active" (click)="onClickEachActiveVendorEmployee()"><a data-toggle="pill">Active</a>
-            <li class="list-inline active" (click)="onClickEachActiveVendorEmployee()"><a data-toggle="pill">Active|</a>
-          </li>
-          <li></li>
+          <li class="list-inline active" (click)="onClickEachActiveVendorEmployee()"><a data-toggle="pill">Active|</a>
           <li (click)="onClickEachInActiveVendorEmployee()"><a data-toggle="pill">Inactive</a></li>
         </ul>
 
@@ -224,8 +201,8 @@
       <!-- each All employee invoice by employee invoice id-->
       <div *ngIf="tabsForEmployeeInvoice">
         <ul id="pillTab3" class="nav nav-pills">
-          <li (click)="onClickAllEmployeeInvoice()"><a data-toggle="pill">All</a></li>
-          <li class="list-inline active" (click)="onClickOpenEmployeeInvoice()"><a data-toggle="pill">Open</a></li>
+          <li (click)="onClickAllEmployeeInvoice()"><a data-toggle="pill">All|</a></li>
+          <li class="list-inline active" (click)="onClickOpenEmployeeInvoice()"><a data-toggle="pill">Open|</a></li>
           <li><a data-toggle="pill" (click)="onClickCloseEmployeeInvoice()">Closed</a></li>
         </ul>
         <div *ngIf="isEachAllEmployeeInvoice">
@@ -305,73 +282,74 @@
           </p-dataTable>
         </div>
       </div>
-    </div>
-  </div>
-  <div *ngIf="isEachVendorContactInfo">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        {{viewVendorContactDetails.venNm}}
-      </div>
-      <div class="panel-body">
-        <div class="container-fluid">
-          <div class="col-xs-6" style="border-right: 1px solid #ccc;">
-            <table class="table borderless">
-              <thead>Address Details</thead>
-              <tbody>
-              <tr>
-                <td style="font-weight: bold;">Address Line1:</td>
-                <td>{{viewVendorContactDetails.addrLine1}}</td>
-              </tr>
-              <tr>
-                <td style="font-weight: bold;">Address Line2:</td>
-                <td>{{viewVendorContactDetails.addrLine2}}</td>
-              </tr>
-              <tr>
-                <td style="font-weight: bold;">City:</td>
-                <td>{{viewVendorContactDetails.city}}</td>
-              </tr>
-              <tr>
-                <td style="font-weight: bold;">State:</td>
-                <td>{{viewVendorContactDetails.state}}</td>
-              </tr>
-              <tr>
-                <td style="font-weight: bold;">Zipcode:</td>
-                <td>{{viewVendorContactDetails.zipCode}}</td>
-              </tr>
-              </tbody>
-            </table>
+      <div *ngIf="isEachVendorContactInfo">
+        <br>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            {{viewVendorContactDetails.venNm}}
           </div>
-          <div class="col-xs-6">
-            <table class="table borderless">
-              <thead>Contact Details</thead>
-              <tr>
-                <td style="font-weight: bold;">Contact Name</td>
-                <td>
-                  {{viewVendorContactDetails.cnctNm}}
-                </td>
-              <tr>
-              <tr>
-                <td style="font-weight: bold;">Phone No:</td>
-                <td>
-                  {{viewVendorContactDetails.cnctPhNum1}}
-                </td>
-              <tr>
-                <td style="font-weight: bold;">Email:</td>
-                <td>
-                  {{viewVendorContactDetails.cnctEmail }}
-                </td>
-              </tr>
-              <tr>
-                <td style="font-weight: bold;">Emergency Contact:</td>
-                <td>
-                  {{viewVendorContactDetails.cnctPhNum2}}
-                </td>
-              </tr>
-            </table>
+          <div class="panel-body">
+            <div class="container-fluid">
+              <div class="col-xs-6" style="border-right: 1px solid #ccc;">
+                <table class="table borderless">
+                  <thead>Address Details</thead>
+                  <tbody>
+                  <tr>
+                    <td style="font-weight: bold;">Address Line1:</td>
+                    <td>{{viewVendorContactDetails.addrLine1}}</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Address Line2:</td>
+                    <td>{{viewVendorContactDetails.addrLine2}}</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">City:</td>
+                    <td>{{viewVendorContactDetails.city}}</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">State:</td>
+                    <td>{{viewVendorContactDetails.state}}</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Zipcode:</td>
+                    <td>{{viewVendorContactDetails.zipCode}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-xs-6">
+                <table class="table borderless">
+                  <thead>Contact Details</thead>
+                  <tr>
+                    <td style="font-weight: bold;">Contact Name</td>
+                    <td>
+                      {{viewVendorContactDetails.cnctNm}}
+                    </td>
+                  <tr>
+                  <tr>
+                    <td style="font-weight: bold;">Phone No:</td>
+                    <td>
+                      {{viewVendorContactDetails.cnctPhNum1}}
+                    </td>
+                  <tr>
+                    <td style="font-weight: bold;">Email:</td>
+                    <td>
+                      {{viewVendorContactDetails.cnctEmail }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: bold;">Emergency Contact:</td>
+                    <td>
+                      {{viewVendorContactDetails.cnctPhNum2}}
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+
 </div>
 

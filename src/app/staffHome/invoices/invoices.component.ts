@@ -14,13 +14,17 @@ export class InvoicesComponent implements OnInit {
   private isClosedInvoices = false;
   private ispastDueInvoices = false;
 
+  openInvsAmnt: number = 0;
+  closedInvsAmnt: number = 0;
+  allInvsAmnt: number = 0;
+  pstDueInvsAmnt:number=0;
 
   allTabnerInvoices:Invoice[];
   openInvoices: Invoice[];
   closedInvoices: Invoice[];
   pastDueInvoices : Invoice[];
 
-
+  selectedInvoice:Invoice[];
 
   constructor(private invoiceService:InvoiceService) { }
 
@@ -38,17 +42,22 @@ export class InvoicesComponent implements OnInit {
     this.isOpenInvoices = false;
     this.isClosedInvoices = false;
     this.ispastDueInvoices = false;
+    this.allInvsAmnt=0;
+    this.closedInvsAmnt=0;
+    this.openInvsAmnt=0;
     this.invoiceService.getAllInvoices().subscribe(
       res=>{
         if(res.datares!=null){
+          console.log("datares of invoices : ", res.datares);
           this.allTabnerInvoices = res.datares;
+          for (let i = 0; i < this.allTabnerInvoices.length; i++) {
+            this.allInvsAmnt += this.allTabnerInvoices[i].invAmt;
+          }
         }
-        else if(res.datares!=null){
-          console.log('server problem');
-        }else if(res.errorres!=null){
-          console.log('server problem');
+        else if(res.errorres!=null){
+          console.log(res.errorres);
         }else if(res.successres!=null){
-          console.log('server problem');
+          console.log(res.successres);
         }else {
           console.log('server problem');
         }
@@ -62,20 +71,22 @@ export class InvoicesComponent implements OnInit {
     this.isOpenInvoices = true;
     this.isClosedInvoices = false;
     this.ispastDueInvoices = false;
+    this.allInvsAmnt=0;
+    this.closedInvsAmnt=0;
+    this.openInvsAmnt=0;
     this.invoiceService.getAllInvoices().subscribe(
       res=>{
         if(res.datares!=null){
           this.openInvoices = res.datares.filter(row => {
-            if (row.invStatus == "OPEN")
+            if (row.invStatus == "OPEN"){
+              this.openInvsAmnt += row.invAmt;
               return row;
-          });
+            }})
         }
-        else if(res.datares!=null){
-          console.log('server problem');
-        }else if(res.errorres!=null){
-          console.log('server problem');
+        else if(res.errorres!=null){
+          console.log(res.errorres);
         }else if(res.successres!=null){
-          console.log('server problem');
+          console.log(res.successres);
         }else {
           console.log('server problem');
         }
@@ -89,20 +100,23 @@ export class InvoicesComponent implements OnInit {
     this.isOpenInvoices = false;
     this.isClosedInvoices = true;
     this.ispastDueInvoices = false;
+    this.allInvsAmnt=0;
+    this.closedInvsAmnt=0;
+    this.openInvsAmnt=0;
     this.invoiceService.getAllInvoices().subscribe(
       res=>{
         if(res.datares!=null){
           this.closedInvoices = res.datares.filter(row => {
-            if (row.invStatus != 'OPEN')
+            if (row.invStatus == "CLOSED") {
+              this.closedInvsAmnt += row.invAmt;
               return row;
+            }
           });
         }
-        else if(res.datares!=null){
-          console.log('server problem');
-        }else if(res.errorres!=null){
-          console.log('server problem');
+        else if(res.errorres!=null){
+          console.log(res.errorres);
         }else if(res.successres!=null){
-          console.log('server problem');
+          console.log(res.successres);
         }else {
           console.log('server problem');
         }
@@ -119,17 +133,15 @@ export class InvoicesComponent implements OnInit {
     this.invoiceService.getAllInvoices().subscribe(
       res=>{
         if(res.datares!=null){
-          this.openInvoices = res.datares.filter(row => {
-            if (row.invStatus == 'OPEN' )
+          this.pastDueInvoices = res.datares.filter(row => {
+            if (row.invStatus == 'OPEN')
               return row;
           });
         }
-        else if(res.datares!=null){
-          console.log('server problem');
-        }else if(res.errorres!=null){
-          console.log('server problem');
+        else if(res.errorres!=null){
+          console.log(res.errorres);
         }else if(res.successres!=null){
-          console.log('server problem');
+          console.log(res.successres);
         }else {
           console.log('server problem');
         }

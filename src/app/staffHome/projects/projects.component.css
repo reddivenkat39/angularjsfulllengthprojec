@@ -5,3 +5,25 @@ li.active {
   font-weight: bold;
   /*background-color: white;*/
 }
+#pillTabSowInvoice>li>a{
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 1px;
+  padding-right:1px;
+  color:blue;
+  background-color:white;
+  border-bottom:none !important;
+}
+#pillTabSowInvoice .nav-pills > li.active > a{
+  color:black !important;
+}
+#pillTab >li>a{
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color:blue;
+  background-color:lightgrey;
+}
+
+#pillTab> li.active > a{
+  color:black;
+}

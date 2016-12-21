@@ -44,9 +44,11 @@ li{
 }
 
 #pillTab3>li>a{
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   background-color:white;
+  padding-left: 1px;
+  padding-right:1px;
   color:blue;
   border-bottom:none !important;
 }

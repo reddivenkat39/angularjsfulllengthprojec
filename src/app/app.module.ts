@@ -52,6 +52,7 @@ import { InvoicesComponent } from './staffHome/invoices/invoices.component';
 import {InvoiceService} from "./staffHome/invoices/invoice.service";
 import {RadioButtonModule} from "primeng/components/radiobutton/radiobutton";
 import { EachemployeedetailsComponent } from './staffHome/employees/eachemployeedetails/eachemployeedetails.component';
+import { EmpBreadCrumbsComponent } from './staffHome/employees/employeeNavigationTabs/emp-bread-crumbs.component';
 
 
 let options: ToastOptions = new ToastOptions({
@@ -85,7 +86,8 @@ let options: ToastOptions = new ToastOptions({
     RoleRestrictDirective,
     ProjectsComponent,
     InvoicesComponent,
-    EachemployeedetailsComponent
+    EachemployeedetailsComponent,
+    EmpBreadCrumbsComponent
   ],
   imports: [
     ToastrModule,
