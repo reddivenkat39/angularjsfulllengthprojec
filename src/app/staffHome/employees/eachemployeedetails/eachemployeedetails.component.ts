@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EmployeeService} from "../employee.service";
 import {ActivatedRoute} from "@angular/router";
+import {ToastsManager} from "ng2-toastr";
 
 @Component({
   selector: 'app-eachemployeedetails',
@@ -8,15 +9,13 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./eachemployeedetails.component.css']
 })
 export class EachemployeedetailsComponent implements OnInit {
-  value = '';
   empId:'';
-  constructor(private employeeService:EmployeeService, private activatedRoute: ActivatedRoute) {
+  constructor(private employeeService:EmployeeService, private activatedRoute: ActivatedRoute,private toastManager: ToastsManager) {
     this.empId = activatedRoute.snapshot.params['id'];
+
   }
 
   ngOnInit() {
-    this.employeeService.pushedId.subscribe(
-      data => this.value = data
-    );
   }
+
 }

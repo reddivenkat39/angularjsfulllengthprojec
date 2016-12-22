@@ -19,10 +19,8 @@ export class EmployeesComponent implements OnInit {
   activeEmployees: Employee[]=[];
   inActiveEmployees: Employee[]=[];
   subContEmployees:Employee[]=[];
-
-  empId:'';
-  value = '';
   selectedEmployee: Employee;
+  empId:'';
 
   tableHeader : string = "";//table Header value based on the selection
   showTerminateDt : boolean = true;//dont show terminate date for Active employees
@@ -60,7 +58,6 @@ export class EmployeesComponent implements OnInit {
             if(row.subCont == "YES"){//sub contract employees
               this.subContEmployees.push(row);
             }
-
           });
           console.log("employees.components : loademployes: getAllEmployeeDetails: All employess : ", this.allEmployees);
           console.log("employees.components : loademployes: getAllEmployeeDetails: All Active Employes : ", this.activeEmployees);
@@ -110,77 +107,27 @@ export class EmployeesComponent implements OnInit {
         console.log("Filtered employess : SubCont:", this.filteredEmployes);
         break;
     }
-    this.defaultFirstRowSelect(this);
+    this.defaultFirstRowSelect();
   }
 
-  defaultFirstRowSelect(context) {
-    //TODO: Worst code, Need to refactor later. used setTimeOut because didnt find better way
-    setTimeout(() => {
-      var firstRowTd = $("table:eq(1) tr:eq(0)").find('td:first');
-      // firstRow.click(function(row){
-      //   row["empId"] = firstRow.find('td:first').text().trim();
-      //   context.onEmployeeRowSelect(row);
-      //   firstRow.addClass("ui-state-highlight");
-      // });
-      firstRowTd.trigger('click');
-
-      //for mouse hover highlight on table
-      $("tr").not(':first').hover(
-        function () {
-          $(this).css("background","#ebedf0");
-        },
-        function () {
-          $(this).css("background","");
-        }
-      );
-
-    }, 100);
+  defaultFirstRowSelect() {
+    //default first row selection
+    console.log("defaultFirstRowSelect :selectedEmployee", this.selectedEmployee );
+    this.selectedEmployee = this.filteredEmployes[0];
+    this.onEmployeeRowSelect(this.selectedEmployee.empId);
   }
 
-  onEmployeeRowSelect(row) {
-    console.log("Employee.Component : onEmployeeRowSelect : row :", row);
-    //disable already highlighted row
-    $('.ui-state-highlight').removeClass('ui-state-highlight');
-
-    var selectedRow = $(row.target).closest('tr');
-    //Find empId value from the selected row
-    row["empId"] = selectedRow.find('td:first').text().trim();
-
-    //highlight the selected row
-    selectedRow.addClass("ui-state-highlight");
-
-    console.log("Employee.Component : onEmployeeRowSelect : empId : ", row["empId"]);
+  onEmployeeRowSelect(empId) {
+    console.log("Employee.Component : onEmployeeRowSelect : empId :", empId);
     //get the full details of the selected employee
-    this.employeeService.getempDetailedViewComponent_empId(row.empId);
+    this.employeeService.getempDetailedViewComponent_empId(empId);
   }
 
-  onClickLastName(empLastName: Employee) {
-    this.empId = empLastName.empId;
+  //onclick last name of each employee
+  onClickLastName(empIdOnClickLastName: Employee) {
+    this.empId = empIdOnClickLastName.empId;
     console.log("emp id", this.empId);
-    this.employeeService.pushData(this.empId);
-    this.router.navigateByUrl('/employees/detailedviewby/id'+this.empId);
-    /*.subscribe(
-      res => {
-        if (res.datares != null) {
-          console.log("datares", res.datares);
-          this.router.navigateByUrl('/empdetailsbyid/'+this.empId);
-        } else if (res.errorres != null) {
-          console.log("errorres", res.errorres);
-        } else if (res.successres != null) {
-          console.log("successres", res.successres);
-        } else {
-          console.log("server problem");
-        }
-
-      }
-    );*/
-    /*$(".EachEmployeeEditableDetailsTabs").show();
-     $("ul li").click(function () {
-     $(this).parent().children().removeClass("active");
-     $(this).addClass("active");
-     });*/
-    // this.onRowSelectActiveEmployees(event.data.empId);
-  
-
+    //onClickLastName method navigate to view by id route
+    this.router.navigateByUrl('/employees/detailedviewby/'+this.empId);
   }
 }

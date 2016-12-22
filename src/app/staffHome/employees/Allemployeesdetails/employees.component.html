@@ -13,8 +13,8 @@
 </div>
 <div class="container-fluid">
   <div class="col-xs-12">
-    <p-dataTable #dt1 [value]="filteredEmployes"
-                 (click)="onEmployeeRowSelect($event)" [globalFilter]="gb" exportFilename="AllEmployees" reorderableColumns="true"
+    <p-dataTable #dt1 [value]="filteredEmployes" selectionMode = "single" [(selection)] = "selectedEmployee"
+                 (onRowSelect)="onEmployeeRowSelect(selectedEmployee.empId)" [globalFilter]="gb" exportFilename="AllEmployees" reorderableColumns="true"
                  scrollable="true" scrollHeight="218px" [rows]="20" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
       <header style="background: #3399ff !important;">
         <div class="ui-helper-clearfix">

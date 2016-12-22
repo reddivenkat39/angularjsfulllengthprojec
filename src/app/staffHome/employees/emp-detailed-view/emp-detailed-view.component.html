@@ -1,6 +1,3 @@
-
-{{empId}}
-
 <div class="container-fluid">
   <div>
     <div class="col-xs-12">
@@ -38,8 +35,8 @@
                 </tr>
                 <tr>
                   <td style="font-weight: bold;">Billable:</td>
-                  <td><input type="checkbox" readonly [checked]="fullEmpDtls.billable==='YES'"/> Yes
-                  <td><input type="checkbox" readonly  [checked]="fullEmpDtls.billable==='NO'"/>No
+                  <td><input type="checkbox" disabled [checked]="fullEmpDtls.billable==='YES'"/> Yes
+                  <td><input type="checkbox" disabled  [checked]="fullEmpDtls.billable==='NO'"/>No
                 </tr>
                 </tbody>
               </table>

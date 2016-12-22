@@ -54,8 +54,13 @@ export class InvoicesComponent implements OnInit {
               this.openInvsAmnt += row.invAmt;
               this.openInvoices.push(row);
 
+              var currentDt = new Date((new Date()).setHours(0, 0, 0, 0));//to get only date
               //Compare invoice due date with current date
-              if((new Date(row.dueDt)) < (new Date()) ){
+              if((new Date(row.dueDt)) < currentDt ){
+                console.log((new Date(row.dueDt)) < currentDt);
+                console.log("current date",currentDt);
+                console.log("row date",new Date(row.dueDt));
+
                 this.pstDueInvsAmnt+=row.invAmt;
                 this.pastDueInvoices.push(row);//fill past due invoices
               }
@@ -105,6 +110,7 @@ export class InvoicesComponent implements OnInit {
       case "PastDue":
         this.filteredInvoices = this.pastDueInvoices;
         this.tableHeader = "PastDue Invoices";
+        this.tableInvAmt=this.pstDueInvsAmnt;
         console.log("Filtered invoices : Past Due:", this.filteredInvoices);
         break;
     }
