@@ -21,13 +21,18 @@ import {ProjectsComponent} from "./staffHome/projects/projects.component";
 import {InvoicesComponent} from "./staffHome/invoices/invoices.component";
 import {EmpBreadCrumbsComponent} from "./staffHome/employees/employeeNavigationTabs/emp-bread-crumbs.component";
 import {EachemployeedetailsComponent} from "./staffHome/employees/eachemployeedetails/eachemployeedetails.component";
+import {EmpStatusTabsComponent} from "./staffHome/employees/employeeStatusTabs/emp-status-tabs.component";
 const APP_ROUTES: Routes = [
   { path: '', component: LoginComponent },
   {path:'forgotpassword', component:ForgetpasswordComponent},// used in login component
   {path:'resetpassword/:token', component:ResetpasswordComponent},
   {path:'home', component: HomeComponent,canActivate: [LoginGuard]}, //given in
-  {path:'employees', component:EmployeesComponent,canActivate: [LoginGuard]},
-  {path: 'empdetailsbyid/:id', component: EachemployeedetailsComponent, canActivate: [LoginGuard]},
+  {path:'employees', component:EmpStatusTabsComponent,canActivate: [LoginGuard],
+  children:[
+    {path: '', component: EmployeesComponent, canActivate: [LoginGuard]},
+    {path: 'detailedviewby/:id', component: EachemployeedetailsComponent, canActivate: [LoginGuard]},
+  ]},
+
   {path:'vendors', component:VendorsComponent,canActivate: [LoginGuard]},
   {path:'projects',component:ProjectsComponent, canActivate:[LoginGuard]},
   {path:'invoices',component:InvoicesComponent, canActivate:[LoginGuard]},

@@ -21,13 +21,11 @@ export class EmployeesComponent implements OnInit {
   subContEmployees:Employee[]=[];
   fullEmpDtls ={};
   empId:'';
-
+  value = '';
   selectedEmployee: Employee;
-
   tableHeader : string = "";//table Header value based on the selection
   showTerminateDt : boolean = true;//dont show terminate date for Active employees
   showAddSave : boolean = true;//show Add and save buttons in Active employees
-
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager, private router: Router) {
   }
 
@@ -170,7 +168,9 @@ export class EmployeesComponent implements OnInit {
   onClickLastName(empLastName: Employee) {
     this.empId = empLastName.empId;
     console.log("emp id", this.empId);
-    this.employeeService.getFullEmployeeDtlsById(this.empId).subscribe(
+    this.employeeService.pushData(this.empId);
+    this.router.navigateByUrl('/employees/detailedviewby/id'+this.empId);
+    /*.subscribe(
       res => {
         if (res.datares != null) {
           console.log("datares", res.datares);
@@ -184,13 +184,7 @@ export class EmployeesComponent implements OnInit {
         }
 
       }
-    );
-    /*$(".EachEmployeeEditableDetailsTabs").show();
-    $("ul li").click(function () {
-      $(this).parent().children().removeClass("active");
-      $(this).addClass("active");
-    });*/
-    // this.onRowSelectActiveEmployees(event.data.empId);
-  }
+    );*/
 
+  }
 }

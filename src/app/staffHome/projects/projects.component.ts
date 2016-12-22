@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Project} from "./Project.interface";
 import {ProjectService} from "./project.service";
 import {Sow} from "./sow.interface";
+import {SowInvoices} from "./sowinvoices.interface";
 declare var $: any;
 @Component({
   selector     : 'app-projects',
@@ -12,10 +13,11 @@ declare var $: any;
 export class ProjectsComponent implements OnInit {
   private isProjectsTab = false;
   private isSowTab = false;
-
+  viewSOWDetails={};
   allProjectsData: Project[];
   allSowData: Sow[];
-
+  allSOWInvoices:SowInvoices[];
+  selectedSowInvoice:SowInvoices;
 
   constructor(private projectService: ProjectService) {
   }
@@ -57,6 +59,30 @@ export class ProjectsComponent implements OnInit {
         if (res.datares != null) {
           console.log("load sow data datares  :", res.datares);
           this.allSowData = res.datares;
+        } else if (res.errorres != null) {
+          console.log("load sow data errorres  :", res.errorres);
+        } else if (res.successres != null) {
+          console.log("load sow data successres  :", res.successres);
+        } else {
+          console.log("server problem");
+        }
+      }
+    );
+  }
+
+  OnClickSowInvoiceTabs(){
+  this.onRowSelect(event);
+  }
+  onRowSelect(event){
+    console.log(event);
+    console.log(event.data.sowNum);
+    let SOWNUM = event.data.sowNum;
+    this.projectService.getSowInvoices(SOWNUM).subscribe(
+      res => {
+        if (res.datares != null) {
+          console.log("sow invoices data datares  :", res.datares);
+          this.allSOWInvoices = res.datares;
+          this.viewSOWDetails=res.datares[0];
         } else if (res.errorres != null) {
           console.log("load sow data errorres  :", res.errorres);
         } else if (res.successres != null) {

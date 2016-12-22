@@ -1,0 +1,11 @@
+#EachEmployeeEditableDetailsTabs > li.active>a,  .nav-tabs>li.active>a{
+  color:black;
+  font-weight: bold;
+  background-color: white !important;
+}
+#EachEmployeeEditableDetailsTabs>li>a, .nav-tabs>li>a
+{
+  padding: 3px 3px;
+  background-color: #f5f5f5 !important;
+  color:blue;
+}

@@ -50,14 +50,11 @@
       <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
       <p-column field="ssn" header="SSN" [sortable]="true"></p-column>
       <p-column field="hireDate" header="Hire Date" [sortable]="true"></p-column>
-     <!-- <p-column field="subCont" header="Sub Cont" [hidden]="true" [sortable]="true"></p-column>-->
       <p-column *ngIf="showTerminateDt" field="termDate" header="Term Date" [sortable]="true"></p-column>
     </p-dataTable>
   </div>
 </div>
-
 <br>
-
 <div class="container-fluid">
   <div>
     <div class="col-xs-12">

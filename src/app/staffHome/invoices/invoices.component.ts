@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {InvoiceService} from "./invoice.service";
 import {Invoice} from "./Invoice.interface";
+import {ToastsManager} from "ng2-toastr";
 declare var $:any;
 
 @Component({
@@ -9,147 +10,103 @@ declare var $:any;
   styleUrls: ['./invoices.component.css']
 })
 export class InvoicesComponent implements OnInit {
-  private isTabnerInvoicesTable=false;
-  private isOpenInvoices = false;
-  private isClosedInvoices = false;
-  private ispastDueInvoices = false;
 
   openInvsAmnt: number = 0;
   closedInvsAmnt: number = 0;
   allInvsAmnt: number = 0;
   pstDueInvsAmnt:number=0;
-
-  allTabnerInvoices:Invoice[];
+  filteredInvoices : Invoice[] =[];
+  allInvoices:Invoice[];
   openInvoices: Invoice[];
   closedInvoices: Invoice[];
   pastDueInvoices : Invoice[];
+  tableHeader : string = "";//table Header value based on the selection
+  tableInvAmt:number=0;//table inv amt based on selection
 
-  selectedInvoice:Invoice[];
-
-  constructor(private invoiceService:InvoiceService) { }
+  constructor(private invoiceService:InvoiceService,private toastManager: ToastsManager) { }
 
   ngOnInit() {
-    this.isTabnerInvoicesTable=true;
+    this.loadInvoices("Open");
     $("ul li").click(function () {
       $(this).parent().children().removeClass("active");
       $(this).addClass("active");
     });
-    this.onClickOpenInvoice();
   }
-
-  onClickAllInvoice(){
-    this.isTabnerInvoicesTable=true;
-    this.isOpenInvoices = false;
-    this.isClosedInvoices = false;
-    this.ispastDueInvoices = false;
+  loadInvoices(filter : string) {
+    console.log("invoices.components : loadInvoices for: ", filter);
     this.allInvsAmnt=0;
     this.closedInvsAmnt=0;
     this.openInvsAmnt=0;
+    this.pstDueInvsAmnt=0;
     this.invoiceService.getAllInvoices().subscribe(
-      res=>{
-        if(res.datares!=null){
-          console.log("datares of invoices : ", res.datares);
-          this.allTabnerInvoices = res.datares;
-          for (let i = 0; i < this.allTabnerInvoices.length; i++) {
-            this.allInvsAmnt += this.allTabnerInvoices[i].invAmt;
+      res => {
+        console.log("invoices.components : loadInvoices: getAllInvoices: response : ", res);
+        if (res.datares != null && res.errorres == null) {
+          this.allInvoices = res.datares;
+          for (let i = 0; i < this.allInvoices.length; i++) {
+            this.allInvsAmnt += this.allInvoices[i].invAmt;
           }
-        }
-        else if(res.errorres!=null){
-          console.log(res.errorres);
-        }else if(res.successres!=null){
-          console.log(res.successres);
-        }else {
-          console.log('server problem');
-        }
-      }
-    );
-  }
-
-
-  onClickOpenInvoice(){
-    this.isTabnerInvoicesTable=false;
-    this.isOpenInvoices = true;
-    this.isClosedInvoices = false;
-    this.ispastDueInvoices = false;
-    this.allInvsAmnt=0;
-    this.closedInvsAmnt=0;
-    this.openInvsAmnt=0;
-    this.invoiceService.getAllInvoices().subscribe(
-      res=>{
-        if(res.datares!=null){
-          this.openInvoices = res.datares.filter(row => {
-            if (row.invStatus == "OPEN"){
+          this.openInvoices =[];
+          this.closedInvoices =[];
+          this.pastDueInvoices=[];
+          res.datares.filter(row => {
+            if (row.invStatus == "OPEN") {//fill open invoices
               this.openInvsAmnt += row.invAmt;
-              return row;
-            }})
-        }
-        else if(res.errorres!=null){
-          console.log(res.errorres);
-        }else if(res.successres!=null){
-          console.log(res.successres);
-        }else {
-          console.log('server problem');
-        }
-      }
-    );
-  }
+              this.openInvoices.push(row);
 
-
-  onClickCloseInvoice(){
-    this.isTabnerInvoicesTable=false;
-    this.isOpenInvoices = false;
-    this.isClosedInvoices = true;
-    this.ispastDueInvoices = false;
-    this.allInvsAmnt=0;
-    this.closedInvsAmnt=0;
-    this.openInvsAmnt=0;
-    this.invoiceService.getAllInvoices().subscribe(
-      res=>{
-        if(res.datares!=null){
-          this.closedInvoices = res.datares.filter(row => {
-            if (row.invStatus == "CLOSED") {
+              //Compare invoice due date with current date
+              if((new Date(row.dueDt)) < (new Date()) ){
+                this.pstDueInvsAmnt+=row.invAmt;
+                this.pastDueInvoices.push(row);//fill past due invoices
+              }
+            }else if(row.invStatus == "CLOSED") {//fill close invoices
               this.closedInvsAmnt += row.invAmt;
-              return row;
+              this.closedInvoices.push(row);
             }
+
           });
+          console.log("invoices.components : loadInvoices: getAllInvoices: All invoices : ", this.allInvoices);
+          console.log("invoices.components : loadInvoices: getAllInvoices: All open invoices : ", this.openInvoices);
+          console.log("invoices.components : loadInvoices: getAllInvoices: All close invoices : ", this.closedInvoices);
+          console.log("invoices.components : loadInvoices: getAllInvoices: All pastdue invoices : ", this.pastDueInvoices);
         }
-        else if(res.errorres!=null){
-          console.log(res.errorres);
-        }else if(res.successres!=null){
-          console.log(res.successres);
-        }else {
-          console.log('server problem');
+        else {
+          console.log("invoices.components : loadInvoices: getAllInvoices:  Error in response : ", res.errorres);
+          this.toastManager.error(res.errorres, 'Data Fetching Failed');
         }
+        this.loadFilteredData(filter);
       }
     );
   }
 
-  onClickPastDueInvoice(){
-    this.isTabnerInvoicesTable=false;
-    this.isOpenInvoices = false;
-    this.isClosedInvoices = false;
-    this.ispastDueInvoices = true;
+  loadFilteredData(filter : string){
+    switch(filter)
+    {
+      case "All" :
+        this.filteredInvoices = this.allInvoices;
+        this.tableHeader = "All Invoices";
+        this.tableInvAmt=this.allInvsAmnt;
+        console.log("Filtered invoices : All:", this.filteredInvoices);
+        break;
 
-    this.invoiceService.getAllInvoices().subscribe(
-      res=>{
-        if(res.datares!=null){
-          this.pastDueInvoices = res.datares.filter(row => {
-            if (row.invStatus == 'OPEN')
-              return row;
-          });
-        }
-        else if(res.errorres!=null){
-          console.log(res.errorres);
-        }else if(res.successres!=null){
-          console.log(res.successres);
-        }else {
-          console.log('server problem');
-        }
-      }
-    );
+      case "Open" :
+        this.filteredInvoices = this.openInvoices;
+        this.tableHeader = "Open Invoices";
+        this.tableInvAmt=this.openInvsAmnt;
+        console.log("Filtered invoices: Open:", this.filteredInvoices);
+        break;
 
-
+      case "Close" :
+        this.filteredInvoices = this.closedInvoices;
+        this.tableHeader = "Close Invoices";
+        this.tableInvAmt=this.closedInvsAmnt;
+        console.log("Filtered invoices : Close :", this.filteredInvoices);
+        break;
+      case "PastDue":
+        this.filteredInvoices = this.pastDueInvoices;
+        this.tableHeader = "PastDue Invoices";
+        console.log("Filtered invoices : Past Due:", this.filteredInvoices);
+        break;
+    }
   }
-
-
 }

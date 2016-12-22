@@ -59,6 +59,9 @@ div.ui-paginator-bottom .ui-paginator .ui-widget-header{
   color: #ffffff;
   border-color: #3399ff;
 }
+.ui-datatable .ui-state-hover{
+  cursor:pointer;
+}
 
 .ui-paginator .ui-paginator-current, .ui-paginator .ui-paginator-rpp-options {
   float: right;

@@ -25,5 +25,15 @@ export class ProjectService {
       }
     );
   }
+  getSowInvoices(SOWNUM){
+    const headersSend = new Headers({'Content-Type':'application/json'});
+    const bodySend = {sowNum: SOWNUM};
+    return this.http.post("http://10.10.5.55:8080/empveninvinf/allinvoicesbysownum", bodySend, {headers: headersSend}).map(
+      (res: Response) => {
+        console.log("getting all contact details by vendor id" + " bodySend ", res.json());
+        return res.json();
+      }
+    );
+  }
 
 }
