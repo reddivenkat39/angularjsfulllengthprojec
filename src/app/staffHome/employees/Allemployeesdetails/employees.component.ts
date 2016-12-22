@@ -19,7 +19,7 @@ export class EmployeesComponent implements OnInit {
   activeEmployees: Employee[]=[];
   inActiveEmployees: Employee[]=[];
   subContEmployees:Employee[]=[];
-  fullEmpDtls ={};
+
   empId:'';
 
   selectedEmployee: Employee;
@@ -151,20 +151,7 @@ export class EmployeesComponent implements OnInit {
 
     console.log("Employee.Component : onEmployeeRowSelect : empId : ", row["empId"]);
     //get the full details of the selected employee
-    this.employeeService.getFullEmployeeDtlsById(row.empId).subscribe(
-      res => {
-        console.log("Employee.Component : onEmployeeRowSelect : getFullEmployeeDtlsById : ", res);
-
-        if (res.errorres ==null && res.datares != null) {
-          this.fullEmpDtls =res.datares;
-          console.log("Employee.Component : onEmployeeRowSelect : getFullEmployeeDtlsById :  fullEmpDtls: ", this.fullEmpDtls);
-        }
-        else {
-          console.log("Employee.Component : onEmployeeRowSelect : getFullEmployeeDtlsById :  Error in response: ", res.errorres);
-          this.toastManager.error(res.errorres, 'Data Fetching Failed');
-        }
-      }
-    );
+    this.employeeService.getempDetailedViewComponent_empId(row.empId);
   }
 
   onClickLastName(empLastName: Employee) {
