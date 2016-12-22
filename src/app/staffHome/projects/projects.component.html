@@ -50,6 +50,11 @@
     <br>
   </div>
 
+
+
+
+   <!--TO SHOW     SOW TAB  TABLE -->
+
   <div *ngIf="isSowTab">
     <p-dataTable #dt1 [value]="allSowData" [rows]="5"
                  [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
@@ -90,6 +95,8 @@
       <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
     </p-dataTable>
     <br>
+
+    <!--TO SHOW     SOW TAB  CHILD TABS     ALL  |   OPEN  |  CLOSED  -->
     <div>
       <ul id="pillTab" class="nav nav-tabs">
         <li class="active" data-toggle="tab"><a>Invoices</a></li>

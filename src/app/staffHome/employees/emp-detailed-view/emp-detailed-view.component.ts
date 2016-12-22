@@ -8,23 +8,24 @@ import {ToastsManager} from "ng2-toastr";
   styleUrls: ['./emp-detailed-view.component.css']
 })
 export class EmpDetailedViewComponent implements OnInit {
-private empData={
-  'empId':''
-}
   fullEmpDtls ={};
 
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager) { }
 
   ngOnInit() {
-   this.empData.empId= this.employeeService.empDetailedViewComponent_empId.subscribe(
+    this.employeeService.empDetailedViewComponent_empId.subscribe(
       data=>{
-        this.empData.empId=data
-        console.log("data from eventemitter in empDetailedView: empDetailedViewComponent_empId :",this.empData.empId);
+        this.getEmpDetailViewById(data);
+
+        console.log("data from eventemitter in empDetailedView: empDetailedViewComponent_empId :",data);
       }
     );
 
 
   }
+
+
+
 
   getEmpDetailViewById(empId: String){
     console.log("data from eventemitter in empDetailedView: empDetailedViewComponent_empId :",empId);

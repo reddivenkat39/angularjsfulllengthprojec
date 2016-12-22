@@ -21,6 +21,7 @@ export class EmployeesComponent implements OnInit {
   subContEmployees:Employee[]=[];
 
   empId:'';
+
   value = '';
   selectedEmployee: Employee;
 
@@ -155,10 +156,12 @@ export class EmployeesComponent implements OnInit {
   }
 
   onClickLastName(empLastName: Employee) {
+    console.log("event is empLastName :" , empLastName);
     this.empId = empLastName.empId;
     console.log("emp id", this.empId);
-    this.employeeService.pushData(this.empId);
-    this.router.navigateByUrl('/employees/detailedviewby/id'+this.empId);
+    this.employeeService.getempDetailedViewComponent_empId(this.empId);
+console.log("getempDetailedViewComponent_empId invoked in employees component : ",this.empId);
+    this.router.navigateByUrl('/employees/detailedviewby/'+this.empId);
     /*.subscribe(
       res => {
         if (res.datares != null) {
@@ -180,7 +183,7 @@ export class EmployeesComponent implements OnInit {
      $(this).addClass("active");
      });*/
     // this.onRowSelectActiveEmployees(event.data.empId);
-  
+
 
   }
 }

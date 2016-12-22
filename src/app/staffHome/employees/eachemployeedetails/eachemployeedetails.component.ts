@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output, ViewChild} from '@angular/core';
 import {EmployeeService} from "../employee.service";
 import {ActivatedRoute} from "@angular/router";
 
@@ -9,14 +9,25 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class EachemployeedetailsComponent implements OnInit {
   value = '';
-  empId:'';
+ empId: string ='';
+
+
+
+
   constructor(private employeeService:EmployeeService, private activatedRoute: ActivatedRoute) {
     this.empId = activatedRoute.snapshot.params['id'];
   }
 
   ngOnInit() {
-    this.employeeService.pushedId.subscribe(
-      data => this.value = data
-    );
+    console.log("EachemployeedetailsComponent   :  ngOnInit invoked : and captured from route param empId :", this.empId);
+    this.employeeService.getempDetailedViewComponent_empId(this.empId);
+
+    // this.onClickLastName.emit(this.empId);
+    // this.employeeService.empDetailedViewComponent_empId.subscribe(
+    //   data=>{
+    //
+    //   }
+    // );
+
   }
 }
