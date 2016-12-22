@@ -6,6 +6,7 @@ import {HttpService} from "../../globalservices/http.service";
 export class EmployeeService {
   pushedId = new EventEmitter<string>();
   private data: string[] = [];
+  empDetailedViewComponent_empId = new  EventEmitter();
   constructor(private http: HttpService) { }
   pushData(value: string) {
     this.pushedId.emit(value);
@@ -20,6 +21,11 @@ export class EmployeeService {
       }
     );
   }
+
+  getempDetailedViewComponent_empId(empId: String){
+    this.empDetailedViewComponent_empId.emit(empId);
+  }
+
 
   getFullEmployeeDtlsById(empId){
     console.log("into getFullEmployeeDtlsById method");

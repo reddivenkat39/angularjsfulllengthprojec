@@ -11,6 +11,7 @@ import {ToastsManager} from "ng2-toastr";
   templateUrl: './resetpassword.component.html',
   styleUrls  : ['./resetpassword.component.css']
 })
+
 export class ResetpasswordComponent implements OnDestroy, OnInit {
   private subscription: Subscription;
   token: string;

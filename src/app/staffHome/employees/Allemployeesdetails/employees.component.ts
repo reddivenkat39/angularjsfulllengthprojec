@@ -19,13 +19,15 @@ export class EmployeesComponent implements OnInit {
   activeEmployees: Employee[]=[];
   inActiveEmployees: Employee[]=[];
   subContEmployees:Employee[]=[];
-  fullEmpDtls ={};
+
   empId:'';
   value = '';
   selectedEmployee: Employee;
+
   tableHeader : string = "";//table Header value based on the selection
   showTerminateDt : boolean = true;//dont show terminate date for Active employees
   showAddSave : boolean = true;//show Add and save buttons in Active employees
+
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager, private router: Router) {
   }
 
@@ -149,20 +151,7 @@ export class EmployeesComponent implements OnInit {
 
     console.log("Employee.Component : onEmployeeRowSelect : empId : ", row["empId"]);
     //get the full details of the selected employee
-    this.employeeService.getFullEmployeeDtlsById(row.empId).subscribe(
-      res => {
-        console.log("Employee.Component : onEmployeeRowSelect : getFullEmployeeDtlsById : ", res);
-
-        if (res.errorres ==null && res.datares != null) {
-          this.fullEmpDtls =res.datares;
-          console.log("Employee.Component : onEmployeeRowSelect : getFullEmployeeDtlsById :  fullEmpDtls: ", this.fullEmpDtls);
-        }
-        else {
-          console.log("Employee.Component : onEmployeeRowSelect : getFullEmployeeDtlsById :  Error in response: ", res.errorres);
-          this.toastManager.error(res.errorres, 'Data Fetching Failed');
-        }
-      }
-    );
+    this.employeeService.getempDetailedViewComponent_empId(row.empId);
   }
 
   onClickLastName(empLastName: Employee) {
@@ -185,6 +174,13 @@ export class EmployeesComponent implements OnInit {
 
       }
     );*/
+    /*$(".EachEmployeeEditableDetailsTabs").show();
+     $("ul li").click(function () {
+     $(this).parent().children().removeClass("active");
+     $(this).addClass("active");
+     });*/
+    // this.onRowSelectActiveEmployees(event.data.empId);
+  
 
   }
 }

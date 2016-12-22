@@ -328,12 +328,15 @@ export class VendorsComponent implements OnInit {
     this.isEachCloseVendorInvoice = false;
   }
 
+
   onClickCloseInvoice() {
     console.log("Close Invoice clicked");
     this.isEachAllVendorInvoice = false;
     this.isEachOpenVendorInvoice = false;
     this.isEachCloseVendorInvoice = true;
   }
+
+
   onClickButtonEmployeeInvoice(){
     this.isEachVendorContactInfo=false;
     this.eachActiveVendorEmployees = false;
