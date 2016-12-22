@@ -90,8 +90,7 @@ let options: ToastOptions = new ToastOptions({
     InvoicesComponent,
     EachemployeedetailsComponent,
     EmpBreadCrumbsComponent,
-    EmpStatusTabsComponent
-    EmpBreadCrumbsComponent,
+    EmpStatusTabsComponent,
     EmpDetailedViewComponent
   ],
   imports: [

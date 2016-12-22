@@ -9,7 +9,7 @@ export class ProjectService {
   constructor(private http: HttpService) { }
   getSowData() {
     const headersSend = new Headers({'Content-Type':'application/json'});
-    return this.http.get("http://localhost:8080/sowclirel/allsow",{headers: headersSend}).map(
+    return this.http.get("http://10.10.5.55:8080/sowclirel/allsow",{headers: headersSend}).map(
       (res:Response)=> {
         return res.json();
       }
@@ -19,7 +19,7 @@ export class ProjectService {
 
   getProjectsData(){
     const headersSend = new Headers({'Content-Type':'application/json'});
-    return this.http.get("http://localhost:8080/empvencli/allprojects",{headers: headersSend}).map(
+    return this.http.get("http://10.10.5.55:8080/empvencli/allprojects",{headers: headersSend}).map(
       (res:Response)=> {
         return res.json();
       }
