@@ -55,11 +55,12 @@ export class ProjectsComponent implements OnInit {
     this.projectService.getSowData().subscribe(
       res => {
         if (res.datares != null) {
+          console.log("load sow data datares  :", res.datares);
           this.allSowData = res.datares;
         } else if (res.errorres != null) {
-
+          console.log("load sow data errorres  :", res.errorres);
         } else if (res.successres != null) {
-
+          console.log("load sow data successres  :", res.successres);
         } else {
           console.log("server problem");
         }

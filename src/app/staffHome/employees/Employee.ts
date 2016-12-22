@@ -11,4 +11,5 @@ export interface Employee {
   hireDate;
   termDate;
   view;
+  subCont;
 }

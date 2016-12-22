@@ -24,7 +24,7 @@
             <h6><strong>&nbsp;&nbsp;Projects</strong></h6>
           </div>
           <span
-            style="border:1px solid white;background-color: white;color: black;float: left;margin-left:4px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%"
+            style="border:1px solid white;background-color: white;color: black;float: right;margin-left:4px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%"
             (click)="dt1.exportCSV()">Export</span>
           <div class="col-md-3 col-md-offset-3" style=" float: right">
             <form class="search-form">
@@ -50,12 +50,7 @@
     </p-dataTable>
   </div>
 
-
-
-
-
   <div *ngIf="isSowTab">
-
     <p-dataTable #dt1 [value]="allSowData" selectionMode="single" [(selection)]="selectedProject" [rows]="5"
                  [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
                  [globalFilter]="gb" exportFilename="projects" reorderableColumns="true">
@@ -65,7 +60,7 @@
             <h6><strong>&nbsp;&nbsp;Statement of Work</strong></h6>
           </div>
           <span
-            style="border:1px solid white;background-color: white;color: black;float: left;margin-left:4px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%"
+            style="border:1px solid white;background-color: white;color: black;float: right;margin-left:4px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%"
             (click)="dt1.exportCSV()">Export</span>
           <div class="col-md-3 col-md-offset-3" style=" float: right">
             <form class="search-form">
@@ -92,7 +87,22 @@
       <p-column field="startDate" header="Start Date" [sortable]="true"></p-column>
       <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
     </p-dataTable>
+    <br>
+    <ul id="pillTab" class="nav nav-tabs">
+      <li class="active" data-toggle="tab"><a>Invoices</a></li>
+    </ul>
+    <ul id="pillTabSowInvoice" class="nav nav-pills">
+      <li data-toggle="pill"><a>All|</a></li>
+      <li class="active" data-toggle="pill"><a>Open|</a></li>
+      <li data-toggle="pill"><a>Closed</a></li>
+    </ul>
+    <p-dataTable #dt1 selectionMode="single" [(selection)]="selectedProject" [rows]="5"
+                 [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
+                 [globalFilter]="gb" exportFilename="SOWInvoices" reorderableColumns="true">
+      <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
+      <p-column field="invAmt" header="Invoice Amount" [sortable]="true"></p-column>
+      <p-column field="strtDte" header="Start Date" [sortable]="true"></p-column>
+      <p-column field="endDte" header="End Date" [sortable]="true"></p-column>
+    </p-dataTable>
   </div>
-
-
 </div>

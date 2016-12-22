@@ -4,7 +4,7 @@ import {Employee} from "../Employee";
 import {DataTable} from "primeng/components/datatable/datatable";
 import {ToastrService, ToastConfig} from "toastr-ng2";
 import {ToastsManager} from "ng2-toastr";
-
+import {Router} from "@angular/router";
 declare var $: any;
 
 @Component({
@@ -18,24 +18,17 @@ export class EmployeesComponent implements OnInit {
   allEmployees: Employee[] =[];
   activeEmployees: Employee[]=[];
   inActiveEmployees: Employee[]=[];
+  subContEmployees:Employee[]=[];
   fullEmpDtls ={};
+  empId:'';
 
   selectedEmployee: Employee;
-  private viewEmployeeDetails = {
-    'empId': '',
-    'empName': '',
-    'hireDate': ''
-  }
-  private viewEmployeeAddressDetails = {};
-  private viewEmployeeContactDetails = {};
-  private viewEmployeeWorkAddressDetails = {};
-  private viewEmployeeMoreInfo={};
 
   tableHeader : string = "";//table Header value based on the selection
   showTerminateDt : boolean = true;//dont show terminate date for Active employees
   showAddSave : boolean = true;//show Add and save buttons in Active employees
 
-  constructor(private employeeService: EmployeeService, private toastManager: ToastsManager) {
+  constructor(private employeeService: EmployeeService, private toastManager: ToastsManager, private router: Router) {
   }
 
   ngOnInit() {
@@ -45,7 +38,6 @@ export class EmployeesComponent implements OnInit {
       $(this).parent().children().removeClass("active");
       $(this).addClass("active");
     });
-    $(".EachEmployeeEditableDetailsTabs").hide();
   }
 
   //On component load get all the employees from server and fill the respective fields like allEmployees, activeEmployes, inActiveEmployes
@@ -58,17 +50,22 @@ export class EmployeesComponent implements OnInit {
           this.allEmployees = res.datares;
           this.activeEmployees =[];
           this.inActiveEmployees =[];
+          this.subContEmployees=[];
           res.datares.filter(row => {
             if (row.termDate == null) {//active employees
               this.activeEmployees.push(row);
-            }
-            else{
+            }else {//inactive employees
               this.inActiveEmployees.push(row);
             }
+            if(row.subCont == "YES"){//sub contract employees
+              this.subContEmployees.push(row);
+            }
+
           });
           console.log("employees.components : loademployes: getAllEmployeeDetails: All employess : ", this.allEmployees);
           console.log("employees.components : loademployes: getAllEmployeeDetails: All Active Employes : ", this.activeEmployees);
           console.log("employees.components : loademployes: getAllEmployeeDetails: All In Active Employess : ", this.inActiveEmployees);
+          console.log("employees.components : loademployes: getAllEmployeeDetails: All SubCont Employess : ", this.subContEmployees);
         }
         else {
           console.log("employees.components : loadEmployees :  getAllEmployeeDetails Error in response : ", res.errorres);
@@ -104,6 +101,13 @@ export class EmployeesComponent implements OnInit {
         this.showTerminateDt = true;
         this.showAddSave = false;
         console.log("Filtered employess : InActive :", this.filteredEmployes);
+        break;
+      case "SubCont":
+        this.filteredEmployes = this.subContEmployees;
+        this.tableHeader = "SubContract Employees";
+        this.showTerminateDt = true;
+        this.showAddSave = false;
+        console.log("Filtered employess : SubCont:", this.filteredEmployes);
         break;
     }
     this.defaultFirstRowSelect(this);
@@ -163,49 +167,30 @@ export class EmployeesComponent implements OnInit {
     );
   }
 
-  onClickLastName(event) {
-    console.log(" onClickLastName  error"+event.data.empId);
-    // onRowSelectInActiveEmployees(event);
-    console.log(" onClickLastName  error"+event.data.empId);
+  onClickLastName(empLastName: Employee) {
+    this.empId = empLastName.empId;
+    console.log("emp id", this.empId);
+    this.employeeService.getFullEmployeeDtlsById(this.empId).subscribe(
+      res => {
+        if (res.datares != null) {
+          console.log("datares", res.datares);
+          this.router.navigateByUrl('/empdetailsbyid/'+this.empId);
+        } else if (res.errorres != null) {
+          console.log("errorres", res.errorres);
+        } else if (res.successres != null) {
+          console.log("successres", res.successres);
+        } else {
+          console.log("server problem");
+        }
 
-    $("#nav").hide();
-    // this.allEmployee = false;
-    // this.viewClicked = true;
-    // this.allInActive = false;
-    // this.allActive = false;
-    $(".EachEmployeeEditableDetailsTabs").show();
-    $("ul li").click(function () {
-      $(this).parent().children().removeClass("active");
-      $(this).addClass("active");
-    });
+      }
+    );
+    /*$(".EachEmployeeEditableDetailsTabs").show();
+     $("ul li").click(function () {
+     $(this).parent().children().removeClass("active");
+     $(this).addClass("active");
+     });*/
     // this.onRowSelectActiveEmployees(event.data.empId);
   }
 
-
 }
-/*onClickViewInActive($event, eachEmployeeDetailId: Employee) {
- //TODO : optimise the below line
- if($(".fa-angle-double-down").length > 0) {
- $(".fa-angle-double-down")[0].className = "fa fa-angle-double-right";
- }
- $event.currentTarget.children[0].className = "fa fa-angle-double-down";
-
- this.employeeService.getEmpWorkAddressById(event.data.empId).subscribe(
- res=>{
- if(res.datares!=null){
- console.log(res.datares," get work address by empid");
- this.viewEmployeeWorkAddressDetails = res.datares[0];
- }else if(res.successres!=null){
- console.log(res.successres," success");
- }else if(res.errorres!=null){
- this.viewEmployeeAddressDetails = '';
- console.log(res.errorres," error");
- }else {
-
- }
- }
- );
- }
-
-
- }*/
