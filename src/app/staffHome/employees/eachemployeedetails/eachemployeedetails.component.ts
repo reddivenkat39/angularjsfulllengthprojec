@@ -1,6 +1,7 @@
-import {Component, OnInit, EventEmitter, Output, ViewChild} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {EmployeeService} from "../employee.service";
 import {ActivatedRoute} from "@angular/router";
+import {ToastsManager} from "ng2-toastr";
 
 @Component({
   selector: 'app-eachemployeedetails',
@@ -8,26 +9,13 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./eachemployeedetails.component.css']
 })
 export class EachemployeedetailsComponent implements OnInit {
-  value = '';
- empId: string ='';
-
-
-
-
-  constructor(private employeeService:EmployeeService, private activatedRoute: ActivatedRoute) {
+  empId:'';
+  constructor(private employeeService:EmployeeService, private activatedRoute: ActivatedRoute,private toastManager: ToastsManager) {
     this.empId = activatedRoute.snapshot.params['id'];
+
   }
 
   ngOnInit() {
-    console.log("EachemployeedetailsComponent   :  ngOnInit invoked : and captured from route param empId :", this.empId);
-    this.employeeService.getempDetailedViewComponent_empId(this.empId);
-
-    // this.onClickLastName.emit(this.empId);
-    // this.employeeService.empDetailedViewComponent_empId.subscribe(
-    //   data=>{
-    //
-    //   }
-    // );
-
   }
+
 }

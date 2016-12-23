@@ -1,21 +1,78 @@
 <app-header></app-header>
 <app-emp-bread-crumbs></app-emp-bread-crumbs>
-
 <app-emp-detailed-view></app-emp-detailed-view>
 <div class="container-fluid">
   <div class="col-xs-6">
     <ul class="nav nav-tabs" id="EachEmployeeEditableDetailsTabs">
-      <li class="active" data-toggle="tab"><a>Education</a></li>
-      <li data-toggle="tab"><a>Contact</a></li>
-      <li data-toggle="tab"><a>Address</a></li>
-      <li data-toggle="tab"><a>Vendor</a></li>
-      <li data-toggle="tab"><a>Projects</a></li>
-      <li data-toggle="tab"><a>Pay rate</a></li>
-      <li data-toggle="tab"><a>Passport</a></li>
-      <li data-toggle="tab"><a>Work Authorization</a></li>
-      <li data-toggle="tab"><a>Benefits</a></li>
+      <li class="active"><a data-toggle="tab" href="#education">Education</a></li>
+      <li ><a data-toggle="tab" >Contact</a></li>
+      <li ><a data-toggle="tab" >Address</a></li>
+      <li ><a data-toggle="tab" >Vendor</a></li>
+      <li ><a data-toggle="tab" >Projects</a></li>
+      <li ><a data-toggle="tab" >Pay rate</a></li>
+      <li ><a data-toggle="tab" href="#passport">Passport</a></li>
+      <li ><a data-toggle="tab" >Work Authorization</a></li>
+      <li><a data-toggle="tab" >Benefits</a></li>
     </ul>
   </div>
 </div>
-<!--<h3>Received value</h3>
-<p>{{value}}</p>-->
+<div class="tab-content">
+  <div id="education" class="tab-pane fade in active">
+    <div class="container-fluid">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <br>
+          <div class="panel-body">
+            <div class="col-xs-3">
+              <table class="table borderless">
+                <tbody>
+                <tr><td>Qualification:</td><td><input type="text"/></td></tr>
+                <tr><td>Institution:</td><td><input type="text"/></td></tr>
+                <tr><td>Graduation Year</td><td><input type="text"/></td></tr>
+                <tr><td>GPA:</td><td><input type="text"/></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="passport" class="tab-pane fade">
+    <div class="container-fluid">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <br>
+          <div class="panel-body">
+            <div class="col-xs-4">
+              <table class="table borderless">
+                <tbody>
+                <tr><td>Passport:</td><td><input type="text"/></td></tr>
+                <tr><td>Passport Issued Date:</td><td><input type="text"/></td></tr>
+                <tr><td>Passport End Date:</td><td><input type="text"/></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-xs-4">
+              <table class="table borderless">
+                <tbody>
+                <tr><td>I94 Number:</td><td><input type="text"/></td></tr>
+                <tr><td>Start Date:</td><td><input type="text"/></td></tr>
+                <tr><td>End Date:</td><td><input type="text"/></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-xs-4">
+              <table class="table borderless">
+                <tbody>
+                <tr><td>VISA Type:</td><td><input type="text"/></td></tr>
+                <tr><td>Visa Valid Till:</td><td><input type="text"/></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -37,7 +37,7 @@ export class VendorsComponent implements OnInit {
     'empName':''
   };
 
-  allVendors: Vendor[];   // to show all vendors table
+  allVendors: Vendor[]=[];   // to show all vendors table
   vendorActiveEmployees: VendorEmployee[]; // to show active employees by vendor id
   vendorInActiveEmployees: VendorEmployee[];// to show inactive employees by vendor id
 
@@ -50,7 +50,6 @@ export class VendorsComponent implements OnInit {
 
 
 
-
   openInvsAmnt: number = 0;
   closedInvsAmnt: number = 0;
   allInvsAmnt: number = 0;
@@ -58,30 +57,34 @@ export class VendorsComponent implements OnInit {
   closedEmpInvsAmnt:number=0;
   allEmpInvsAmnt:number=0;
   selectedVendor: Vendor;
-
+  selectedVendorEmployee:Vendor;
   constructor(private vendorService: VendorsService, private toastMsg: ToastsManager) {
   }
 
   ngOnInit() {
     this.onClickEachActiveVendorEmployee();
-    this.vendorService.getAllVendorDetails().subscribe(
-      res => {
-        console.log("Into get all vendor details method response");
-        if (res.datares != null) {
-          console.log("yes getting all vendor data ", res.datares);
+    {
+      this.vendorService.getAllVendorDetails().subscribe(
+        res => {
+          console.log("Into get all vendor details method response");
+          if (res.datares != null) {
+            console.log("yes getting all vendor data ", res.datares);
 
-          this.allVendors = res.datares;
-          console.log("term date ...", res.datares);
+            this.allVendors = res.datares;
+            this.defaultFirstRowSelect();
+            console.log("term date ...", res.datares);
 
-        } else if (res.successres != null) {
-          console.log("success ", res.successres);
-        } else if (res.errorres != null) {
-          console.log("OOPs no data  found", res.errorres);
-        } else {
-          console.log("server problem ");
+          } else if (res.successres != null) {
+            console.log("success ", res.successres);
+          } else if (res.errorres != null) {
+            console.log("OOPs no data  found", res.errorres);
+          } else {
+            console.log("server problem ");
+          }
         }
-      }
-    );
+      );
+
+    }
     /*this.allVendor = true;*/
     $("ol li").click(function () {
       $(this).parent().children().removeClass("active");
@@ -96,14 +99,24 @@ export class VendorsComponent implements OnInit {
       $(this).parent().children().removeClass("active");
       $(this).addClass("active");
     });
+
   }
 
-  onRowSelectVendor(event) {
-    console.log(event.data.venId);
-    console.log("vendors tab clicked");
-    let vendorId = event.data.venId;
+  defaultFirstRowSelect() {
+    //default first row selection
+    this.selectedVendor = this.allVendors[0];
+    console.log("defaultFirstRowSelect :selectedVendor", this.selectedVendor);
+    console.log("defaultFirstRowSelect :allVendors", this.allVendors);
+    this.onRowSelectVendor(this.selectedVendor.venId);
+  }
 
+  onRowSelectVendor(venId) {
+   /* console.log(event.data.venId);
+    console.log("vendors tab clicked");
+    let vendorId = event.data.venId;*/
+    let vendorId = venId;
     //reset count to zero
+    console.log("Vendor.Component : onRowSelectVendor : venId :", venId);
     this.allInvsAmnt=0;
     this.closedInvsAmnt=0;
     this.openInvsAmnt=0;

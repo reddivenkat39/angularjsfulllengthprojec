@@ -147,3 +147,17 @@ h6{
   margin-right: 5px;
 }
 
+.borderless td {
+  border: none !important;
+  padding: 0px !important;
+  text-align:left !important;
+}
+.borderless th {
+  padding: 0px !important;
+  text-align: left !important;
+  font-weight: bold !important;
+}
+.borderless thead{
+  border-bottom:1px solid black !important;
+  color: blue;
+}

@@ -4,10 +4,9 @@ import {HttpService} from "../../globalservices/http.service";
 
 @Injectable()
 export class EmployeeService {
-  private data: string[] = [];
-  empDetailedViewComponent_empId = new  EventEmitter();
+    private data: string[] = [];
+  empDetailedViewComponent_empId = new  EventEmitter<string>();
   constructor(private http: HttpService) { }
-
   getAllEmployeeDetails(){
     const headersSend = new Headers({'Content-Type':'application/json'});
     return this.http.get("http://localhost:8080/empprsnlinfo/allemployees",{headers: headersSend}).map(
@@ -18,7 +17,7 @@ export class EmployeeService {
     );
   }
 
-  getempDetailedViewComponent_empId(empId: String){
+  getempDetailedViewComponent_empId(empId: string){
     this.empDetailedViewComponent_empId.emit(empId);
   }
 
