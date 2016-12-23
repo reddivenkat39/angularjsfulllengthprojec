@@ -43,7 +43,7 @@
       <p-column field="firstName" header="First Name" [sortable]="true"></p-column>
       <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
       <p-column field="lastName" header="Last Name" [sortable]="true">
-        <template let-col let-filteredEmploye="rowData" pTemplate type="body">
+        <template let-col  let-filteredEmploye="rowData" pTemplate type="body">
           <a (click)="onClickLastName(filteredEmploye)"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{filteredEmploye[col.field]}}</span></a>
         </template>
       </p-column>
@@ -56,6 +56,6 @@
 </div>
 <br>
 
-<app-emp-detailed-view></app-emp-detailed-view>
+<app-emp-detailed-view ></app-emp-detailed-view>
 
 

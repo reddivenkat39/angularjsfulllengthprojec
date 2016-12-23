@@ -3,6 +3,7 @@ import {Project} from "./Project.interface";
 import {ProjectService} from "./project.service";
 import {Sow} from "./sow.interface";
 import {SowInvoices} from "./sowinvoices.interface";
+import {ToastsManager} from "ng2-toastr";
 declare var $: any;
 @Component({
   selector     : 'app-projects',
@@ -13,17 +14,44 @@ declare var $: any;
 export class ProjectsComponent implements OnInit {
   private isProjectsTab = false;
   private isSowTab = false;
-  viewSOWDetails={};
+  viewSOWDetails={
+    'sowNum':'',
+    'venName':''
+  };
+
+  // used to get all the projects
   allProjects: Project[];
+
+  // used to get all the sows
   allSows: Sow[];
-  allSOWInvoices:SowInvoices[];
+
+// used to get the invoices by sownum
+  allSOWInvoices:SowInvoices[]=[];
+  closedInvoices:SowInvoices[]=[];
+  openInvoices: SowInvoices[]=[];
+
+  // used to get the invoices by sownum by selecting the row
   selectedSowInvoice:SowInvoices;
 
-  constructor(private projectService: ProjectService) {
+  // used to get the invoices individual amounts by sownum
+  allInvsAmnt:number=0;
+  openInvsAmnt:number=0;
+  closedInvsAmnt: number=0;
+
+
+// reused varaibles in header names, header amounts, filtered invoices
+  filteredInvoices: SowInvoices[] =[];
+  tableHeader: string ='';
+  tableInvAmt: number=0;
+
+
+  constructor(private projectService: ProjectService, private toastManager:ToastsManager ) {
   }
 
+  /*
+  on loading page getting the projects data
+   */
   ngOnInit() {
-
     $("ul li").click(function () {
       $(this).parent().children().removeClass("active");
       $(this).addClass("active");
@@ -32,6 +60,9 @@ export class ProjectsComponent implements OnInit {
 
   }
 
+  /*
+    loading  projects data
+   */
   loadProjectsData() {
     this.isProjectsTab = true;
     this.isSowTab = false;
@@ -51,9 +82,28 @@ export class ProjectsComponent implements OnInit {
     );
   }
 
+  /*
+    loading all sow data
+   */
   loadSowData() {
     this.isSowTab = true;
     this.isProjectsTab = false;
+    this.loadAllSowData();
+
+  }
+
+
+
+  OnClickSowInvoiceTabs(){
+  this.onRowSelect(event);
+  }
+
+
+
+/*
+to load all sow data
+ */
+  loadAllSowData(){
     this.projectService.getSowData().subscribe(
       res => {
         if (res.datares != null) {
@@ -70,28 +120,88 @@ export class ProjectsComponent implements OnInit {
     );
   }
 
-  OnClickSowInvoiceTabs(){
-  this.onRowSelect(event);
-  }
-  onRowSelect(event){
-    console.log(event);
-    console.log(event.data.sowNum);
-    let SOWNUM = event.data.sowNum;
-    this.projectService.getSowInvoices(SOWNUM).subscribe(
+
+
+
+
+  onRowSelect(selectedSowInvoice){
+    console.log("sowNum is ....: ",selectedSowInvoice.sowNum);
+    // console.log(event.data.sowNum);
+    // let SOWNUM = event.data.sowNum;
+    this.allInvsAmnt=0;
+    this.closedInvsAmnt=0;
+    this.openInvsAmnt=0;
+    this.viewSOWDetails.venName   = selectedSowInvoice.venName;
+    this.viewSOWDetails.sowNum  = selectedSowInvoice.sowNum;
+    this.projectService.getSowInvoices(selectedSowInvoice.sowNum).subscribe(
       res => {
-        if (res.datares != null) {
+        if (res.datares != null && res.errorres==null) {
           console.log("sow invoices data datares  :", res.datares);
           this.allSOWInvoices = res.datares;
-          this.viewSOWDetails=res.datares[0];
-        } else if (res.errorres != null) {
-          console.log("load sow data errorres  :", res.errorres);
-        } else if (res.successres != null) {
-          console.log("load sow data successres  :", res.successres);
-        } else {
-          console.log("server problem");
+
+       // todo actually it is in array anyway "same client and sowNum for all invoices"
+          for (let i = 0; i < this.allSOWInvoices.length; i++) {
+            this.allInvsAmnt += this.allSOWInvoices[i].invAmt;
+          }
+          this.openInvoices =[];
+          this.closedInvoices =[];
+          res.datares.filter(row => {
+            if (row.invStatus == "OPEN") {//fill open invoices
+
+              this.openInvsAmnt += row.invAmt;
+              console.log("vendor openinvamount is :",this.openInvsAmnt);
+              this.openInvoices.push(row);
+              console.log("vendor openinvoices are :",this.openInvoices);
+            }else if(row.invStatus == "CLOSED") {//fill close invoices
+              this.closedInvsAmnt += row.invAmt;
+              console.log("vendor closedInvsAmnt is :",this.closedInvsAmnt);
+              this.closedInvoices.push(row);
+              console.log("vendor closedInvoices is :",this.closedInvoices);
+            }
+
+          });
+
+        } else{
+          console.log("response for sowNum not found ", res.errorres);
+          this.allSOWInvoices=[];
+          this.openInvoices =[];
+          this.closedInvoices =[];
+
+          this.toastManager.error('',res.errores);
         }
+        this.loadFilteredData('OPEN');
       }
+
     );
+
+  }
+
+
+  loadFilteredData(filter : string){
+    switch(filter)
+    {
+      case "All" :
+        this.filteredInvoices = this.allSOWInvoices;
+        this.tableHeader = "All Invoices";
+        this.tableInvAmt=this.allInvsAmnt;
+        console.log("Filtered invoices : All:", this.filteredInvoices);
+        break;
+
+      case "OPEN" :
+        this.filteredInvoices = this.openInvoices;
+        this.tableHeader = "Open Invoices";
+        this.tableInvAmt=this.openInvsAmnt;
+        console.log("Filtered invoices: Open:", this.filteredInvoices);
+        break;
+
+      case "CLOSE" :
+        this.filteredInvoices = this.closedInvoices;
+        this.tableHeader = "Close Invoices";
+        this.tableInvAmt=this.closedInvsAmnt;
+        console.log("Filtered invoices : Close :", this.filteredInvoices);
+        break;
+
+    }
   }
 
 }

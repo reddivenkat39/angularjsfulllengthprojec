@@ -47,6 +47,8 @@ export class EmpDetailedViewComponent implements OnInit {
       }
     );
   }
+
+  // todo need to be modified or optimized asap
  getEmpDetailViewByIdThorughRouteParam(empId){
     console.log("data from router params in getEmpDetailViewByIdThorughRouteParam:",empId);
     this.employeeService.getFullEmployeeDtlsById(this.empId).subscribe(

@@ -15,6 +15,8 @@ export class InvoicesComponent implements OnInit {
   closedInvsAmnt: number = 0;
   allInvsAmnt: number = 0;
   pstDueInvsAmnt:number=0;
+
+
   filteredInvoices : Invoice[] =[];
   allInvoices:Invoice[];
   openInvoices: Invoice[];

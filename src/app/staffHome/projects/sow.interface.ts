@@ -2,9 +2,9 @@
  * Created by bapirazz naidu on 12/19/2016.
  */
 export interface Sow{
-  clientName;
+  venName;
   sowId;
-  clientId;
+  venId;
   sowNum;
   grantedAmt;
   billedAmt;
