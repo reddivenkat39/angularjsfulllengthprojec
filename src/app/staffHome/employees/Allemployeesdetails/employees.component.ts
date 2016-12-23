@@ -19,6 +19,7 @@ export class EmployeesComponent implements OnInit {
   activeEmployees: Employee[]=[];
   inActiveEmployees: Employee[]=[];
   subContEmployees:Employee[]=[];
+  orderedEmployees : Employee[] = [];
   selectedEmployee: Employee;
   empId:'';
 
@@ -49,6 +50,7 @@ export class EmployeesComponent implements OnInit {
           this.activeEmployees =[];
           this.inActiveEmployees =[];
           this.subContEmployees=[];
+          this.orderedEmployees = [];
           res.datares.filter(row => {
             if (row.termDate == null) {//active employees
               this.activeEmployees.push(row);
@@ -68,6 +70,8 @@ export class EmployeesComponent implements OnInit {
           console.log("employees.components : loadEmployees :  getAllEmployeeDetails Error in response : ", res.errorres);
           this.toastManager.error(res.errorres, 'Data Fetching Failed');
         }
+        this.orderedEmployees = this.activeEmployees.concat(this.inActiveEmployees);
+        console.log("employees.components : loademployes: getAllEmployeeDetails: ordered employess : ", this.orderedEmployees);
         this.loadFilteredData(filter);
       }
     );
@@ -77,7 +81,7 @@ export class EmployeesComponent implements OnInit {
     switch(filter)
     {
       case "All" :
-        this.filteredEmployes = this.allEmployees;
+        this.filteredEmployes = this.orderedEmployees;
         this.tableHeader = "All Employees";
         this.showTerminateDt = true;
         this.showAddSave = false;
