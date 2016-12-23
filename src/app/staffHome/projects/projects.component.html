@@ -63,7 +63,7 @@
     <p-dataTable #dt1 [value]="allSows" [rows]="5"
                  [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
                  [globalFilter]="gb" exportFilename="projects" reorderableColumns="true"
-                 (onRowSelect)="onRowSelect($event)" [(selection)]="selectedSowInvoice"
+                 (onRowSelect)="onRowSelect(selectedSowInvoice)" [(selection)]="selectedSowInvoice"
                  selectionMode="single">
       <header style="background: #3399ff !important;">
         <div class="ui-helper-clearfix">
@@ -87,8 +87,8 @@
       </header>
 
       <p-column field="sowId" header="Sow Id" [sortable]="true"></p-column>
-      <p-column field="clientName" header="Client Name" [sortable]="true"></p-column>
-      <p-column field="clientId" hidden="true" header="Client Id" [sortable]="true"></p-column>
+      <p-column field="venName" header="Vendor Name" [sortable]="true"></p-column>
+      <p-column field="venId" hidden="true" header="Vendor Id" [sortable]="true"></p-column>
       <p-column field="sowNum" header="Sow Number" [sortable]="true"></p-column>
       <p-column field="grantedAmt" header="Granted Amount" [sortable]="true">
         <template let-col let-allSow="rowData" pTemplate type="body">
@@ -118,21 +118,21 @@
       </ul>
     </div>
     <ul id="pillTabSowInvoice" class="nav nav-pills">
-      <li data-toggle="pill" (click)="OnClickSowInvoiceTabs()"><a>All|</a></li>
-      <li class="active" data-toggle="pill" (click)="OnClickSowInvoiceTabs()"><a>Open|</a></li>
-      <li data-toggle="pill" (click)="OnClickSowInvoiceTabs()"><a>Closed</a></li>
+      <li data-toggle="pill" (click)="loadFilteredData('ALL')"><a>All|</a></li>
+      <li class="active" data-toggle="pill" (click)="loadFilteredData('OPEN')"><a>Open|</a></li>
+      <li data-toggle="pill" (click)="loadFilteredData('CLOSE')"><a>Closed</a></li>
     </ul>
     <div class="panel panel-default">
       <header>
         <div class="ui-helper-clearfix">
-          <strong style="float: left;color: blue;">Client Name:{{viewSOWDetails.clientName}} &nbsp;&nbsp;</strong>
+          <strong style="float: left;color: blue;">Vendor Name:{{viewSOWDetails.venName}} &nbsp;&nbsp;</strong>
           <span style="float: left;color: blue;">SOW #:{{viewSOWDetails.sowNum}}</span>
-          <span style="float: right;color: blue;font-weight:bold;">Total Invoice Amount:{{8000 | currency:'USD':true}}</span>
+          <span style="float: right;color: blue;font-weight:bold;">Total Invoice Amount:{{tableInvAmt | currency:'USD':true}}</span>
         </div>
       </header>
       <div class="panel-body">
         <p-dataTable #dt1 [rows]="5"
-                     [paginator]="true" [value]="allSOWInvoices" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
+                     [paginator]="true" [value]="filteredInvoices" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
                       reorderableColumns="true" >
           <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
           <p-column field="invStDt" header="Start Date" [sortable]="true"></p-column>
