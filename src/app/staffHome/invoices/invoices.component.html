@@ -12,10 +12,10 @@
   </div>
 </div>
 <div class="container-fluid">
-    <p-dataTable #dt1 [value]="filteredInvoices" [rows]="5"
+    <p-dataTable #dt1 [value]="filteredInvoices" reorderableColumns="true" [rows]="10"
                  [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
-                 [globalFilter]="gb" exportFilename="Invoices" reorderableColumns="true"
-                 scrollable="true" scrollWidth="100%" >
+                 [globalFilter]="gb" exportFilename="Invoices"
+                 scrollable="true" scrollWidth="100%">
       <header style="background: #3399ff !important;">
         <div class="ui-helper-clearfix">
           <div style="float: left">
