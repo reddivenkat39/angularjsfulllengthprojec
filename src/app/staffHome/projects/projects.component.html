@@ -14,9 +14,9 @@
 </div>
 <div class="container-fluid">
   <div *ngIf="isProjectsTab">
-    <p-dataTable #dt1 [value]="allProjects" [rows]="5"
+    <p-dataTable #dt1 [value]="allProjects" reorderableColumns="true" [rows]="5"
                  [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
-                 [globalFilter]="gb" exportFilename="projects" reorderableColumns="true">
+                 [globalFilter]="gb" exportFilename="projects" >
       <header style="background: #3399ff !important;">
         <div class="ui-helper-clearfix">
           <div style="float: left">
@@ -55,9 +55,9 @@
   </div>
 
   <div *ngIf="isSowTab">
-    <p-dataTable #dt1 [value]="allSows" [rows]="5"
+    <p-dataTable #dt1 [value]="allSows" reorderableColumns="true" [rows]="10"
                  [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
-                 [globalFilter]="gb" exportFilename="projects" reorderableColumns="true"
+                 [globalFilter]="gb" exportFilename="projects"
                  (onRowSelect)="onRowSelect($event)" [(selection)]="selectedSowInvoice"
                  selectionMode="single">
       <header style="background: #3399ff !important;">
@@ -81,28 +81,28 @@
         </div>
       </header>
 
-      <p-column field="sowId" header="Sow Id" [sortable]="true"></p-column>
-      <p-column field="clientName" header="Client Name" [sortable]="true"></p-column>
-      <p-column field="clientId" hidden="true" header="Client Id" [sortable]="true"></p-column>
-      <p-column field="sowNum" header="Sow Number" [sortable]="true"></p-column>
-      <p-column field="grantedAmt" header="Granted Amount" [sortable]="true">
+      <p-column field="sowId" header="Sow Id" [sortable]="true" [style]="{'width':'60px'}"></p-column>
+      <p-column field="clientName" header="Client Name" [sortable]="true" [style]="{'width':'100px'}"></p-column>
+      <p-column field="clientId" hidden="true" header="Client Id" [sortable]="true" [style]="{'width':'100px'}"></p-column>
+      <p-column field="sowNum" header="Sow Number" [sortable]="true" [style]="{'width':'100px'}"></p-column>
+      <p-column field="grantedAmt" header="Granted Amount" [style]="{'width':'100px'}" [sortable]="true">
         <template let-col let-allSow="rowData" pTemplate type="body">
           <span>{{allSow[col.field] | currency:'USD':true }}</span>
         </template>
       </p-column>
-      <p-column field="billedAmt" header="Billed Amount" [sortable]="true">
+      <p-column field="billedAmt" header="Billed Amount" [sortable]="true" [style]="{'width':'100px'}">
         <template let-col let-allSow="rowData" pTemplate type="body">
           <span>{{allSow[col.field] | currency:'USD':true }}</span>
         </template>
       </p-column>
-      <p-column field="remngAmt" header="Remaining Amount" [sortable]="true">
+      <p-column field="remngAmt" header="Remaining Amount" [sortable]="true" [style]="{'width':'150px'}">
         <template let-col let-allSow="rowData" pTemplate type="body">
           <span>{{allSow[col.field] | currency:'USD':true }}</span>
         </template>
       </p-column>
-      <p-column field="duration" header="Duration" [sortable]="true"></p-column>
-      <p-column field="startDate" header="Start Date" [sortable]="true"></p-column>
-      <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
+      <p-column field="duration" header="Duration(weeks)" [sortable]="true" [style]="{'width':'150px'}"></p-column>
+      <p-column field="startDate" header="Start Date" [sortable]="true" [style]="{'width':'80px'}"></p-column>
+      <p-column field="endDate" header="End Date" [sortable]="true" [style]="{'width':'80px'}"></p-column>
     </p-dataTable>
     <br>
     <div>
@@ -125,8 +125,7 @@
       </header>
       <div class="panel-body">
         <p-dataTable #dt1 [rows]="5"
-                     [paginator]="true" [value]="allSOWInvoices" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
-                      reorderableColumns="true" >
+                     [paginator]="true" reorderableColumns="true"  [value]="allSOWInvoices" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
           <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
           <p-column field="invStDt" header="Start Date" [sortable]="true"></p-column>
           <p-column field="invEndDt" header="End Date" [sortable]="true"></p-column>

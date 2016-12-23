@@ -114,7 +114,7 @@ export class VendorsComponent implements OnInit {
    /* console.log(event.data.venId);
     console.log("vendors tab clicked");
     let vendorId = event.data.venId;*/
-    this.onClickEachActiveVendorEmployee();
+    this.onClickVendorEmployee();
     let vendorId = venId;
     //reset count to zero
     console.log("Vendor.Component : onRowSelectVendor : venId :", venId);
