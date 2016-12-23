@@ -14,8 +14,8 @@ export class ProjectsComponent implements OnInit {
   private isProjectsTab = false;
   private isSowTab = false;
   viewSOWDetails={};
-  allProjectsData: Project[];
-  allSowData: Sow[];
+  allProjects: Project[];
+  allSows: Sow[];
   allSOWInvoices:SowInvoices[];
   selectedSowInvoice:SowInvoices;
 
@@ -39,7 +39,7 @@ export class ProjectsComponent implements OnInit {
       res => {
         if (res.datares != null) {
           console.log("loadprojectsdata datares  :", res.datares);
-          this.allProjectsData = res.datares;
+          this.allProjects = res.datares;
         } else if (res.successres != null) {
           console.log("loadprojectsdata successres  :", res.successres);
         } else if (res.errorres != null) {
@@ -58,7 +58,7 @@ export class ProjectsComponent implements OnInit {
       res => {
         if (res.datares != null) {
           console.log("load sow data datares  :", res.datares);
-          this.allSowData = res.datares;
+          this.allSows = res.datares;
         } else if (res.errorres != null) {
           console.log("load sow data errorres  :", res.errorres);
         } else if (res.successres != null) {

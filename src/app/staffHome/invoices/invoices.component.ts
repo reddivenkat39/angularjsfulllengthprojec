@@ -53,7 +53,6 @@ export class InvoicesComponent implements OnInit {
             if (row.invStatus == "OPEN") {//fill open invoices
               this.openInvsAmnt += row.invAmt;
               this.openInvoices.push(row);
-
               var currentDt = new Date((new Date()).setHours(0, 0, 0, 0));//to get only date
               //Compare invoice due date with current date
               if((new Date(row.dueDt)) < currentDt ){
