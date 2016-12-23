@@ -44,7 +44,7 @@
       <p-column field="midName" header="Middle Name" [sortable]="true"></p-column>
       <p-column field="lastName" header="Last Name" [sortable]="true">
         <template let-col  let-filteredEmploye="rowData" pTemplate type="body">
-          <a (click)="onClickLastName($event)"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{filteredEmploye[col.field]}}</span></a>
+          <a (click)="onClickLastName(filteredEmploye)"><span style="color:darkviolet !important;border-bottom: 1px solid black;">{{filteredEmploye[col.field]}}</span></a>
         </template>
       </p-column>
       <p-column field="birthDate" header="Birth Date" [sortable]="true"></p-column>
