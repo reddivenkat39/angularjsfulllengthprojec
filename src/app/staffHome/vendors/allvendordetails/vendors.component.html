@@ -70,13 +70,13 @@
               </p-column>
               <p-column field="startDate" header="Start Date" [sortable]="true">
                 <template let-col let-vendorActiveEmployee="rowData" pTemplate type="body">
-                  <span>{{vendorActiveEmployee[col.field] | currency:'USD':true }}</span>
+                  <span>{{vendorActiveEmployee[col.field] | date:'shortDate' }}</span>
                 </template>
               </p-column>
               <p-column field="endDate" header="End Date" [sortable]="true" [hidden]="true"
                         filterMatchMode="contains">
                 <template let-col let-vendorActiveEmployee="rowData" pTemplate type="body">
-                  <span>{{vendorActiveEmployee[col.field] | currency:'USD':true }}</span>
+                  <span>{{vendorActiveEmployee[col.field] | date:'shortDate' }}</span>
                 </template>
               </p-column>
               <p-column [style]="{'width':'90px'}" selectionMode="single" styleClass="col-button">

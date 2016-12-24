@@ -55,6 +55,8 @@ import { EachemployeedetailsComponent } from './staffHome/employees/eachemployee
 import { EmpBreadCrumbsComponent } from './staffHome/employees/employeeNavigationTabs/emp-bread-crumbs.component';
 import { EmpDetailedViewComponent } from './staffHome/employees/emp-detailed-view/emp-detailed-view.component';
 import { EmpStatusTabsComponent } from './staffHome/employees/employeeStatusTabs/emp-status-tabs.component';
+import { EmpEduDtlsComponent } from './staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-edu-dtls/emp-edu-dtls.component';
+import {EmpCrudTabsService} from "./staffHome/employees/eachemployeedetails/emp-crud-tabs.service";
 
 
 let options: ToastOptions = new ToastOptions({
@@ -91,7 +93,8 @@ let options: ToastOptions = new ToastOptions({
     EachemployeedetailsComponent,
     EmpBreadCrumbsComponent,
     EmpStatusTabsComponent,
-    EmpDetailedViewComponent
+    EmpDetailedViewComponent,
+    EmpEduDtlsComponent
   ],
   imports: [
     ToastrModule,
@@ -112,7 +115,7 @@ let options: ToastOptions = new ToastOptions({
     TabViewModule,
   ],
 
-  providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService,EmployeeService, VendorsService,RoleAccessService, ProjectService,InvoiceService,
+  providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService,EmployeeService, VendorsService,RoleAccessService, ProjectService,InvoiceService,EmpCrudTabsService,
     {
       provide: HttpService,
       useFactory: (backend: XHRBackend, options: RequestOptions) => {

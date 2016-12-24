@@ -4,7 +4,9 @@
 <div class="container-fluid">
   <div class="col-xs-6">
     <ul class="nav nav-tabs" id="EachEmployeeEditableDetailsTabs">
-      <li class="active"><a data-toggle="tab" href="#education">Education</a></li>
+
+
+      <li class="active"><a data-toggle="tab" href="#education" (click)="onSelectTab($event)">Education</a></li>
       <li ><a data-toggle="tab" >Contact</a></li>
       <li ><a data-toggle="tab" >Address</a></li>
       <li ><a data-toggle="tab" href="#vendor">Vendor</a></li>
@@ -17,21 +19,14 @@
   </div>
 </div>
 <div class="tab-content">
-  <div id="education" class="tab-pane fade in active">
+  <div id="education" class="tab-pane fade in active" >
     <div class="container-fluid">
       <div class="col-xs-12">
         <div class="panel panel-default">
           <br>
           <div class="panel-body">
             <div class="col-xs-3">
-              <table class="table borderless">
-                <tbody>
-                <tr><td><strong>Qualification:</strong></td><td><input type="text"/></td></tr>
-                <tr><td><strong>Institution:</strong></td><td><input type="text"/></td></tr>
-                <tr><td><strong>Graduation Year:</strong></td><td><input type="text"/></td></tr>
-                <tr><td><strong>GPA:</strong></td><td><input type="text"/></td></tr>
-                </tbody>
-              </table>
+              <app-emp-edu-dtls [employeeId]="empId"></app-emp-edu-dtls>
             </div>
           </div>
         </div>

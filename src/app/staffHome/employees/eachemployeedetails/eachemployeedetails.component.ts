@@ -18,4 +18,9 @@ export class EachemployeedetailsComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSelectTab(event){
+    console.log(" event in app-eachemployeedetails : ",event);
+    console.log(" employee id from route  in app-eachemployeedetails : ",this.empId);
+  }
+
 }
