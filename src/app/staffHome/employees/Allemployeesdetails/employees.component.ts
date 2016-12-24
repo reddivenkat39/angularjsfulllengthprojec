@@ -25,7 +25,8 @@ export class EmployeesComponent implements OnInit {
 
   tableHeader : string = "";//table Header value based on the selection
   showTerminateDt : boolean = true;//dont show terminate date for Active employees
-  showAddSave : boolean = true;//show Add and save buttons in Active employees
+  //in current iteration this feature is removed
+  // showAddSave : boolean = true;//show Add and save buttons in Active employees
 
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager, private router: Router) {
   }
@@ -84,7 +85,7 @@ export class EmployeesComponent implements OnInit {
         this.filteredEmployes = this.orderedEmployees;
         this.tableHeader = "All Employees";
         this.showTerminateDt = true;
-        this.showAddSave = false;
+        /*this.showAddSave = false;*/
         console.log("Filtered employess : All:", this.filteredEmployes);
         break;
 
@@ -92,7 +93,7 @@ export class EmployeesComponent implements OnInit {
         this.filteredEmployes = this.activeEmployees;
         this.tableHeader = "Active Employees";
         this.showTerminateDt = false;
-        this.showAddSave = true;
+        /*this.showAddSave = true;*/
         console.log("Filtered employess: Active :", this.filteredEmployes);
         break;
 
@@ -100,14 +101,14 @@ export class EmployeesComponent implements OnInit {
         this.filteredEmployes = this.inActiveEmployees;
         this.tableHeader = "Terminated Employees";
         this.showTerminateDt = true;
-        this.showAddSave = false;
+       /* this.showAddSave = false;*/
         console.log("Filtered employess : InActive :", this.filteredEmployes);
         break;
       case "SubCont":
         this.filteredEmployes = this.subContEmployees;
         this.tableHeader = "SubContract Employees";
         this.showTerminateDt = true;
-        this.showAddSave = false;
+        /*this.showAddSave = false;*/
         console.log("Filtered employess : SubCont:", this.filteredEmployes);
         break;
     }

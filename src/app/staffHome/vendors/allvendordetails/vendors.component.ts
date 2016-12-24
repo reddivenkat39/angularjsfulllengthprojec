@@ -111,7 +111,8 @@ export class VendorsComponent implements OnInit {
   }
 
   onRowSelectVendor(venId) {
-    $("#rowActiveTrigger").trigger( "click" );
+
+    $("#employeeTrigger").trigger( "click" );
     this.onClickVendorEmployee();
     let vendorId = venId;
     //reset count to zero
@@ -290,6 +291,7 @@ export class VendorsComponent implements OnInit {
    console.log( "event and vendor employee data is..... ",employee.empId);
    // debugger;
     this.onClickButtonEmployeeInvoice();
+    $("#rowInvoiceActiveTrigger").trigger( "click" );
     console.log("employee Name is ", employee.empName);
     this.vendorEmployeeDetails.empName = employee.empName;
     console.log(" employee name in: vendorEmployeeDetails tab : ", this.vendorEmployeeDetails);

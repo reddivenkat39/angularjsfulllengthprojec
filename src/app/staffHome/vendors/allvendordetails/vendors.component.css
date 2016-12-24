@@ -47,6 +47,7 @@ li{
 }
 #pillTab2 .nav-pills > li.active > a{
   color:black !important;
+  font-weight: bold;
 }
 
 #pillTab3>li>a{
@@ -60,6 +61,7 @@ li{
 }
 #pillTab3 .nav-pills > li.active > a{
   color:black !important;
+  font-weight: bold;
 }
 .borderless td {
   border: none !important;

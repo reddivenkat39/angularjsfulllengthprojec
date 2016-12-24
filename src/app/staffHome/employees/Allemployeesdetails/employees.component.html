@@ -14,6 +14,7 @@
 <div class="container-fluid">
   <div class="col-xs-12">
     <p-dataTable #dt1 [value]="filteredEmployes" reorderableColumns="true" selectionMode = "single" [(selection)] = "selectedEmployee"
+                 sortMode="single"
                  (onRowSelect)="onEmployeeRowSelect(selectedEmployee.empId)" [globalFilter]="gb" exportFilename="AllEmployees"
                  [rows]="10" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [paginator]="true" >
       <header style="background: #3399ff !important;">
@@ -22,10 +23,10 @@
             <h6><strong>&nbsp;&nbsp;{{tableHeader}} </strong></h6>
           </div>
           <div>
-            <div *ngIf="showAddSave">
+           <!-- <div *ngIf="showAddSave">
               <span style="border:1px solid white;background-color: white;color: black;float: left;margin-left:3px;margin-top: 10px;margin-right:4px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%">Add</span>
               <span style="border:1px solid white;background-color: white;color: black;float: left;margin-left:4px;margin-top: 10px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%">Save</span>
-            </div>
+            </div>-->
             <span style="border:1px solid white;background-color: white;color: black;float: right;margin-top: 10px;margin-right:3px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%;cursor:pointer;" (click)="dt1.exportCSV()">Export</span>
             <div class="col-md-3 col-md-offset-3" style=" float: right">
               <form class="search-form">
