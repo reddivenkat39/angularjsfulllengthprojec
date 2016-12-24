@@ -44,7 +44,7 @@
           <span>{{allProject[col.field] | currency:'USD':true }}</span>
         </template>
       </p-column>
-      <p-column field="vendorName" header="Vendor Name" [sortable]="true"></p-column>
+      <p-column field="vendorName" header="Client Name" [sortable]="true"></p-column>
       <p-column field="venId" [hidden]="true" header="Vendor Id" [sortable]="true"></p-column>
       <p-column field="empId" [hidden]="true" header="Employee Id" [sortable]="true"></p-column>
       <p-column field="empName" header="Employeee Name" [sortable]="true"></p-column>
@@ -82,7 +82,7 @@
       </header>
 
       <p-column field="sowId" header="Sow Id" [sortable]="true" [style]="{'width':'60px'}"></p-column>
-      <p-column field="venName" header="Vendor Name" [sortable]="true" [style]="{'width':'100px'}"></p-column>
+      <p-column field="venName" header="Client Name" [sortable]="true" [style]="{'width':'100px'}"></p-column>
       <p-column field="venId" hidden="true" header="Vendor Id" [sortable]="true" [style]="{'width':'100px'}"></p-column>
       <p-column field="sowNum" header="Sow Number" [sortable]="true" [style]="{'width':'100px'}"></p-column>
       <p-column field="grantedAmt" header="Granted Amount" [style]="{'width':'100px'}" [sortable]="true">
@@ -118,7 +118,7 @@
     <div class="panel panel-default">
       <header>
         <div class="ui-helper-clearfix">
-          <strong style="float: left;color: blue;">Vendor Name:{{viewSOWDetails.venName}} &nbsp;&nbsp;</strong>
+          <strong style="float: left;color: blue;">Client Name:{{viewSOWDetails.venName}} &nbsp;&nbsp;</strong>
           <span style="float: left;color: blue;">SOW #:{{viewSOWDetails.sowNum}}</span>
           <span style="float: right;color: blue;font-weight:bold;">Total Invoice Amount:{{tableInvAmt | currency:'USD':true}}</span>
         </div>

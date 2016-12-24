@@ -57,7 +57,8 @@ export class VendorsComponent implements OnInit {
   closedEmpInvsAmnt:number=0;
   allEmpInvsAmnt:number=0;
   selectedVendor: Vendor;
-  selectedVendorEmployee:Vendor;
+  selectedVendorEmployee:VendorEmployee;
+
   constructor(private vendorService: VendorsService, private toastMsg: ToastsManager) {
   }
 
@@ -283,15 +284,16 @@ export class VendorsComponent implements OnInit {
     this.isEachVendorContactInfo=false;
   }
 
-  onVendorSelectEmployeeInvoices(event, employee: VendorEmployee) {
+  onVendorSelectEmployeeInvoices( employee: VendorEmployee) {
    console.log("vendor each employee invoice");
    console.log( "event and vendor employee data is..... ",employee.empId);
+    console.log( "event and vendor employee data is..... ",employee.venId);
    // debugger;
     this.onClickButtonEmployeeInvoice();
     console.log("employee Name is ", employee.empName);
     this.vendorEmployeeDetails.empName = employee.empName;
     console.log(" employee name in: vendorEmployeeDetails tab : ", this.vendorEmployeeDetails);
-     this.vendorService.getEmployeeInvoicesById( employee.empId).subscribe(
+     this.vendorService.getEmployeeInvoicesById( employee.empId,employee.venId ).subscribe(
      res=> {
        if(res.datares != null){
 

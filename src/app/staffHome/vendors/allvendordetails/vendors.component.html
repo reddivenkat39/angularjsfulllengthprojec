@@ -75,7 +75,7 @@
               <p-column [style]="{'width':'90px'}" selectionMode="single" styleClass="col-button">
                 <template let-vendorActiveEmployee="rowData" pTemplate type="header">
                   <button style="width:80px;background-color:lightblue;padding-left:3px !important;"
-                          (click)="onVendorSelectEmployeeInvoices($event,selectedVendorEmployee)" pButton label="Invoices">
+                          (click)="onVendorSelectEmployeeInvoices(selectedVendorEmployee)" pButton label="Invoices">
                   </button>
                 </template>
                 <div class="ui-g-12">
@@ -108,7 +108,7 @@
               <p-column [style]="{'width':'90px'}" selectionMode="single" styleClass="col-button">
                 <template let-vendorInActiveEmployee="rowData" pTemplate type="header">
                   <button style="width:80px;background-color:lightblue;padding-left:3px !important;" class="btn btn-default"
-                          type="button" (click)="onVendorSelectEmployeeInvoices($event,selectedVendorEmployee)" pButton
+                          type="button" (click)="onVendorSelectEmployeeInvoices(selectedVendorEmployee)" pButton
                           label="Invoices"></button>
                 </template>
               </p-column>

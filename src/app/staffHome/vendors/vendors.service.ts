@@ -50,9 +50,9 @@ export class VendorsService {
 
   }
 
-  getEmployeeInvoicesById(empId) {
+  getEmployeeInvoicesById(empId,venId) {
     const headersSend = new Headers({'Content-Type': 'application/json'});
-    const bodySend = {empId: empId};
+    const bodySend = {empId: empId, venId: venId};
     console.log(bodySend);
     return this.http.post("http://localhost:8080/empveninvinf/allinvoicesbyempid", bodySend, {headers: headersSend}).map(
       (res: Response) => {

@@ -5,5 +5,6 @@ export interface VendorEmployee {
   startDate;
   endDate;
   empId;
+  venId;
 }
 
