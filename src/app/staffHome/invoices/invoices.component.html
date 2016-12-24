@@ -39,10 +39,26 @@
       <p-column field="invMode" header="Invoice Mode" [sortable]="true" [style]="{'width':'150px'}"></p-column>
       <p-column field="vendorName" header="Vendor" [sortable]="true" [style]="{'width':'150px'}"></p-column>
       <p-column field="empName" header="Employee" [sortable]="true" [style]="{'width':'150px'}"></p-column>
-      <p-column field="invStDt" header="Start Date" [sortable]="true"[style]="{'width':'150px'}"></p-column>
-      <p-column field="invEndDt" header="End Date" [sortable]="true" [style]="{'width':'150px'}"></p-column>
-      <p-column field="invDt" header="Inv Date" [sortable]="true" [style]="{'width':'150px'}"></p-column>
-      <p-column field="dueDt" header="Due Date" [sortable]="true" [style]="{'width':'150px'}"></p-column>
+      <p-column field="invStDt" header="Start Date" [sortable]="true"[style]="{'width':'150px'}">
+        <template let-col let-filteredInvoice="rowData" pTemplate type="body">
+          <span>{{filteredInvoice[col.field] | date:'shortDate' }}</span>
+        </template>
+      </p-column>
+      <p-column field="invEndDt" header="End Date" [sortable]="true" [style]="{'width':'150px'}">
+        <template let-col let-filteredInvoice="rowData" pTemplate type="body">
+          <span>{{filteredInvoice[col.field] | date:'shortDate' }}</span>
+        </template>
+      </p-column>
+      <p-column field="invDt" header="Inv Date" [sortable]="true" [style]="{'width':'150px'}">
+        <template let-col let-filteredInvoice="rowData" pTemplate type="body">
+          <span>{{filteredInvoice[col.field] | date:'shortDate' }}</span>
+        </template>
+      </p-column>
+      <p-column field="dueDt" header="Due Date" [sortable]="true" [style]="{'width':'150px'}">
+        <template let-col let-filteredInvoice="rowData" pTemplate type="body">
+          <span>{{filteredInvoice[col.field] | date:'shortDate' }}</span>
+        </template>
+      </p-column>
       <p-column field="pymtTerms" header="Pay Term" [sortable]="true" [style]="{'width':'150px'}"></p-column>
       <p-column field="wrkHrs" header="Hours" [sortable]="true" [style]="{'width':'150px'}"></p-column>
       <p-column field="rate" header="Rate" [sortable]="true" [style]="{'width':'150px'}">
@@ -67,7 +83,7 @@
       </p-column>
       <p-column field="recvdDt" header="Received Date" [sortable]="true" [style]="{'width':'150px'}">
         <template let-col let-filteredInvoice="rowData" pTemplate type="body">
-          <span>{{filteredInvoice[col.field] | currency:'USD':true }}</span>
+          <span>{{filteredInvoice[col.field] | date:'shortDate' }}</span>
         </template>
       </p-column>
     </p-dataTable>

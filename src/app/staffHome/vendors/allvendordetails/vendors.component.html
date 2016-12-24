@@ -68,9 +68,17 @@
                   <span>{{vendorActiveEmployee[col.field] | currency:'USD':true }}</span>
                 </template>
               </p-column>
-              <p-column field="startDate" header="Start Date" [sortable]="true"></p-column>
+              <p-column field="startDate" header="Start Date" [sortable]="true">
+                <template let-col let-vendorActiveEmployee="rowData" pTemplate type="body">
+                  <span>{{vendorActiveEmployee[col.field] | currency:'USD':true }}</span>
+                </template>
+              </p-column>
               <p-column field="endDate" header="End Date" [sortable]="true" [hidden]="true"
-                        filterMatchMode="contains"></p-column>
+                        filterMatchMode="contains">
+                <template let-col let-vendorActiveEmployee="rowData" pTemplate type="body">
+                  <span>{{vendorActiveEmployee[col.field] | currency:'USD':true }}</span>
+                </template>
+              </p-column>
               <p-column [style]="{'width':'90px'}" selectionMode="single" styleClass="col-button">
                 <template let-vendorActiveEmployee="rowData" pTemplate type="header">
                   <button style="width:80px;background-color:lightblue;padding-left:3px !important;"
@@ -101,8 +109,16 @@
                   <span>{{vendorInActiveEmployee[col.field] | currency:'USD':true }}</span>
                 </template>
               </p-column>
-              <p-column field="startDate" header="Start Date" [sortable]="true"></p-column>
-              <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
+              <p-column field="startDate" header="Start Date" [sortable]="true">
+                <template let-col  let-vendorInActiveEmployee="rowData" pTemplate type="body">
+                  <span>{{vendorInActiveEmployee[col.field] | date:'shortDate'}}</span>
+                </template>
+              </p-column>
+              <p-column field="endDate" header="End Date" [sortable]="true">
+                <template let-col  let-vendorInActiveEmployee="rowData" pTemplate type="body">
+                  <span>{{vendorInActiveEmployee[col.field] | date:'shortDate'}}</span>
+                </template>
+              </p-column>
               <p-column [style]="{'width':'90px'}" selectionMode="single" styleClass="col-button">
                 <template let-vendorInActiveEmployee="rowData" pTemplate type="header">
                   <button style="width:80px;background-color:lightblue;padding-left:3px !important;" class="btn btn-default"
@@ -138,15 +154,27 @@
             </header>
             <p-dataTable #dt1 [value]="allVendorInvoices" reorderableColumns="true">
               <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
-              <p-column field="invStDt" header="Start Date" [sortable]="true"></p-column>
-              <p-column field="dueDt" header="Due Date" [sortable]="true"></p-column>
+              <p-column field="invStDt" header="Start Date" [sortable]="true">
+                <template let-col  let-allVendorInvoice="rowData" pTemplate type="body">
+                  <span>{{allVendorInvoice[col.field] | date:'shortDate'}}</span>
+                </template>
+              </p-column>
+              <p-column field="dueDt" header="Due Date" [sortable]="true">
+                <template let-col  let-allVendorInvoice="rowData" pTemplate type="body">
+                  <span>{{allVendorInvoice[col.field] | date:'shortDate'}}</span>
+                </template>
+              </p-column>
               <p-column field="wrkHrs" header="Hours" [sortable]="true"></p-column>
               <p-column field="invAmt" header="Invoice Amount" [sortable]="true">
                 <template let-col let-allVendorInvoice="rowData" pTemplate type="body">
                   <span>{{allVendorInvoice[col.field] | currency:'USD':true }}</span>
                 </template>
               </p-column>
-              <p-column field="invEndDt" header="End Date" [sortable]="true"></p-column>
+              <p-column field="invEndDt" header="End Date" [sortable]="true">
+                <template let-col  let-allVendorInvoice="rowData" pTemplate type="body">
+                  <span>{{allVendorInvoice[col.field] | date:'shortDate'}}</span>
+                </template>
+              </p-column>
               <p-column field="invStatus" header="Invoice Status" [sortable]="true"></p-column>
             </p-dataTable>
           </div>
@@ -163,15 +191,27 @@
             </header>
             <p-dataTable #dt1 [value]="openVendorInvoices" reorderableColumns="true">
               <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
-              <p-column field="invStDt" header="Start Date" [sortable]="true"></p-column>
-              <p-column field="dueDt" header="Due Date" [sortable]="true"></p-column>
+              <p-column field="invStDt" header="Start Date" [sortable]="true">
+                <template let-col let-openVendorInvoice="rowData" pTemplate type="body">
+                  <span>{{openVendorInvoice[col.field] | date:'shortDate' }}</span>
+                </template>
+              </p-column>
+              <p-column field="dueDt" header="Due Date" [sortable]="true">
+                <template let-col let-openVendorInvoice="rowData" pTemplate type="body">
+                  <span>{{openVendorInvoice[col.field] | date:'shortDate' }}</span>
+                </template>
+              </p-column>
               <p-column field="wrkHrs" header="Hours" [sortable]="true"></p-column>
               <p-column field="invAmt" header="Invoice Amount" [sortable]="true">
                 <template let-col let-openVendorInvoice="rowData" pTemplate type="body">
                   <span>{{openVendorInvoice[col.field] | currency:'USD':true }}</span>
                 </template>
               </p-column>
-              <p-column field="invEndDt" header="End Date" [sortable]="true"></p-column>
+              <p-column field="invEndDt" header="End Date" [sortable]="true">
+                <template let-col let-openVendorInvoice="rowData" pTemplate type="body">
+                  <span>{{openVendorInvoice[col.field] | date:'shortDate' }}</span>
+                </template>
+              </p-column>
               <p-column field="invStatus" header="Invoice Status" [sortable]="true"></p-column>
             </p-dataTable>
           </div>
@@ -188,15 +228,27 @@
             </header>
             <p-dataTable #dt1 [value]="closeVendorInvoices" reorderableColumns="true">
               <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
-              <p-column field="invStDt" header="Start Date" [sortable]="true"></p-column>
-              <p-column field="dueDt" header="Due Date" [sortable]="true"></p-column>
+              <p-column field="invStDt" header="Start Date" [sortable]="true">
+                <template let-col let-closeVendorInvoice="rowData" pTemplate type="body">
+                  <span>{{closeVendorInvoice[col.field] | date:'shortDate' }}</span>
+                </template>
+              </p-column>
+              <p-column field="dueDt" header="Due Date" [sortable]="true">
+                <template let-col let-closeVendorInvoice="rowData" pTemplate type="body">
+                  <span>{{closeVendorInvoice[col.field] | date:'shortDate' }}</span>
+                </template>
+              </p-column>
               <p-column field="wrkHrs" header="Hours" [sortable]="true"></p-column>
               <p-column field="invAmt" header="Invoice Amount" [sortable]="true">
                 <template let-col let-closeVendorInvoice="rowData" pTemplate type="body">
                   <span>{{closeVendorInvoice[col.field] | currency:'USD':true }}</span>
                 </template>
               </p-column>
-              <p-column field="invEndDt" header="End Date" [sortable]="true"></p-column>
+              <p-column field="invEndDt" header="End Date" [sortable]="true">
+                <template let-col let-closeVendorInvoice="rowData" pTemplate type="body">
+                  <span>{{closeVendorInvoice[col.field] | date:'shortDate' }}</span>
+                </template>
+              </p-column>
               <p-column field="invStatus" header="Invoice Status" [sortable]="true"></p-column>
             </p-dataTable>
           </div>
@@ -227,9 +279,21 @@
           <div class="panel-body">
             <p-dataTable #dt1 [value]="allEmployeeInvoices" reorderableColumns="true">
               <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
-              <p-column field="invStDt" header="Start Date" [sortable]="true"></p-column>
-              <p-column field="invEndDt" header="End Date" [sortable]="true"></p-column>
-              <p-column field="dueDt" header="Due Date" [sortable]="true"></p-column>
+              <p-column field="invStDt" header="Start Date" [sortable]="true">
+                <template let-col let-allEmployeeInvoice="rowData" pTemplate type="body">
+                  <span>{{allEmployeeInvoice[col.field] | date:'shortDate' }}</span>
+                </template>
+              </p-column>
+              <p-column field="invEndDt" header="End Date" [sortable]="true">
+                <template let-col let-allEmployeeInvoice="rowData" pTemplate type="body">
+                  <span>{{allEmployeeInvoice[col.field] | date:'shortDate' }}</span>
+                </template>
+              </p-column>
+              <p-column field="dueDt" header="Due Date" [sortable]="true">
+                <template let-col let-allEmployeeInvoice="rowData" pTemplate type="body">
+                  <span>{{allEmployeeInvoice[col.field] | date:'shortDate' }}</span>
+                </template>
+              </p-column>
               <p-column field="wrkHrs" header="Hours" [sortable]="true"></p-column>
               <p-column field="invAmt" header="Invoice Amount" [sortable]="true">
                 <template let-col let-allEmployeeInvoice="rowData" pTemplate type="body">
@@ -257,9 +321,21 @@
 
           <p-dataTable #dt1 [value]="openEmployeeInvoices" reorderableColumns="true">
             <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
-            <p-column field="invStDt" header="Start Date" [sortable]="true"></p-column>
-            <p-column field="invEndDt" header="End Date" [sortable]="true"></p-column>
-            <p-column field="dueDt" header="Due Date" [sortable]="true"></p-column>
+            <p-column field="invStDt" header="Start Date" [sortable]="true">
+              <template let-col let-allEmployeeInvoice="rowData" pTemplate type="body">
+                <span>{{openEmployeeInvoice[col.field] | date:'shortDate' }}</span>
+              </template>
+            </p-column>
+            <p-column field="invEndDt" header="End Date" [sortable]="true">
+              <template let-col let-allEmployeeInvoice="rowData" pTemplate type="body">
+                <span>{{openEmployeeInvoice[col.field] | date:'shortDate' }}</span>
+              </template>
+            </p-column>
+            <p-column field="dueDt" header="Due Date" [sortable]="true">
+              <template let-col let-allEmployeeInvoice="rowData" pTemplate type="body">
+                <span>{{openEmployeeInvoice[col.field] | date:'shortDate' }}</span>
+              </template>
+            </p-column>
             <p-column field="wrkHrs" header="Hours" [sortable]="true"></p-column>
             <p-column field="invAmt" header="Invoice Amount" [sortable]="true">
               <template let-col let-openEmployeeInvoice="rowData" pTemplate type="body">
@@ -283,9 +359,21 @@
         </header>
         <p-dataTable #dt1 [value]="closeEmployeeInvoices" reorderableColumns="true">
           <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
-          <p-column field="invStDt" header="Start Date" [sortable]="true"></p-column>
-          <p-column field="invEndDt" header="End Date" [sortable]="true"></p-column>
-          <p-column field="dueDt" header="Due Date" [sortable]="true"></p-column>
+          <p-column field="invStDt" header="Start Date" [sortable]="true">
+            <template let-col let-closeEmployeeInvoice="rowData" pTemplate type="body">
+              <span>{{openEmployeeInvoice[col.field] | date:'shortDate' }}</span>
+            </template>
+          </p-column>
+          <p-column field="invEndDt" header="End Date" [sortable]="true">
+            <template let-col let-closeEmployeeInvoice="rowData" pTemplate type="body">
+              <span>{{openEmployeeInvoice[col.field] | date:'shortDate' }}</span>
+            </template>
+          </p-column>
+          <p-column field="dueDt" header="Due Date" [sortable]="true">
+            <template let-col let-closeEmployeeInvoice="rowData" pTemplate type="body">
+              <span>{{openEmployeeInvoice[col.field] | date:'shortDate' }}</span>
+            </template>
+          </p-column>
           <p-column field="wrkHrs" header="Hours" [sortable]="true"></p-column>
           <p-column field="invAmt" header="Invoice Amount" [sortable]="true">
             <template let-col let-closeEmployeeInvoice="rowData" pTemplate type="body">
