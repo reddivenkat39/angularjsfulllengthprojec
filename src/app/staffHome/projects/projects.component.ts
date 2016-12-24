@@ -14,7 +14,10 @@ declare var $: any;
 export class ProjectsComponent implements OnInit {
   private isProjectsTab = false;
   private isSowTab = false;
-  viewSOWDetails={};
+  viewSOWDetails={
+    'vendorName':'',
+    'sowNum':''
+  };
 
   // used to get all the projects
   allProjects: Project[];
@@ -92,7 +95,10 @@ export class ProjectsComponent implements OnInit {
     //default first row selection
     console.log("defaultFirstRowSelect :selectedSowInvoice", this.selectedSowInvoice );
     this.selectedSowRow = this.allSows[0];
+
     this.OnClickSowInvoiceTabs();
+    this.viewSOWDetails.vendorName   = this.selectedSowRow.venName;
+    this.viewSOWDetails.sowNum  = this.selectedSowRow.sowNum;
   }
 
   OnClickSowInvoiceTabs(){
@@ -122,20 +128,21 @@ to load all sow data
     );
   }
 
-  onRowSelect(sowNum){
+  onRowSelect(sow:Sow){
     /*console.log("sowNum is ....: ",selectedSowInvoice.sowNum);*/
 
     this.allInvsAmnt=0;
     this.closedInvsAmnt=0;
     this.openInvsAmnt=0;
-   /* this.viewSOWDetails.venName   = selectedSowInvoice.venName;
-    this.viewSOWDetails.sowNum  = selectedSowInvoice.sowNum;*/
-    this.projectService.getSowInvoices(sowNum).subscribe(
+
+    this.viewSOWDetails.vendorName   = sow.venName;
+    this.viewSOWDetails.sowNum  = sow.sowNum;
+    this.projectService.getSowInvoices(sow.sowNum).subscribe(
       res => {
         if (res.datares != null && res.errorres==null) {
           console.log("sow invoices data datares  :", res.datares);
           this.allSOWInvoices = res.datares;
-          this.viewSOWDetails=res.datares[0];
+
           // todo actually it is in array anyway "same client and sowNum for all invoices"
           for (let i = 0; i < this.allSOWInvoices.length; i++) {
             this.allInvsAmnt += this.allSOWInvoices[i].invAmt;
@@ -163,7 +170,7 @@ to load all sow data
           this.allSOWInvoices=[];
           this.openInvoices =[];
           this.closedInvoices =[];
-          this.viewSOWDetails=[];
+
 
           console.log('Error for SOW Data',res.errores);
         }
