@@ -288,7 +288,7 @@ export class VendorsComponent implements OnInit {
   }
 
   onVendorSelectEmployeeInvoices( employee: VendorEmployee) {
-   console.log("vendor each employee invoice");
+   console.log("vendor each employee invoice",employee);
    console.log( "event and vendor employee data is..... ",employee.empId);
     console.log( "event and vendor employee data is..... ",employee.venId);
    // debugger;
