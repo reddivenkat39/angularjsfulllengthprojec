@@ -14,7 +14,7 @@
 </div>
 <div class="container-fluid">
   <div *ngIf="isProjectsTab">
-    <p-dataTable #dt1 [value]="allProjects" reorderableColumns="true" [rows]="5"
+    <p-dataTable #dt1 [value]="allProjects" reorderableColumns="true" [rows]="10"
                  [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
                  [globalFilter]="gb" exportFilename="projects" >
       <header style="background: #3399ff !important;">
@@ -58,7 +58,7 @@
     <p-dataTable #dt1 [value]="allSows" reorderableColumns="true" [rows]="10"
                  [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
                  [globalFilter]="gb" exportFilename="projects"
-                 (onRowSelect)="onRowSelect($event)" [(selection)]="selectedSowInvoice"
+                 (onRowSelect)="onRowSelect(selectedSowRow.sowNum)" [(selection)]="selectedSowRow"
                  selectionMode="single">
       <header style="background: #3399ff !important;">
         <div class="ui-helper-clearfix">
@@ -81,8 +81,9 @@
         </div>
       </header>
 
-      <p-column field="sowId" header="Sow Id" [sortable]="true" [style]="{'width':'60px'}"></p-column>
+      <p-column field="sowId" hidden="true" header="Sow Id" [sortable]="true" [style]="{'width':'60px'}"></p-column>
       <p-column field="venName" header="Client Name" [sortable]="true" [style]="{'width':'100px'}"></p-column>
+
       <p-column field="venId" hidden="true" header="Vendor Id" [sortable]="true" [style]="{'width':'100px'}"></p-column>
       <p-column field="sowNum" header="Sow Number" [sortable]="true" [style]="{'width':'100px'}"></p-column>
       <p-column field="grantedAmt" header="Granted Amount" [style]="{'width':'100px'}" [sortable]="true">
@@ -118,24 +119,23 @@
     <div class="panel panel-default">
       <header>
         <div class="ui-helper-clearfix">
-          <strong style="float: left;color: blue;">Client Name:{{viewSOWDetails.venName}} &nbsp;&nbsp;</strong>
-          <span style="float: left;color: blue;">SOW #:{{viewSOWDetails.sowNum}}</span>
-          <span style="float: right;color: blue;font-weight:bold;">Total Invoice Amount:{{tableInvAmt | currency:'USD':true}}</span>
+          <strong style="float: left;color: blue; margin-right: 10px;">Client Name:{{viewSOWDetails.vendorName}} &nbsp;&nbsp;</strong>
+          <span style="float:left;color: blue;"><strong>SOW #:</strong>{{viewSOWDetails.sowNum}}</span>
+          <span style="float: right;color: blue;"><strong>Total Invoice Amount:</strong>{{tableInvAmt | currency:USD:true}}</span>
         </div>
       </header>
       <div class="panel-body">
         <p-dataTable #dt1 [rows]="5"
                      [paginator]="true" [value]="filteredInvoices" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
-                      reorderableColumns="true" >
-                     [paginator]="true" reorderableColumns="true"  [value]="allSOWInvoices" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+                      reorderableColumns="true">
           <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
           <p-column field="invStDt" header="Start Date" [sortable]="true"></p-column>
           <p-column field="invEndDt" header="End Date" [sortable]="true"></p-column>
           <p-column field="dueDt" header="Due Date" [sortable]="true"></p-column>
           <p-column field="wrkHrs" header="Hours" [sortable]="true"></p-column>
           <p-column field="invAmt" header="Invoice Amount" [sortable]="true">
-            <template let-col let-allSOWInvoice="rowData" pTemplate type="body">
-              <span>{{allSOWInvoice[col.field] | currency:'USD':true }}</span>
+            <template let-col let-filteredInvoice="rowData" pTemplate type="body">
+              <span>{{filteredInvoice[col.field] | currency:'USD':true }}</span>
             </template>
           </p-column>
           <p-column field="invStatus" header="Invoice Status" [sortable]="true"></p-column>

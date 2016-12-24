@@ -19,12 +19,14 @@ export class EmployeesComponent implements OnInit {
   activeEmployees: Employee[]=[];
   inActiveEmployees: Employee[]=[];
   subContEmployees:Employee[]=[];
+  orderedEmployees : Employee[] = [];
   selectedEmployee: Employee;
   empId:'';
 
   tableHeader : string = "";//table Header value based on the selection
   showTerminateDt : boolean = true;//dont show terminate date for Active employees
-  showAddSave : boolean = true;//show Add and save buttons in Active employees
+  //in current iteration this feature is removed
+  // showAddSave : boolean = true;//show Add and save buttons in Active employees
 
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager, private router: Router) {
   }
@@ -49,6 +51,7 @@ export class EmployeesComponent implements OnInit {
           this.activeEmployees =[];
           this.inActiveEmployees =[];
           this.subContEmployees=[];
+          this.orderedEmployees = [];
           res.datares.filter(row => {
             if (row.termDate == null) {//active employees
               this.activeEmployees.push(row);
@@ -68,6 +71,8 @@ export class EmployeesComponent implements OnInit {
           console.log("employees.components : loadEmployees :  getAllEmployeeDetails Error in response : ", res.errorres);
           this.toastManager.error(res.errorres, 'Data Fetching Failed');
         }
+        this.orderedEmployees = this.activeEmployees.concat(this.inActiveEmployees);
+        console.log("employees.components : loademployes: getAllEmployeeDetails: ordered employess : ", this.orderedEmployees);
         this.loadFilteredData(filter);
       }
     );
@@ -77,10 +82,10 @@ export class EmployeesComponent implements OnInit {
     switch(filter)
     {
       case "All" :
-        this.filteredEmployes = this.allEmployees;
+        this.filteredEmployes = this.orderedEmployees;
         this.tableHeader = "All Employees";
         this.showTerminateDt = true;
-        this.showAddSave = false;
+        /*this.showAddSave = false;*/
         console.log("Filtered employess : All:", this.filteredEmployes);
         break;
 
@@ -88,7 +93,7 @@ export class EmployeesComponent implements OnInit {
         this.filteredEmployes = this.activeEmployees;
         this.tableHeader = "Active Employees";
         this.showTerminateDt = false;
-        this.showAddSave = true;
+        /*this.showAddSave = true;*/
         console.log("Filtered employess: Active :", this.filteredEmployes);
         break;
 
@@ -96,14 +101,14 @@ export class EmployeesComponent implements OnInit {
         this.filteredEmployes = this.inActiveEmployees;
         this.tableHeader = "Terminated Employees";
         this.showTerminateDt = true;
-        this.showAddSave = false;
+       /* this.showAddSave = false;*/
         console.log("Filtered employess : InActive :", this.filteredEmployes);
         break;
       case "SubCont":
         this.filteredEmployes = this.subContEmployees;
         this.tableHeader = "SubContract Employees";
         this.showTerminateDt = true;
-        this.showAddSave = false;
+        /*this.showAddSave = false;*/
         console.log("Filtered employess : SubCont:", this.filteredEmployes);
         break;
     }

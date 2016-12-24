@@ -112,9 +112,8 @@ export class VendorsComponent implements OnInit {
   }
 
   onRowSelectVendor(venId) {
-   /* console.log(event.data.venId);
-    console.log("vendors tab clicked");
-    let vendorId = event.data.venId;*/
+
+    $("#employeeTrigger").trigger( "click" );
     this.onClickVendorEmployee();
     let vendorId = venId;
     //reset count to zero
@@ -231,13 +230,15 @@ export class VendorsComponent implements OnInit {
   }
   onClickVendorEmployee() {
     console.log("vendor employees clicked");
+    this.isEachAllEmployeeInvoice = false;
+    this.isEachOpenEmployeeInvoice = false;
+    this.isEachCloseEmployeeInvoice = false;
     this.allVendor = true;
     this.isEachVendorContactInfo=false;
     this.eachActiveVendorEmployees = true;
     this.eachInActiveVendorEmployees = false;
     this.allVendorInvoice = false;
     this.tabsForEmployeeInvoice=false;
-    this.isEachOpenEmployeeInvoice=false;
     this.isEachAllVendorInvoice = false;
     this.isEachOpenVendorInvoice = false;
     this.isEachCloseVendorInvoice = false;
@@ -278,7 +279,9 @@ export class VendorsComponent implements OnInit {
     this.isEachAllVendorInvoice = false;
     this.isEachOpenVendorInvoice = true;
     this.isEachCloseVendorInvoice = false;
-    this.isEachOpenEmployeeInvoice=false;
+    this.isEachAllEmployeeInvoice = false;
+    this.isEachOpenEmployeeInvoice = false;
+    this.isEachCloseEmployeeInvoice = false;
     this.tabsForEmployeeInvoice=false;
     this.allVendor = false;
     this.isEachVendorContactInfo=false;
@@ -290,6 +293,7 @@ export class VendorsComponent implements OnInit {
     console.log( "event and vendor employee data is..... ",employee.venId);
    // debugger;
     this.onClickButtonEmployeeInvoice();
+    $("#rowInvoiceActiveTrigger").trigger( "click" );
     console.log("employee Name is ", employee.empName);
     this.vendorEmployeeDetails.empName = employee.empName;
     console.log(" employee name in: vendorEmployeeDetails tab : ", this.vendorEmployeeDetails);

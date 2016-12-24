@@ -22,6 +22,7 @@ export class InvoicesComponent implements OnInit {
   openInvoices: Invoice[];
   closedInvoices: Invoice[];
   pastDueInvoices : Invoice[];
+  overStatus:string = "";//for changing status from open to pastdue
   tableHeader : string = "";//table Header value based on the selection
   tableInvAmt:number=0;//table inv amt based on selection
 
@@ -40,6 +41,7 @@ export class InvoicesComponent implements OnInit {
     this.closedInvsAmnt=0;
     this.openInvsAmnt=0;
     this.pstDueInvsAmnt=0;
+    this.overStatus = '';
     this.invoiceService.getAllInvoices().subscribe(
       res => {
         console.log("invoices.components : loadInvoices: getAllInvoices: response : ", res);
@@ -61,7 +63,11 @@ export class InvoicesComponent implements OnInit {
                 console.log((new Date(row.dueDt)) < currentDt);
                 console.log("current date",currentDt);
                 console.log("row date",new Date(row.dueDt));
+                var oneDay = 24*60*60*1000;
+                var diffDays = Math.round(Math.abs((new Date(row.dueDt).getTime() - new Date().getTime())/(oneDay)));
 
+                this.overStatus ="OVER DUE by "+ diffDays +" days"; //show past due status with day count
+                row.invStatus = this.overStatus; //for past due amounts change of status
                 this.pstDueInvsAmnt+=row.invAmt;
                 this.pastDueInvoices.push(row);//fill past due invoices
               }

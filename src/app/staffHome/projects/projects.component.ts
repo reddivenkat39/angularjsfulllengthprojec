@@ -14,10 +14,7 @@ declare var $: any;
 export class ProjectsComponent implements OnInit {
   private isProjectsTab = false;
   private isSowTab = false;
-  viewSOWDetails={
-    'sowNum':'',
-    'venName':''
-  };
+  viewSOWDetails={};
 
   // used to get all the projects
   allProjects: Project[];
@@ -29,7 +26,7 @@ export class ProjectsComponent implements OnInit {
   allSOWInvoices:SowInvoices[]=[];
   closedInvoices:SowInvoices[]=[];
   openInvoices: SowInvoices[]=[];
-
+  selectedSowRow:Sow;
   // used to get the invoices by sownum by selecting the row
   selectedSowInvoice:SowInvoices;
 
@@ -89,13 +86,17 @@ export class ProjectsComponent implements OnInit {
     this.isSowTab = true;
     this.isProjectsTab = false;
     this.loadAllSowData();
-
   }
 
-
+  defaultFirstRowSelect() {
+    //default first row selection
+    console.log("defaultFirstRowSelect :selectedSowInvoice", this.selectedSowInvoice );
+    this.selectedSowRow = this.allSows[0];
+    this.OnClickSowInvoiceTabs();
+  }
 
   OnClickSowInvoiceTabs(){
-  this.onRowSelect(event);
+    this.onRowSelect(this.selectedSowRow.sowNum);
   }
 
 
@@ -109,6 +110,7 @@ to load all sow data
         if (res.datares != null) {
           console.log("load sow data datares  :", res.datares);
           this.allSows = res.datares;
+          this.defaultFirstRowSelect();
         } else if (res.errorres != null) {
           console.log("load sow data errorres  :", res.errorres);
         } else if (res.successres != null) {
@@ -120,26 +122,21 @@ to load all sow data
     );
   }
 
+  onRowSelect(sowNum){
+    /*console.log("sowNum is ....: ",selectedSowInvoice.sowNum);*/
 
-
-
-
-  onRowSelect(selectedSowInvoice){
-    console.log("sowNum is ....: ",selectedSowInvoice.sowNum);
-    // console.log(event.data.sowNum);
-    // let SOWNUM = event.data.sowNum;
     this.allInvsAmnt=0;
     this.closedInvsAmnt=0;
     this.openInvsAmnt=0;
-    this.viewSOWDetails.venName   = selectedSowInvoice.venName;
-    this.viewSOWDetails.sowNum  = selectedSowInvoice.sowNum;
-    this.projectService.getSowInvoices(selectedSowInvoice.sowNum).subscribe(
+   /* this.viewSOWDetails.venName   = selectedSowInvoice.venName;
+    this.viewSOWDetails.sowNum  = selectedSowInvoice.sowNum;*/
+    this.projectService.getSowInvoices(sowNum).subscribe(
       res => {
         if (res.datares != null && res.errorres==null) {
           console.log("sow invoices data datares  :", res.datares);
           this.allSOWInvoices = res.datares;
-
-       // todo actually it is in array anyway "same client and sowNum for all invoices"
+          this.viewSOWDetails=res.datares[0];
+          // todo actually it is in array anyway "same client and sowNum for all invoices"
           for (let i = 0; i < this.allSOWInvoices.length; i++) {
             this.allInvsAmnt += this.allSOWInvoices[i].invAmt;
           }
@@ -166,8 +163,9 @@ to load all sow data
           this.allSOWInvoices=[];
           this.openInvoices =[];
           this.closedInvoices =[];
+          this.viewSOWDetails=[];
 
-          this.toastManager.error('',res.errores);
+          console.log('Error for SOW Data',res.errores);
         }
         this.loadFilteredData('OPEN');
       }
