@@ -391,7 +391,15 @@ export class VendorsComponent implements OnInit {
     this.isEachVendorContactInfo=true;
     this.allVendor=false;
     this.allVendorInvoice=false;
+    this.isEachAllVendorInvoice = false;
+    this.isEachOpenVendorInvoice = false;
+    this.isEachCloseVendorInvoice = false;
     this.tabsForEmployeeInvoice=false;
+    this.isEachAllEmployeeInvoice = false;
+    this.isEachOpenEmployeeInvoice = false;
+    this.isEachCloseEmployeeInvoice = false;
+    this.eachActiveVendorEmployees = false;
+    this.eachInActiveVendorEmployees = false;
   }
 
 }
