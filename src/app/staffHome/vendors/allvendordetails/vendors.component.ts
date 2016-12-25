@@ -47,7 +47,7 @@ export class VendorsComponent implements OnInit {
   allVendorInvoices: VendorInvoice[]; // all vendor invoices by vendor id
   openVendorInvoices: VendorInvoice[]; // open vendor invoices by vendor id
   closeVendorInvoices: VendorInvoice[]; // close vendor invoices by vendor id
-
+  overStatus:string = "";//for changing status from open to pastdue basing on current date
 
 
   openInvsAmnt: number = 0;
@@ -114,7 +114,10 @@ export class VendorsComponent implements OnInit {
   onRowSelectVendor(venId) {
 
     $("#employeeTrigger").trigger( "click" );
-    this.onClickVendorEmployee();
+    $("#vendorEmpActiveTrigger").trigger("click");
+    this.onClickEachActiveVendorEmployee();
+
+
     let vendorId = venId;
     //reset count to zero
     console.log("Vendor.Component : onRowSelectVendor : venId :", venId);
@@ -175,6 +178,18 @@ export class VendorsComponent implements OnInit {
             this.openVendorInvoices = res.datares.filter(row => {
               if (row.invStatus == "OPEN") {
                 this.openInvsAmnt += row.invAmt;
+                var currentDt = new Date((new Date()).setHours(0, 0, 0, 0));//to get only date
+                //Compare invoice due date with current date
+                if((new Date(row.dueDt)) < currentDt ){
+                  console.log((new Date(row.dueDt)) < currentDt);
+                  console.log("current date",currentDt);
+                  console.log("row date",new Date(row.dueDt));
+                  var oneDay = 24*60*60*1000;
+                  var diffDays = Math.round(Math.abs((new Date(row.dueDt).getTime() - new Date().getTime())/(oneDay)));
+
+                  this.overStatus ="OVER DUE by "+ diffDays +" days"; //show inv status with day count by changing open to pastdue
+                  row.invStatus = this.overStatus; //for past due amounts change of status
+                }
                 return row;
               }
             });
@@ -227,6 +242,7 @@ export class VendorsComponent implements OnInit {
         }
       );
     }
+
   }
   onClickVendorEmployee() {
     console.log("vendor employees clicked");
@@ -248,6 +264,7 @@ export class VendorsComponent implements OnInit {
   onClickEachActiveVendorEmployee() {
     console.log("Active vendor employees");
     this.allVendor = true;
+    this.selectedVendorEmployee = null;
     this.eachActiveVendorEmployees = true;
     this.eachInActiveVendorEmployees = false;
     this.allVendorInvoice = false;
@@ -263,6 +280,7 @@ export class VendorsComponent implements OnInit {
   onClickEachInActiveVendorEmployee() {
     console.log("In Active vendor employees");
     this.allVendor = true;
+    this.selectedVendorEmployee = null;
     this.eachActiveVendorEmployees = false;
     this.eachInActiveVendorEmployees = true;
     this.allVendorInvoice = false;
@@ -289,10 +307,15 @@ export class VendorsComponent implements OnInit {
 
   onVendorSelectEmployeeInvoices( employee: VendorEmployee) {
    console.log("vendor each employee invoice");
+
+    if(!employee)
+      return;
+
    console.log( "event and vendor employee data is..... ",employee.empId);
     console.log( "event and vendor employee data is..... ",employee.venId);
    // debugger;
     this.onClickButtonEmployeeInvoice();
+    this.overStatus = '';
     $("#rowInvoiceActiveTrigger").trigger( "click" );
     console.log("employee Name is ", employee.empName);
     this.vendorEmployeeDetails.empName = employee.empName;
@@ -306,6 +329,18 @@ export class VendorsComponent implements OnInit {
          this.openEmployeeInvoices=res.datares.filter(row => {
            if (row.invStatus == "OPEN") {
              this.openEmpInvsAmnt += row.invAmt;
+             var currentDt = new Date((new Date()).setHours(0, 0, 0, 0));//to get only date
+             //Compare invoice due date with current date
+             if((new Date(row.dueDt)) < currentDt ){
+               console.log((new Date(row.dueDt)) < currentDt);
+               console.log("current date",currentDt);
+               console.log("row date",new Date(row.dueDt));
+               var oneDay = 24*60*60*1000;
+               var diffDays = Math.round(Math.abs((new Date(row.dueDt).getTime() - new Date().getTime())/(oneDay)));
+
+               this.overStatus ="OVER DUE by "+ diffDays +" days"; //show inv status with day count by changing open to pastdue
+               row.invStatus = this.overStatus; //for past due amounts change of status
+             }
              return row;
            }
          });

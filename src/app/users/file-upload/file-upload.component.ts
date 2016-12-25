@@ -36,7 +36,7 @@ export class FileUploadComponent {
 
     console.log(formData,"form data........");
     this.http
-      .post('http://10.10.5.55:8080/uploadfile', formData,{headers: headersSend})
+      .post('/tep/uploadfile', formData,{headers: headersSend})
       .subscribe(
         res=>{
           console.log(res);
@@ -53,7 +53,7 @@ export class FileUploadComponent {
   //     let files: FileList = inputEl.files[0];
   //     console.log(files);
   //     this.http
-  //       .post('http://10.10.5.55:8080/uploadfile', files, {headers: headersSend}).subscribe(
+  //       .post('/tep/uploadfile', files, {headers: headersSend}).subscribe(
   //       res => {
   //         console.log(res['_body']);
   //       }

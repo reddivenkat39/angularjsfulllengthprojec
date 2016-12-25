@@ -53,7 +53,11 @@
           <span>{{allProject[col.field] | date:'shortDate' }}</span>
         </template>
       </p-column>
-      <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
+      <p-column field="endDate" header="End Date" [sortable]="true">
+        <template let-col let-allProject="rowData" pTemplate type="body">
+          <span>{{allProject[col.field] | date:'shortDate' }}</span>
+        </template>
+      </p-column>
     </p-dataTable>
     <br>
   </div>
@@ -125,7 +129,7 @@
     </div>
     <ul id="pillTabSowInvoice" class="nav nav-pills">
       <li data-toggle="pill" (click)="loadFilteredData('ALL')"><a>All|</a></li>
-      <li class="active" data-toggle="pill" (click)="loadFilteredData('OPEN')"><a>Open|</a></li>
+      <li id="openClickTrigger" class="active" data-toggle="pill" (click)="loadFilteredData('OPEN')"><a>Open|</a></li>
       <li data-toggle="pill" (click)="loadFilteredData('CLOSE')"><a>Closed</a></li>
     </ul>
     <div class="panel panel-default">
