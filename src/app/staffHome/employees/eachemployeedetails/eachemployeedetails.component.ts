@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {EmployeeService} from "../employee.service";
 import {ActivatedRoute} from "@angular/router";
 import {ToastsManager} from "ng2-toastr";
-
+import {EmpVendorService} from "./EmpCRUDtabs/emp-vendor-dtls/emp-vendor-dtld.service"
+import {empvendor} from "./EmpCRUDtabs/emp-vendor-dtls/emp-vendor-model"
 @Component({
   selector: 'app-eachemployeedetails',
   templateUrl: './eachemployeedetails.component.html',
@@ -10,17 +11,18 @@ import {ToastsManager} from "ng2-toastr";
 })
 export class EachemployeedetailsComponent implements OnInit {
   empId:'';
-  constructor(private employeeService:EmployeeService, private activatedRoute: ActivatedRoute,private toastManager: ToastsManager) {
+  constructor(private employeeService:EmployeeService, private activatedRoute: ActivatedRoute,private toastManager: ToastsManager
+  ,private employeevendorService : EmpVendorService) {
     this.empId = activatedRoute.snapshot.params['id'];
-
   }
 
   ngOnInit() {
+
   }
 
   onSelectTab(event){
-    console.log(" event in app-eachemployeedetails : ",event);
-    console.log(" employee id from route  in app-eachemployeedetails : ",this.empId);
+
   }
+
 
 }

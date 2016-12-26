@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {EmployeeService} from "../employee.service";
 import {ToastsManager} from "ng2-toastr";
 import {ActivatedRoute} from "@angular/router";
-
+import {EmpVendorService} from "../eachemployeedetails/EmpCRUDtabs/emp-vendor-dtls/emp-vendor-dtld.service"
 @Component({
   selector: 'app-emp-detailed-view',
   templateUrl: './emp-detailed-view.component.html',
@@ -13,9 +13,12 @@ export class EmpDetailedViewComponent implements OnInit {
   fullEmpDtls ={};
   capturedEmpId:'';
 
-  constructor(private employeeService: EmployeeService, private toastManager: ToastsManager,private activatedRoute: ActivatedRoute) {
+  constructor(private employeeService: EmployeeService,
+              private toastManager: ToastsManager,private activatedRoute: ActivatedRoute
+  ,private  employeevendorservice : EmpVendorService) {
     this.empId = activatedRoute.snapshot.params['id'];
     this.capturedEmpId=this.empId;
+    this.employeevendorservice.SelectedEmpId = this.empId;
   }
 
   ngOnInit() {

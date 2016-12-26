@@ -1,0 +1,79 @@
+<div class="container-fluid">
+    <div class="col-xs-12">
+      <br>
+      <!--<empven-crudOperations (Crud)="buttonClicked($event)"></empven-crudOperations>-->
+      <div id="NonTerminated" *ngIf="NonTerminateTable">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong style="float: left">Current</strong>
+          <br>
+        </div>
+        <div class="panel-body">
+          <p-dataTable #dt1 sortOrder="-1" [(value)]="EmployeeVendorNotTerminated" >
+            <p-column field="vendorName" header="Vendor Name" [sortable]="true"></p-column>
+            <p-column field="startDate" header="Start Date" [sortable]="true"></p-column>
+            <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
+            <p-column field="rate" header="Rate" [sortable]="true"></p-column>
+            <!--<p-column header="Attach">-->
+              <!--<template  pTemplate="body">-->
+                <!--<button class="btn btn-default" style="background-color: lightblue" type="button">Upload</button>-->
+              <!--</template>-->
+            <!--</p-column>-->
+          </p-dataTable>
+          <!--<p-dialog header="Emp Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">-->
+            <!--<div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="emp">-->
+              <!--<div class="ui-grid-row">-->
+                <!--<div class="ui-grid-col-4"><label for="vendorName">VenName</label></div>-->
+                <!--<div class="ui-grid-col-8"><input pInputText id="vendorName" [(ngModel)]="emp.vendorName" /></div>-->
+              <!--</div>-->
+              <!--<div class="ui-grid-row">-->
+                <!--<div class="ui-grid-col-4"><label for="startDate">Start Date</label></div>-->
+                <!--<div class="ui-grid-col-8"><input pInputText id="startDate" [(ngModel)]="emp.startDate" /></div>-->
+              <!--</div>-->
+              <!--<div class="ui-grid-row">-->
+                <!--<div class="ui-grid-col-4"><label for="endDate">End Date</label></div>-->
+                <!--<div class="ui-grid-col-8"><input pInputText id="endDate" [(ngModel)]="emp.endDate" /></div>-->
+              <!--</div>-->
+              <!--<div class="ui-grid-row">-->
+                <!--<div class="ui-grid-col-4"><label for="rate">Rate</label></div>-->
+                <!--<div class="ui-grid-col-8"><input pInputText id="rate" [(ngModel)]="emp.rate" /></div>-->
+              <!--</div>-->
+              <!--<div class="ui-grid-row">-->
+                <!--<div class="ui-grid-col-4"><label for="rate">Upload</label></div>-->
+                <!--<div class="ui-grid-col-8"> <button class="btn btn-default" style="background-color: lightblue" type="button">Documents</button></div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<footer>-->
+              <!--<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">-->
+                <!--<button type="button" pButton icon="fa-check"  label="Save"></button>-->
+              <!--</div>-->
+            <!--</footer>-->
+          <!--</p-dialog>-->
+        </div>
+      </div>
+      </div>
+      <br *ngIf="TerminatedTable">
+      <!--<empven-crudOperations (Crud)="buttonClicked($event)"></empven-crudOperations>-->
+      <div id="TerminatedTable" *ngIf="TerminatedTable">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong style="float: left">Previous</strong>
+          <br>
+        </div>
+        <div class="panel-body" >
+          <p-dataTable #dt1 sortOrder="-1" [value]="EmployeeVendorTerminated" >
+            <p-column field="vendorName" header="Vendor Name" [sortable]="true"></p-column>
+            <p-column field="startDate" header="Start Date" [sortable]="true"></p-column>
+            <p-column field="endDate" header="End Date" [sortable]="true"></p-column>
+            <p-column field="rate" header="Rate" [sortable]="true"></p-column>
+            <!--<p-column>-->
+              <!--<template pTemplate type="header">-->
+                <!--<button class="btn btn-default" style="background-color: lightblue" type="button" pButton label="Attach"></button>-->
+              <!--</template>-->
+            <!--</p-column>-->
+          </p-dataTable>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -6,10 +6,10 @@
     <ul class="nav nav-tabs" id="EachEmployeeEditableDetailsTabs">
 
 
-      <li class="active"><a data-toggle="tab" href="#education" (click)="onSelectTab($event)">Education</a></li>
+      <li class="active"><a data-toggle="tab" href="#education" name="edu" (click)="onSelectTab($event)">Education</a></li>
       <li ><a data-toggle="tab" >Contact</a></li>
       <li ><a data-toggle="tab" >Address</a></li>
-      <li ><a data-toggle="tab" href="#vendor">Vendor</a></li>
+      <li ><a data-toggle="tab" href="#vendor" name="vendor"(click)="onSelectTab($event)">Vendor</a></li>
       <li ><a data-toggle="tab" >Projects</a></li>
       <li ><a data-toggle="tab" >Pay rate</a></li>
       <li ><a data-toggle="tab" href="#passport">Passport</a></li>
@@ -33,6 +33,11 @@
       </div>
     </div>
   </div>
+
+  <div id="vendor" class="tab-pane fade ">
+  <app-empvendordetailed [empId]="empId"></app-empvendordetailed>
+  </div>
+
   <div id="passport" class="tab-pane fade">
     <div class="container-fluid">
       <div class="col-xs-12">
@@ -65,48 +70,6 @@
                 </tbody>
               </table>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="vendor"  class="tab-pane fade">
-    <br>
-    <div class="container-fluid">
-      <div class="col-xs-12">
-       <div class="panel panel-default">
-         <div class="panel-heading">
-           <strong style="float: left">Current</strong>
-           <br>
-         </div>
-         <div class="panel-body">
-           <p-dataTable #dt1 sortOrder="-1">
-             <p-column field="venNm" header="Vendor Name" [sortable]="true"></p-column>
-             <p-column field="strtDt" header="Start Date" [sortable]="true"></p-column>
-             <p-column field="endDt" header="End Date" [sortable]="true"></p-column>
-             <p-column field="rate" header="Rate" [sortable]="true"></p-column>
-             <p-column>
-               <template pTemplate type="header">
-                 <button class="btn btn-default" style="background-color: lightblue" type="button" pButton label="Attach"></button>
-               </template>
-             </p-column>
-           </p-dataTable>
-         </div>
-       </div>
-        <br>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <strong style="float: left">Previous</strong>
-            <br>
-          </div>
-          <div class="panel-body">
-            <p-dataTable #dt1 sortOrder="-1">
-              <p-column field="venNm" header="Vendor Name" [sortable]="true"></p-column>
-              <p-column field="strtDt" header="Start Date" [sortable]="true"></p-column>
-              <p-column field="endDt" header="End Date" [sortable]="true"></p-column>
-              <p-column field="rate" header="Rate" [sortable]="true"></p-column>
-              <p-column field="rate" header="Attachments" [sortable]="true"></p-column>
-            </p-dataTable>
           </div>
         </div>
       </div>

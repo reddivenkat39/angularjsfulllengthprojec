@@ -25,7 +25,7 @@ import { FileUploadComponent } from "./users/file-upload/file-upload.component";
 import { AddnewcandidateComponent } from './staffHome/candidates/addnewcandidate/addnewcandidate.component';
 import { DatatableComponent } from './staffHome/candidates/datatable/datatable.component';
 import {DatatableService} from "./staffHome/candidates/datatable/datatable.service";
-import {DataTableModule} from "primeng/components/datatable/datatable";
+import { DataTableModule, DialogModule,FileUploadModule } from 'primeng/primeng';
 import {SharedModule} from "primeng/components/common/shared";
 import {ButtonModule} from "primeng/components/button/button";
 import {PaginatorModule} from "primeng/components/paginator/paginator";
@@ -57,7 +57,9 @@ import { EmpDetailedViewComponent } from './staffHome/employees/emp-detailed-vie
 import { EmpStatusTabsComponent } from './staffHome/employees/employeeStatusTabs/emp-status-tabs.component';
 import { EmpEduDtlsComponent } from './staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-edu-dtls/emp-edu-dtls.component';
 import {EmpCrudTabsService} from "./staffHome/employees/eachemployeedetails/emp-crud-tabs.service";
-
+import {EmpVendorDetailed} from "./staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-vendor-dtls/emp-vendor-dtls.component"
+import {EmpVendorService} from "./staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-vendor-dtls/emp-vendor-dtld.service"
+import {EmpVenCrudComponent} from "./staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-vendor-dtls/emp-vendor-dtldCrudComponent"
 
 let options: ToastOptions = new ToastOptions({
   animate: 'fade',
@@ -94,7 +96,9 @@ let options: ToastOptions = new ToastOptions({
     EmpBreadCrumbsComponent,
     EmpStatusTabsComponent,
     EmpDetailedViewComponent,
-    EmpEduDtlsComponent
+    EmpEduDtlsComponent,
+    EmpVendorDetailed,
+    EmpVenCrudComponent
   ],
   imports: [
     ToastrModule,
@@ -107,6 +111,8 @@ let options: ToastOptions = new ToastOptions({
     ReactiveFormsModule,
     MaterialModule.forRoot(),
     DataTableModule,
+    FileUploadModule,
+    DialogModule,
     SharedModule,
     ButtonModule,
     PaginatorModule,
@@ -115,14 +121,15 @@ let options: ToastOptions = new ToastOptions({
     TabViewModule,
   ],
 
-  providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService,EmployeeService, VendorsService,RoleAccessService, ProjectService,InvoiceService,EmpCrudTabsService,
+  providers: [StaffService,LoginGuard,CandidatesService, AddstaffService, DatatableService,EmployeeService, VendorsService,RoleAccessService, ProjectService,InvoiceService,EmpCrudTabsService,
     {
       provide: HttpService,
       useFactory: (backend: XHRBackend, options: RequestOptions) => {
         return new HttpService(backend, options);
       },
       deps: [XHRBackend, RequestOptions]
-    }
+    },
+    EmpVendorService
   ],
   bootstrap: [AppComponent]
 })
