@@ -1,0 +1,100 @@
+<button (click)="addContData()">Add</button>
+<button (click)="saveContData()">Save</button>
+<button (click)="closeContDataForm()">Close</button>
+
+
+<div class="container">
+  <div class="row">
+    <div *ngFor="let contData of getContactData">
+      <div class="col-xs-2">
+        <table class="table borderless">
+          <tbody>
+          <tr>
+            <th>Home EmailAddress:</th>
+            <td>{{contData.homeEmail}}</td>
+          </tr>
+          <tr>
+            <th>Home Phone:</th>
+            <td>{{contData.homePhone}}</td>
+          </tr>
+          <tr>
+            <th>Mobile Number:</th>
+            <td>{{contData.mobilePhone}}</td>
+          </tr>
+          <tr>
+            <th>Work EmailAddress:</th>
+            <td>{{contData.workEmail}}</td>
+          </tr>
+          <tr>
+            <th>Work Phone:</th>
+            <td>{{contData.workPhone}}</td>
+          </tr>
+
+
+          <tr>
+            <th>Emergency Contact Name:</th>
+            <td>{{contData.emergCntName}}</td>
+          </tr>
+          <tr>
+            <th>Emergency Contact Number:</th>
+            <td>{{contData.emergCntNum1}}</td>
+          </tr>
+          <tr>
+            <th>Emergency Second Contact Number:</th>
+            <td>{{contData.emergCntNum2}}</td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-xs-2">
+
+    </div>
+
+
+    <div class="col-xs-2">
+      <div *ngIf="showContAddForm">
+        <table class="table borderless">
+          <tbody>
+          <tr hidden="true">
+            <td><strong>empId:</strong></td>
+            <td><input [(ngModel)]="insertContData.empId"
+                       type="text"/></td>
+          </tr>
+          <tr>
+            <td><strong>Home EmailAddress:</strong></td>
+            <td><input [(ngModel)]="insertContData.homeEmail"
+                       type="email"/></td>
+          </tr>
+          <tr>
+            <td><strong>Home Phone:</strong></td>
+            <td><input [(ngModel)]="insertContData.homePhone" type="text"/></td>
+          </tr>
+          <tr>
+            <td><strong>Mobile Number:</strong></td>
+            <td><input [(ngModel)]="insertContData.mobilePhone" type="text"/></td>
+          </tr>
+          <tr>
+            <td><strong>Work EmailAddress :</strong></td>
+            <td><input [(ngModel)]="insertContData.workEmail" type="email"/></td>
+          </tr>
+          <tr>
+            <td><strong>Work Phone :</strong></td>
+            <td><input [(ngModel)]="insertContData.workPhone" type="text"/></td>
+          </tr>
+          <tr>
+            <td><strong>Emergency Contact Number :</strong></td>
+            <td><input [(ngModel)]="insertContData.emergCntNum" type="text"/></td>
+          </tr>
+          <tr>
+            <td><strong>Work EmailAddress :</strong></td>
+            <td><input [(ngModel)]="insertContData.emergCntNum1" type="text"/></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

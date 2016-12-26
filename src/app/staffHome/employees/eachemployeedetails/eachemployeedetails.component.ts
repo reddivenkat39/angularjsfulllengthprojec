@@ -10,12 +10,40 @@ import {ToastsManager} from "ng2-toastr";
 })
 export class EachemployeedetailsComponent implements OnInit {
   empId:'';
+
+  /*
+  switch cases for Selecting Tabs
+   */
+isEduSelected: boolean = false;
+isContSelected: boolean = false;
+
+
+
+
   constructor(private employeeService:EmployeeService, private activatedRoute: ActivatedRoute,private toastManager: ToastsManager) {
     this.empId = activatedRoute.snapshot.params['id'];
 
   }
 
   ngOnInit() {
+    this.onSelectTab('EDU');
+  }
+
+  onSelectTab(selectedTab: string){
+    switch(selectedTab){
+      case 'EDU':
+      this.isEduSelected=true;
+        this.isContSelected= false;
+        break;
+      case 'CONT':
+      this.isContSelected= true;
+        this.isEduSelected=false;
+        break;
+    }
+
+
+    console.log(" event in app-eachemployeedetails : ",event);
+    console.log(" employee id from route  in app-eachemployeedetails : ",this.empId);
   }
 
 }

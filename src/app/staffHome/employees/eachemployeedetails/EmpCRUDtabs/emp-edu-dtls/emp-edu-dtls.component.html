@@ -1,0 +1,77 @@
+<button (click)="addEduData()" >Add</button>
+<button (click)="saveEduData()">Save</button>
+<button (click)="closeEduDataForm()">Close</button>
+
+
+
+<div class="container">
+  <div class="row">
+    <button (click)="edit==true" >Edit</button>
+    <div *ngFor="let eduData of getEducationData;  let i=index; trackBy:trackByIndex">
+      <div class="col-xs-2">
+        <label>Edit : <input type="checkbox" value="checked" [(ngModel)]="editable"></label><br />
+        <table class="table borderless">
+          <tbody>
+          <tr>
+            <!--<th>Qualification:</th>-->
+
+            <td><input [hidden]="true" [disabled]="!editable" [(ngModel)]="eduData.empId" ngDefaultControl="eduData.empId" type="text"/></td>
+          </tr>
+          <tr>
+            <th>Qualification:</th>
+
+            <td><input [readonly]="editable" [(ngModel)]="eduData.qualificationName" ngDefaultControl="eduData.qualificationName" type="text"/></td>
+          </tr>
+          <tr>
+            <th>Institution:</th>
+            <td><input [readonly]="editable" [(ngModel)]="eduData.instituteName" ngDefaultControl="eduData.instituteName" type="text"/></td>
+          </tr>
+          <tr>
+            <th>Graduation Year:</th>
+            <td><input [readonly]="editable" [(ngModel)]="eduData.gradYear" ngDefaultControl="eduData.gradYear" type="text"/></td>
+          </tr>
+          <tr>
+            <th>GPA:</th>
+            <td><input [readonly]="editable" [(ngModel)]="eduData.gpaPct" ngDefaultControl="eduData.gpaPct" type="text"/></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-xs-2">
+      <div *ngIf="showAddForm">
+        <table class="table borderless">
+          <tbody>
+          <tr hidden="true">
+            <td><strong>empId:</strong></td>
+            <td><input [(ngModel)]="insertEducationData.empId" (ngModelChange)="insertEducationData.empId = $event"
+                       type="text"/></td>
+          </tr>
+          <tr>
+            <td><strong>Qualification:</strong></td>
+            <td><input [(ngModel)]="insertEducationData.qualificationName"
+                       (ngModelChange)="insertEducationData.qualificationName = $event" type="text"/></td>
+          </tr>
+          <tr>
+            <td><strong>Institution:</strong></td>
+            <td><input [(ngModel)]="insertEducationData.instituteName" type="text"/></td>
+          </tr>
+          <tr>
+            <td><strong>Graduation Year:</strong></td>
+            <td><input [(ngModel)]="insertEducationData.gradYear" type="text"/></td>
+          </tr>
+          <tr>
+            <td><strong>GPA :</strong></td>
+            <td><input [(ngModel)]="insertEducationData.gpaPct" type="text"/></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
