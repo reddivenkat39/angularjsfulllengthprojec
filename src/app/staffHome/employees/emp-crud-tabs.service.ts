@@ -16,7 +16,7 @@ export class EmpCrudTabsService {
     const empIdBody = {empId : empId };
     console.log("empId in bodySend",empId);
     console.log("empId in headersSend",headersSend);
-    return this.http.post("http://localhost:8080/empedu/edudata",empIdBody,{headers: headersSend}).map(
+    return this.http.post("http://10.10.5.55:8080/empedu/edudata",empIdBody,{headers: headersSend}).map(
       (res:Response)=> {
         console.log("res.json from /empedu/edudata By id",res.json());
         return res.json();
@@ -33,7 +33,7 @@ export class EmpCrudTabsService {
     const bodySend = JSON.stringify(educationData);
     console.log("empId in bodySend",bodySend);
     console.log("empId in headersSend",headersSend);
-    return this.http.post("http://localhost:8080/empedu/saveedudtls",bodySend,{headers: headersSend}).map(
+    return this.http.post("http://10.10.5.55:8080/empedu/saveedudtls",bodySend,{headers: headersSend}).map(
       (res:Response)=> {
         console.log("res.json from /empedu/saveedudtls By id",res.json());
         return res.json();
