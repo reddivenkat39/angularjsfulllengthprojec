@@ -19,11 +19,11 @@ export class EmpEduDtlsComponent implements OnInit {
 
   // insert Education Data object
   eduData = {
-    'empId'            : '',
-    'qualificationName': '',
-    'instituteName'    : '',
-    'gradYear'         : '',
-    'gpaPct'           : ''
+    empId            : '',
+    qualificationName: '',
+    instituteName  : '',
+    gradYear         : '',
+    gpaPct           : ''
   };
 
   constructor(private empCrudTabsService: EmpCrudTabsService, private toastManager: ToastsManager) {
@@ -88,9 +88,9 @@ export class EmpEduDtlsComponent implements OnInit {
     console.log("empId in loadEmpEducationDetailsByEmpId : ", empId);
     this.empCrudTabsService.getEmpEduDtlsByEmpId(empId).subscribe(
       res => {
+        console.log("EmpEduDtlsComponent : loadEmpEducationDetailsByEmpId : response : ", res);
         if (res.datares != null && res.errorres == null) {
           this.getEducationData = res.datares;
-          console.log("res.datares from loadEmpEducationDetailsByEmpId :  ", res.datares);
         } else {
           console.log("error response from loadEmpEducationDetailsByEmpId :", res.errorres);
         }
