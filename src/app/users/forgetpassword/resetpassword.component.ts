@@ -68,8 +68,6 @@ export class ResetpasswordComponent implements OnDestroy, OnInit {
     this.resetpasswordClicked = !this.resetpasswordClicked;
     this.staffService.sendResetPasswordCredentials(this.resetPassword).subscribe(
       res => {
-
-
         if (res.errorres != null) {
           console.log(res.errorres);
         }
