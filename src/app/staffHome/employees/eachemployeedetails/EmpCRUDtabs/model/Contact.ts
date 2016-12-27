@@ -1,7 +1,7 @@
 /**
  * Created by bapirazz naidu on 12/24/2016.
  */
-export interface Contact{
+export class Contact{
   empId;
   homeEmail;
   homePhone;

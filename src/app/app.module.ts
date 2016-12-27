@@ -59,6 +59,8 @@ import { EmpEduDtlsComponent } from './staffHome/employees/eachemployeedetails/E
 
 import { EmpContDtlsComponent } from './staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-cont-dtls/emp-cont-dtls.component';
 import {EmpCrudTabsService} from "./staffHome/employees/emp-crud-tabs.service";
+import { EmpAddrDtlsComponent } from './staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-addr-dtls/emp-addr-dtls.component';
+import { EmpBenefitsComponent } from './staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-benefits/emp-benefits.component';
 
 
 let options: ToastOptions = new ToastOptions({
@@ -97,7 +99,9 @@ let options: ToastOptions = new ToastOptions({
     EmpStatusTabsComponent,
     EmpDetailedViewComponent,
     EmpEduDtlsComponent,
-    EmpContDtlsComponent
+    EmpContDtlsComponent,
+    EmpAddrDtlsComponent,
+    EmpBenefitsComponent
   ],
   imports: [
     ToastrModule,

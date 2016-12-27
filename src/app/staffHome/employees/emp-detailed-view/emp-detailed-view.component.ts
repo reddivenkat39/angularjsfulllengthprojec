@@ -10,7 +10,9 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class EmpDetailedViewComponent implements OnInit {
   empId:'';
-  fullEmpDtls ={};
+  fullEmpDtls ={
+    empId:''
+  };
   capturedEmpId:'';
 
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager,private activatedRoute: ActivatedRoute) {

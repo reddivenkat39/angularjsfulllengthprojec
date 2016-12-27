@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {EmpCrudTabsService} from "../../../emp-crud-tabs.service";
-import {Education} from "../model/Education.interface";
+import {Education} from "../model/Education";
 import {ToastsManager} from "ng2-toastr";
 
 @Component({
@@ -11,9 +11,11 @@ import {ToastsManager} from "ng2-toastr";
 export class EmpEduDtlsComponent implements OnInit {
   @Input() employeeId: string;
 
-  showAddForm: boolean = false;
+  displayDialog: boolean;
+  newEduData: boolean;
 
 
+  selectedEducation: Education[];
   getEducationData: Education[] = [];  // empty array used to get the all the employee education details
 
 
@@ -30,34 +32,25 @@ export class EmpEduDtlsComponent implements OnInit {
   }
 
 
-  /*
+   /*
    on page loading  loadEmpEducationDetailsByEmpId
    */
   ngOnInit() {
     console.log(" employee Id from eachEmployeeDetails : ", this.employeeId);
     this.loadEmpEducationDetailsByEmpId(this.employeeId);
-    this.eduData.empId = this.employeeId;
+    // this.eduData.empId = this.employeeId;
   }
 
 
-  // trackByIndex(index: number, obj: any): any {
-  //   return index;
-  // }
 
-
-  /*
-   to show the Add Edu Form
-   */
-  addEduData() {
-    this.showAddForm = true;
+  showDialogToAdd() {
+    this.newEduData = true;
+    this.displayDialog = true;
+console.log(" showDialogToAdd : invoked");
   }
 
-  /*
-   to close the Add Edu Form
-   */
-  closeEduDataForm() {
-    this.showAddForm = false;
-  }
+
+
 
 
   /*

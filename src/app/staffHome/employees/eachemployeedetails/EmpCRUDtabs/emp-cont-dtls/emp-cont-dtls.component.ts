@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Education} from "../model/Education.interface";
-import {Contact} from "../model/Contact.interface";
+import {Education} from "../model/Education";
+import {Contact} from "../model/Contact";
 import {EmpCrudTabsService} from "../../../emp-crud-tabs.service";
 import {ToastsManager} from "ng2-toastr";
 
@@ -14,7 +14,7 @@ export class EmpContDtlsComponent implements OnInit {
 
   showContAddForm: boolean = false;
 
-
+  selectedContact: Contact[];
   getContactData: Contact[] = [] // pull the contact data
 
   /*
@@ -40,7 +40,7 @@ export class EmpContDtlsComponent implements OnInit {
   ngOnInit() {
     console.log("this.insertContData.empId from eachemployeedetails component  : ", this.employeeId);
     this.loadContData(this.employeeId);
-    this.insertContData.empId = this.employeeId;
+    // this.insertContData.empId = this.employeeId;
   }
 
 
