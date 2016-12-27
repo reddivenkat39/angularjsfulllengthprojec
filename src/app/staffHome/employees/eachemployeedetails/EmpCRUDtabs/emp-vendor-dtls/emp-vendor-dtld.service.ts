@@ -9,7 +9,6 @@ import {Observable} from "rxjs";
 
 @Injectable()
 export class EmpVendorService{
-  public  EmpVendorService : Observable<any> ;
  public  SelectedEmpId : String;
   constructor(private http : HttpService){}
   // getEmpVendorrelationData is to get the emp vendor data

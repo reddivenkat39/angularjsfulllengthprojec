@@ -1,0 +1,298 @@
+<!--<div class="container-fluid">-->
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <p class="navbar-btn">
+        <a data-toggle="tab" class="btn btn-default"  href="#PassPort" >Passport</a>
+      </p>
+    </li>
+    <li>
+      <p class="navbar-btn">
+        <a data-toggle="tab" class="btn btn-default" href="#LCA" >LCA</a>
+      </p>
+    </li>
+    <li>
+      <p class="navbar-btn">
+        <a data-toggle="tab" class="btn btn-default"  href="#VisaType" >Visa Type</a>
+      </p>
+    </li>
+    <li>
+    <p class="navbar-btn">
+      <a data-toggle="tab" class="btn btn-default"  href="#I94">I94</a>
+    </p>
+    </li>
+  </ul>
+
+
+
+  <div class="tab-content">
+    <div id="PassPort" class="tab-pane fade in active">
+      <h3 style="padding-left: 35px;">Passport Details</h3>
+
+
+      <div class="container-fluid">
+        <div>
+          <!--<div class="col-xs-12">-->
+            <!--<div class="panel panel-default">-->
+              <!--<div class="panel-body" >-->
+                <!--<div class="container-fluid">-->
+                  <div  class="col-xs-12">
+                    <table class="table borderless">
+                      <!--<thead>More Info</thead>-->
+                      <tbody>
+
+                      <tr>
+                        <span style="font-weight: bold;display: inline-block;">Passport Number:</span>
+                        <span style="padding-left: 20px;display: inline-block">
+                          <div>{{passportdetails.passportNum}}</div>
+                        </span>
+                      </tr>
+                      <tr style="padding-right: 20px;padding-top: 40px">
+                        <span style="font-weight: bold;display: inline-block">Start Date:</span>
+                        <span style="padding-left: 40px;display: inline-block;">
+                          <div >{{passportdetails.passportStrtDt | date:'shortDate'}}</div>
+                        </span>
+                      </tr>
+                      <tr style=" padding-left: 20px;padding-top: 40px">
+                        <span style="font-weight: bold;display: inline-block">End Date:</span>
+                        <span style="padding-left: 40px;display: inline-block">
+                          <div>{{passportdetails.passportEndDt | date:'shortDate'}}</div>
+                        </span>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>`
+          <!--</div>-->
+        </div>
+      </div>
+
+
+
+    </div>
+
+    <div id="LCA" class="tab-pane fade">
+      <h3>LCA Details</h3>
+
+      <div class="container-fluid">
+        <div>
+          <div  class="col-xs-12">
+            <table class="table borderless">
+              <tbody>
+              <tr>
+                <span style="font-weight: bold;display: inline-block;">Lca Number:</span>
+                <span style="padding-left: 20px;display: inline-block">
+                          <div>{{LcaDetails.lcaNum}}</div>
+                        </span>
+              </tr>
+              <tr style="padding-right: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Lca Desg</span>
+                <span style="padding-left: 40px;display: inline-block;">
+                          <div >{{LcaDetails.lcaDesg}}</div>
+                        </span>
+              </tr>
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Lca Wages</span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{LcaDetails.lcaWages}}</div>
+                        </span>
+              </tr>
+
+
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Lca Start Date </span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{LcaDetails.startDt| date:'shortDate'}}</div>
+                        </span>
+              </tr>
+
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Lca End Date </span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{LcaDetails.endDt| date:'shortDate'}}</div>
+                        </span>
+              </tr>
+
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Lca Certificate</span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{LcaDetails.lcaCertfdDt| date:'shortDate'}}</div>
+                        </span>
+              </tr>
+
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Lca clientNum</span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{LcaDetails.clientNum}}</div>
+                        </span>
+              </tr>
+
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Lca AddrLine1</span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{LcaDetails.loc1AddrLine1}}</div>
+                        </span>
+              </tr>
+
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Lca AddrLine2</span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{LcaDetails.loc1AddrLine2}}</div>
+                        </span>
+              </tr>
+
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Lca loc1City</span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{LcaDetails.loc1City}}</div>
+                        </span>
+              </tr>
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Lca loc1State</span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{LcaDetails.loc1State}}</div>
+                        </span>
+              </tr>
+
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Lca ZIP</span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{LcaDetails.loc1Zip}}</div>
+                        </span>
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+          <!--</div>-->
+        </div>
+      </div>
+
+    </div>
+
+    <div id="VisaType" class="tab-pane fade">
+      <h3>Visa Type</h3>
+
+
+      <div class="container-fluid" *ngFor="let ImmigrationDetail of ImmigrationDetails">
+        <div>
+          <!--<div class="col-xs-12">-->
+          <!--<div class="panel panel-default">-->
+          <!--<div class="panel-body" >-->
+          <!--<div class="container-fluid">-->
+          <div  class="col-xs-12">
+            <table class="table borderless">
+              <!--<thead>More Info</thead>-->
+              <tbody>
+
+              <tr>
+                <span style="font-weight: bold;display: inline-block;">Document Name:</span>
+                <span style="padding-left: 20px;display: inline-block">
+                          <div>{{ImmigrationDetail.docName}}</div>
+                        </span>
+              </tr>
+              <tr style="padding-right: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Document Type:</span>
+                <span style="padding-left: 40px;display: inline-block;">
+                          <div >{{ImmigrationDetail.docType}}</div>
+                        </span>
+              </tr>
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Document Process Type:</span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{ImmigrationDetail.docProcTyp}}</div>
+                        </span>
+              </tr>
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Document Reciept Date:</span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{ImmigrationDetail.docReceiptDt}}</div>
+                        </span>
+              </tr>
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Document Reciept Number:</span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{ImmigrationDetail.docReceiptNum}}</div>
+                        </span>
+              </tr>
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Document Status:</span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{ImmigrationDetail.docStatus}}</div>
+                        </span>
+              </tr>
+
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Document Start Date:</span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{ImmigrationDetail.docStrtDt}}</div>
+                        </span>
+              </tr>
+
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Document End Date:</span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{ImmigrationDetail.docEndDt}}</div>
+                        </span>
+              </tr>
+              </tbody>
+            </table>
+          </div>`
+          <!--</div>-->
+        </div>
+      </div>
+
+
+
+    </div>
+    <div id="I94" class="tab-pane fade">
+      <h3>I94</h3>
+
+
+      <div class="container-fluid">
+        <div>
+          <div  class="col-xs-12">
+            <table class="table borderless">
+              <tbody>
+
+              <tr>
+                <span style="font-weight: bold;display: inline-block;">I94 Number:</span>
+                <span style="padding-left: 20px;display: inline-block">
+                          <div>{{I94Details.i94Num}}</div>
+                        </span>
+              </tr>
+              <tr style="padding-right: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">I94 Start Date:</span>
+                <span style="padding-left: 40px;display: inline-block;">
+                          <div >{{I94Details.StrtDt | date:'shortDate'}}</div>
+                        </span>
+              </tr>
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">End Date:</span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{I94Details.EndDt | date:'shortDate'}}</div>
+                        </span>
+              </tr>
+
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Visa Type:</span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{I94Details.visaType}}</div>
+                        </span>
+              </tr>
+
+              <tr style=" padding-left: 20px;padding-top: 40px">
+                <span style="font-weight: bold;display: inline-block">Visa Validity Date:</span>
+                <span style="padding-left: 40px;display: inline-block">
+                          <div>{{I94Details.visaValidityDt}}</div>
+                        </span>
+              </tr>
+              </tbody>
+            </table>
+          </div>`
+          <!--</div>-->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<!--style="font-weight: bold;text-align: center; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);width: 100px;height: 30px;"-->

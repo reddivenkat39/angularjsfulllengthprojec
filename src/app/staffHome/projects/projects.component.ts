@@ -29,9 +29,10 @@ export class ProjectsComponent implements OnInit {
   allSOWInvoices:SowInvoices[]=[];
   closedInvoices:SowInvoices[]=[];
   openInvoices: SowInvoices[]=[];
-  selectedSowRow:Sow;
+  orderedInvoices : SowInvoices[] = [];
   // used to get the invoices by sownum by selecting the row
-  selectedSowInvoice:SowInvoices;
+  selectedSowRow:Sow;
+
 
   // used to get the invoices individual amounts by sownum
   allInvsAmnt:number=0;
@@ -41,9 +42,9 @@ export class ProjectsComponent implements OnInit {
 
 // reused varaibles in header names, header amounts, filtered invoices
   filteredInvoices: SowInvoices[] =[];
-  tableHeader: string ='';
-  tableInvAmt: number=0;
-
+  tableHeader: string =''; //table Header value based on the selection
+  tableInvAmt: number=0;//table inv amt based on selection
+  overStatus:string = "";//for changing status from open to pastdue basing on current date
 
   constructor(private projectService: ProjectService, private toastManager:ToastsManager ) {
   }
@@ -91,21 +92,6 @@ export class ProjectsComponent implements OnInit {
     this.loadAllSowData();
   }
 
-  defaultFirstRowSelect() {
-    //default first row selection
-    console.log("defaultFirstRowSelect :selectedSowInvoice", this.selectedSowInvoice );
-    this.selectedSowRow = this.allSows[0];
-
-    this.OnClickSowInvoiceTabs();
-    this.viewSOWDetails.vendorName   = this.selectedSowRow.venName;
-    this.viewSOWDetails.sowNum  = this.selectedSowRow.sowNum;
-  }
-
-  OnClickSowInvoiceTabs(){
-    this.onRowSelect(this.selectedSowRow.sowNum);
-  }
-
-
 
 /*
 to load all sow data
@@ -128,12 +114,22 @@ to load all sow data
     );
   }
 
-  onRowSelect(sow:Sow){
-    /*console.log("sowNum is ....: ",selectedSowInvoice.sowNum);*/
+  defaultFirstRowSelect() {
+    //default first row selection
+    this.selectedSowRow = this.allSows[0];
+    console.log("defaultFirstRowSelect :selectedSowRow", this.selectedSowRow );
+    this.onRowSelect(this.selectedSowRow);
+  }
 
+  onRowSelect(sow:Sow){
+    console.log("onRowSelect Sow",sow.sowNum);
     this.allInvsAmnt=0;
     this.closedInvsAmnt=0;
     this.openInvsAmnt=0;
+    this.allSOWInvoices=[];
+    this.openInvoices =[];
+    this.closedInvoices =[];
+    $("#openClickTrigger").trigger( "click" );
 
     this.viewSOWDetails.vendorName   = sow.venName;
     this.viewSOWDetails.sowNum  = sow.sowNum;
@@ -151,11 +147,22 @@ to load all sow data
           this.closedInvoices =[];
           res.datares.filter(row => {
             if (row.invStatus == "OPEN") {//fill open invoices
-
               this.openInvsAmnt += row.invAmt;
               console.log("vendor openinvamount is :",this.openInvsAmnt);
               this.openInvoices.push(row);
               console.log("vendor openinvoices are :",this.openInvoices);
+              var currentDt = new Date((new Date()).setHours(0, 0, 0, 0));//to get only date
+              //Compare invoice due date with current date
+              if((new Date(row.dueDt)) < currentDt ){
+                console.log((new Date(row.dueDt)) < currentDt);
+                console.log("current date",currentDt);
+                console.log("row date",new Date(row.dueDt));
+                var oneDay = 24*60*60*1000;
+                var diffDays = Math.round(Math.abs((new Date(row.dueDt).getTime() - new Date().getTime())/(oneDay)));
+
+                this.overStatus ="OVER DUE by "+ diffDays +" days"; //show past due status with day count
+                row.invStatus = this.overStatus; //for past due amounts change of status
+              }
             }else if(row.invStatus == "CLOSED") {//fill close invoices
               this.closedInvsAmnt += row.invAmt;
               console.log("vendor closedInvsAmnt is :",this.closedInvsAmnt);
@@ -174,6 +181,7 @@ to load all sow data
 
           console.log('Error for SOW Data',res.errores);
         }
+        this.orderedInvoices=this.openInvoices.concat(this.closedInvoices);
         this.loadFilteredData('OPEN');
       }
 
@@ -186,7 +194,7 @@ to load all sow data
     switch(filter)
     {
       case "All" :
-        this.filteredInvoices = this.allSOWInvoices;
+        this.filteredInvoices = this.orderedInvoices;
         this.tableHeader = "All Invoices";
         this.tableInvAmt=this.allInvsAmnt;
         console.log("Filtered invoices : All:", this.filteredInvoices);

@@ -56,10 +56,14 @@ import { EmpBreadCrumbsComponent } from './staffHome/employees/employeeNavigatio
 import { EmpDetailedViewComponent } from './staffHome/employees/emp-detailed-view/emp-detailed-view.component';
 import { EmpStatusTabsComponent } from './staffHome/employees/employeeStatusTabs/emp-status-tabs.component';
 import { EmpEduDtlsComponent } from './staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-edu-dtls/emp-edu-dtls.component';
-import {EmpCrudTabsService} from "./staffHome/employees/eachemployeedetails/emp-crud-tabs.service";
+
+import { EmpContDtlsComponent } from './staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-cont-dtls/emp-cont-dtls.component';
+import {EmpCrudTabsService} from "./staffHome/employees/emp-crud-tabs.service";
 import {EmpVendorDetailed} from "./staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-vendor-dtls/emp-vendor-dtls.component"
 import {EmpVendorService} from "./staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-vendor-dtls/emp-vendor-dtld.service"
 import {EmpVenCrudComponent} from "./staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-vendor-dtls/emp-vendor-dtldCrudComponent"
+import {EmpworkAuthDtls} from "./staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-work-auth-dtls/emp-work-auth-dtls-Main"
+import {EmployeeWorkAuthorization} from "./staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-work-auth-dtls/emp-work-auth-dtls-service";
 
 let options: ToastOptions = new ToastOptions({
   animate: 'fade',
@@ -97,8 +101,10 @@ let options: ToastOptions = new ToastOptions({
     EmpStatusTabsComponent,
     EmpDetailedViewComponent,
     EmpEduDtlsComponent,
+    EmpContDtlsComponent,
     EmpVendorDetailed,
-    EmpVenCrudComponent
+    EmpVenCrudComponent,
+    EmpworkAuthDtls
   ],
   imports: [
     ToastrModule,
@@ -121,7 +127,8 @@ let options: ToastOptions = new ToastOptions({
     TabViewModule,
   ],
 
-  providers: [StaffService,LoginGuard,CandidatesService, AddstaffService, DatatableService,EmployeeService, VendorsService,RoleAccessService, ProjectService,InvoiceService,EmpCrudTabsService,
+  providers: [StaffService,LoginGuard,CandidatesService, AddstaffService, DatatableService,EmployeeService, VendorsService,RoleAccessService, ProjectService,InvoiceService,
+    EmpCrudTabsService,
     {
       provide: HttpService,
       useFactory: (backend: XHRBackend, options: RequestOptions) => {
@@ -129,7 +136,8 @@ let options: ToastOptions = new ToastOptions({
       },
       deps: [XHRBackend, RequestOptions]
     },
-    EmpVendorService
+    EmpVendorService,
+    EmployeeWorkAuthorization
   ],
   bootstrap: [AppComponent]
 })

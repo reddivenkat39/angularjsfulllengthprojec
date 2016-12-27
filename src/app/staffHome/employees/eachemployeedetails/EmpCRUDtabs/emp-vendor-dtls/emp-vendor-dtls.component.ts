@@ -16,8 +16,8 @@ export class EmpVendorDetailed implements OnInit{
   EmployeeVendorData : empvendor[] =[];
    EmployeeVendorTerminated :empvendor[]= [];
    EmployeeVendorNotTerminated : empvendor[] = [];
-   TerminatedTable : Boolean = true;
-   NonTerminateTable : Boolean = true;
+   TerminatedTable : Boolean = false;
+   NonTerminateTable : Boolean = false;
   private emp:empvendor;
   displayDialog: boolean;
 constructor(private employeevendorService:EmpVendorService){}
