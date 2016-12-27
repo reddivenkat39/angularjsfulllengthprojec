@@ -98,6 +98,22 @@ export class EmpCrudTabsService {
   /*
    to pull the Project Details by Employeee Id
    */
+
+    //get the pay-roll details by employee id
+    getEmpPayrollByEmpId(empId)
+    {
+        console.log("into getEmpPayrollByEmpId method");
+        const headersSend = new Headers({'Content-Type': 'application/json'});
+        const empIdBody = {empId: empId};
+        console.log("empId in bodySend", empId);
+        console.log("empId in headersSend", headersSend);
+        return this.http.post("http://10.10.5.55:8080/payroll/byid", empIdBody, {headers: headersSend}).map(
+            (res: Response) => {
+                console.log("res.json from /payroll/byid By id", res.json());
+                return res.json();
+            }
+        );
+}
   getEmpProjDtlsByEmpId(empId){
     console.log("into getEmpProjDtlsByEmpId method");
     const headersSend = new Headers({'Content-Type':'application/json'});
@@ -111,6 +127,7 @@ export class EmpCrudTabsService {
       }
     );
   }
+
 
 
 }

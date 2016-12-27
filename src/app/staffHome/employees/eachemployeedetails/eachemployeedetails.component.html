@@ -9,7 +9,7 @@
       <li><a data-toggle="tab" href="#address">Address</a></li>
       <li><a data-toggle="tab" href="#vendor">Vendor</a></li>
       <li><a data-toggle="tab" href="#projects">Projects</a></li>
-      <li><a data-toggle="tab">Pay rate</a></li>
+      <li><a data-toggle="tab" href="#payroll">Pay rate</a></li>
       <li><a data-toggle="tab" href="#passport">Passport</a></li>
       <li><a data-toggle="tab">Work Authorization</a></li>
       <li><a data-toggle="tab" href="#benefits">Benefits</a></li>
@@ -41,12 +41,19 @@
     </div>
   </div>
   <div id="projects" class="tab-pane fade">
-    <div class="container-fluid">
-      <div class="col-xs-12">
-        <app-emp-proj-dtls [employeeId]="empId"></app-emp-proj-dtls>
+      <div class="container-fluid">
+          <div class="col-xs-12">
+              <app-emp-proj-dtls [employeeId]="empId"></app-emp-proj-dtls>
+          </div>
       </div>
-    </div>
   </div>
+    <div id="payroll" class="tab-pane fade">
+        <div class="container-fluid">
+            <div class="col-xs-12">
+                <app-emp-pay-roll [employeeId]="empId"></app-emp-pay-roll>
+            </div>
+        </div>
+    </div>
    <div id="benefits" class="tab-pane fade">
        <div class="container-fluid">
          <div class="col-xs-12">
