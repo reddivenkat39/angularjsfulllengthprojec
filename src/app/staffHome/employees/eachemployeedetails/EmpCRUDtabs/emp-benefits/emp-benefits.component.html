@@ -1,0 +1,47 @@
+<div>
+  <div class="col-xs-12">
+    <ul class="list-inline" id="nav">
+      <li (click)="loadFilteredData('VACC')"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic'">Vaccation Information</span></a>
+      </li>
+      |
+      <li class="list-inline active" (click)="loadFilteredData('INS')"><a><span
+        style="color: black;font-size:12px;font-family: 'Century Gothic">Insurance Details</span></a></li>
+      |
+      <li (click)="loadFilteredData('401K')"><a><span
+        style="color: black;font-size:12px;font-family: 'Century Gothic">401K Details</span></a></li>
+      |
+    </ul>
+  </div>
+</div>
+
+
+<p-dataTable   [value]="getBenefits" [paginator]="true" rows="5" [responsive]="true">
+  <p-column hidden="true" field="empId" header="Employee Id" [sortable]="true"></p-column>
+  <p-column field="accSickLeave" header="Accured Sick Leave" [sortable]="true"></p-column>
+  <p-column field="accAnnLeave" header="Accured Annual Leave" [sortable]="true"></p-column>
+</p-dataTable>
+
+
+
+<p-dataTable  [value]="getBenefits" [paginator]="true" rows="5" [responsive]="true">
+  <p-column field="insurPlan" header="Insurance  Plan" [sortable]="true"></p-column>
+  <p-column field="insurCoverage" header="Insurance Coverage" [sortable]="true"></p-column>
+  <p-column field="dentalDtls" header="Dental Details" [sortable]="true"></p-column>
+  <p-column field="visionDtls" header="Vision Details" [sortable]="true"></p-column>
+  <p-column field="lifeAdDtls" header="Life Ad Details" [sortable]="true"></p-column>
+</p-dataTable>
+
+
+
+<p-dataTable   [value]="getBenefits" [paginator]="true" rows="5" [responsive]="true">
+  <p-column field="enrlStatus401k" header="Vision Details" [sortable]="true"></p-column>
+  <p-column field="enrlStDt401k" header="Vision Details" [sortable]="true"></p-column>
+  <p-column field="enrlEndDt401k" header="Vision Details" [sortable]="true"></p-column>
+  <p-column field="percentContr401k" header="Vision Details" [sortable]="true"></p-column>
+  <p-column field="rothSts401k" header="Vision Details" [sortable]="true"></p-column>
+  <p-column field="rothPctCon401k" header="Vision Details" [sortable]="true"></p-column>
+  <p-column field="rothEnrlStDt401k" header="Vision Details" [sortable]="true"></p-column>
+  <p-column field="rothEnrlEndDt401k" header="Vision Details" [sortable]="true"></p-column>
+</p-dataTable>
+
+
