@@ -11,7 +11,10 @@ declare var $:any;
 })
 export class EmpBenefitsComponent implements OnInit {
   @Input() employeeId: string;
-  getBenefits : Benefits[]=[];
+  vaccination : Benefits[]=[];
+  insurance: Benefits[]=[];
+  emp_401k : Benefits[]=[];
+
 
   isVaccSelected : boolean = false;
   isInsurSelected : boolean = false;
@@ -35,23 +38,15 @@ export class EmpBenefitsComponent implements OnInit {
   loadFilteredData(filter: string) {
     switch (filter) {
       case 'VACC':
-        this.isInsurSelected = false;
-        this.is401kSelected = false;
         this.isVaccSelected = true;
         break;
       case 'INS':
         this.isInsurSelected = true;
-        this.is401kSelected = false;
-        this.isVaccSelected = false;
         break;
 
       case '401K':
-        this.isInsurSelected = false;
         this.is401kSelected = true;
-        this.isVaccSelected = false;
         break;
-
-
     }
   }
 
@@ -62,9 +57,10 @@ export class EmpBenefitsComponent implements OnInit {
         res => {
           console.log("")
           if (res.datares != null && res.errorres == null) {
-            this.getBenefits = res.datares;
+            this.vaccination = res.datares;
+            this.emp_401k = res.datares;
+            this.insurance = res.datares;
           } else {
-
             this.toastManager.error(res.errorres);
           }
         }

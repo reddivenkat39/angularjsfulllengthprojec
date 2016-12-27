@@ -67,7 +67,7 @@ export class EmpContDtlsComponent implements OnInit {
           this.getContactData = res.datares;
         } else {
           console.log("error response  by loadContData : getContDtls ", res.errorres);
-          this.toastManager.warning(res.errores);
+          this.toastManager.error(res.errores,'');
         }
       }
     );

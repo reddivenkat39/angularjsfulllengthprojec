@@ -62,6 +62,7 @@ import {EmpCrudTabsService} from "./staffHome/employees/emp-crud-tabs.service";
 import { EmpAddrDtlsComponent } from './staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-addr-dtls/emp-addr-dtls.component';
 import { EmpBenefitsComponent } from './staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-benefits/emp-benefits.component';
 import { EmpProjDtlsComponent } from './staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-proj-dtls/emp-proj-dtls.component';
+import {CommonModule} from "@angular/common";
 
 
 let options: ToastOptions = new ToastOptions({
@@ -122,6 +123,7 @@ let options: ToastOptions = new ToastOptions({
     SelectModule,
     TabsModule,
     TabViewModule,
+    CommonModule
   ],
 
   providers: [StaffService, LoginGuard,CandidatesService, AddstaffService, DatatableService,EmployeeService, VendorsService,RoleAccessService, ProjectService,InvoiceService,EmpCrudTabsService,
