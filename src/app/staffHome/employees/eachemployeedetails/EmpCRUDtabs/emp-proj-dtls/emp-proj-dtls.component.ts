@@ -14,6 +14,7 @@ export class EmpProjDtlsComponent implements OnInit {
   getProjectData: Project[] = [];  // empty array used to get the all the employee projects details
   getProjectDataCurrent:Project[]=[];//curret project data
   getProjectDataPrevious:Project[]=[];//previous project data
+  isShowPreviousTable:boolean=false;
   constructor(private empCrudTabsService: EmpCrudTabsService, private toastManager: ToastsManager) { }
 
   ngOnInit() {
@@ -35,8 +36,10 @@ export class EmpProjDtlsComponent implements OnInit {
               return row;
           });
           this.getProjectDataPrevious = res.datares.filter(row => {
-            if (row.endDate != null)
+            if (row.endDate != null){
+              this.isShowPreviousTable=true;
               return row;
+            }
           });
 
           console.log("res.datares from loadEmpProjectsDetailsByEmpId :  ", res.datares);

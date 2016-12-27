@@ -26,36 +26,42 @@ export class EmpBenefitsComponent implements OnInit {
   constructor(private empCrudTabsService: EmpCrudTabsService, private toastManager: ToastsManager) { }
 
   ngOnInit() {
+    /*this.loadFilteredData('INS');*/
     $("ul li").click(function () {
       $(this).parent().children().removeClass("active");
       $(this).addClass("active");
     });
-
-    this.loadEmpBenefits();
+   /* this.loadEmpBenefits();*/
   }
 
 
-  loadFilteredData(filter: string) {
+  /*loadFilteredData(filter: string) {
     switch (filter) {
       case 'VACC':
         this.isVaccSelected = true;
+        this.is401kSelected=false;
+        this.isInsurSelected=false;
         break;
       case 'INS':
         this.isInsurSelected = true;
+        this.isVaccSelected = false;
+        this.is401kSelected=false;
         break;
 
       case '401K':
         this.is401kSelected = true;
+        this.isInsurSelected = false;
+        this.isVaccSelected = false;
         break;
     }
-  }
+    this.loadEmpBenefits();
+  }*/
 
 
-    loadEmpBenefits()
-    {
+    /*loadEmpBenefits() {
       this.empCrudTabsService.getBenefitDtls(this.employeeId).subscribe(
         res => {
-          console.log("")
+          console.log("Emp benefits Dtls");
           if (res.datares != null && res.errorres == null) {
             this.vaccination = res.datares;
             this.emp_401k = res.datares;
@@ -65,7 +71,7 @@ export class EmpBenefitsComponent implements OnInit {
           }
         }
       );
-    }
+    }*/
   }
 
 

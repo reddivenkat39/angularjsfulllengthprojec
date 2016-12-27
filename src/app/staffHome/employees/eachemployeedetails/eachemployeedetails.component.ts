@@ -16,15 +16,6 @@ export class EachemployeedetailsComponent implements OnInit {
   @ViewChild(EmpDetailedViewComponent)
   empDetailedViewComponent: EmpDetailedViewComponent;
 
-  /*
-   switch cases for Selecting Tabs
-   */
-  isEduSelected: boolean = false;
-  isContSelected: boolean = false;
-  isAddrSelected: boolean = false;
-  isBenefitSelected : boolean = false;
-isProjSelected:boolean=false;
-
 
 
   constructor(private employeeService:EmployeeService, private activatedRoute: ActivatedRoute,private toastManager: ToastsManager) {
@@ -33,54 +24,8 @@ isProjSelected:boolean=false;
   }
 
   ngOnInit() {
-    this.onSelectTab('EDU');
     console.log("empDetailedView from empDetailedView component ", this.empDetailedViewComponent);
 
-  }
-
-  onSelectTab(selectedTab: string) {
-    switch (selectedTab) {
-      case 'EDU':
-        this.isEduSelected = true;
-        this.isContSelected = false;
-        this.isAddrSelected = false;
-        this.isProjSelected= false;
-        this.isBenefitSelected= false;
-        break;
-      case 'CONT':
-        this.isContSelected = true;
-        this.isEduSelected = false;
-        this.isAddrSelected = false;
-        this.isProjSelected= false;
-        this.isBenefitSelected= false;
-        break;
-      case 'ADDR':
-        this.isAddrSelected = true;
-        this.isEduSelected = false;
-        this.isContSelected = false;
-        this.isProjSelected= false;
-        this.isBenefitSelected= false;
-        break;
-      case 'BEN':
-        this.isAddrSelected = false;
-        this.isEduSelected = false;
-        this.isContSelected = false;
-        this.isProjSelected= false;
-        this.isBenefitSelected= true;
-        break;
-      case 'PROJ':
-        this.isProjSelected= true;
-        this.isContSelected=false;
-        this.isEduSelected=false;
-        this.isBenefitSelected= false;
-        this.isAddrSelected = false;
-        break;
-
-    }
-
-
-    console.log(" event in app-eachemployeedetails : ", event);
-    console.log(" employee id from route  in app-eachemployeedetails : ", this.empId);
   }
 
 }
