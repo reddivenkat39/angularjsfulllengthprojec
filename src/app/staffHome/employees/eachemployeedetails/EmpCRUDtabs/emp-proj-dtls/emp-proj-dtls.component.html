@@ -1,0 +1,58 @@
+<!--<button  class="btn-xs btn-primary" (click)="showDialogToAdd()">Add</button>-->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <strong style="float: left">Current</strong>
+    <br>
+  </div>
+  <div class="panel-body">
+    <p-dataTable #dt1 [value]="getProjectDataCurrent">
+      <p-column field="vendorName" header="Vendor Name" [sortable]="true"></p-column>
+      <p-column field="empName" header="Employee Name" [sortable]="true"></p-column>
+      <p-column field="clientName" header="Client Name" [sortable]="true"></p-column>
+      <p-column field="startDate" header="Start Date" [sortable]="true">
+        <template let-col let-getProjectDataCurrent="rowData" pTemplate type="body">
+          <span>{{getProjectDataCurrent[col.field] | date:'MMM-d-y' }}</span>
+        </template>
+      </p-column>
+      <p-column field="endDate" header="End Date" [sortable]="true">
+        <template let-col let-getProjectDataCurrent="rowData" pTemplate type="body">
+          <span>{{getProjectDataCurrent[col.field] | date:'MMM-d-y' }}</span>
+        </template>
+      </p-column>
+      <p-column field="rate" header="Rate" [sortable]="true">
+        <template let-col let-getProjectDataCurrent="rowData" pTemplate type="body">
+          <span>{{getProjectDataCurrent[col.field] | currency:'USD':true }}</span>
+        </template>
+      </p-column>
+    </p-dataTable>
+  </div>
+</div>
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <strong style="float: left">Previous</strong>
+    <br>
+  </div>
+  <div class="panel-body">
+    <p-dataTable #dt1 [value]="getProjectDataPrevious" sortField="startDate" sortOrder="-1">
+      <p-column field="vendorName" header="Vendor Name" [sortable]="true"></p-column>
+      <p-column field="empName" header="Employee Name" [sortable]="true"></p-column>
+      <p-column field="clientName" header="Client Name" [sortable]="true"></p-column>
+      <p-column field="startDate" header="Start Date" [sortable]="true">
+        <template let-col let-getProjectDataPrevious="rowData" pTemplate type="body">
+          <span>{{getProjectDataPrevious[col.field] | date:'MMM-d-y' }}</span>
+        </template>
+      </p-column>
+      <p-column field="endDate" header="End Date" [sortable]="true">
+        <template let-col let-getProjectDataPrevious="rowData" pTemplate type="body">
+          <span>{{getProjectDataPrevious[col.field] | date:'MMM-d-y' }}</span>
+        </template>
+      </p-column>
+      <p-column field="rate" header="Rate" [sortable]="true">
+        <template let-col let-getProjectDataPrevious="rowData" pTemplate type="body">
+          <span>{{getProjectDataPrevious[col.field] | currency:'USD':true }}</span>
+        </template>
+      </p-column>
+    </p-dataTable>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 #EachEmployeeEditableDetailsTabs > li.active>a,  .nav-tabs>li.active>a{
-  color:black;
+  color:white;
   font-weight: bold;
-  background-color: white !important;
+  background-color: #3399ff !important;
 }
 #EachEmployeeEditableDetailsTabs>li>a, .nav-tabs>li>a
 {

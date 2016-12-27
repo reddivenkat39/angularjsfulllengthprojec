@@ -16,7 +16,7 @@ export class EachemployeedetailsComponent implements OnInit {
    */
 isEduSelected: boolean = false;
 isContSelected: boolean = false;
-
+isProjSelected:boolean=false;
 
 
 
@@ -34,11 +34,19 @@ isContSelected: boolean = false;
       case 'EDU':
       this.isEduSelected=true;
         this.isContSelected= false;
+        this.isProjSelected= false;
         break;
       case 'CONT':
       this.isContSelected= true;
         this.isEduSelected=false;
+        this.isProjSelected= false;
         break;
+      case 'PROJ':
+        this.isProjSelected= true;
+        this.isContSelected=false;
+        this.isEduSelected=false;
+        break;
+
     }
 
 

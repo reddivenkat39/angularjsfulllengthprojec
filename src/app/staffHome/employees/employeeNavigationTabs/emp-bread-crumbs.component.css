@@ -1,4 +1,11 @@
 .breadcrumb{
   background-color: white;
   cursor:pointer;
+  padding: 0px 0px;
+  margin-bottom: 8px;
+  font-family: century gothic;
+  font-size: 12px;
+}
+.breadcrumb > .active {
+  color: black;
 }

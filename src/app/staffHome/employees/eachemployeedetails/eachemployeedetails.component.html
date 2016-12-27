@@ -8,7 +8,7 @@
       <li><a data-toggle="tab" href="#contact" (click)="onSelectTab('CONT')">Contact</a></li>
       <li><a data-toggle="tab">Address</a></li>
       <li><a data-toggle="tab" href="#vendor">Vendor</a></li>
-      <li><a data-toggle="tab">Projects</a></li>
+      <li><a data-toggle="tab" href="#projects" (click)="onSelectTab('PROJ')">Projects</a></li>
       <li><a data-toggle="tab">Pay rate</a></li>
       <li><a data-toggle="tab" href="#passport">Passport</a></li>
       <li><a data-toggle="tab">Work Authorization</a></li>
@@ -55,6 +55,18 @@
     </div>
   </div>
 </div>
+</div>
+
+<div *ngIf="isProjSelected">
+  <div class="tab-content">
+    <div id="project" class="tab-pane fade in active">
+      <div class="container-fluid">
+        <div class="col-xs-12">
+          <app-emp-proj-dtls [employeeId]="empId"></app-emp-proj-dtls>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!--<div id="passport" class="tab-pane fade">-->

@@ -55,7 +55,7 @@ export class EmpCrudTabsService {
     const empIdBody = {empId : empId };
     console.log("empId in bodySend",empId);
     console.log("empId in headersSend",headersSend);
-    return this.http.post("http://localhost:8080/empcontacts/contdata",empIdBody,{headers: headersSend}).map(
+    return this.http.post("http://10.10.5.55:8080/empcontacts/contdata",empIdBody,{headers: headersSend}).map(
       (res:Response)=> {
         console.log("res.json from /empedu/edudata By id",res.json());
         return res.json();
@@ -72,12 +72,29 @@ export class EmpCrudTabsService {
     const bodySend = JSON.stringify(contactDtls);
     console.log("empId in bodySend",bodySend);
     console.log("empId in headersSend",headersSend);
-    return this.http.post("http://localhost:8080/empcontacts/savecontact",bodySend,{headers: headersSend}).map(
+    return this.http.post("http://10.10.5.55:8080/empcontacts/savecontact",bodySend,{headers: headersSend}).map(
       (res:Response)=> {
         console.log("res.json from /empcontacts/savecontact By id",res.json());
         return res.json();
       }
     );
 
+  }
+
+  /*
+   to pull the Project Details by Employeee Id
+   */
+  getEmpProjDtlsByEmpId(empId){
+    console.log("into getEmpProjDtlsByEmpId method");
+    const headersSend = new Headers({'Content-Type':'application/json'});
+    const empIdBody = {empId : empId };
+    console.log("empId in bodySend",empId);
+    console.log("empId in headersSend",headersSend);
+    return this.http.post("http://10.10.5.55:8080/empvencli/byempid",empIdBody,{headers: headersSend}).map(
+      (res:Response)=> {
+        console.log("res.json from empvencli/byempid By id",res.json());
+        return res.json();
+      }
+    );
   }
 }
