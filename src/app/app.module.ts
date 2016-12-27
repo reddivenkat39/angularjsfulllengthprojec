@@ -63,6 +63,7 @@ import { EmpAddrDtlsComponent } from './staffHome/employees/eachemployeedetails/
 import { EmpBenefitsComponent } from './staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-benefits/emp-benefits.component';
 import { EmpProjDtlsComponent } from './staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-proj-dtls/emp-proj-dtls.component';
 import {CommonModule} from "@angular/common";
+import { EmpPayRollComponent } from './staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-pay-roll/emp-pay-roll.component';
 
 
 let options: ToastOptions = new ToastOptions({
@@ -104,7 +105,8 @@ let options: ToastOptions = new ToastOptions({
     EmpContDtlsComponent,
     EmpAddrDtlsComponent,
     EmpBenefitsComponent,
-    EmpProjDtlsComponent
+    EmpProjDtlsComponent,
+    EmpPayRollComponent
   ],
   imports: [
     ToastrModule,
