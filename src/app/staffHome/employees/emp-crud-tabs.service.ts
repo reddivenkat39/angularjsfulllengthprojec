@@ -75,7 +75,6 @@ export class EmpCrudTabsService {
         return res.json();
       }
     );
-
   }
 
 
@@ -95,4 +94,23 @@ export class EmpCrudTabsService {
       }
     );
   }
+
+  /*
+   to pull the Project Details by Employeee Id
+   */
+  getEmpProjDtlsByEmpId(empId){
+    console.log("into getEmpProjDtlsByEmpId method");
+    const headersSend = new Headers({'Content-Type':'application/json'});
+    const empIdBody = {empId : empId };
+    console.log("empId in bodySend",empId);
+    console.log("empId in headersSend",headersSend);
+    return this.http.post("http://10.10.5.55:8080/empvencli/byempid",empIdBody,{headers: headersSend}).map(
+      (res:Response)=> {
+        console.log("res.json from empvencli/byempid By id",res.json());
+        return res.json();
+      }
+    );
+  }
+
+
 }

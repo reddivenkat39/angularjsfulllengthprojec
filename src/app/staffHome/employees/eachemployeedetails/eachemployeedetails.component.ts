@@ -23,9 +23,11 @@ export class EachemployeedetailsComponent implements OnInit {
   isContSelected: boolean = false;
   isAddrSelected: boolean = false;
   isBenefitSelected : boolean = false;
+isProjSelected:boolean=false;
 
 
-  constructor(private employeeService: EmployeeService, private activatedRoute: ActivatedRoute, private toastManager: ToastsManager) {
+
+  constructor(private employeeService:EmployeeService, private activatedRoute: ActivatedRoute,private toastManager: ToastsManager) {
     this.empId = activatedRoute.snapshot.params['id'];
 
   }
@@ -42,26 +44,38 @@ export class EachemployeedetailsComponent implements OnInit {
         this.isEduSelected = true;
         this.isContSelected = false;
         this.isAddrSelected = false;
+        this.isProjSelected= false;
         this.isBenefitSelected= false;
         break;
       case 'CONT':
         this.isContSelected = true;
         this.isEduSelected = false;
         this.isAddrSelected = false;
+        this.isProjSelected= false;
         this.isBenefitSelected= false;
         break;
       case 'ADDR':
         this.isAddrSelected = true;
         this.isEduSelected = false;
         this.isContSelected = false;
+        this.isProjSelected= false;
         this.isBenefitSelected= false;
         break;
       case 'BEN':
         this.isAddrSelected = false;
         this.isEduSelected = false;
         this.isContSelected = false;
+        this.isProjSelected= false;
         this.isBenefitSelected= true;
         break;
+      case 'PROJ':
+        this.isProjSelected= true;
+        this.isContSelected=false;
+        this.isEduSelected=false;
+        this.isBenefitSelected= false;
+        this.isAddrSelected = false;
+        break;
+
     }
 
 

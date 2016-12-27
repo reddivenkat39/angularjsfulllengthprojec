@@ -25,7 +25,7 @@ export class InvoicesComponent implements OnInit {
   orderedInvoices : Invoice[] = [];
   tableHeader : string = "";//table Header value based on the selection
   tableInvAmt:number=0;//table inv amt based on selection
-
+  exportFileName :string=""; //export file name based on selection
   constructor(private invoiceService:InvoiceService,private toastManager: ToastsManager) { }
 
   ngOnInit() {
@@ -109,6 +109,7 @@ export class InvoicesComponent implements OnInit {
         this.filteredInvoices = this.allInvoices;
         this.tableHeader = "All Invoices";
         this.tableInvAmt=this.allInvsAmnt;
+        this.exportFileName="All Invoices";
         console.log("Filtered invoices : All:", this.filteredInvoices);
         break;
 
@@ -116,6 +117,7 @@ export class InvoicesComponent implements OnInit {
         this.filteredInvoices = this.openInvoices;
         this.tableHeader = "Open Invoices";
         this.tableInvAmt=this.openInvsAmnt;
+        this.exportFileName="Open Invoices";
         console.log("Filtered invoices: Open:", this.filteredInvoices);
         break;
 
@@ -123,12 +125,14 @@ export class InvoicesComponent implements OnInit {
         this.filteredInvoices = this.closedInvoices;
         this.tableHeader = "Close Invoices";
         this.tableInvAmt=this.closedInvsAmnt;
+        this.exportFileName="Close Invoices";
         console.log("Filtered invoices : Close :", this.filteredInvoices);
         break;
       case "PastDue":
         this.filteredInvoices = this.pastDueInvoices;
         this.tableHeader = "PastDue Invoices";
         this.tableInvAmt=this.pstDueInvsAmnt;
+        this.exportFileName="PastDue Invoices";
         console.log("Filtered invoices : Past Due:", this.filteredInvoices);
         break;
     }

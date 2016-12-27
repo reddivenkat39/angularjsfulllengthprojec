@@ -14,16 +14,16 @@
 </div>
 <div class="container-fluid">
   <div *ngIf="isProjectsTab">
-    <p-dataTable #dt1 [value]="allProjects" reorderableColumns="true" [rows]="10"
+    <p-dataTable #dt1 [value]="allProjects" reorderableColumns="true" [rows]="5"
                  [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
-                 [globalFilter]="gb" exportFilename="projects" >
+                 [globalFilter]="gb" exportFilename="Projects" >
       <header style="background: #3399ff !important;">
         <div class="ui-helper-clearfix">
           <div style="float: left">
             <h6><strong>&nbsp;&nbsp;Projects</strong></h6>
           </div>
           <span
-            style="border:1px solid white;background-color: white;color: black;float: right;margin: 10px 3px 0px 3px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%"
+            style="border:1px solid white;cursor:pointer;background-color: white;color: black;float: right;margin: 10px 3px 0px 3px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%"
             (click)="dt1.exportCSV()">Export</span>
           <div class="col-md-3 col-md-offset-3" style=" float: right">
             <form class="search-form">
@@ -50,12 +50,12 @@
       <p-column field="empName" header="Employeee Name" [sortable]="true"></p-column>
       <p-column field="startDate" header="Start Date" [sortable]="true">
         <template let-col let-allProject="rowData" pTemplate type="body">
-          <span>{{allProject[col.field] | date:'shortDate' }}</span>
+          <span>{{allProject[col.field] | date:'MMM-dd-y' }}</span>
         </template>
       </p-column>
       <p-column field="endDate" header="End Date" [sortable]="true">
         <template let-col let-allProject="rowData" pTemplate type="body">
-          <span>{{allProject[col.field] | date:'shortDate' }}</span>
+          <span>{{allProject[col.field] | date:'MMM-dd-y' }}</span>
         </template>
       </p-column>
     </p-dataTable>
@@ -63,9 +63,9 @@
   </div>
 
   <div *ngIf="isSowTab">
-    <p-dataTable #dt1 [value]="allSows" reorderableColumns="true" [rows]="10"
+    <p-dataTable #dt2 [value]="allSows" reorderableColumns="true" [rows]="5"
                  [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
-                 [globalFilter]="gb" exportFilename="projects"
+                 [globalFilter]="gb" exportFilename="Sow"
                  (onRowSelect)="onRowSelect(selectedSowRow)" [(selection)]="selectedSowRow"
                  selectionMode="single">
       <header style="background: #3399ff !important;">
@@ -74,8 +74,8 @@
             <h6><strong>&nbsp;&nbsp;Statement of Work</strong></h6>
           </div>
           <span
-            style="border:1px solid white;background-color: white;color: black;float: right;margin: 10px 3px 0px 3px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%"
-            (click)="dt1.exportCSV()">Export</span>
+            style="border:1px solid white;cursor:pointer;background-color: white;color: black;float: right;margin: 10px 3px 0px 3px;padding: -2px 10px; font-family: 'Calibri';font-size: 12px;width:4%"
+            (click)="dt2.exportCSV()">Export</span>
           <div class="col-md-3 col-md-offset-3" style=" float: right">
             <form class="search-form">
               <div class="form-group has-feedback">
@@ -112,12 +112,12 @@
       <p-column field="duration" header="Duration(weeks)" [sortable]="true" [style]="{'width':'150px'}"></p-column>
       <p-column field="startDate" header="Start Date" [sortable]="true" [style]="{'width':'80px'}">
         <template let-col let-allSow="rowData" pTemplate type="body">
-          <span>{{allSow[col.field] | date:'shortDate' }}</span>
+          <span>{{allSow[col.field] | date:'MMM-dd-y' }}</span>
         </template>
       </p-column>
       <p-column field="endDate" header="End Date" [sortable]="true" [style]="{'width':'80px'}">
         <template let-col let-allSow="rowData" pTemplate type="body">
-          <span>{{allSow[col.field] | date:'shortDate' }}</span>
+          <span>{{allSow[col.field] | date:'MMM-dd-y' }}</span>
         </template>
       </p-column>
     </p-dataTable>
@@ -142,23 +142,23 @@
       </header>
 
       <div class="panel-body">
-        <p-dataTable #dt1 [rows]="5"
+        <p-dataTable #dt3 [rows]="5"
                      [paginator]="true" [value]="filteredInvoices" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
                       reorderableColumns="true">
           <p-column field="invNum" header="Invoice Number" [sortable]="true"></p-column>
           <p-column field="invStDt" header="Start Date" [sortable]="true">
             <template let-col let-filteredInvoice="rowData" pTemplate type="body">
-              <span>{{filteredInvoice[col.field] | date:'shortDate' }}</span>
+              <span>{{filteredInvoice[col.field] | date:'MMM-dd-y' }}</span>
             </template>
           </p-column>
           <p-column field="invEndDt" header="End Date" [sortable]="true">
             <template let-col let-filteredInvoice="rowData" pTemplate type="body">
-              <span>{{filteredInvoice[col.field] | date:'shortDate' }}</span>
+              <span>{{filteredInvoice[col.field] | date:'MMM-dd-y' }}</span>
             </template>
           </p-column>
           <p-column field="dueDt" header="Due Date" [sortable]="true">
             <template let-col let-filteredInvoice="rowData" pTemplate type="body">
-              <span>{{filteredInvoice[col.field] | date:'shortDate' }}</span>
+              <span>{{filteredInvoice[col.field] | date:'MMM-dd-y'}}</span>
             </template>
           </p-column>
           <p-column field="wrkHrs" header="Hours" [sortable]="true"></p-column>

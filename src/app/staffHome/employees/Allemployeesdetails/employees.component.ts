@@ -28,6 +28,8 @@ export class EmployeesComponent implements OnInit {
   //in current iteration this feature is removed
   // showAddSave : boolean = true;//show Add and save buttons in Active employees
 
+  exportFileName:string=""; //based on the sub tabs export file name
+
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager, private router: Router) {
   }
 
@@ -86,6 +88,7 @@ export class EmployeesComponent implements OnInit {
         this.tableHeader = "All Employees";
         this.showTerminateDt = true;
         /*this.showAddSave = false;*/
+        this.exportFileName="All Employees";
         console.log("Filtered employess : All:", this.filteredEmployes);
         break;
 
@@ -94,6 +97,7 @@ export class EmployeesComponent implements OnInit {
         this.tableHeader = "Active Employees";
         this.showTerminateDt = false;
         /*this.showAddSave = true;*/
+        this.exportFileName="Active Employees";
         console.log("Filtered employess: Active :", this.filteredEmployes);
         break;
 
@@ -102,6 +106,7 @@ export class EmployeesComponent implements OnInit {
         this.tableHeader = "Terminated Employees";
         this.showTerminateDt = true;
        /* this.showAddSave = false;*/
+        this.exportFileName="Terminated Employees";
         console.log("Filtered employess : InActive :", this.filteredEmployes);
         break;
       case "SubCont":
@@ -109,6 +114,7 @@ export class EmployeesComponent implements OnInit {
         this.tableHeader = "SubContract Employees";
         this.showTerminateDt = true;
         /*this.showAddSave = false;*/
+        this.exportFileName="SubCont Employees";
         console.log("Filtered employess : SubCont:", this.filteredEmployes);
         break;
     }
