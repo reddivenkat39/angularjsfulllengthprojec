@@ -4,166 +4,67 @@
 <div class="container-fluid">
   <div class="col-xs-6">
     <ul class="nav nav-tabs" id="EachEmployeeEditableDetailsTabs">
-      <li class="active"><a data-toggle="tab" href="#education" (click)="onSelectTab($event)">Education</a></li>
-      <li ><a data-toggle="tab" >Contact</a></li>
-      <li ><a data-toggle="tab" >Address</a></li>
-      <li ><a data-toggle="tab" href="#vendor">Vendor</a></li>
-      <li ><a data-toggle="tab" >Projects</a></li>
-      <li ><a data-toggle="tab" >Pay rate</a></li>
-      <li ><a data-toggle="tab" href="#passport">Passport</a></li>
-      <li ><a data-toggle="tab" >Work Authorization</a></li>
-      <li><a data-toggle="tab" >Benefits</a></li>
+      <li class="active"><a data-toggle="tab" href="#education">Education</a></li>
+      <li><a data-toggle="tab" href="#contact">Contact</a></li>
+      <li><a data-toggle="tab" href="#address">Address</a></li>
+      <li><a data-toggle="tab" href="#vendor">Vendor</a></li>
+      <li><a data-toggle="tab" href="#projects">Projects</a></li>
+      <li><a data-toggle="tab" href="#payroll">Pay rate</a></li>
+      <li><a data-toggle="tab" href="#passport">Passport</a></li>
+      <li><a data-toggle="tab">Work Authorization</a></li>
+      <li><a data-toggle="tab" href="#benefits">Benefits</a></li>
     </ul>
   </div>
 </div>
 
-<div *ngIf="isEduSelected">
-  <div class="tab-content">
-    <div id="education" class="tab-pane fade in active">
-      <div class="container-fluid">
-        <div class="col-xs-12">
-          <div class="panel panel-default">
-            <br>
-            <div class="panel-body">
-              <div class="col-xs-3">
-                <app-emp-edu-dtls [employeeId]="empId"></app-emp-edu-dtls>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div *ngIf="isVendorSelelcted" id="vendor" class="tab-pane fade ">
-  <app-empvendordetailed [empId]="empId"></app-empvendordetailed>
-</div>
 
-<div *ngIf="isContSelected">
 <div class="tab-content">
-  <div id="contact" class="tab-pane fade in active">
+  <div id="education" class="tab-pane fade in active">
     <div class="container-fluid">
       <div class="col-xs-12">
-        <div class="panel panel-default">
-          <br>
-          <div class="panel-body">
-            <div class="col-xs-3">
-
-              <app-emp-cont-dtls [employeeId]="empId"></app-emp-cont-dtls>
-
-            </div>
-          </div>
-        </div>
+        <app-emp-edu-dtls [employeeId]="empId"></app-emp-edu-dtls>
       </div>
     </div>
   </div>
+  <div id="address" class="tab-pane fade">
+    <div class="container-fluid">
+      <div class="col-xs-12">
+        <app-emp-addr-dtls [fullEmpDtls]="empDetailedViewComponent.fullEmpDtls"></app-emp-addr-dtls>
+      </div>
+    </div>
+  </div>
+  <div id="contact" class="tab-pane fade">
+    <div class="container-fluid">
+      <div class="col-xs-12">
+        <app-emp-cont-dtls [employeeId]="empId"></app-emp-cont-dtls>
+      </div>
+    </div>
+  </div>
+  <div id="projects" class="tab-pane fade">
+      <div class="container-fluid">
+          <div class="col-xs-12">
+              <app-emp-proj-dtls [employeeId]="empId"></app-emp-proj-dtls>
+          </div>
+      </div>
+  </div>
+    <div id="payroll" class="tab-pane fade">
+        <div class="container-fluid">
+            <div class="col-xs-12">
+                <app-emp-pay-roll [employeeId]="empId"></app-emp-pay-roll>
+            </div>
+        </div>
+    </div>
+   <div id="benefits" class="tab-pane fade">
+       <div class="container-fluid">
+         <div class="col-xs-12">
+           Benefits
+           <!--<app-emp-benefits [employeeId]="empId"></app-emp-benefits>-->
+         </div>
+       </div>
+   </div>
 </div>
-</div>
-
-<!--<div id="passport" class="tab-pane fade">-->
-<!--<div class="container-fluid">-->
-<!--<div class="col-xs-12">-->
-<!--<div class="panel panel-default">-->
-<!--<br>-->
-<!--<div class="panel-body">-->
-<!--<div class="col-xs-4">-->
-<!--<table class="table borderless">-->
-<!--<tbody>-->
-<!--<tr>-->
-<!--<td><strong>Passport:</strong></td>-->
-<!--<td><input type="text"/></td>-->
-<!--</tr>-->
-<!--<tr>-->
-<!--<td><strong>Passport Issued Date:</strong></td>-->
-<!--<td><input type="text"/></td>-->
-<!--</tr>-->
-<!--<tr>-->
-<!--<td><strong>Passport End Date:</strong></td>-->
-<!--<td><input type="text"/></td>-->
-<!--</tr>-->
-<!--</tbody>-->
-<!--</table>-->
-<!--</div>-->
-<!--<div class="col-xs-4">-->
-<!--<table class="table borderless">-->
-<!--<tbody>-->
-<!--<tr>-->
-<!--<td><strong>I94 Number:</strong></td>-->
-<!--<td><input type="text"/></td>-->
-<!--</tr>-->
-<!--<tr>-->
-<!--<td><strong>Start Date:</strong></td>-->
-<!--<td><input type="text"/></td>-->
-<!--</tr>-->
-<!--<tr>-->
-<!--<td><strong>End Date:</strong></td>-->
-<!--<td><input type="text"/></td>-->
-<!--</tr>-->
-<!--</tbody>-->
-<!--</table>-->
-<!--</div>-->
-<!--<div class="col-xs-4">-->
-<!--<table class="table borderless">-->
-<!--<tbody>-->
-<!--<tr>-->
-<!--<td><strong>VISA Type:</strong></td>-->
-<!--<td><input type="text"/></td>-->
-<!--</tr>-->
-<!--<tr>-->
-<!--<td><strong>Visa Valid Till:</strong></td>-->
-<!--<td><input type="text"/></td>-->
-<!--</tr>-->
-<!--</tbody>-->
-<!--</table>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
 
 
-<!--<div id="vendor" class="tab-pane fade">-->
-<!--<br>-->
-<!--<div class="container-fluid">-->
-<!--<div class="col-xs-12">-->
-<!--<div class="panel panel-default">-->
-<!--<div class="panel-heading">-->
-<!--<strong style="float: left">Current</strong>-->
-<!--<br>-->
-<!--</div>-->
-<!--<div class="panel-body">-->
-<!--<p-dataTable #dt1 sortOrder="-1">-->
-<!--<p-column field="venNm" header="Vendor Name" [sortable]="true"></p-column>-->
-<!--<p-column field="strtDt" header="Start Date" [sortable]="true"></p-column>-->
-<!--<p-column field="endDt" header="End Date" [sortable]="true"></p-column>-->
-<!--<p-column field="rate" header="Rate" [sortable]="true"></p-column>-->
-<!--<p-column>-->
-<!--<template pTemplate type="header">-->
-<!--<button class="btn btn-default" style="background-color: lightblue" type="button" pButton-->
-<!--label="Attach"></button>-->
-<!--</template>-->
-<!--</p-column>-->
-<!--</p-dataTable>-->
-<!--</div>-->
-<!--</div>-->
-<!--<br>-->
-<!--<div class="panel panel-default">-->
-<!--<div class="panel-heading">-->
-<!--<strong style="float: left">Previous</strong>-->
-<!--<br>-->
-<!--</div>-->
-<!--<div class="panel-body">-->
-<!--<p-dataTable #dt1 sortOrder="-1">-->
-<!--<p-column field="venNm" header="Vendor Name" [sortable]="true"></p-column>-->
-<!--<p-column field="strtDt" header="Start Date" [sortable]="true"></p-column>-->
-<!--<p-column field="endDt" header="End Date" [sortable]="true"></p-column>-->
-<!--<p-column field="rate" header="Rate" [sortable]="true"></p-column>-->
-<!--<p-column field="rate" header="Attachments" [sortable]="true"></p-column>-->
-<!--</p-dataTable>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
+
+
 

@@ -1,0 +1,74 @@
+<!--<div>
+  <div class="col-xs-12">
+    <ul class="list-inline">
+      <li (click)="loadFilteredData('VACC')"><a><span style="color: black;font-size:12px;font-family: 'Century Gothic'">Vaccation Information</span></a>
+      </li>
+      |
+      <li class="list-inline active" (click)="loadFilteredData('INS')"><a><span
+        style="color: black;font-size:12px;font-family: 'Century Gothic">Insurance Details</span></a></li>
+      |
+      <li (click)="loadFilteredData('401K')"><a><span
+        style="color: black;font-size:12px;font-family: 'Century Gothic">401K Details</span></a></li>
+    </ul>
+  </div>
+</div>-->
+<!--<div *ngIf="isVaccSelected">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <p-dataTable reorderableColumns="true" [value]="vaccination" [paginator]="true" rows="5" [responsive]="true">
+        <p-column field="empId" header="Employee Id" [sortable]="true"></p-column>
+        <p-column field="accSickLeave" header="Accured Sick Leave" [sortable]="true"></p-column>
+        <p-column field="accAnnLeave" header="Accured Annual Leave" [sortable]="true"></p-column>
+      </p-dataTable>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isInsurSelected">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <p-dataTable reorderableColumns="true" [value]="insurance" [paginator]="true" rows="5" [responsive]="true">
+        <p-column field="insurPlan" header="Insurance  Plan" [sortable]="true"></p-column>
+        <p-column field="insurCoverage" header="Insurance Coverage" [sortable]="true"></p-column>
+        <p-column field="dentalDtls" header="Dental Details" [sortable]="true"></p-column>
+        <p-column field="visionDtls" header="Vision Details" [sortable]="true"></p-column>
+        <p-column field="lifeAdDtls" header="Life Ad Details" [sortable]="true"></p-column>
+      </p-dataTable>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="is401kSelected">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <p-dataTable reorderableColumns="true" [value]="emp_401k" [paginator]="true" rows="5" [responsive]="true">
+        <p-column field="enrlStatus401k" header="401K Enroll Status " [sortable]="true"></p-column>
+        <p-column field="enrlStDt401k" header="401K Enroll StartDate " [sortable]="true">
+          <template let-col let-emp_401="rowData" pTemplate type="body">
+            <span>{{emp_401[col.field] | date:'MMM-dd-y'}}</span>
+          </template>
+        </p-column>
+        <p-column field="enrlEndDt401k" header="401K Enroll EndDate" [sortable]="true">
+          <template let-col let-emp_401="rowData" pTemplate type="body">
+            <span>{{emp_401[col.field] | date:'MMM-dd-y'}}</span>
+          </template>
+        </p-column>
+        <p-column field="percentContr401k" header="Percent Contro" [sortable]="true"></p-column>
+        <p-column field="rothSts401k" header="Roth Status" [sortable]="true"></p-column>
+        <p-column field="rothPctCon401k" header="Roth Percent Contro" [sortable]="true"></p-column>
+        <p-column field="rothEnrlStDt401k" header="Roth Enroll StartDate" [sortable]="true">
+          <template let-col let-emp_401="rowData" pTemplate type="body">
+            <span>{{emp_401[col.field] | date:'MMM-dd-y'}}</span>
+          </template>
+        </p-column>
+        <p-column field="rothEnrlEndDt401k" header="Roth Enroll End Date" [sortable]="true">
+          <template let-col let-emp_401="rowData" pTemplate type="body">
+            <span>{{emp_401[col.field] | date:'MMM-dd-y'}}</span>
+          </template>
+        </p-column>
+      </p-dataTable>
+    </div>
+  </div>
+</div>-->
+

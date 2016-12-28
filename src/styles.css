@@ -73,6 +73,13 @@ div.ui-paginator-bottom .ui-paginator .ui-widget-header{
 .ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td, .ui-datatable tfoot th{
   padding: 0px !important;
 }
+.ui-datatable th.ui-state-active{
+  background-color: darkgray;
+}
+
+.ui-datatable .ui-selection-column .ui-chkbox-box, .ui-datatable .ui-selection-column .ui-radiobutton-box{
+  margin:0 30px;
+}
 .panel .panel-heading{
   padding: 3px;
   color:blue;

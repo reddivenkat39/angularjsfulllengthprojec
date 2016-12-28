@@ -28,6 +28,8 @@ export class EmployeesComponent implements OnInit {
   //in current iteration this feature is removed
   // showAddSave : boolean = true;//show Add and save buttons in Active employees
 
+  exportFileName:string=""; //based on the sub tabs export file name
+
   constructor(private employeeService: EmployeeService, private toastManager: ToastsManager, private router: Router) {
   }
 
@@ -82,33 +84,37 @@ export class EmployeesComponent implements OnInit {
     switch(filter)
     {
       case "All" :
-        this.filteredEmployes = this.orderedEmployees;
         this.tableHeader = "All Employees";
+        this.filteredEmployes = this.orderedEmployees;
         this.showTerminateDt = true;
         /*this.showAddSave = false;*/
+        this.exportFileName="All Employees";
         console.log("Filtered employess : All:", this.filteredEmployes);
         break;
 
       case "Active" :
-        this.filteredEmployes = this.activeEmployees;
         this.tableHeader = "Active Employees";
+        this.filteredEmployes = this.activeEmployees;
         this.showTerminateDt = false;
         /*this.showAddSave = true;*/
+        this.exportFileName="Active Employees";
         console.log("Filtered employess: Active :", this.filteredEmployes);
         break;
 
       case "InActive" :
-        this.filteredEmployes = this.inActiveEmployees;
         this.tableHeader = "Terminated Employees";
+        this.filteredEmployes = this.inActiveEmployees;
         this.showTerminateDt = true;
        /* this.showAddSave = false;*/
+        this.exportFileName="Terminated Employees";
         console.log("Filtered employess : InActive :", this.filteredEmployes);
         break;
       case "SubCont":
-        this.filteredEmployes = this.subContEmployees;
         this.tableHeader = "SubContract Employees";
+        this.filteredEmployes = this.subContEmployees;
         this.showTerminateDt = true;
         /*this.showAddSave = false;*/
+        this.exportFileName="SubCont Employees";
         console.log("Filtered employess : SubCont:", this.filteredEmployes);
         break;
     }

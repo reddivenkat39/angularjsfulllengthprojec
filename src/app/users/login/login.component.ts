@@ -44,7 +44,7 @@ export class LoginComponent {
 
           console.log(data.token);
           console.log(window.location.origin);
-          localStorage.setItem("user",data.role.toUpperCase()+":  "+data.fullName)
+          localStorage.setItem("user",data.role.toUpperCase()+":  "+data.fullName);
           localStorage.setItem("token", data.token);
 
           this.staffLoginService.sendToken(data).subscribe(

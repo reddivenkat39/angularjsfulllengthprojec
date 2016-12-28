@@ -1,22 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {EmployeeService} from "../employee.service";
 import {ActivatedRoute} from "@angular/router";
 import {ToastsManager} from "ng2-toastr";
+import {EmpDetailedViewComponent} from "../emp-detailed-view/emp-detailed-view.component";
+
 @Component({
-  selector: 'app-eachemployeedetails',
+  selector   : 'app-eachemployeedetails',
   templateUrl: './eachemployeedetails.component.html',
-  styleUrls: ['./eachemployeedetails.component.css']
+  styleUrls  : ['./eachemployeedetails.component.css']
 })
 export class EachemployeedetailsComponent implements OnInit {
-  empId:'';
+  empId: '';
 
-  /*
-  switch cases for Selecting Tabs
-   */
-isEduSelected: boolean = false;
-isContSelected: boolean = false;
-isVendorSelelcted : boolean = false;
-isWorkAuthSelected : boolean = false;
+
+  @ViewChild(EmpDetailedViewComponent)
+  empDetailedViewComponent: EmpDetailedViewComponent;
+
 
 
   constructor(private employeeService:EmployeeService, private activatedRoute: ActivatedRoute,private toastManager: ToastsManager) {
@@ -25,32 +24,8 @@ isWorkAuthSelected : boolean = false;
   }
 
   ngOnInit() {
-    this.onSelectTab('EDU');
-  }
+    console.log("empDetailedView from empDetailedView component ", this.empDetailedViewComponent);
 
-  onSelectTab(selectedTab: string){
-    this.isEduSelected=false;
-    this.isContSelected= false;
-    this.isVendorSelelcted = false;
-    this.isWorkAuthSelected = false;
-    switch(selectedTab){
-      case 'EDU':
-      this.isEduSelected=true;
-        break;
-      case 'CONT':
-      this.isContSelected= true;
-        break;
-      case 'VEND':
-          this.isVendorSelelcted = true;
-          break;
-      case 'WAUTH':
-        this.isWorkAuthSelected = true;
-        break;
-    }
-
-
-    console.log(" event in app-eachemployeedetails : ",event);
-    console.log(" employee id from route  in app-eachemployeedetails : ",this.empId);
   }
 
 }

@@ -1,3 +1,5 @@
+///<reference path="staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-work-auth-dtls/emp-work-auth-dtls-Main.ts"/>
+///<reference path="staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-cont-dtls/emp-cont-dtls.component.ts"/>
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -59,12 +61,16 @@ import { EmpEduDtlsComponent } from './staffHome/employees/eachemployeedetails/E
 
 import { EmpContDtlsComponent } from './staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-cont-dtls/emp-cont-dtls.component';
 import {EmpCrudTabsService} from "./staffHome/employees/emp-crud-tabs.service";
-import {EmpVendorDetailed} from "./staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-vendor-dtls/emp-vendor-dtls.component"
-import {EmpVendorService} from "./staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-vendor-dtls/emp-vendor-dtld.service"
-import {EmpVenCrudComponent} from "./staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-vendor-dtls/emp-vendor-dtldCrudComponent"
-import {EmpworkAuthDtls} from "./staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-work-auth-dtls/emp-work-auth-dtls-Main"
+import { EmpAddrDtlsComponent } from './staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-addr-dtls/emp-addr-dtls.component';
+import { EmpBenefitsComponent } from './staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-benefits/emp-benefits.component';
+import { EmpProjDtlsComponent } from './staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-proj-dtls/emp-proj-dtls.component';
+import {CommonModule} from "@angular/common";
+import { EmpPayRollComponent } from './staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-pay-roll/emp-pay-roll.component';
+import {EmpworkAuthDtls} from "./staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-work-auth-dtls/emp-work-auth-dtls-Main";
+import {EmpVenCrudComponent} from "./staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-vendor-dtls/emp-vendor-dtldCrudComponent";
+import {EmpVendorDetailed} from "./staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-vendor-dtls/emp-vendor-dtls.component";
 import {EmployeeWorkAuthorization} from "./staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-work-auth-dtls/emp-work-auth-dtls-service";
-
+import {EmpVendorService} from "./staffHome/employees/eachemployeedetails/EmpCRUDtabs/emp-vendor-dtls/emp-vendor-dtld.service"
 let options: ToastOptions = new ToastOptions({
   animate: 'fade',
   positionClass: 'toast-top-center',
@@ -102,6 +108,10 @@ let options: ToastOptions = new ToastOptions({
     EmpDetailedViewComponent,
     EmpEduDtlsComponent,
     EmpContDtlsComponent,
+    EmpAddrDtlsComponent,
+    EmpBenefitsComponent,
+    EmpProjDtlsComponent,
+    EmpPayRollComponent,
     EmpVendorDetailed,
     EmpVenCrudComponent,
     EmpworkAuthDtls
@@ -125,6 +135,7 @@ let options: ToastOptions = new ToastOptions({
     SelectModule,
     TabsModule,
     TabViewModule,
+    CommonModule
   ],
 
   providers: [StaffService,LoginGuard,CandidatesService, AddstaffService, DatatableService,EmployeeService, VendorsService,RoleAccessService, ProjectService,InvoiceService,

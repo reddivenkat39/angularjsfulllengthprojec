@@ -10,7 +10,7 @@ import {EmpVendorService} from "../eachemployeedetails/EmpCRUDtabs/emp-vendor-dt
 })
 export class EmpDetailedViewComponent implements OnInit {
   empId:'';
-  fullEmpDtls ={};
+  fullEmpDtls ={'billable':'false'};
   capturedEmpId:'';
 
   constructor(private employeeService: EmployeeService,

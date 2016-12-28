@@ -1,0 +1,10 @@
+
+<p-dataTable [value]="getPayrollData"  [(selection)]="selectedPayroll"  [paginator]="true" rows="5" [responsive]="true" >
+<header>Payroll Information</header>
+<p-column hidden="true" field="empId" header="Employee Id"  [sortable]="true"></p-column>
+<p-column field="payRate" header="Payroll"  [sortable]="true"></p-column>
+<p-column field="payRate" header="Package" [sortable]="true"></p-column>
+<p-column field="effDt" header="Effective Date"  [sortable]="true"></p-column>
+<p-column field="endDt" header="End Date"  [sortable]="true"></p-column>
+<!--<footer><div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button></div></footer>-->
+</p-dataTable>

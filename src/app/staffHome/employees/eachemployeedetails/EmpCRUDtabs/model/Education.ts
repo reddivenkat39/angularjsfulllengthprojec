@@ -2,7 +2,7 @@
 /**
  * Created by bapirazz naidu on 12/24/2016.
  */
-export interface Education {
+export class Education {
   empId;
   qualificationName;
   instituteName;
